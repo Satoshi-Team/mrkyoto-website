@@ -506,7 +506,7 @@ class ThemeLanguageManager {
             element.style.display = '';
         });
         
-        // Update specific elements
+        // Update specific elements (removed updateHeaderTheme to use Tailwind classes)
         this.updateFooterTheme();
         this.updateNavigationTheme();
         this.updatePropertyCardsTheme();
