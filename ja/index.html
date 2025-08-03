@@ -2164,7 +2164,9 @@ html:not(.dark) .action-button svg {
             const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
             
             console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
+            console.log('🔍 Mobile menu button element:', mobileMenuButton);
             console.log('🔍 Mobile menu found:', !!mobileMenu);
+            console.log('🔍 Mobile menu element:', mobileMenu);
             console.log('🔍 Mobile theme toggle found:', !!mobileThemeToggle);
             console.log('🔍 Mobile language toggle found:', !!mobileLanguageToggle);
             
@@ -2178,6 +2180,8 @@ html:not(.dark) .action-button svg {
                 
                 mobileMenuButton.addEventListener('click', function(e) {
                     console.log('🖱️ Mobile menu button clicked!');
+                    console.log('🖱️ Event details:', e);
+                    console.log('🖱️ Target element:', e.target);
                     e.preventDefault();
                     e.stopPropagation();
                     const isHidden = mobileMenu.style.display === 'none';
