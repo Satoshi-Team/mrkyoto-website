@@ -815,6 +815,22 @@
             color: #FFFFFF !important;
         }
 
+        /* Force dark background for mobile action buttons in light mode */
+        html:not(.dark) #mobile-language-toggle,
+        html:not(.dark) #mobile-theme-toggle,
+        html:not(.dark) #mobile-menu-button {
+            background: rgba(55, 65, 81, 0.9) !important;
+            border-color: rgba(75, 85, 99, 0.8) !important;
+        }
+
+        /* Ensure proper contrast for mobile action buttons */
+        html:not(.dark) #mobile-language-toggle:hover,
+        html:not(.dark) #mobile-theme-toggle:hover,
+        html:not(.dark) #mobile-menu-button:hover {
+            background: rgba(75, 85, 99, 0.9) !important;
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }
@@ -1253,19 +1269,19 @@
                 <!-- Mobile actions -->
                 <div class="lg:hidden flex items-center space-x-2">
                     <!-- Language toggle -->
-                    <button id="mobile-language-toggle" class="action-button" data-tooltip="Language">
+                    <button id="mobile-language-toggle" class="action-button text-white" data-tooltip="Language">
                         <span class="text-sm font-medium">🇬🇧</span>
                     </button>
                     
                     <!-- Dark mode toggle -->
-                    <button id="mobile-theme-toggle" class="action-button" data-tooltip="Theme Toggle">
+                    <button id="mobile-theme-toggle" class="action-button text-white" data-tooltip="Theme Toggle">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
                 
                 <!-- Mobile menu button -->
-                    <button id="mobile-menu-button" class="action-button">
+                    <button id="mobile-menu-button" class="action-button text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
