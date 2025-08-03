@@ -1,0 +1,27 @@
+{
+  "name": "kyoto-social-media-scraper",
+  "version": "1.0.0",
+  "description": "Server to fetch real social media posts about Kyoto",
+  "main": "social-media-scraper.js",
+  "scripts": {
+    "start": "node social-media-scraper.js",
+    "dev": "nodemon social-media-scraper.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "kyoto",
+    "social-media",
+    "scraper",
+    "api"
+  ],
+  "author": "MrKyoto",
+  "license": "MIT"
+} 

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Diagnostic - MrKyoto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">🔍 Weather Diagnostic</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Basic JavaScript Test -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold mb-4">JavaScript Test</h2>
+                <div id="js-test-result" class="p-4 bg-gray-100 rounded">
+                    <div id="js-status">Testing JavaScript...</div>
+                </div>
+                <button id="test-js" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                    Test JavaScript
+                </button>
+            </div>
+            
+            <!-- Weather API Test -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold mb-4">Weather API Test</h2>
+                <div id="api-test-result" class="p-4 bg-gray-100 rounded">
+                    <div id="api-status">Click to test API...</div>
+                </div>
+                <button id="test-api" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                    Test Weather API
+                </button>
+            </div>
+        </div>
+        
+        <!-- Script Loading Test -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Script Loading Test</h2>
+            <div id="script-test-result" class="p-4 bg-gray-100 rounded">
+                <div id="script-status">Testing script loading...</div>
+            </div>
+            <button id="test-scripts" class="mt-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+                Test Script Loading
+            </button>
+        </div>
+        
+        <!-- Console Output -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Console Output</h2>
+            <div id="console-output" class="bg-gray-900 text-green-400 p-4 rounded text-sm font-mono h-64 overflow-y-auto">
+                <div>Diagnostic started...</div>
+            </div>
+            <button id="clear-console" class="mt-4 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+                Clear Console
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Console logging function
+        function log(message) {
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            console.log(message);
+        }
+
+        // Clear console
+        document.getElementById('clear-console').addEventListener('click', () => {
+            document.getElementById('console-output').innerHTML = '<div>Console cleared...</div>';
+        });
+
+        // Test JavaScript functionality
+        document.getElementById('test-js').addEventListener('click', () => {
+            log('🧪 Testing JavaScript functionality...');
+            
+            try {
+                // Test basic JavaScript
+                const testArray = [1, 2, 3, 4, 5];
+                const sum = testArray.reduce((a, b) => a + b, 0);
+                
+                // Test DOM manipulation
+                const testElement = document.getElementById('js-status');
+                testElement.innerHTML = `
+                    <div class="text-green-600">✅ JavaScript is working!</div>
+                    <div class="text-sm text-gray-600">Array sum: ${sum}</div>
+                    <div class="text-sm text-gray-600">Current time: ${new Date().toLocaleTimeString()}</div>
+                `;
+                
+                log('✅ JavaScript functionality test passed');
+                log(`📊 Array sum: ${sum}`);
+                log(`⏰ Current time: ${new Date().toLocaleTimeString()}`);
+                
+            } catch (error) {
+                log(`❌ JavaScript test failed: ${error.message}`);
+                document.getElementById('js-status').innerHTML = `<div class="text-red-600">❌ JavaScript error: ${error.message}</div>`;
+            }
+        });
+
+        // Test Weather API
+        document.getElementById('test-api').addEventListener('click', async () => {
+            log('🌤️ Testing Weather API...');
+            
+            try {
+                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0116&longitude=135.7681&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,pressure_msl&timezone=auto');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log('✅ Weather API response received');
+                    log(`🌡️ Temperature: ${data.current.temperature_2m}°C`);
+                    log(`💧 Humidity: ${data.current.relative_humidity_2m}%`);
+                    log(`💨 Wind: ${data.current.wind_speed_10m} km/h`);
+                    
+                    document.getElementById('api-status').innerHTML = `
+                        <div class="text-green-600">✅ Weather API is working!</div>
+                        <div class="text-sm text-gray-600">Temperature: ${data.current.temperature_2m}°C</div>
+                        <div class="text-sm text-gray-600">Humidity: ${data.current.relative_humidity_2m}%</div>
+                        <div class="text-sm text-gray-600">Wind: ${data.current.wind_speed_10m} km/h</div>
+                    `;
+                    
+                } else {
+                    log('❌ Weather API request failed');
+                    document.getElementById('api-status').innerHTML = '<div class="text-red-600">❌ Weather API request failed</div>';
+                }
+            } catch (error) {
+                log(`❌ Weather API error: ${error.message}`);
+                document.getElementById('api-status').innerHTML = `<div class="text-red-600">❌ Weather API error: ${error.message}</div>`;
+            }
+        });
+
+        // Test Script Loading
+        document.getElementById('test-scripts').addEventListener('click', () => {
+            log('📥 Testing script loading...');
+            
+            const scripts = [
+                '/js/weather-service.js',
+                '/js/live-kyoto-widget.js',
+                '/js/translation-manager.js'
+            ];
+            
+            let loadedCount = 0;
+            let failedCount = 0;
+            
+            scripts.forEach(script => {
+                const scriptElement = document.createElement('script');
+                scriptElement.src = script;
+                
+                scriptElement.onload = () => {
+                    log(`✅ Loaded: ${script}`);
+                    loadedCount++;
+                    updateScriptStatus(loadedCount, failedCount, scripts.length);
+                };
+                
+                scriptElement.onerror = () => {
+                    log(`❌ Failed to load: ${script}`);
+                    failedCount++;
+                    updateScriptStatus(loadedCount, failedCount, scripts.length);
+                };
+                
+                document.head.appendChild(scriptElement);
+            });
+        });
+
+        function updateScriptStatus(loaded, failed, total) {
+            const status = document.getElementById('script-status');
+            
+            if (loaded + failed === total) {
+                if (failed === 0) {
+                    status.innerHTML = `
+                        <div class="text-green-600">✅ All scripts loaded successfully!</div>
+                        <div class="text-sm text-gray-600">Loaded: ${loaded}/${total}</div>
+                    `;
+                    log(`✅ Script loading complete: ${loaded}/${total} loaded`);
+                } else {
+                    status.innerHTML = `
+                        <div class="text-yellow-600">⚠️ Some scripts failed to load</div>
+                        <div class="text-sm text-gray-600">Loaded: ${loaded}/${total}, Failed: ${failed}</div>
+                    `;
+                    log(`⚠️ Script loading complete: ${loaded}/${total} loaded, ${failed} failed`);
+                }
+            } else {
+                status.innerHTML = `
+                    <div class="text-blue-600">🔄 Loading scripts...</div>
+                    <div class="text-sm text-gray-600">Loaded: ${loaded}/${total}, Failed: ${failed}</div>
+                `;
+            }
+        }
+
+        // Auto-run basic tests on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            log('🚀 Weather diagnostic page loaded');
+            log('🧪 Running basic JavaScript test...');
+            
+            // Auto-test JavaScript
+            document.getElementById('test-js').click();
+            
+            log('🌤️ Ready for manual testing');
+            log('📋 Click the buttons above to test different components');
+        });
+
+        // Test if this script is running at all
+        log('📜 Diagnostic script loaded and running');
+    </script>
+</body>
+</html> 

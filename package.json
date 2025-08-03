@@ -1,0 +1,41 @@
+{
+  "name": "mrkyoto-website",
+  "version": "2.0.0",
+  "description": "MrKyoto.com - Your Gateway to Timeless Kyoto",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "build": "node build.js",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "postbuild": "echo 'Build complete! Files are in /dist folder'",
+    "deploy": "node deploy.js",
+    "deploy:build": "npm run build && npm run deploy",
+    "test": "node test-website.js",
+    "verify": "npm run build && echo 'Build verification completed'"
+  },
+  "keywords": [
+    "kyoto",
+    "japan",
+    "real-estate",
+    "tourism",
+    "culture",
+    "events",
+    "activities"
+  ],
+  "author": "MrKyoto.com",
+  "license": "MIT",
+  "devDependencies": {
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.10",
+    "minify": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrkyoto/website.git"
+  },
+  "homepage": "https://mrkyoto.com"
+} 

@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="activities.meta.title">京都アクティビティ・ツアー - MrKyoto.com</title>
+    <meta name="description" content="京都の最高のアクティビティとツアーを発見しましょう。文化体験からアウトドアアドベンチャーまで、実際の予約リンクと専門ガイドで完璧な京都アクティビティを見つけましょう。" data-translate="activities.meta.description">
+    <meta name="keywords" content="京都アクティビティ, 京都ツアー, 文化体験, アウトドアアドベンチャー, 料理教室, 写真ワークショップ, 日本酒テイスティング, 寺院ツアー">
+    <meta name="author" content="MrKyoto.com">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Japanese">
+    <meta name="geo.region" content="JP-26">
+    <meta name="geo.placename" content="Kyoto">
+    <meta name="geo.position" content="35.0116;135.7681">
+    <meta name="ICBM" content="35.0116, 135.7681">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mrkyoto.com/ja/activities/">
+    <meta property="og:title" content="京都アクティビティ・ツアー - MrKyoto.com">
+    <meta property="og:description" content="京都の最高のアクティビティとツアーを発見しましょう。文化体験からアウトドアアドベンチャーまで、完璧な京都アクティビティを見つけましょう。">
+    <meta property="og:image" content="https://mrkyoto.com/images/kyoto-activities-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="MrKyoto.com">
+    <meta property="og:locale" content="ja_JP">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mrkyoto.com/ja/activities/">
+    <meta property="twitter:title" content="京都アクティビティ・ツアー - MrKyoto.com">
+    <meta property="twitter:description" content="京都の最高のアクティビティとツアーを発見しましょう。文化体験からアウトドアアドベンチャーまで、完璧な京都アクティビティを見つけましょう。">
+    <meta property="twitter:image" content="https://mrkyoto.com/images/kyoto-activities-og.jpg">
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://mrkyoto.com/ja/activities/">
+    <meta name="theme-color" content="#9A1F40">
+    <meta name="msapplication-TileColor" content="#9A1F40">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Noto Serif JP', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Traditional Japanese Color Palette - Enhanced for Readability
+                        'washi': '#F8F6F0', // Traditional Japanese paper
+                        'sumi': '#0F0F0F', // Deep black - maximum contrast
+                        'sakura': '#FDF2F8', // Cherry blossom pink
+                        'matcha': '#166534', // Dark green - better contrast
+                        'kobicha': '#7C2D12', // Dark brown - better contrast
+                        'aiiro': '#374151', // Dark gray - better contrast
+                        'shinku': '#991B1B', // Dark crimson - better contrast
+                        'kincha': '#B45309', // Dark gold - better contrast
+                        'nezumi': '#374151', // Dark gray - better contrast
+                        'gofun': '#FEFEFE', // Shell white
+                        'kurenai': '#B91C1C', // Dark crimson - better contrast
+                        'yamabuki': '#B45309', // Dark gold - better contrast
+                        'sora': '#1E3A8A', // Dark blue - better contrast
+                        'murasaki': '#7C2D12', // Dark brown - better contrast
+                        'cha': '#92400E', // Dark brown - better contrast
+                        'koke': '#166534', // Dark green - better contrast
+                        'sabiseiji': '#166534', // Dark green - better contrast
+                        // Additional colors for better text visibility
+                        'ink-black': '#0F0F0F', // Same as sumi for consistency
+                        'zen': '#E5E7EB', // Light border color
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+                        'zen-fade': 'zenFade 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        gentleFloat: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-5px) rotate(1deg)' }
+                        },
+                        zenFade: {
+                            '0%, 100%': { opacity: '0.8' },
+                            '50%': { opacity: '1' }
+                        }
+                    },
+                    backgroundImage: {
+                        'zen-pattern': "url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23f3f4f6\' fill-opacity=\'0.1\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                        'bamboo-pattern': "url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23f3f4f6\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M20 0L20 40M0 20L40 20\' stroke=\'%23d1d5db\' stroke-width=\'0.5\'/%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Enhanced Header CSS */
+        #header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .dark #header {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom-color: rgba(55, 65, 81, 0.5);
+        }
+
+        /* Desktop Navigation Links */
+        .nav-link-desktop {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            color: #374151;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link-desktop:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateY(-1px);
+        }
+
+        .nav-link-desktop:focus {
+            outline: 2px solid #B91C1C;
+            outline-offset: 2px;
+        }
+
+        .dark .nav-link-desktop {
+            color: #D1D5DB;
+        }
+
+        .dark .nav-link-desktop:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        .nav-icon {
+            font-size: 1.125rem;
+            opacity: 0.8;
+        }
+
+        .nav-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Action Buttons */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.75rem;
+            background: rgba(249, 250, 251, 0.8);
+            color: #374151;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .action-button:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-button:focus {
+            outline: 2px solid #B91C1C;
+            outline-offset: 2px;
+        }
+
+        .dark .action-button {
+            background: rgba(55, 65, 81, 0.8);
+            color: #D1D5DB;
+            border-color: rgba(75, 85, 99, 0.5);
+        }
+
+        .dark .action-button:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        /* Enhanced Language Dropdown */
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999;
+            min-width: 220px;
+            backdrop-filter: blur(12px);
+            display: block;
+            visibility: hidden;
+        }
+        
+        .language-dropdown.opacity-100 {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: translateY(0) scale(1) !important;
+            visibility: visible !important;
+        }
+        
+        .dark .language-dropdown {
+            background: rgba(55, 65, 81, 0.95);
+            border-color: rgba(75, 85, 99, 0.8);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content {
+            padding: 0.75rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            font-size: 0.875rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), rgba(180, 83, 9, 0.1));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .dropdown-item:hover::before {
+            opacity: 1;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(243, 244, 246, 0.8);
+            color: #1f2937;
+            transform: translateX(4px);
+        }
+
+        .dark .dropdown-item {
+            color: #d1d5db;
+        }
+
+        .dark .dropdown-item:hover {
+            background: rgba(75, 85, 99, 0.8);
+            color: #f9fafb;
+        }
+
+        .flag {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown-item:hover .flag {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Theme Toggle */
+        #theme-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), rgba(180, 83, 9, 0.1));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 0.5rem;
+        }
+
+        #theme-toggle:hover::before {
+            opacity: 1;
+        }
+
+        #theme-toggle svg {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        #theme-toggle:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Scrollbar for language dropdown */
+        .dropdown-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 2px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(156, 163, 175, 0.8);
+        }
+
+        /* Mobile Search */
+        .mobile-search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 1rem;
+            background: rgba(249, 250, 251, 0.8);
+            color: #374151;
+            font-size: 1rem;
+        }
+
+        .mobile-search-input:focus {
+            outline: none;
+            border-color: #B91C1C;
+            background: white;
+        }
+
+        .dark .mobile-search-input {
+            background: rgba(55, 65, 81, 0.8);
+            border-color: rgba(75, 85, 99, 0.8);
+            color: #D1D5DB;
+        }
+
+        .mobile-search-button {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B7280;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Quick Action Cards */
+        .quick-action-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            background: linear-gradient(135deg, #B91C1C, #991B1B);
+            color: white;
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-action-card:nth-child(2) {
+            background: linear-gradient(135deg, #B45309, #92400E);
+        }
+
+        .quick-action-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-action-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Mobile Navigation Links */
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            background: rgba(249, 250, 251, 0.5);
+            border: 1px solid rgba(229, 231, 235, 0.3);
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateX(4px);
+        }
+
+        .dark .mobile-nav-link {
+            background: rgba(55, 65, 81, 0.5);
+            border-color: rgba(75, 85, 99, 0.3);
+            color: #D1D5DB;
+        }
+
+        .dark .mobile-nav-link:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .mobile-nav-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .mobile-nav-arrow {
+            color: #9CA3AF;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-nav-link:hover .mobile-nav-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Contact Link */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, rgba(253, 242, 248, 0.8), rgba(180, 83, 9, 0.2));
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(180, 83, 9, 0.2);
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(135deg, rgba(253, 242, 248, 1), rgba(180, 83, 9, 0.3));
+            transform: translateX(4px);
+        }
+
+        .dark .contact-link {
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.8), rgba(180, 83, 9, 0.2));
+            color: #D1D5DB;
+            border-color: rgba(180, 83, 9, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-text {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .contact-arrow {
+            color: #B45309;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-link:hover .contact-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-link-desktop {
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .nav-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #header {
+                padding: 0;
+            }
+            
+            .search-input-desktop {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .search-input-desktop {
+                display: none;
+            }
+            
+            .action-button {
+                width: 2.25rem;
+                height: 2.25rem;
+            }
+        }
+        
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #B91C1C;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            font-weight: 600;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Tooltip Styles */
+        [data-tooltip] {
+            position: relative;
+        }
+
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: 1000;
+            margin-bottom: 0.5rem;
+        }
+
+        [data-tooltip]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+            margin-bottom: -4px;
+            z-index: 1000;
+        }
+        
+        /* Ensure proper text colors in light mode */
+        body {
+            background-color: #F8F6F0 !important;
+            color: #0F0F0F !important;
+        }
+        
+        .text-sumi {
+            color: #0F0F0F !important;
+        }
+        
+        .text-sumi\/70 {
+            color: rgba(15, 15, 15, 0.7) !important;
+        }
+        
+        .text-sumi\/60 {
+            color: rgba(15, 15, 15, 0.6) !important;
+        }
+        
+        /* Ensure dark mode classes have proper specificity */
+        html.dark body {
+            background-color: #0F0F0F !important;
+            color: #FEFEFE !important;
+        }
+        
+        html.dark .bg-white {
+            background-color: #0F0F0F !important;
+        }
+        
+        html.dark .text-sumi {
+            color: #FEFEFE !important;
+        }
+        
+        html.dark .text-sumi\/70 {
+            color: rgba(254, 254, 254, 0.7) !important;
+        }
+        
+        html.dark .text-sumi\/60 {
+            color: rgba(254, 254, 254, 0.6) !important;
+        }
+        
+        /* Force dark mode styles for sections */
+        html.dark section.bg-white {
+            background-color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white\/95 {
+            background-color: rgba(15, 15, 15, 0.95) !important;
+        }
+        
+        html.dark .bg-white\/50 {
+            background-color: rgba(15, 15, 15, 0.5) !important;
+        }
+        
+        html.dark .bg-white\/20 {
+            background-color: rgba(15, 15, 15, 0.2) !important;
+        }
+        
+        /* Ensure proper text colors for headings and content */
+        h1, h2, h3, h4, h5, h6 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+            color: #FEFEFE !important;
+        }
+        
+        /* Ensure proper text colors for paragraphs and spans */
+        p, span, div {
+            color: inherit !important;
+        }
+        
+        /* Fix specific text color issues */
+        .text-gofun {
+            color: #FEFEFE !important;
+        }
+        
+        html.dark .text-gofun {
+            color: #FEFEFE !important;
+        }
+        
+        /* Ensure proper contrast for navigation and UI elements */
+        .nav-link-desktop, .mobile-nav-link {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .nav-link-desktop, html.dark .mobile-nav-link {
+            color: #FEFEFE !important;
+        }
+        
+        /* Only override white text on white backgrounds */
+        .bg-white .text-white {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white .text-white {
+            color: #FEFEFE !important;
+        }
+        
+        /* Ensure all text elements have proper contrast */
+        * {
+            color: inherit;
+        }
+        
+        /* Specific overrides for common text classes */
+        .font-serif, .font-semibold, .font-bold {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .font-serif, html.dark .font-semibold, html.dark .font-bold {
+            color: #FEFEFE !important;
+        }
+        
+        /* Footer text should always be white on dark background */
+        footer .font-serif, footer .font-semibold, footer .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        footer .text-white {
+            color: #FFFFFF !important;
+        }
+        
+        /* Fix any remaining white text issues */
+        .text-white\/80, .text-white\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .text-white\/80, html.dark .text-white\/60 {
+            color: rgba(254, 254, 254, 0.8) !important;
+        }
+        
+        /* Ensure proper text colors for all interactive elements */
+        a, button, input, textarea, select {
+            color: inherit !important;
+        }
+        
+        /* Force dark text on light backgrounds */
+        .bg-white * {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white * {
+            color: #FEFEFE !important;
+        }
+        
+        /* Specific property card styling for light mode */
+        .bg-white .text-sumi,
+        .bg-white .text-sumi\/70,
+        .bg-white .text-sumi\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        /* Property card text colors in light mode */
+        .bg-white h3,
+        .bg-white .text-2xl,
+        .bg-white .text-lg,
+        .bg-white .text-sm,
+        .bg-white .text-xs {
+            color: #0F0F0F !important;
+        }
+        
+        /* Property card background colors */
+        .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Ensure property cards have proper contrast */
+        #properties-grid .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark #properties-grid .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Property card text in light mode */
+        #properties-grid .bg-white * {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .bg-white * {
+            color: #FEFEFE !important;
+        }
+        
+        /* Bed/Bath/Sqm elements - proper dark mode support */
+        #properties-grid .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark #properties-grid .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Ensure bed/bath/sqm text is visible in both modes */
+        #properties-grid .bg-white.text-sumi {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .bg-white.text-sumi {
+            color: #FEFEFE !important;
+        }
+        
+        /* Property text colors - black in light mode, white in dark mode */
+        #properties-grid h3,
+        #properties-grid .text-2xl,
+        #properties-grid .text-lg,
+        #properties-grid .text-sm,
+        #properties-grid .text-xs {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid h3,
+        html.dark #properties-grid .text-2xl,
+        html.dark #properties-grid .text-lg,
+        html.dark #properties-grid .text-sm,
+        html.dark #properties-grid .text-xs {
+            color: #FEFEFE !important;
+        }
+        
+        /* Property card content text colors */
+        #properties-grid .text-sumi\/70,
+        #properties-grid .text-sumi\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .text-sumi\/70,
+        html.dark #properties-grid .text-sumi\/60 {
+            color: #FEFEFE !important;
+        }
+        
+        /* Homepage property cards dark mode support */
+        html.dark .zen-card {
+            background-color: #1F2937 !important;
+        }
+        
+        html.dark .zen-card h3,
+        html.dark .zen-card .font-serif,
+        html.dark .zen-card .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        html.dark .zen-card p,
+        html.dark .zen-card div {
+            color: #E5E7EB !important;
+        }
+        
+        html.dark .zen-card .text-gray-600 {
+            color: #D1D5DB !important;
+        }
+        
+        html.dark .zen-card .text-gray-500 {
+            color: #9CA3AF !important;
+        }
+        
+        html.dark .zen-card .text-gray-400 {
+            color: #9CA3AF !important;
+        }
+    </style>
+</head>
+<body class="bg-washi text-sumi dark:bg-sumi dark:text-gofun">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">メインコンテンツにスキップ</a>
+
+    <!-- Header -->
+    <header id="header" class="bg-white/95 backdrop-blur-sm dark:bg-sumi/95 border-b border-zen dark:border-aiiro shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/ja/" class="flex items-center space-x-2 group">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-ink-black dark:text-gofun group-hover:text-shinku transition-colors">MrKyoto</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <a href="/ja/" class="nav-link-desktop">
+                        <span class="nav-text" data-translate="nav.home">ホーム</span>
+                    </a>
+                    <a href="/ja/activities/" class="nav-link-desktop">
+                        <span class="nav-text" data-translate="nav.activities">アクティビティ</span>
+                    </a>
+                    <a href="/ja/real-estate/" class="nav-link-desktop">
+                        <span class="nav-text" data-translate="nav.realEstate">不動産</span>
+                    </a>
+                    <a href="/ja/events/" class="nav-link-desktop">
+                        <span class="nav-text" data-translate="nav.events">イベント</span>
+                    </a>
+                    <a href="/ja/news/" class="nav-link-desktop">
+                        <span class="nav-text" data-translate="nav.news">ニュース</span>
+                    </a>
+                    <a href="/ja/live-from-kyoto/" class="nav-link-desktop">
+                        <span class="nav-text" data-translate="nav.liveFromKyoto">京都ライブ</span>
+                    </a>
+                </nav>
+                
+                <!-- Right side actions -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <!-- Language toggle -->
+                    <button id="language-toggle" class="action-button" data-tooltip="Language">
+                        <span class="text-sm font-medium">🇯🇵</span>
+                    </button>
+                    
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" class="action-button" data-tooltip="テーマ切り替え">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="lg:hidden action-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile navigation -->
+                <nav class="space-y-2">
+                    <a href="/ja/" class="mobile-nav-link">
+                        <span class="mobile-nav-text" data-translate="nav.home">ホーム</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/ja/activities/" class="mobile-nav-link">
+                        <span class="mobile-nav-text" data-translate="nav.activities">アクティビティ</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/ja/real-estate/" class="mobile-nav-link">
+                        <span class="mobile-nav-text" data-translate="nav.realEstate">不動産</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/ja/events/" class="mobile-nav-link">
+                        <span class="mobile-nav-text" data-translate="nav.events">イベント</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/ja/news/" class="mobile-nav-link">
+                        <span class="mobile-nav-text" data-translate="nav.news">ニュース</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/ja/live-from-kyoto/" class="mobile-nav-link">
+                        <span class="mobile-nav-text" data-translate="nav.liveFromKyoto">京都ライブ</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                </nav>
+                
+                <!-- Contact link -->
+                <a href="mailto:hello@mrkyoto.com" class="contact-link">
+                    <span class="contact-icon">✉️</span>
+                    <span class="contact-text">お問い合わせ</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+        <!-- HERO SECTION -->
+        <section class="bg-gradient-to-br from-shinku via-red-700 to-red-800 text-white py-8 md:py-12 lg:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
+                    <!-- Hero Content -->
+                    <div class="md:col-span-2 lg:col-span-2">
+                        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4" data-translate="activities.hero.title">京都アクティビティ・体験 2026</h1>
+                        <p class="text-base md:text-lg lg:text-xl opacity-90 mb-4 lg:mb-6" data-translate="activities.hero.subtitle">古代寺院から現代文化アドベンチャーまで、京都の最も象徴的で本格的なアクティビティを発見しましょう。</p>
+                        <div class="flex flex-wrap gap-2 lg:gap-3 text-xs sm:text-sm">
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="activities.hero.badges.updated">2026年更新</span>
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="activities.hero.badges.cultural">文化体験</span>
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="activities.hero.badges.guides">専門ガイド</span>
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="activities.hero.badges.verified">認証済みアクティビティ</span>
+                        </div>
+                    </div>
+                    <!-- Hero Image or Featured Activity -->
+                    <div class="rounded-xl overflow-hidden shadow-lg">
+                        <img src="/images/kyoto-activities-og.jpg" alt="京都アクティビティ" class="w-full h-48 object-cover" loading="lazy" data-translate-alt="activities.hero.title">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK ACTIONS / FEATURED ACTIVITIES -->
+        <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi border-b border-zen dark:border-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun mb-6" data-translate="activities.featured.sectionTitle">トップアクティビティ・必見スポット</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Example featured/top activities, repeat for each top activity -->
+                    <div class="zen-card">
+                        <img src="/images/kiyomizu-dera.jpg" alt="清水寺" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1" data-translate="activities.featured.kiyomizu">清水寺</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.featured.kiyomizu.desc">世界遺産の寺院で、パノラマの街並みを眺めることができます。</p>
+                            <span class="inline-block bg-[#d9c289] text-white text-xs px-3 py-1 rounded-full" data-translate="activities.featured.temple" style="color: white !important;">寺院</span>
+                        </div>
+                    </div>
+                    <div class="zen-card">
+                        <img src="/images/fushimi-inari.jpg" alt="伏見稲荷大社" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1" data-translate="activities.featured.fushimi">伏見稲荷大社</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.featured.fushimi.desc">数千の赤い鳥居で有名です。</p>
+                            <span class="inline-block bg-[#d9c289] text-white text-xs px-3 py-1 rounded-full" data-translate="activities.featured.shrine" style="color: white !important;">神社</span>
+                        </div>
+                    </div>
+                    <div class="zen-card">
+                        <img src="/images/arashiyama-bamboo.jpg" alt="嵐山竹林" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1" data-translate="activities.featured.arashiyama">嵐山竹林</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.featured.arashiyama.desc">京都の魔法のような竹林を歩きます。</p>
+                            <span class="inline-block bg-[#d9c289] text-white text-xs px-3 py-1 rounded-full" data-translate="activities.featured.nature" style="color: white !important;">自然</span>
+                        </div>
+                    </div>
+                    <div class="zen-card">
+                        <img src="/images/gion-district.jpg" alt="祇園地区" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1" data-translate="activities.featured.gion">祇園地区</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.featured.gion.desc">伝統的な茶屋がある歴史的な芸者地区です。</p>
+                            <span class="inline-block bg-[#d9c289] text-white text-xs px-3 py-1 rounded-full" data-translate="activities.featured.district" style="color: white !important;">地区</span>
+                        </div>
+                    </div>
+                    <!-- Add more featured/top activities as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- MUST-SEE ACTIVITIES / EDITOR'S PICKS SECTION -->
+        <section class="py-6 md:py-8 lg:py-12 bg-washi dark:bg-aiiro border-b border-zen dark:border-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-shinku mb-4" data-translate="activities.mustsee.sectionTitle">京都の必見アクティビティ</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Example: Kiyomizu-dera -->
+                    <div class="zen-card p-6">
+                        <h3 class="font-semibold text-lg mb-2" data-translate="activities.mustsee.kiyomizu">清水寺</h3>
+                        <p class="text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.mustsee.kiyomizu.desc">ユネスコ世界遺産の清水寺は、本堂から突き出した木製の舞台で有名で、特に桜と紅葉の季節に京都の息を呑む景色を提供します。願い事が叶うと言われる音羽の滝もお見逃しなく。</p>
+                        <ul class="list-disc pl-5 text-sm text-sumi/70 dark:text-gofun/70 mb-2">
+                            <li data-translate="activities.mustsee.kiyomizu.tip1">ベストタイム：混雑を避けるため早朝</li>
+                            <li data-translate="activities.mustsee.kiyomizu.tip2">特徴：パノラマの街並み、歴史的建築</li>
+                        </ul>
+                    </div>
+                    <!-- Example: Fushimi Inari -->
+                    <div class="zen-card p-6">
+                        <h3 class="font-semibold text-lg mb-2" data-translate="activities.mustsee.fushimi">伏見稲荷大社</h3>
+                        <p class="text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.mustsee.fushimi.desc">象徴的な数千の朱色の鳥居で知られるこの神社は、稲荷神（米の神）に捧げられています。稲荷山を登る風景の良い道には、小さな神社や狐の像が並んでいます。</p>
+                        <ul class="list-disc pl-5 text-sm text-sumi/70 dark:text-gofun/70 mb-2">
+                            <li data-translate="activities.mustsee.fushimi.tip1">ベストタイム：魔法のような光のため早朝または夕暮れ</li>
+                            <li data-translate="activities.mustsee.fushimi.tip2">特徴：無限の鳥居トンネル、狐の象徴</li>
+                        </ul>
+                    </div>
+                    <!-- Example: Arashiyama Bamboo Grove -->
+                    <div class="zen-card p-6">
+                        <h3 class="font-semibold text-lg mb-2" data-translate="activities.mustsee.arashiyama">嵐山竹林</h3>
+                        <p class="text-sumi/80 dark:text-gofun/80 mb-2" data-translate="activities.mustsee.arashiyama.desc">京都で最も写真に撮られる場所の一つで、そびえ立つ竹の間を歩きます。竹林は特に早朝の霧の中で神秘的です。近くには、嵐山モンキーパークと渡月橋があります。</p>
+                        <ul class="list-disc pl-5 text-sm text-sumi/70 dark:text-gofun/70 mb-2">
+                            <li data-translate="activities.mustsee.arashiyama.tip1">ベストタイム：静寂のため早朝</li>
+                            <li data-translate="activities.mustsee.arashiyama.tip2">特徴：自然の音響、川と猿に近い</li>
+                        </ul>
+                    </div>
+                    <!-- Add more must-see activities as needed, using details from top-activities and activities-data.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH & FILTERS -->
+        <section class="py-4 md:py-6 lg:py-8 bg-white dark:bg-sumi border-b border-zen dark:border-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row gap-4 lg:gap-6 items-start md:items-end">
+                    <!-- Search Bar -->
+                    <div class="flex-1 w-full md:w-auto">
+                        <div class="relative">
+                            <input type="text" id="activity-search" placeholder="🔍 名前、カテゴリ、場所、ガイドでアクティビティを検索..." class="w-full px-4 py-3 pl-12 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-shinku focus:border-transparent transition-all duration-200 text-sm lg:text-base" data-translate-placeholder="activities.search.placeholder">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-sumi/40 dark:text-gofun/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                            <div id="search-results" class="absolute z-10 w-full mt-1 bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg shadow-lg hidden max-h-60 overflow-y-auto">
+                                <!-- Instant search results will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick Filters -->
+                    <div class="flex gap-2 lg:gap-3 flex-wrap w-full md:w-auto">
+                        <select id="category-filter" name="category" class="activity-filter px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun text-sm focus:ring-2 focus:ring-shinku focus:border-transparent min-w-[120px]">
+                            <option value="all" data-translate="activities.filters.allCategories">すべてのカテゴリ</option>
+                            <option value="cultural" data-translate="activities.filters.cultural">文化</option>
+                            <option value="outdoor" data-translate="activities.filters.outdoor">アウトドア</option>
+                            <option value="food" data-translate="activities.filters.food">食事・料理</option>
+                            <option value="art" data-translate="activities.filters.art">アート・工芸</option>
+                            <option value="spiritual" data-translate="activities.filters.spiritual">精神・宗教</option>
+                        </select>
+                        <select id="duration-filter" name="duration" class="activity-filter px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun text-sm focus:ring-2 focus:ring-shinku focus-border-transparent min-w-[100px]">
+                            <option value="all" data-translate="activities.filters.allDurations">すべての時間</option>
+                            <option value="short" data-translate="activities.filters.short">短時間（1-2時間）</option>
+                            <option value="medium" data-translate="activities.filters.medium">中程度（3-4時間）</option>
+                            <option value="long" data-translate="activities.filters.long">長時間（5時間以上）</option>
+                            <option value="full-day" data-translate="activities.filters.fullDay">終日</option>
+                        </select>
+                        <select id="sort-filter" name="sort" class="activity-filter px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun text-sm focus:ring-2 focus:ring-shinku focus-border-transparent min-w-[140px]">
+                            <option value="popular" data-translate="activities.filters.mostPopular">人気順</option>
+                            <option value="rating" data-translate="activities.filters.highestRated">評価順</option>
+                            <option value="price-low" data-translate="activities.filters.priceLow">価格：安い順</option>
+                            <option value="price-high" data-translate="activities.filters.priceHigh">価格：高い順</option>
+                            <option value="duration" data-translate="activities.filters.duration">時間順</option>
+                        </select>
+                        <div class="flex border border-zen dark:border-aiiro rounded-lg overflow-hidden">
+                            <button id="view-grid" class="px-3 py-2 bg-[#000000] text-white text-sm font-medium transition-colors" data-translate="activities.filters.grid" style="color: white !important;">グリッド</button>
+                            <button id="view-list" class="px-3 py-2 bg-white dark:bg-sumi text-sumi dark:text-gofun text-sm font-medium hover:bg-zen dark:hover:bg-aiiro transition-colors" data-translate="activities.filters.list">リスト</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIVITIES GRID -->
+        <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun mb-6" data-translate="activities.section.availableActivities">利用可能なアクティビティ</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6" id="activities-grid">
+                    <!-- Activity cards will be dynamically populated here by JS -->
+                    <div class="text-center py-8 col-span-full" id="loading-message">
+                        <div class="text-4xl mb-4">⏳</div>
+                        <h3 class="font-serif text-xl font-semibold text-sumi dark:text-white mb-2">アクティビティを読み込み中...</h3>
+                        <p class="text-sumi/70 dark:text-gray-300">最新のアクティビティを読み込むまでお待ちください。</p>
+                    </div>
+                    
+                    <!-- Fallback Activity Cards (will be replaced by JS) -->
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1695686101263-e13359e45d4d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="金閣寺ツアー" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">金閣寺ツアー</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">金箔で覆われた象徴的な金閣寺（金閣）を訪れ、美しい庭園と反射池に囲まれたユネスコ世界遺産を体験してください。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥8,500</span>
+                                <span class="text-sm text-sumi/60">3時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-354-8708" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1682336276985-38ac477bb876?q=80&w=3262&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="伏見稲荷大社" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">伏見稲荷大社</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">伏見稲荷大社の有名な赤い鳥居を探索し、山道をハイキングして神道の伝統について学びましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥6,800</span>
+                                <span class="text-sm text-sumi/60">4時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-611-0123" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1632923754832-60642c12a7ed?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="嵐山竹林" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">嵐山竹林</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">嵐山の魅惑的な竹林を歩き、天龍寺を訪れ、この歴史的な地域の平和な雰囲気を体験しましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥7,200</span>
+                                <span class="text-sm text-sumi/60">3.5時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-861-0012" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="祇園地区" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">祇園地区</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">祇園の歴史的な芸者地区を発見し、伝統的な通りを歩き、京都の伝統的なエンターテイメント文化について学びましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥6,500</span>
+                                <span class="text-sm text-sumi/60">2.5時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Activities to Match English Version -->
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="茶道体験" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">茶道体験</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">歴史的な茶室で伝統的な日本茶道を体験し、茶文化について学び、抹茶と和菓子を楽しみましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥4,800</span>
+                                <span class="text-sm text-sumi/60">1.5時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-234-5678" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="京都グルメツアー" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">京都グルメツアー</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">地元の市場、伝統的なレストランを訪れ、本格的な日本料理をサンプリングして京都の料理シーンを探索しましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥9,200</span>
+                                <span class="text-sm text-sumi/60">4時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-345-6789" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="着物体験" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">着物体験</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">美しい着物を着て、歴史的な場所で写真を撮り、着物のエチケットについて学ぶことで伝統的な日本文化を体験しましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥5,500</span>
+                                <span class="text-sm text-sumi/60">3時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-456-7890" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1544191696-102dbdaeeaa5?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="京都サイクリングツアー" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">京都サイクリングツアー</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">自転車で京都の隠れた名所と歴史的スポットを探索し、美しい街の景色を楽しみながらより多くの場所をカバーしましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥8,800</span>
+                                <span class="text-sm text-sumi/60">5時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-567-8901" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="禅瞑想" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">禅瞑想</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">伝統的な寺院で本格的な禅瞑想を体験し、瞑想テクニックを学び、静寂な環境で内なる平和を見つけましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥3,500</span>
+                                <span class="text-sm text-sumi/60">2時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-678-9012" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="清水寺" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">清水寺</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">京都の美しい景色を眺めることができる有名な木造寺院複合体を訪れ、その「舞台」で知られる寺院を体験しましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥5,200</span>
+                                <span class="text-sm text-sumi/60">2.5時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-789-0123" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="二条城" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">二条城</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">「鶯張り」の床と美しい庭園を持つ歴史的な城を探索し、かつて徳川将軍の住居だった場所を体験しましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥4,800</span>
+                                <span class="text-sm text-sumi/60">2時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-890-1234" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="日本酒醸造所ツアー" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">日本酒醸造所ツアー</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">伏見地区の伝統的な日本酒醸造所を訪れ、日本酒の製造について学び、プレミアム日本酒のテイスティングを楽しみましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥6,800</span>
+                                <span class="text-sm text-sumi/60">3時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-901-2345" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="京都陶芸ワークショップ" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">京都陶芸ワークショップ</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">職人から伝統的な日本陶芸技術を学び、持ち帰るための自分の陶器作品を作りましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥7,500</span>
+                                <span class="text-sm text-sumi/60">3.5時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-012-3456" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="京都夜景撮影" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">京都夜景撮影</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">プロの写真撮影ガイダンスと専用ロケーションへのアクセスで、夜の京都の魔法のような雰囲気を撮影しましょう。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">¥8,800</span>
+                                <span class="text-sm text-sumi/60">4時間</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE FROM KYOTO WIDGET -->
+        <section class="py-6 md:py-8 lg:py-12 bg-washi dark:bg-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Live from Kyoto Widget -->
+                <div class="zen-card p-6 bg-gradient-to-br from-washi/50 to-sumi/5 dark:from-gray-800/50 dark:to-gray-700/5 border border-sumi/10 dark:border-gray-600/10">
+                    <!-- Widget Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gradient-to-r from-kurenai to-pink-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-lg">🎥</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-sumi dark:text-white" data-translate="liveKyoto.title">京都ライブ</h3>
+                                <p class="text-sm text-sumi/60 dark:text-gray-400" data-translate="liveKyoto.subtitle">リアルタイムカメラ、天気、ソーシャル更新</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Content Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Live Weather -->
+                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-sumi/10 dark:border-gray-600/10">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-2xl">🌤️</span>
+                                <h4 class="font-semibold text-sumi dark:text-white" data-translate="liveKyoto.weather.title">京都の天気</h4>
+                            </div>
+                            <div id="kyoto-weather" class="text-sm text-sumi/80 dark:text-gray-300">
+                                <p data-translate="liveKyoto.weather.loading">天気情報を読み込み中...</p>
+                            </div>
+                        </div>
+
+                        <!-- Live Camera -->
+                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-sumi/10 dark:border-gray-600/10">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-2xl">📹</span>
+                                <h4 class="font-semibold text-sumi dark:text-white" data-translate="liveKyoto.camera.title">ライブカメラ</h4>
+                            </div>
+                            <div id="kyoto-camera" class="text-sm text-sumi/80 dark:text-gray-300">
+                                <p data-translate="liveKyoto.camera.loading">カメラフィードを読み込み中...</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Updates -->
+                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-sumi/10 dark:border-gray-600/10">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-2xl">📱</span>
+                                <h4 class="font-semibold text-sumi dark:text-white" data-translate="liveKyoto.social.title">ソーシャル更新</h4>
+                            </div>
+                            <div id="kyoto-social" class="text-sm text-sumi/80 dark:text-gray-300">
+                                <p data-translate="liveKyoto.social.loading">ソーシャル更新を読み込み中...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-sumi to-kobicha text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-white">MrKyoto</span>
+                    </div>
+                    <p class="text-white text-sm leading-relaxed" data-translate="footer.aboutDesc">
+                        永遠の京都への入り口 — 日本の文化首都の心とつながり、探索し、暮らしましょう。
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white" data-translate="footer.explore">探索</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/ja/activities/" class="hover:text-white transition-colors duration-200" data-translate="footer.activities">アクティビティ</a></li>
+                        <li><a href="/ja/events/" class="hover:text-white transition-colors duration-200" data-translate="footer.events">イベント・祭り</a></li>
+                        <li><a href="/ja/news/" class="hover:text-white transition-colors duration-200" data-translate="footer.news">ニュース</a></li>
+                        <li><a href="/ja/live-from-kyoto/" class="hover:text-white transition-colors duration-200" data-translate="footer.liveFromKyoto">京都ライブ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white" data-translate="footer.realEstate">不動産</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/ja/real-estate/" class="hover:text-white transition-colors duration-200" data-translate="footer.propertyListings">物件一覧</a></li>
+                        <li><a href="/ja/real-estate/" class="hover:text-white transition-colors duration-200" data-translate="footer.localAreas">地域情報</a></li>
+                        <li><a href="/ja/real-estate/" class="hover:text-white transition-colors duration-200" data-translate="footer.marketInsights">市場インサイト</a></li>
+                        <li><a href="/ja/real-estate/" class="hover:text-white transition-colors duration-200" data-translate="footer.neighborhoodGuide">地域ガイド</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white" data-translate="footer.connect">お問い合わせ</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="mailto:hello@mrkyoto.com" class="hover:text-white transition-colors duration-200">hello@mrkyoto.com</a></li>
+                        <li><a href="/ja/privacy/" class="hover:text-white transition-colors duration-200" data-translate="footer.connect.privacy">プライバシーポリシー</a></li>
+                        <li><a href="/ja/terms/" class="hover:text-white transition-colors duration-200" data-translate="footer.connect.terms">利用規約</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-white text-sm" data-translate="footer.copyright">
+                    © 2025 MrKyoto.com. All rights reserved. 永遠の京都への入り口。
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button class="bg-gradient-to-r from-shinku to-kobicha text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Theme and Language Toggle Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Fixing theme and language toggles...');
+            
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                console.log('✅ Theme toggle found, adding event listener');
+                themeToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌙 Theme toggle clicked!');
+                    
+                    // Toggle dark mode
+                    const html = document.documentElement;
+                    const isDark = html.classList.contains('dark');
+                    
+                    if (isDark) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        console.log('☀️ Switched to light mode');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        console.log('🌙 Switched to dark mode');
+                    }
+                });
+            } else {
+                console.error('❌ Theme toggle not found');
+            }
+            
+            // Language toggle functionality is now handled by theme-language-manager.js
+            
+            // Initialize theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                console.log('🌙 Initialized dark mode');
+            } else {
+                document.documentElement.classList.remove('dark');
+                console.log('☀️ Initialized light mode');
+            }
+        });
+    </script>
+
+    <!-- Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Mobile menu script loaded');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
+            console.log('🔍 Mobile menu found:', !!mobileMenu);
+            if (mobileMenuButton && mobileMenu) {
+                console.log('✅ Both elements found, adding event listener');
+                // Force menu to start hidden and remove conflicting classes
+                mobileMenu.className = 'lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro';
+                mobileMenu.style.display = 'none';
+                console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
+                console.log('🔧 Menu display style:', mobileMenu.style.display);
+                mobileMenuButton.addEventListener('click', function(e) {
+                    console.log('🖱️ Mobile menu button clicked!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.style.display === 'none';
+                    console.log('🔍 Current display state:', mobileMenu.style.display);
+                    console.log('🔍 Is hidden:', isHidden);
+                    if (isHidden) {
+                        mobileMenu.style.display = 'block';
+                        mobileMenu.classList.remove('hidden');
+                        console.log('📱 Menu opened');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        console.log('📱 Menu closed');
+                    }
+                    console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
+                    console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
+                    // Animate the hamburger icon
+                    const icon = mobileMenuButton.querySelector('svg');
+                    if (icon) {
+                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transition = 'transform 0.3s ease';
+                        console.log('🎨 Icon rotated');
+                    }
+                });
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                console.log('✅ Mobile menu event listeners added');
+            } else {
+                console.error('❌ Mobile menu elements not found');
+                console.log('🔍 Available elements with "mobile" in ID:', 
+                    Array.from(document.querySelectorAll('[id*="mobile"]')).map(el => el.id));
+            }
+        });
+    </script>
+
+    <!-- Activity Data and Management Scripts -->
+    <script src="/js/activities-data.js?v=3.3"></script>
+    <script src="/js/activities-manager.js?v=3.3"></script>
+    
+    <!-- Live Kyoto Widget and Weather Service -->
+    <script src="/js/weather-service.js"></script>
+    <script src="/js/live-kyoto-widget.js"></script>
+    
+    <!-- Theme and Translation Management -->
+    <script src="/js/theme-language-manager.js"></script>
+    <script src="/js/translation-manager.js"></script>
+    
+    <!-- Shared Components -->
+    <script src="/js/shared-navigation.js"></script>
+    <script src="/js/shared-footer.js"></script>
+
+    <!-- Weather Display Script -->
+    <script>
+        function loadWeatherData() {
+            console.log('🌤️ Loading weather data...');
+            
+            // Simulate weather data for Kyoto
+            const weatherData = {
+                temperature: '22°C',
+                description: '晴れ',
+                humidity: '65',
+                windSpeed: '8',
+                pressure: '1013',
+                visibility: '10',
+                sunrise: '05:30',
+                sunset: '18:45',
+                lastUpdated: '2026年1月15日 14:30'
+            };
+            
+            updateWeatherDisplay(weatherData);
+        }
+        
+        function updateWeatherDisplay(data) {
+            console.log('🌤️ Updating weather display with data:', data);
+            
+            // Update temperature
+            const tempElement = document.getElementById('kyoto-weather');
+            if (tempElement) {
+                tempElement.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-semibold">${data.temperature}</span>
+                        <span class="text-sm">${data.description}</span>
+                    </div>
+                    <div class="text-xs space-y-1">
+                        <div>湿度: ${data.humidity}%</div>
+                        <div>風速: ${data.windSpeed} km/h</div>
+                        <div>気圧: ${data.pressure} hPa</div>
+                        <div>視界: ${data.visibility} km</div>
+                        <div>日の出: ${data.sunrise}</div>
+                        <div>日の入り: ${data.sunset}</div>
+                        <div class="text-xs opacity-70">最終更新: ${data.lastUpdated}</div>
+                    </div>
+                `;
+            }
+        }
+
+        function startAutoRefresh() {
+            // Refresh weather data every 5 minutes
+            setInterval(loadWeatherData, 5 * 60 * 1000);
+        }
+
+        // Initialize weather when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌤️ Initializing weather display...');
+            
+            // Load weather data immediately
+            loadWeatherData();
+            
+            // Start auto-refresh
+            startAutoRefresh();
+        });
+    </script>
+    
+    <!-- Force Japanese Language for Japanese Page -->
+    <script>
+        // Force Japanese language for this page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🇯🇵 Setting Japanese language for Japanese activities page...');
+            
+            // Set language to Japanese
+            localStorage.setItem('mrkyoto-language', 'ja');
+            
+            // Force translation manager to use Japanese
+            if (window.translationManager) {
+                window.translationManager.setLanguage('ja');
+                console.log('✅ Translation manager set to Japanese');
+            } else {
+                console.log('⏳ Translation manager not ready yet, will set later...');
+                // Wait for translation manager to load
+                setTimeout(() => {
+                    if (window.translationManager) {
+                        window.translationManager.setLanguage('ja');
+                        console.log('✅ Translation manager set to Japanese (delayed)');
+                    }
+                }, 2000);
+            }
+            
+            // Hide loading message after a short delay
+            setTimeout(() => {
+                const loadingMessage = document.getElementById('loading-message');
+                if (loadingMessage) {
+                    loadingMessage.style.display = 'none';
+                    console.log('✅ Hidden loading message');
+                }
+            }, 2000);
+        });
+    </script>
+
+    <!-- Initialize Live Kyoto Widget -->
+    <script>
+        // Initialize Live Kyoto Widget when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎥 Initializing Live Kyoto Widget on activities page...');
+            
+            // Wait for the widget script to load
+            setTimeout(() => {
+                if (typeof LiveKyotoWidget !== 'undefined') {
+                    console.log('✅ LiveKyotoWidget class found, creating instance...');
+                    window.liveKyotoWidget = new LiveKyotoWidget();
+                    console.log('✅ Live Kyoto Widget initialized on activities page');
+                } else {
+                    console.error('❌ LiveKyotoWidget class not found');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

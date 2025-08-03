@@ -1,0 +1,27 @@
+{
+  "name": "kyoto-free-news-api",
+  "version": "1.0.0",
+  "description": "Free news API server for Kyoto and Japan news - no signup required",
+  "main": "free-news-api.js",
+  "scripts": {
+    "start": "node free-news-api.js",
+    "dev": "nodemon free-news-api.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "kyoto",
+    "news",
+    "api",
+    "real-time",
+    "japan"
+  ],
+  "author": "MrKyoto",
+  "license": "MIT"
+} 

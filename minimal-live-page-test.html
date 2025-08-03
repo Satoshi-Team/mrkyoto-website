@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Live Page Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .weather-widget { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin: 20px 0; }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">🌤️ Minimal Live Page Test</h1>
+        
+        <!-- Weather Widget (exact same structure as live-from-kyoto) -->
+        <div class="weather-widget">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">Kyoto Weather</h2>
+                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    <span class="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
+                    <span>LIVE</span>
+                </span>
+            </div>
+            
+            <div id="kyoto-weather-widget" class="space-y-4">
+                <!-- Current Weather -->
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="weather-temperature">
+                        --°C
+                    </div>
+                    <div class="text-6xl mb-3" id="weather-icon">
+                        🌤️
+                    </div>
+                    <div class="text-sm text-gray-600 mb-2" id="weather-description">
+                        Loading weather...
+                    </div>
+                    <div class="text-xs text-gray-500" id="weather-feels-like">
+                        Feels like --°C
+                    </div>
+                </div>
+                
+                <!-- Weather Details Grid -->
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="flex items-center justify-between p-2 bg-white/50 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="mr-2">💨</span>
+                            <span>Wind</span>
+                        </div>
+                        <span class="font-semibold" id="weather-wind">-- km/h</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white/50 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="mr-2">💧</span>
+                            <span>Humidity</span>
+                        </div>
+                        <span class="font-semibold" id="weather-humidity">--%</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white/50 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="mr-2">👁️</span>
+                            <span>Visibility</span>
+                        </div>
+                        <span class="font-semibold" id="weather-visibility">-- km</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2 bg-white/50 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="mr-2">🌡️</span>
+                            <span>Pressure</span>
+                        </div>
+                        <span class="font-semibold" id="weather-pressure">-- hPa</span>
+                    </div>
+                </div>
+                
+                <!-- Sunrise/Sunset -->
+                <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg border border-yellow-400/30">
+                    <div class="flex items-center">
+                        <span class="text-xl mr-2">🌅</span>
+                        <div>
+                            <div class="text-xs text-gray-500">Sunrise</div>
+                            <div class="font-semibold text-sm" id="weather-sunrise">--:--</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="text-right">
+                            <div class="text-xs text-gray-500">Sunset</div>
+                            <div class="font-semibold text-sm" id="weather-sunset">--:--</div>
+                        </div>
+                        <span class="text-xl ml-2">🌇</span>
+                    </div>
+                </div>
+                
+                <!-- Last Updated -->
+                <div class="text-center text-xs text-gray-400">
+                    Last updated: <span id="weather-last-updated">--:--</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Debug Info -->
+        <div class="bg-white p-4 rounded-lg shadow mt-8">
+            <h3 class="font-semibold mb-2">Debug Information</h3>
+            <div id="debug-info" class="text-sm text-gray-600">
+                Loading debug info...
+            </div>
+        </div>
+        
+        <!-- Console Output -->
+        <div class="bg-black text-green-400 p-4 rounded-lg mt-4 font-mono text-sm">
+            <div class="font-bold mb-2">Console Output:</div>
+            <div id="console-output">
+                <div>Console ready...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (same order as live-from-kyoto) -->
+    <script src="/js/weather-service.js"></script>
+    <script src="/js/live-kyoto-widget.js"></script>
+    <script src="/js/theme-language-manager.js"></script>
+    <script src="/js/translation-manager.js"></script>
+    <script src="/js/shared-header.js"></script>
+    <script src="/js/shared-navigation.js"></script>
+    <script src="/js/shared-footer.js"></script>
+    
+    <!-- Initialize Live Kyoto Widget (same as live-from-kyoto) -->
+    <script>
+        function log(message) {
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        function updateDebugInfo(info) {
+            document.getElementById('debug-info').innerHTML = info;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🎥 DOM loaded, initializing Live Kyoto Widget...');
+            updateDebugInfo('DOM loaded, waiting for scripts...');
+            
+            // Wait a bit for all scripts to load
+            setTimeout(() => {
+                if (window.LiveKyotoWidget) {
+                    log('🎥 Creating Live Kyoto Widget instance...');
+                    updateDebugInfo('Creating widget instance...');
+                    window.liveKyotoWidget = new LiveKyotoWidget();
+                    
+                    // Additional debugging
+                    setTimeout(() => {
+                        log('🔍 Debug: Checking widget state...');
+                        log(`🔍 Widget instance: ${window.liveKyotoWidget}`);
+                        log(`🔍 Weather data: ${JSON.stringify(window.liveKyotoWidget.weatherData)}`);
+                        log(`🔍 Weather widget container: ${document.getElementById('kyoto-weather-widget')}`);
+                        
+                        updateDebugInfo(`
+                            Widget Instance: ${window.liveKyotoWidget ? 'Created' : 'Failed'}<br>
+                            Weather Data: ${window.liveKyotoWidget.weatherData ? 'Loaded' : 'Not loaded'}<br>
+                            Container: ${document.getElementById('kyoto-weather-widget') ? 'Found' : 'Not found'}<br>
+                            Temperature Element: ${document.getElementById('weather-temperature') ? 'Found' : 'Not found'}
+                        `);
+                        
+                        // Force update if data exists
+                        if (window.liveKyotoWidget.weatherData) {
+                            log('🔍 Forcing weather display update...');
+                            window.liveKyotoWidget.updateWeatherDisplay();
+                            updateDebugInfo('Weather data found, forcing display update...');
+                        } else {
+                            log('🔍 No weather data available, trying to load again...');
+                            updateDebugInfo('No weather data, attempting to reload...');
+                            window.liveKyotoWidget.loadWeatherData().then(() => {
+                                log('✅ Weather data loaded, updating display...');
+                                window.liveKyotoWidget.updateWeatherDisplay();
+                                updateDebugInfo('Weather data loaded and display updated!');
+                            }).catch(error => {
+                                log(`❌ Error loading weather: ${error.message}`);
+                                updateDebugInfo(`Error loading weather: ${error.message}`);
+                            });
+                        }
+                    }, 2000);
+                    
+                } else {
+                    log('❌ LiveKyotoWidget class not available');
+                    updateDebugInfo('LiveKyotoWidget class not available');
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

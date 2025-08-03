@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="liveKyoto.meta.title">Live from Kyoto - Real-time Cameras, Weather & Social Updates - MrKyoto.com</title>
+    <meta name="description" content="Experience Kyoto in real-time with live cameras and current weather. Watch live streams from Kyoto Station, temples, and gardens." data-translate="liveKyoto.meta.description">
+    <meta name="keywords" content="Kyoto live cameras, Kyoto weather, live streams, real-time Kyoto, Kyoto webcams">
+    <meta name="author" content="MrKyoto.com">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="JP-26">
+    <meta name="geo.placename" content="Kyoto">
+    <meta name="geo.position" content="35.0116;135.7681">
+    <meta name="ICBM" content="35.0116, 135.7681">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mrkyoto.com/live-from-kyoto/">
+    <meta property="og:title" content="Live from Kyoto - Real-time Cameras, Weather & Social Updates - MrKyoto.com">
+    <meta property="og:description" content="Experience Kyoto in real-time with live cameras and current weather.">
+    <meta property="og:image" content="https://mrkyoto.com/images/kyoto-activities-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="MrKyoto.com">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mrkyoto.com/live-from-kyoto/">
+    <meta property="twitter:title" content="Live from Kyoto - Real-time Cameras, Weather & Social Updates - MrKyoto.com">
+    <meta property="twitter:description" content="Experience Kyoto in real-time with live cameras and current weather.">
+    <meta property="twitter:image" content="https://mrkyoto.com/images/kyoto-activities-og.jpg">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://mrkyoto.com/live-from-kyoto/">
+    <meta name="theme-color" content="#9A1F40">
+    <meta name="msapplication-TileColor" content="#9A1F40">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MrKyoto" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Noto Serif JP', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'washi': '#F8F6F0',
+                        'sumi': '#0F0F0F',
+                        'sakura': '#FDF2F8',
+                        'matcha': '#166534',
+                        'kobicha': '#7C2D12',
+                        'aiiro': '#374151',
+                        'shinku': '#991B1B',
+                        'kincha': '#B45309',
+                        'nezumi': '#374151',
+                        'gofun': '#FEFEFE',
+                        'kurenai': '#B91C1C',
+                        'yamabuki': '#B45309',
+                        'sora': '#1E3A8A',
+                        'murasaki': '#7C2D12',
+                        'cha': '#92400E',
+                        'koke': '#166534',
+                        'sabiseiji': '#166534',
+                        'ink-black': '#0F0F0F',
+                        'zen': '#E5E7EB',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+                        'zen-fade': 'zenFade 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        gentleFloat: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-5px) rotate(1deg)' }
+                        },
+                        zenFade: {
+                            '0%, 100%': { opacity: '0.8' },
+                            '50%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Enhanced Header CSS */
+        #header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .dark #header {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom-color: rgba(55, 65, 81, 0.5);
+        }
+
+        /* Desktop Navigation Links */
+        .nav-link-desktop {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            color: #374151;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link-desktop:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateY(-1px);
+        }
+
+        .nav-link-desktop:focus {
+            outline: 2px solid #B91C1C;
+            outline-offset: 2px;
+        }
+
+        .dark .nav-link-desktop {
+            color: #D1D5DB;
+        }
+
+        .dark .nav-link-desktop:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        /* Action Buttons */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.75rem;
+            background: rgba(249, 250, 251, 0.8);
+            color: #374151;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .action-button:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-button:focus {
+            outline: 2px solid #B91C1C;
+            outline-offset: 2px;
+        }
+
+        .dark .action-button {
+            background: rgba(55, 65, 81, 0.8);
+            color: #D1D5DB;
+            border-color: rgba(75, 85, 99, 0.5);
+        }
+
+        .dark .action-button:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+
+
+        /* Zen Card Styles */
+        .zen-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+            height: fit-content;
+        }
+
+        .dark .zen-card {
+            background: rgba(31, 41, 55, 0.8);
+            border-color: var(--border-light);
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+
+        .zen-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px var(--shadow-medium);
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #B91C1C;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            font-weight: 600;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Footer text should always be white and visible */
+        footer {
+            color: #FFFFFF !important;
+        }
+        
+        footer * {
+            color: #FFFFFF !important;
+        }
+        
+        footer .font-serif, footer .font-semibold, footer .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        footer .text-white {
+            color: #FFFFFF !important;
+        }
+        
+        footer a {
+            color: #FFFFFF !important;
+        }
+        
+        footer a:hover {
+            color: #F3F4F6 !important;
+        }
+        
+        footer h3 {
+            color: #FFFFFF !important;
+        }
+        
+        footer p {
+            color: #FFFFFF !important;
+        }
+        
+        footer li {
+            color: #FFFFFF !important;
+        }
+        
+        footer span {
+            color: #FFFFFF !important;
+        }
+        
+
+    </style>
+</head>
+<body class="bg-washi text-sumi dark:bg-sumi dark:text-gofun">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header id="header" class="bg-white/95 backdrop-blur-sm dark:bg-sumi/95 border-b border-zen dark:border-aiiro shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-ink-black dark:text-gofun group-hover:text-shinku transition-colors">MrKyoto</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <a href="/" class="nav-link-desktop">
+                        <span class="nav-text">Home</span>
+                    </a>
+                    <a href="/activities/" class="nav-link-desktop">
+                        <span class="nav-text">Activities</span>
+                    </a>
+                    <a href="/real-estate/" class="nav-link-desktop">
+                        <span class="nav-text">Real Estate</span>
+                    </a>
+                    <a href="/events/" class="nav-link-desktop">
+                        <span class="nav-text">Events</span>
+                    </a>
+                    <a href="/news/" class="nav-link-desktop">
+                        <span class="nav-text">News</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="nav-link-desktop">
+                        <span class="nav-text">Live from Kyoto</span>
+                    </a>
+                </nav>
+                
+                <!-- Right side actions -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <!-- Language toggle -->
+                    <button id="language-toggle" class="action-button" data-tooltip="Language">
+                        <span class="text-sm font-medium">🇬🇧</span>
+                    </button>
+                    
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" class="action-button" data-tooltip="Toggle theme">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="lg:hidden action-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile navigation -->
+                <nav class="space-y-2">
+                    <a href="/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Home</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/activities/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Activities</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/real-estate/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Real Estate</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/events/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Events</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/news/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">News</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Live from Kyoto</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                </nav>
+                
+                <!-- Contact link -->
+                <a href="mailto:hello@mrkyoto.com" class="contact-link">
+                    <span class="contact-icon">✉️</span>
+                    <span class="contact-text">Contact Us</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+                
+                <!-- Contact link -->
+                <a href="mailto:hello@mrkyoto.com" class="contact-link">
+                    <span class="contact-icon">✉️</span>
+                    <span class="contact-text">Contact Us</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+        <!-- HERO SECTION -->
+        <section class="bg-gradient-to-br from-shinku via-red-700 to-red-800 text-white py-8 md:py-12 lg:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
+                    <!-- Hero Content -->
+                    <div class="md:col-span-2 lg:col-span-2">
+                        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4" data-translate="liveKyoto.hero.title">Live from Kyoto 2026</h1>
+                        <p class="text-base md:text-lg lg:text-xl opacity-90 mb-4 lg:mb-6" data-translate="liveKyoto.hero.subtitle">Experience Kyoto in real-time with live cameras and current weather from the heart of Japan's cultural capital.</p>
+                        <div class="flex flex-wrap gap-2 lg:gap-3 text-xs sm:text-sm">
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="liveKyoto.hero.badges.live">Live Streams</span>
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="liveKyoto.hero.badges.weather">Real-time Weather</span>
+
+                            <span class="bg-white/20 px-2 py-1 lg:px-3 lg:py-1.5 rounded-full" data-translate="liveKyoto.hero.badges.verified">Verified Sources</span>
+                        </div>
+                    </div>
+                    <!-- Hero Image -->
+                    <div class="rounded-xl overflow-hidden shadow-lg">
+                        <img src="/images/kyoto-activities-og.jpg" alt="Live from Kyoto" class="w-full h-48 object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE FROM KYOTO WIDGET -->
+        <section class="py-6 md:py-8 lg:py-12 bg-washi dark:bg-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Live from Kyoto Widget -->
+                <div class="zen-card p-6 bg-gradient-to-br from-washi/50 to-sumi/5 dark:from-gray-800/50 dark:to-gray-700/5 border border-sumi/10 dark:border-gray-600/10">
+                    <!-- Widget Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gradient-to-r from-kurenai to-pink-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-lg">🎥</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-sumi dark:text-white" data-translate="Live from Kyoto">Live from Kyoto</h3>
+                                <p class="text-sm text-sumi/60 dark:text-gray-400" data-translate="Real-time cameras, weather & social updates">Real-time cameras, weather & social updates</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Main Content Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Live Camera Section -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-black rounded-lg overflow-hidden shadow-lg">
+                                <!-- Camera Controls -->
+                                <div class="bg-sumi/90 text-white p-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <button id="camera-prev" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="text-center">
+                                            <h4 id="camera-title" class="font-semibold">Kyoto Station Bus Terminal</h4>
+                                            <p id="camera-description" class="text-sm text-gray-300">Live view of Kyoto Station bus terminal and surrounding area</p>
+                                        </div>
+                                        <button id="camera-next" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span id="camera-counter" class="text-sm bg-white/20 px-2 py-1 rounded">1 / 4</span>
+                                        <button class="p-2 hover:bg-white/20 rounded-lg transition-colors" title="Fullscreen">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                            </svg>
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <!-- Camera Embed -->
+                                <div id="camera-embed" class="aspect-video bg-gray-900">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/v9rQqa_VTEY?autoplay=1&mute=1" 
+                                        class="w-full h-full"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weather & Social Sidebar -->
+                        <div class="space-y-6">
+                            
+                            <!-- Enhanced Weather Widget -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700/30 shadow-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-semibold text-sumi dark:text-white flex items-center gap-2">
+                                        <span class="text-2xl">🌤️</span>
+                                        <span data-translate="liveKyoto.weather.title">Kyoto Weather</span>
+                                    </h4>
+
+                                </div>
+                                
+                                <div id="kyoto-weather-widget" class="space-y-4">
+                                    <!-- Current Weather -->
+                                    <div class="text-center">
+                                        <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="weather-temperature">
+                                            --°C
+                                        </div>
+                                        <div class="text-6xl mb-3" id="weather-icon">
+                                            🌤️
+                                        </div>
+                                        <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-2" id="weather-description">
+                                            <span data-translate="liveKyoto.weather.loading">Loading weather...</span>
+                                        </div>
+                                        <div class="text-xs text-sumi/60 dark:text-gofun/60" id="weather-feels-like">
+                                            <span data-translate="liveKyoto.weather.feelsLike">Feels like</span> --°C
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Weather Details Grid -->
+                                    <div class="grid grid-cols-2 gap-3 text-xs">
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💨</span>
+                                                <span data-translate="liveKyoto.weather.wind">Wind</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-wind">-- km/h</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💧</span>
+                                                <span data-translate="liveKyoto.weather.humidity">Humidity</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-humidity">--%</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">👁️</span>
+                                                <span data-translate="liveKyoto.weather.visibility">Visibility</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-visibility">-- km</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">🌡️</span>
+                                                <span data-translate="liveKyoto.weather.pressure">Pressure</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-pressure">-- hPa</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Sunrise/Sunset -->
+                                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg border border-yellow-400/30">
+                                        <div class="flex items-center">
+                                            <span class="text-xl mr-2">🌅</span>
+                                            <div>
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60" data-translate="liveKyoto.weather.sunrise">Sunrise</div>
+                                                <div class="font-semibold text-sm" id="weather-sunrise">--:--</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="text-right">
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60" data-translate="liveKyoto.weather.sunset">Sunset</div>
+                                                <div class="font-semibold text-sm" id="weather-sunset">--:--</div>
+                                            </div>
+                                            <span class="text-xl ml-2">🌇</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Last Updated -->
+                                    <div class="text-center text-xs text-sumi/50 dark:text-gofun/50">
+                                        <span data-translate="liveKyoto.weather.lastUpdated">Time in Kyoto</span>: <span id="weather-last-updated">--:--</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be inserted by shared-footer.js -->
+
+    <!-- Scripts -->
+    <script src="/js/weather-service.js"></script>
+    <script src="/js/live-kyoto-widget.js"></script>
+    <script src="/js/theme-language-manager.js"></script>
+    <script src="/js/translation-manager.js"></script>
+    <script src="/js/shared-header.js"></script>
+    
+    <!-- Initialize Theme and Language Manager -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎨 Initializing Theme and Language Manager...');
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                if (!window.themeLanguageManager) {
+                    window.themeLanguageManager = new ThemeLanguageManager();
+                    console.log('✅ Theme and Language Manager initialized');
+                } else {
+                    console.log('✅ Theme and Language Manager already exists');
+                }
+            } else {
+                console.error('❌ ThemeLanguageManager class not found');
+            }
+        });
+    </script>
+    
+    <!-- Initialize Translation Manager -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌍 Initializing Translation Manager...');
+            if (typeof TranslationManager !== 'undefined') {
+                if (!window.translationManager) {
+                    window.translationManager = new TranslationManager();
+                    console.log('✅ Translation Manager initialized');
+                } else {
+                    console.log('✅ Translation Manager already exists');
+                }
+            } else {
+                console.error('❌ TranslationManager class not found');
+            }
+        });
+    </script>
+    <script src="/js/shared-navigation.js"></script>
+    <script src="/js/shared-footer.js"></script>
+    
+    <!-- Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Mobile menu script loaded');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
+            console.log('🔍 Mobile menu found:', !!mobileMenu);
+            if (mobileMenuButton && mobileMenu) {
+                console.log('✅ Both elements found, adding event listener');
+                // Force menu to start hidden and remove conflicting classes
+                mobileMenu.className = 'lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro';
+                mobileMenu.style.display = 'none';
+                console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
+                console.log('🔧 Menu display style:', mobileMenu.style.display);
+                mobileMenuButton.addEventListener('click', function(e) {
+                    console.log('🖱️ Mobile menu button clicked!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.style.display === 'none';
+                    console.log('🔍 Current display state:', mobileMenu.style.display);
+                    console.log('🔍 Is hidden:', isHidden);
+                    if (isHidden) {
+                        mobileMenu.style.display = 'block';
+                        mobileMenu.classList.remove('hidden');
+                        console.log('📱 Menu opened');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        console.log('📱 Menu closed');
+                    }
+                    console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
+                    console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
+                    // Animate the hamburger icon
+                    const icon = mobileMenuButton.querySelector('svg');
+                    if (icon) {
+                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transition = 'transform 0.3s ease';
+                        console.log('🎨 Icon rotated');
+                    }
+                });
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                console.log('✅ Mobile menu event listeners added');
+            } else {
+                console.error('❌ Mobile menu elements not found');
+                console.log('🔍 Available elements with "mobile" in ID:', 
+                    Array.from(document.querySelectorAll('[id*="mobile"]')).map(el => el.id));
+            }
+        });
+    </script>
+    
+    <!-- Simple Weather Loading (Direct Approach) -->
+    <script>
+        function getWeatherIcon(iconCode) {
+            const icons = {
+                '01d': '☀️', '01n': '🌙', '02d': '⛅', '02n': '☁️',
+                '03d': '☁️', '03n': '☁️', '04d': '☁️', '04n': '☁️',
+                '09d': '🌧️', '09n': '🌧️', '10d': '🌦️', '10n': '🌧️',
+                '11d': '⛈️', '11n': '⛈️', '13d': '🌨️', '13n': '🌨️',
+                '50d': '🌫️', '50n': '🌫️'
+            };
+            return icons[iconCode] || '🌤️';
+        }
+
+        function getWeatherDescription(code) {
+            const descriptions = {
+                0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
+                45: 'Foggy', 48: 'Depositing rime fog', 51: 'Light drizzle',
+                53: 'Moderate drizzle', 55: 'Dense drizzle', 56: 'Light freezing drizzle',
+                57: 'Dense freezing drizzle', 61: 'Slight rain', 63: 'Moderate rain',
+                65: 'Heavy rain', 66: 'Light freezing rain', 67: 'Heavy freezing rain',
+                71: 'Slight snow fall', 73: 'Moderate snow fall', 75: 'Heavy snow fall',
+                77: 'Snow grains', 80: 'Slight rain showers', 81: 'Moderate rain showers',
+                82: 'Violent rain showers', 85: 'Slight snow showers', 86: 'Heavy snow showers',
+                95: 'Thunderstorm', 96: 'Thunderstorm with slight hail', 99: 'Thunderstorm with heavy hail'
+            };
+            return descriptions[code] || 'Clear sky';
+        }
+
+        function convertWeatherCodeToIcon(code) {
+            const iconMap = {
+                0: '01d', 1: '01d', 2: '02d', 3: '03d', 45: '50d', 48: '50d',
+                51: '09d', 53: '09d', 55: '09d', 56: '09d', 57: '09d',
+                61: '10d', 63: '10d', 65: '10d', 66: '10d', 67: '10d',
+                71: '13d', 73: '13d', 75: '13d', 77: '13d', 80: '09d',
+                81: '10d', 82: '10d', 85: '13d', 86: '13d', 95: '11d', 96: '11d', 99: '11d'
+            };
+            return iconMap[code] || '01d';
+        }
+
+        async function loadWeatherData() {
+            console.log('🌤️ Loading weather data...');
+            
+            try {
+                // Use the weather service if available
+                if (typeof WeatherService !== 'undefined') {
+                    const weatherService = new WeatherService();
+                    const weatherData = await weatherService.getKyotoWeather();
+                    if (weatherData) {
+                        updateWeatherDisplay(weatherData);
+                        console.log('✅ Weather data loaded via WeatherService');
+                        return;
+                    }
+                }
+                
+                // Fallback to direct API call
+                const response = await fetch('/api/weather');
+                if (response.ok) {
+                    const data = await response.json();
+                    updateWeatherDisplay(data);
+                    console.log('✅ Weather data loaded via direct API');
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                console.error('❌ Failed to load weather data:', error);
+                // Show fallback data
+                updateWeatherDisplay({
+                    temperature: 22,
+                    description: 'Partly cloudy',
+                    humidity: 65,
+                    windSpeed: 8,
+                    pressure: 1013,
+                    visibility: 10,
+                    sunrise: '05:30',
+                    sunset: '18:45',
+                    lastUpdated: new Date().toLocaleTimeString('en-US', { 
+                        hour12: false, 
+                        timeZone: 'Asia/Tokyo' 
+                    })
+                });
+            }
+        }
+
+        function updateWeatherDisplay(data) {
+            // Update temperature
+            const tempElement = document.getElementById('weather-temperature');
+            if (tempElement) {
+                tempElement.textContent = `${data.temperature}°C`;
+            }
+            
+            // Update description
+            const descElement = document.getElementById('weather-description');
+            if (descElement) {
+                descElement.textContent = data.description;
+            }
+            
+            // Update humidity
+            const humidityElement = document.getElementById('weather-humidity');
+            if (humidityElement) {
+                humidityElement.textContent = `${data.humidity}%`;
+            }
+            
+            // Update wind speed
+            const windElement = document.getElementById('weather-wind');
+            if (windElement) {
+                windElement.textContent = `${data.windSpeed} km/h`;
+            }
+            
+            // Update pressure
+            const pressureElement = document.getElementById('weather-pressure');
+            if (pressureElement) {
+                pressureElement.textContent = `${data.pressure} hPa`;
+            }
+            
+            // Update visibility
+            const visibilityElement = document.getElementById('weather-visibility');
+            if (visibilityElement) {
+                visibilityElement.textContent = `${data.visibility} km`;
+            }
+            
+            // Update sunrise/sunset
+            const sunriseElement = document.getElementById('weather-sunrise');
+            if (sunriseElement) {
+                sunriseElement.textContent = data.sunrise;
+            }
+            
+            const sunsetElement = document.getElementById('weather-sunset');
+            if (sunsetElement) {
+                sunsetElement.textContent = data.sunset;
+            }
+            
+            // Update last updated time
+            const lastUpdatedElement = document.getElementById('weather-last-updated');
+            if (lastUpdatedElement) {
+                lastUpdatedElement.textContent = data.lastUpdated;
+            }
+        }
+
+        function startAutoRefresh() {
+            // Refresh weather data every 5 minutes
+            setInterval(loadWeatherData, 5 * 60 * 1000);
+        }
+
+        // Initialize weather when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌤️ Initializing weather display...');
+            
+            // Load weather data immediately
+            loadWeatherData();
+            
+            // Start auto-refresh
+            startAutoRefresh();
+        });
+    </script>
+    
+    <!-- Initialize Live Kyoto Widget -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎥 Initializing Live Kyoto Widget...');
+            
+            // Test if test button exists
+            const testBtn = document.getElementById('test-camera-switch');
+            console.log('🎥 Test button exists in DOM:', !!testBtn);
+            
+            // Initialize the live widget
+            if (typeof LiveKyotoWidget !== 'undefined') {
+                window.liveKyotoWidget = new LiveKyotoWidget();
+                console.log('✅ Live Kyoto Widget initialized successfully');
+            } else {
+                console.error('❌ LiveKyotoWidget class not found');
+            }
+            
+            // Initialize theme manager
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                window.themeLanguageManager = new ThemeLanguageManager();
+                console.log('✅ ThemeLanguageManager initialized on live-from-kyoto page');
+            } else {
+                console.warn('⚠️ ThemeLanguageManager not available on live-from-kyoto page');
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-sumi to-kobicha text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-white">MrKyoto</span>
+                    </div>
+                    <p class="text-white text-sm leading-relaxed">
+                        Your gateway to timeless Kyoto — explore, live, and connect with the heart of Japan's cultural capital.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Explore</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/activities/" class="hover:text-white transition-colors duration-200">Activities</a></li>
+                        <li><a href="/events/" class="hover:text-white transition-colors duration-200">Events & Festivals</a></li>
+                        <li><a href="/news/" class="hover:text-white transition-colors duration-200">News</a></li>
+                        <li><a href="/live-from-kyoto/" class="hover:text-white transition-colors duration-200">Live from Kyoto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Real Estate</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Property Listings</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Local Areas</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Market Insights</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Neighborhood Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Connect</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="mailto:hello@mrkyoto.com" class="hover:text-white transition-colors duration-200">hello@mrkyoto.com</a></li>
+                        <li><a href="/privacy/" class="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-white transition-colors duration-200">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-white text-sm">
+                    © 2025 MrKyoto.com. All rights reserved. Your gateway to timeless Kyoto.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button class="bg-gradient-to-r from-shinku to-kobicha text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+        </button>
+    </div>
+</body>
+</html> 

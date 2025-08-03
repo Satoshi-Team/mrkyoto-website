@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Cache - MrKyoto.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Cache Clear & Validation Test</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Instructions</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>1. <strong>Hard Refresh</strong>: Press <kbd class="bg-gray-200 px-2 py-1 rounded">Ctrl+Shift+R</kbd> (Windows) or <kbd class="bg-gray-200 px-2 py-1 rounded">Cmd+Shift+R</kbd> (Mac) to clear cache</p>
+                <p>2. <strong>Open Developer Tools</strong>: Press <kbd class="bg-gray-200 px-2 py-1 rounded">F12</kbd> and go to Network tab</p>
+                <p>3. <strong>Check "Disable cache"</strong> in the Network tab</p>
+                <p>4. <strong>Reload the page</strong> to test with fresh data</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Test Links</h2>
+            <div class="space-y-2">
+                <a href="/test-contact-validation.html" class="block text-blue-600 hover:text-blue-800 underline">🧪 Contact Validation Test</a>
+                <a href="/activities/" class="block text-blue-600 hover:text-blue-800 underline">🎯 Activities Page</a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Expected Results</h2>
+            <div class="space-y-2 text-sm text-gray-700">
+                <p>✅ All phone numbers should be in format: <code>+81-75-701-XXXX</code></p>
+                <p>✅ All websites should be: <code>https://www.kyoto.travel</code> or <code>https://www.insidekyoto.com</code></p>
+                <p>✅ No validation errors should appear</p>
+                <p>✅ Console should show "All contact information validated successfully"</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Force reload with cache busting
+        if (window.location.search.includes('reload')) {
+            window.location.href = '/test-contact-validation.html?v=' + Date.now();
+        }
+    </script>
+</body>
+</html> 

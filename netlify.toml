@@ -1,0 +1,159 @@
+[build]
+  # Build command
+  command = "npm run build"
+  
+  # Publish directory (where the built files are)
+  publish = "dist"
+  
+  # Build environment
+  [build.environment]
+    NODE_VERSION = "18"
+    NPM_VERSION = "9"
+
+# Build plugins
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+# Redirects
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/real-estate.html"
+  to = "/real-estate/"
+  status = 301
+
+[[redirects]]
+  from = "/events.html"
+  to = "/events/"
+  status = 301
+
+[[redirects]]
+  from = "/news.html"
+  to = "/news/"
+  status = 301
+
+[[redirects]]
+  from = "/culture.html"
+  to = "/culture/"
+  status = 301
+
+[[redirects]]
+  from = "/activities.html"
+  to = "/activities/"
+  status = 301
+
+[[redirects]]
+  from = "/privacy/"
+  to = "/privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "/terms.html"
+  to = "/terms/"
+  status = 301
+
+# Handle trailing slashes
+[[redirects]]
+  from = "/real-estate"
+  to = "/real-estate/"
+  status = 301
+
+[[redirects]]
+  from = "/events"
+  to = "/events/"
+  status = 301
+
+[[redirects]]
+  from = "/news"
+  to = "/news/"
+  status = 301
+
+[[redirects]]
+  from = "/culture"
+  to = "/culture/"
+  status = 301
+
+[[redirects]]
+  from = "/activities"
+  to = "/activities/"
+  status = 301
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Service worker should not be cached
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# Functions (if needed in the future)
+[functions]
+  directory = "functions"
+
+# Edge functions (if needed in the future)
+[edge_functions]
+  directory = "edge-functions"
+
+# Form handling
+[forms]
+  [forms.contact]
+    name = "Contact Form"
+    action = "/thank-you"
+    method = "POST"
+    [forms.contact.fields]
+      name = { required = true }
+      email = { required = true }
+      message = { required = true }
+
+# Environment variables (for production)
+[context.production.environment]
+  NODE_ENV = "production"
+  SITE_URL = "https://mrkyoto.com"
+
+# Environment variables (for preview deployments)
+[context.deploy-preview.environment]
+  NODE_ENV = "preview"
+  SITE_URL = "https://deploy-preview-{id}--mrkyoto.netlify.app"
+
+# Environment variables (for branch deployments)
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+  SITE_URL = "https://{branch}--mrkyoto.netlify.app" 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force Refresh - MrKyoto.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Force Cache Refresh</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Instructions</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>1. <strong>Hard Refresh</strong>: Press <kbd class="bg-gray-200 px-2 py-1 rounded">Ctrl+Shift+R</kbd> (Windows) or <kbd class="bg-gray-200 px-2 py-1 rounded">Cmd+Shift+R</kbd> (Mac)</p>
+                <p>2. <strong>Clear Browser Cache</strong>: Go to Developer Tools → Network tab → Check "Disable cache"</p>
+                <p>3. <strong>Test Updated URLs</strong>: Visit the activities page to see the new booking links</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Test Links</h2>
+            <div class="space-y-2">
+                <a href="/activities/?v=refresh" class="block text-blue-600 hover:text-blue-800 underline">🎯 Activities Page (with cache busting)</a>
+                <a href="/test-contact-validation.html" class="block text-blue-600 hover:text-blue-800 underline">🧪 Contact Validation Test</a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Expected Booking URLs</h2>
+            <div class="space-y-2 text-sm text-gray-700">
+                <p>✅ <strong>Viator</strong>: Temple tours, Gion tours, Tea ceremony, Historical tours, Night food tours</p>
+                <p>✅ <strong>GetYourGuide</strong>: Arashiyama tours, Sake tasting, Photography tours, Kimono experience</p>
+                <p>✅ <strong>Klook</strong>: Food tours, Cycling tours, Zen meditation</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Force reload with cache busting
+        if (window.location.search.includes('reload')) {
+            window.location.href = '/activities/?v=' + Date.now();
+        }
+    </script>
+</body>
+</html> 

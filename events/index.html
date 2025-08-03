@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyoto Events & Festivals | Traditional Ceremonies & Cultural Celebrations | MrKyoto.com</title>
+    <meta name="description" content="Experience Kyoto's vibrant cultural calendar with traditional festivals, seasonal celebrations, and modern events. Discover authentic Japanese cultural experiences from Gion Matsuri to cherry blossom viewing.">
+    <meta name="keywords" content="Kyoto events, Kyoto festivals, Gion Matsuri, cherry blossom viewing, cultural events, seasonal celebrations, Kyoto calendar, traditional ceremonies, Japanese festivals, Kyoto matsuri, hanami events">
+    <meta name="author" content="MrKyoto.com">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="JP-26">
+    <meta name="geo.placename" content="Kyoto">
+    <meta name="geo.position" content="35.0116;135.7681">
+    <meta name="ICBM" content="35.0116, 135.7681">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mrkyoto.com/events/">
+    <meta property="og:title" content="Kyoto Events & Festivals | Traditional Ceremonies & Cultural Celebrations | MrKyoto.com">
+    <meta property="og:description" content="Experience Kyoto's vibrant cultural calendar with traditional festivals, seasonal celebrations, and modern events.">
+    <meta property="og:image" content="https://mrkyoto.com/images/kyoto-events-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="MrKyoto.com">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mrkyoto.com/events/">
+    <meta property="twitter:title" content="Kyoto Events & Festivals | Traditional Ceremonies & Cultural Celebrations">
+    <meta property="twitter:description" content="Experience Kyoto's vibrant cultural calendar with traditional festivals, seasonal celebrations, and modern events.">
+    <meta property="twitter:image" content="https://mrkyoto.com/images/kyoto-events-og.jpg">
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://mrkyoto.com/events/">
+    <meta name="theme-color" content="#9A1F40">
+    <meta name="msapplication-TileColor" content="#9A1F40">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏯</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom utilities for better text handling */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Smooth transitions for better UX */
+        .event-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Better responsive text sizing */
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 1.125rem;
+                line-height: 1.5;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .event-title {
+                font-size: 1.25rem;
+                line-height: 1.4;
+            }
+        }
+        
+        /* Footer text should always be white on dark background */
+        footer .font-serif, footer .font-semibold, footer .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        footer .text-white {
+            color: #FFFFFF !important;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Noto Serif JP', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Traditional Japanese Color Palette - Enhanced for Readability
+                        'washi': '#F8F6F0', // Traditional Japanese paper
+                        'sumi': '#0F0F0F', // Deep black - maximum contrast
+                        'sakura': '#FDF2F8', // Cherry blossom pink
+                        'matcha': '#166534', // Dark green - better contrast
+                        'kobicha': '#7C2D12', // Dark brown - better contrast
+                        'aiiro': '#374151', // Dark gray - better contrast
+                        'shinku': '#991B1B', // Dark crimson - better contrast
+                        'kincha': '#B45309', // Dark gold - better contrast
+                        'nezumi': '#374151', // Dark gray - better contrast
+                        'gofun': '#FEFEFE', // Shell white
+                        'kurenai': '#B91C1C', // Dark crimson - better contrast
+                        'yamabuki': '#B45309', // Dark gold - better contrast
+                        'sora': '#1E3A8A', // Dark blue - better contrast
+                        'murasaki': '#7C2D12', // Dark brown - better contrast
+                        'cha': '#92400E', // Dark brown - better contrast
+                        'koke': '#166534', // Dark green - better contrast
+                        'sabiseiji': '#166534', // Dark green - better contrast
+                        // Additional colors for better text visibility
+                        'ink-black': '#0F0F0F', // Same as sumi for consistency
+                        'zen': '#E5E7EB', // Light border color
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+                        'zen-fade': 'zenFade 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        gentleFloat: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-5px) rotate(1deg)' }
+                        },
+                        zenFade: {
+                            '0%, 100%': { opacity: '0.8' },
+                            '50%': { opacity: '1' }
+                        }
+                    },
+                    backgroundImage: {
+                        'zen-pattern': "url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23f3f4f6\' fill-opacity=\'0.1\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                        'bamboo-pattern': "url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23f3f4f6\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M20 0L20 40M0 20L40 20\' stroke=\'%23d1d5db\' stroke-width=\'0.5\'/%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Enhanced Header CSS */
+        #header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .dark #header {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom-color: rgba(55, 65, 81, 0.5);
+        }
+
+        /* Desktop Navigation Links */
+        .nav-link-desktop {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            color: #374151;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link-desktop:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateY(-1px);
+        }
+
+        .nav-link-desktop:focus {
+            outline: 2px solid #B91C1C;
+            outline-offset: 2px;
+        }
+
+        .dark .nav-link-desktop {
+            color: #D1D5DB;
+        }
+
+        .dark .nav-link-desktop:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        .nav-icon {
+            font-size: 1.125rem;
+            opacity: 0.8;
+        }
+
+        .nav-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Action Buttons */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.75rem;
+            background: rgba(249, 250, 251, 0.8);
+            color: #374151;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .action-button:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-button:focus {
+            outline: 2px solid #B91C1C;
+            outline-offset: 2px;
+        }
+
+        .dark .action-button {
+            background: rgba(55, 65, 81, 0.8);
+            color: #D1D5DB;
+            border-color: rgba(75, 85, 99, 0.5);
+        }
+
+        .dark .action-button:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        /* Enhanced Language Dropdown */
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999;
+            min-width: 220px;
+            backdrop-filter: blur(12px);
+            display: block;
+            visibility: hidden;
+        }
+        
+        .language-dropdown.opacity-100 {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: translateY(0) scale(1) !important;
+            visibility: visible !important;
+        }
+        
+        .dark .language-dropdown {
+            background: rgba(55, 65, 81, 0.95);
+            border-color: rgba(75, 85, 99, 0.8);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content {
+            padding: 0.75rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            font-size: 0.875rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), rgba(180, 83, 9, 0.1));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .dropdown-item:hover::before {
+            opacity: 1;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(243, 244, 246, 0.8);
+            color: #1f2937;
+            transform: translateX(4px);
+        }
+
+        .dark .dropdown-item {
+            color: #d1d5db;
+        }
+
+        .dark .dropdown-item:hover {
+            background: rgba(75, 85, 99, 0.8);
+            color: #f9fafb;
+        }
+
+        .flag {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown-item:hover .flag {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Theme Toggle */
+        #theme-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), rgba(180, 83, 9, 0.1));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 0.5rem;
+        }
+
+        #theme-toggle:hover::before {
+            opacity: 1;
+        }
+
+        #theme-toggle svg {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        #theme-toggle:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Scrollbar for language dropdown */
+        .dropdown-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 2px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(156, 163, 175, 0.8);
+        }
+
+        /* Mobile Search */
+        .mobile-search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 1rem;
+            background: rgba(249, 250, 251, 0.8);
+            color: #374151;
+            font-size: 1rem;
+        }
+
+        .mobile-search-input:focus {
+            outline: none;
+            border-color: #B91C1C;
+            background: white;
+        }
+
+        .dark .mobile-search-input {
+            background: rgba(55, 65, 81, 0.8);
+            border-color: rgba(75, 85, 99, 0.8);
+            color: #D1D5DB;
+        }
+
+        .mobile-search-button {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B7280;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Quick Action Cards */
+        .quick-action-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            background: linear-gradient(135deg, #B91C1C, #991B1B);
+            color: white;
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-action-card:nth-child(2) {
+            background: linear-gradient(135deg, #B45309, #92400E);
+        }
+
+        .quick-action-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-action-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Mobile Navigation Links */
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            background: rgba(249, 250, 251, 0.5);
+            border: 1px solid rgba(229, 231, 235, 0.3);
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+            transform: translateX(4px);
+        }
+
+        .dark .mobile-nav-link {
+            background: rgba(55, 65, 81, 0.5);
+            border-color: rgba(75, 85, 99, 0.3);
+            color: #D1D5DB;
+        }
+
+        .dark .mobile-nav-link:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .mobile-nav-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .mobile-nav-arrow {
+            color: #9CA3AF;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-nav-link:hover .mobile-nav-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Contact Link */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, rgba(253, 242, 248, 0.8), rgba(180, 83, 9, 0.2));
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(180, 83, 9, 0.2);
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(135deg, rgba(253, 242, 248, 1), rgba(180, 83, 9, 0.3));
+            transform: translateX(4px);
+        }
+
+        .dark .contact-link {
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.8), rgba(180, 83, 9, 0.2));
+            color: #D1D5DB;
+            border-color: rgba(180, 83, 9, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-text {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .contact-arrow {
+            color: #B45309;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-link:hover .contact-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-link-desktop {
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .nav-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #header {
+                padding: 0;
+            }
+            
+            .search-input-desktop {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .search-input-desktop {
+                display: none;
+            }
+            
+            .action-button {
+                width: 2.25rem;
+                height: 2.25rem;
+            }
+        }
+        
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #B91C1C;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            font-weight: 600;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Tooltip Styles */
+        [data-tooltip] {
+            position: relative;
+        }
+
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: 1000;
+            margin-bottom: 0.5rem;
+        }
+
+        [data-tooltip]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+            margin-bottom: -4px;
+            z-index: 1000;
+        }
+        
+        /* Ensure proper text colors in light mode */
+        body {
+            background-color: #F8F6F0 !important;
+            color: #0F0F0F !important;
+        }
+        
+        .text-sumi {
+            color: #0F0F0F !important;
+        }
+        
+        .text-sumi\/70 {
+            color: rgba(15, 15, 15, 0.7) !important;
+        }
+        
+        .text-sumi\/60 {
+            color: rgba(15, 15, 15, 0.6) !important;
+        }
+        
+        /* Ensure dark mode classes have proper specificity */
+        html.dark body {
+            background-color: #0F0F0F !important;
+            color: #FEFEFE !important;
+        }
+        
+        html.dark .bg-white {
+            background-color: #0F0F0F !important;
+        }
+        
+        html.dark .text-sumi {
+            color: #FEFEFE !important;
+        }
+        
+        html.dark .text-sumi\/70 {
+            color: rgba(254, 254, 254, 0.7) !important;
+        }
+        
+        html.dark .text-sumi\/60 {
+            color: rgba(254, 254, 254, 0.6) !important;
+        }
+        
+        /* Force dark mode styles for sections */
+        html.dark section.bg-white {
+            background-color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white\/95 {
+            background-color: rgba(15, 15, 15, 0.95) !important;
+        }
+        
+        html.dark .bg-white\/50 {
+            background-color: rgba(15, 15, 15, 0.5) !important;
+        }
+        
+        html.dark .bg-white\/20 {
+            background-color: rgba(15, 15, 15, 0.2) !important;
+        }
+        
+        /* Ensure proper text colors for headings and content */
+        h1, h2, h3, h4, h5, h6 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+            color: #FEFEFE !important;
+        }
+        
+        /* Ensure proper text colors for paragraphs and spans */
+        p, span, div {
+            color: inherit !important;
+        }
+        
+        /* Fix specific text color issues */
+        .text-gofun {
+            color: #FEFEFE !important;
+        }
+        
+        html.dark .text-gofun {
+            color: #FEFEFE !important;
+        }
+        
+        /* Ensure proper contrast for navigation and UI elements */
+        .nav-link-desktop, .mobile-nav-link {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .nav-link-desktop, html.dark .mobile-nav-link {
+            color: #FEFEFE !important;
+        }
+        
+        /* Only override white text on white backgrounds */
+        .bg-white .text-white {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white .text-white {
+            color: #FEFEFE !important;
+        }
+        
+        /* Ensure all text elements have proper contrast */
+        * {
+            color: inherit;
+        }
+        
+        /* Specific overrides for common text classes */
+        .font-serif, .font-semibold, .font-bold {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .font-serif, html.dark .font-semibold, html.dark .font-bold {
+            color: #FEFEFE !important;
+        }
+        
+        /* Footer text should always be white on dark background */
+        footer .font-serif, footer .font-semibold, footer .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        footer .text-white {
+            color: #FFFFFF !important;
+        }
+        
+        /* Fix any remaining white text issues */
+        .text-white\/80, .text-white\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .text-white\/80, html.dark .text-white\/60 {
+            color: rgba(254, 254, 254, 0.8) !important;
+        }
+        
+        /* Ensure proper text colors for all interactive elements */
+        a, button, input, textarea, select {
+            color: inherit !important;
+        }
+        
+        /* Force dark text on light backgrounds */
+        .bg-white * {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white * {
+            color: #FEFEFE !important;
+        }
+        
+        /* Specific property card styling for light mode */
+        .bg-white .text-sumi,
+        .bg-white .text-sumi\/70,
+        .bg-white .text-sumi\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        /* Property card text colors in light mode */
+        .bg-white h3,
+        .bg-white .text-2xl,
+        .bg-white .text-lg,
+        .bg-white .text-sm,
+        .bg-white .text-xs {
+            color: #0F0F0F !important;
+        }
+        
+        /* Property card background colors */
+        .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Ensure property cards have proper contrast */
+        #properties-grid .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark #properties-grid .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Property card text in light mode */
+        #properties-grid .bg-white * {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .bg-white * {
+            color: #FEFEFE !important;
+        }
+        
+        /* Bed/Bath/Sqm elements - proper dark mode support */
+        #properties-grid .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark #properties-grid .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Ensure bed/bath/sqm text is visible in both modes */
+        #properties-grid .bg-white.text-sumi {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .bg-white.text-sumi {
+            color: #FEFEFE !important;
+        }
+        
+        /* Property text colors - black in light mode, white in dark mode */
+        #properties-grid h3,
+        #properties-grid .text-2xl,
+        #properties-grid .text-lg,
+        #properties-grid .text-sm,
+        #properties-grid .text-xs {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid h3,
+        html.dark #properties-grid .text-2xl,
+        html.dark #properties-grid .text-lg,
+        html.dark #properties-grid .text-sm,
+        html.dark #properties-grid .text-xs {
+            color: #FEFEFE !important;
+        }
+        
+        /* Property card content text colors */
+        #properties-grid .text-sumi\/70,
+        #properties-grid .text-sumi\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .text-sumi\/70,
+        html.dark #properties-grid .text-sumi\/60 {
+            color: #FEFEFE !important;
+        }
+        
+        /* Homepage property cards dark mode support */
+        html.dark .zen-card {
+            background-color: #1F2937 !important;
+        }
+        
+        html.dark .zen-card h3,
+        html.dark .zen-card .font-serif,
+        html.dark .zen-card .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        html.dark .zen-card p,
+        html.dark .zen-card div {
+            color: #E5E7EB !important;
+        }
+        
+        html.dark .zen-card .text-gray-600 {
+            color: #D1D5DB !important;
+        }
+        
+        html.dark .zen-card .text-gray-500 {
+            color: #9CA3AF !important;
+        }
+        
+        html.dark .zen-card .text-gray-400 {
+            color: #9CA3AF !important;
+        }
+    </style>
+</head>
+<body class="bg-washi text-sumi dark:bg-sumi dark:text-gofun">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">メインコンテンツにスキップ</a>
+
+    <!-- Header -->
+    <header id="header" class="bg-white/95 backdrop-blur-sm dark:bg-sumi/95 border-b border-zen dark:border-aiiro shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-ink-black dark:text-gofun group-hover:text-shinku transition-colors">MrKyoto</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <a href="/" class="nav-link-desktop">
+                        <span class="nav-text">Home</span>
+                    </a>
+                    <a href="/activities/" class="nav-link-desktop">
+                        <span class="nav-text">Activities</span>
+                    </a>
+                    <a href="/real-estate/" class="nav-link-desktop">
+                        <span class="nav-text">Real Estate</span>
+                    </a>
+                    <a href="/events/" class="nav-link-desktop">
+                        <span class="nav-text">Events</span>
+                    </a>
+                    <a href="/news/" class="nav-link-desktop">
+                        <span class="nav-text">News</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="nav-link-desktop">
+                        <span class="nav-text">Live from Kyoto</span>
+                    </a>
+                </nav>
+                
+                <!-- Right side actions -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <!-- Language toggle -->
+                    <button id="language-toggle" class="action-button" data-tooltip="Language">
+                        <span class="text-sm font-medium">🇬🇧</span>
+                    </button>
+                    
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" class="action-button" data-tooltip="テーマ切り替え">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="lg:hidden action-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile navigation -->
+                <nav class="space-y-2">
+                    <a href="/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Home</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/activities/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Activities</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/real-estate/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Real Estate</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/events/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Events</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/news/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">News</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Live from Kyoto</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                </nav>
+                
+                <!-- Contact link -->
+                <a href="mailto:hello@mrkyoto.com" class="contact-link">
+                    <span class="contact-icon">✉️</span>
+                    <span class="contact-text">Contact Us</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+        <!-- Compact Hero Section -->
+        <section class="bg-gradient-to-br from-[#d9c289] via-[#000000] to-[#d9c289] text-white py-8 md:py-12 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 items-center">
+                    <!-- Hero Content -->
+                    <div class="lg:col-span-2">
+                        <div class="mb-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white/90">
+                                <span class="w-2 h-2 bg-[#d9c289] rounded-full mr-2 animate-pulse"></span>
+                                <span>ライブイベント</span>
+                            </span>
+                        </div>
+                        
+                        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                            Kyoto Events &
+                            <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                                Festivals
+                            </span>
+                        </h1>
+                        
+                        <p class="text-base md:text-lg opacity-90 mb-6 leading-relaxed">
+                            Experience Japan's most prestigious cultural celebrations and modern events.
+                            <span class="font-semibold text-yellow-200">Traditional festivals</span>,
+                            <span class="font-semibold text-yellow-200">seasonal celebrations</span>.
+                        </p>
+                        
+                        <!-- Quick Actions -->
+                        <div class="flex flex-wrap gap-3">
+                            <button class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold rounded-lg hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
+                                <span class="mr-2">🎭</span>
+                                <span>すべてのイベント</span>
+                            </button>
+                            <button class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-300 border border-white/30 text-sm">
+                                <span class="mr-2">🔍</span>
+                                <span>イベント検索</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Compact Stats -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-xl">
+                            <h3 class="font-semibold mb-4 text-sm flex items-center">
+                                <span class="mr-2">📊</span>
+                                <span>イベント概要</span>
+                            </h3>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-2">🎭</span>
+                                        <span class="text-xs opacity-90">イベント</span>
+                                    </div>
+                                    <span class="font-bold text-lg" id="hero-total-events">0</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-2">🎪</span>
+                                        <span class="text-xs opacity-90">祭り</span>
+                                    </div>
+                                    <span class="font-bold text-lg" id="hero-total-festivals">0</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-2">🎨</span>
+                                        <span class="text-xs opacity-90">文化イベント</span>
+                                    </div>
+                                    <span class="font-bold text-lg" id="hero-cultural-events">0</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-2">🌸</span>
+                                        <span class="text-xs opacity-90">季節イベント</span>
+                                    </div>
+                                    <span class="font-bold text-lg" id="hero-seasonal-events">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compact Search and Filters -->
+        <section class="py-6 bg-gradient-to-br from-gray-50 to-purple-50 dark:from-sumi dark:to-purple-900/20 border-b border-zen dark:border-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-6">
+                    <!-- Search Bar -->
+                    <div class="lg:col-span-2">
+                        <div class="relative">
+                            <div class="bg-white dark:bg-sumi rounded-xl shadow-lg border border-zen dark:border-aiiro overflow-hidden">
+                                <div class="flex items-center p-3">
+                                    <div class="flex-shrink-0 mr-3">
+                                        <div class="w-8 h-8 bg-gradient-to-br from-[#d9c289] to-[#000000] rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <input type="text" id="event-search" 
+                                               placeholder="🔍 名前、カテゴリ、場所、日付でイベントを検索..." 
+                                               class="w-full bg-transparent border-none outline-none text-sumi dark:text-gofun text-base placeholder-sumi/50 dark:placeholder-gofun/50">
+                                    </div>
+                                    <div class="flex-shrink-0 ml-3">
+                                        <button class="px-3 py-2 bg-gradient-to-r from-[#d9c289] to-[#000000] text-white rounded-lg hover:from-[#000000] hover:to-[#d9c289] transition-all duration-300 transform hover:scale-105 text-sm">
+                                            検索
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="lg:col-span-2">
+                        <div class="flex flex-wrap gap-2">
+                            <button id="refresh-events" class="flex items-center justify-center px-3 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                                更新
+                            </button>
+                            
+                            <button id="clear-filters" class="flex items-center justify-center px-3 py-2 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold rounded-lg hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                クリア
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compact Filters -->
+                <div class="mt-4">
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg border border-zen dark:border-aiiro p-4">
+                        <h3 class="text-sm font-semibold text-sumi dark:text-gofun mb-3 flex items-center">
+                            <span class="mr-2">🎛️</span>
+                            フィルター・ソート
+                        </h3>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <!-- Category Filter -->
+                            <div class="space-y-1">
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">カテゴリ</label>
+                                <select id="category-filter" name="category" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent transition-all duration-200 text-sm">
+                                    <option value="all">🎭 すべて</option>
+                                    <option value="traditional">🏛️ 伝統的</option>
+                                    <option value="cultural">🎨 文化的</option>
+                                    <option value="seasonal">🌸 季節的</option>
+                                    <option value="modern">🎪 現代的</option>
+                                    <option value="religious">⛩️ 宗教的</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Month Filter -->
+                            <div class="space-y-1">
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">月</label>
+                                <select id="month-filter" name="month" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent transition-all duration-200 text-sm">
+                                    <option value="all">📅 すべての月</option>
+                                    <option value="january">❄️ 1月</option>
+                                    <option value="february">🌨️ 2月</option>
+                                    <option value="march">🌸 3月</option>
+                                    <option value="april">🌺 4月</option>
+                                    <option value="may">🌿 5月</option>
+                                    <option value="june">🌧️ 6月</option>
+                                    <option value="july">🎆 7月</option>
+                                    <option value="august">☀️ 8月</option>
+                                    <option value="september">🍁 9月</option>
+                                    <option value="october">🍂 10月</option>
+                                    <option value="november">🍁 11月</option>
+                                    <option value="december">❄️ 12月</option>
+                                </select>
+                            </div>
+
+                            <!-- Sort Filter -->
+                            <div class="space-y-1">
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">ソート</label>
+                                <select id="sort-filter" name="sort" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent transition-all duration-200 text-sm">
+                                    <option value="date">📅 日付</option>
+                                    <option value="popular">⭐ 人気</option>
+                                    <option value="name">🔤 名前 A-Z</option>
+                                    <option value="category">🏷️ カテゴリ</option>
+                                </select>
+                            </div>
+
+                            <!-- View Toggle -->
+                            <div class="space-y-1">
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">表示</label>
+                                <div class="flex border border-zen dark:border-aiiro rounded-lg overflow-hidden">
+                                    <button id="view-grid" class="flex-1 px-3 py-2 bg-[#000000] text-white text-xs font-medium transition-all duration-300 hover:bg-[#d9c289]">
+                                        <span class="mr-1">⊞</span> グリッド
+                                    </button>
+                                    <button id="view-list" class="flex-1 px-3 py-2 bg-white dark:bg-sumi text-sumi dark:text-gofun text-xs font-medium hover:bg-zen dark:hover:bg-aiiro transition-all duration-300">
+                                        <span class="mr-1">☰</span> リスト
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compact Events Section -->
+        <section id="events-section" class="py-6 bg-gradient-to-br from-gray-50 to-purple-50 dark:from-sumi dark:to-purple-900/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Event Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-bold text-sumi dark:text-gofun">
+                            🎭 利用可能なイベント
+                        </h2>
+                        <p class="text-sumi/60 dark:text-gofun/60 text-sm">
+                            伝統的な祭り、文化イベント、季節の祝祭
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-sumi/60 dark:text-gofun/60">5分ごとに自動更新</span>
+                        <div class="w-2 h-2 bg-[#d9c289] rounded-full animate-pulse"></div>
+                        <button onclick="eventsManager.debugDisplay()" class="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700">
+                            デバッグ
+                        </button>
+                        <button onclick="testEventsData()" class="px-2 py-1 bg-[#d9c289] text-white text-xs rounded hover:bg-[#d9c289]/80" style="color: white !important;">
+                            テストデータ
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Event Display Containers -->
+                <div id="loading-skeleton" class="hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+                        <div class="animate-pulse">
+                            <div class="bg-zen dark:bg-aiiro h-48 lg:h-56 rounded-lg mb-4"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-3/4"></div>
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-1/2"></div>
+                            </div>
+                        </div>
+                        <div class="animate-pulse">
+                            <div class="bg-zen dark:bg-aiiro h-48 lg:h-56 rounded-lg mb-4"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-3/4"></div>
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-1/2"></div>
+                            </div>
+                        </div>
+                        <div class="animate-pulse">
+                            <div class="bg-zen dark:bg-aiiro h-48 lg:h-56 rounded-lg mb-4"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-3/4"></div>
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-1/2"></div>
+                            </div>
+                        </div>
+                        <div class="animate-pulse hidden xl:block">
+                            <div class="bg-zen dark:bg-aiiro h-48 lg:h-56 rounded-lg mb-4"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-3/4"></div>
+                                <div class="h-4 bg-zen dark:bg-aiiro rounded w-1/2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Responsive Grid View -->
+                <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+                    <!-- Event cards will be populated here -->
+                    <div class="text-center py-8 col-span-full" id="loading-message">
+                        <div class="text-4xl mb-4">⏳</div>
+                        <h3 class="font-serif text-xl font-semibold text-sumi dark:text-white mb-2">イベントを読み込み中...</h3>
+                        <p class="text-sumi/70 dark:text-gray-300">最新のイベントを読み込むまでお待ちください。</p>
+                    </div>
+                    
+                    <!-- Fallback Event Cards (will be replaced by JS) -->
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="祇園祭" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">祇園祭</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">京都で最も有名な祭りの一つで、7月に開催される伝統的な神道祭礼です。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">7月1日-31日</span>
+                                <span class="text-sm text-sumi/60">伝統的</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1682336276985-38ac477bb876?q=80&w=3262&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="葵祭" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">葵祭</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">京都三大祭りの一つで、5月に開催される平安時代の装束を着た行列が見ものです。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">5月15日</span>
+                                <span class="text-sm text-sumi/60">伝統的</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1632923754832-60642c12a7ed?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="時代祭" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">時代祭</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">京都三大祭りの一つで、10月に開催される各時代の装束を着た行列が特徴です。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">10月22日</span>
+                                <span class="text-sm text-sumi/60">伝統的</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zen-card">
+                        <img src="https://images.unsplash.com/photo-1695686101263-e13359e45d4d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="桜祭り" class="property-image rounded-t-xl">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">桜祭り</h3>
+                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">春の桜の季節に開催される美しい桜の花見イベントです。</p>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-shinku">3月-4月</span>
+                                <span class="text-sm text-sumi/60">季節的</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List View -->
+                <div id="events-list" class="space-y-4 lg:space-y-6 hidden">
+                    <!-- Event list items will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Email Signup Form -->
+        <section class="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-purple-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#d9c289] to-[#000000] rounded-full mb-6">
+                        <span class="text-2xl text-white">🎭</span>
+                    </div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        京都イベントの最新情報をお届け
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        京都の今後の祭り、文化イベント、季節の祝祭に関する独占的な更新情報をお届けします。
+                        日本の文化首都の魔法を見逃すことはありません。
+                    </p>
+                </div>
+                
+                <!-- Signup Form -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-8 md:p-12">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY">
+                        <input type="hidden" name="subject" value="New Kyoto Events Newsletter Signup">
+                        <input type="hidden" name="from_name" value="Kyoto Events Newsletter">
+                        
+                        <!-- Name Field -->
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                お名前
+                            </label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name" 
+                                   required
+                                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
+                                   placeholder="お名前を入力してください">
+                        </div>
+                        
+                        <!-- Email Field -->
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                メールアドレス
+                            </label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   required
+                                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
+                                   placeholder="メールアドレスを入力してください">
+                        </div>
+                        
+                        <!-- Event Preferences -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                イベントの好み
+                            </label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" name="preferences[]" value="Traditional Festivals" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">伝統的な祭り</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" name="preferences[]" value="Seasonal Events" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">季節のイベント</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" name="preferences[]" value="Cultural Performances" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">文化公演</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" name="preferences[]" value="Film Festivals" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">映画祭</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Frequency -->
+                        <div>
+                            <label for="frequency" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                更新頻度
+                            </label>
+                            <select id="frequency" 
+                                    name="frequency" 
+                                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#d9c289] focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors">
+                                <option value="weekly">週次更新</option>
+                                <option value="monthly">月次ダイジェスト</option>
+                                <option value="seasonal">季節ハイライト</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-[#d9c289] to-[#000000] text-white font-semibold py-4 px-8 rounded-lg hover:from-[#000000] hover:to-[#d9c289] transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#d9c289] focus:ring-offset-2">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span>🎭</span>
+                                    京都イベントに登録
+                                    <span>→</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Privacy Notice -->
+                        <p class="text-xs text-gray-500 dark:text-gray-400 text-center">
+                            登録することで、京都イベントの更新情報を受け取ることに同意したことになります。プライバシーを尊重し、情報を共有することはありません。
+                        </p>
+                    </form>
+
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="signup-success" class="hidden mt-6 p-4 bg-[#d9c289]/10 dark:bg-[#d9c289]/20 border border-[#d9c289]/30 dark:border-[#d9c289]/40 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <span class="text-[#d9c289] dark:text-[#d9c289]">✅</span>
+                            <p class="text-[#d9c289] dark:text-[#d9c289] font-medium">
+                                登録ありがとうございます！まもなく最初の更新情報をお届けします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-[#d9c289]/20 dark:bg-[#d9c289]/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-[#d9c289] dark:text-[#d9c289] text-xl">🎪</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">独占アクセス</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">今後の祭りやイベントに関する早期通知を受け取る</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-[#d9c289]/20 dark:bg-[#d9c289]/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-[#d9c289] dark:text-[#d9c289] text-xl">📅</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">キュレーションされたコンテンツ</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">好みに基づいて厳選されたイベントを受け取る</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-[#d9c289]/20 dark:bg-[#d9c289]/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-[#d9c289] dark:text-[#d9c289] text-xl">🎭</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">文化インサイト</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">各イベントの歴史と意義について学ぶ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE FROM KYOTO WIDGET -->
+        <section class="py-6 md:py-8 lg:py-12 bg-washi dark:bg-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Live from Kyoto Widget -->
+                <div class="zen-card p-6 bg-gradient-to-br from-washi/50 to-sumi/5 dark:from-gray-800/50 dark:to-gray-700/5 border border-sumi/10 dark:border-gray-600/10">
+                    <!-- Widget Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gradient-to-r from-kurenai to-pink-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-lg">🎥</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-sumi dark:text-white">京都ライブ</h3>
+                                <p class="text-sm text-sumi/60 dark:text-gray-400">リアルタイムカメラ、天気、ソーシャル更新</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Live Camera Section -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-black rounded-lg overflow-hidden shadow-lg">
+                                <!-- Camera Controls -->
+                                <div class="bg-sumi/90 text-white p-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <button id="camera-prev" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="text-center">
+                                            <h4 id="camera-title" class="font-semibold">京都駅バスターミナル</h4>
+                                            <p id="camera-description" class="text-sm text-gray-300">京都駅バスターミナルと周辺エリアのライブビュー</p>
+                                        </div>
+                                        <button id="camera-next" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span id="camera-counter" class="text-sm bg-white/20 px-2 py-1 rounded">1 / 14</span>
+                                        <button class="p-2 hover:bg-white/20 rounded-lg transition-colors" title="全画面">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Camera Embed -->
+                                <div id="camera-embed" class="aspect-video bg-gray-900">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/v9rQqa_VTEY?autoplay=1&mute=1" 
+                                        class="w-full h-full"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Weather & Social Sidebar -->
+                        <div class="space-y-6">
+                            
+                            <!-- Enhanced Weather Widget -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700/30 shadow-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-semibold text-sumi dark:text-white flex items-center gap-2">
+                                        <span class="text-2xl">🌤️</span>
+                                        <span>京都の天気</span>
+                                    </h4>
+                                </div>
+                                
+                                <div id="kyoto-weather-widget" class="space-y-4">
+                                    <!-- Current Weather -->
+                                    <div class="text-center">
+                                        <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="weather-temperature">
+                                            --°C
+                                        </div>
+                                        <div class="text-6xl mb-3" id="weather-icon">
+                                            🌤️
+                                        </div>
+                                        <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-2" id="weather-description">
+                                            <span>天気情報を読み込み中...</span>
+                                        </div>
+                                        <div class="text-xs text-sumi/60 dark:text-gofun/60" id="weather-feels-like">
+                                            <span>体感温度</span> --°C
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Weather Details Grid -->
+                                    <div class="grid grid-cols-2 gap-3 text-xs">
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💨</span>
+                                                <span>風</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-wind">-- km/h</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💧</span>
+                                                <span>湿度</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-humidity">--%</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">👁️</span>
+                                                <span>視界</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-visibility">-- km</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">🌡️</span>
+                                                <span>気圧</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-pressure">-- hPa</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Sunrise/Sunset -->
+                                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg border border-yellow-400/30">
+                                        <div class="flex items-center">
+                                            <span class="text-xl mr-2">🌅</span>
+                                            <div>
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">日の出</div>
+                                                <div class="font-semibold text-sm" id="weather-sunrise">--:--</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="text-right">
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">日の入り</div>
+                                                <div class="font-semibold text-sm" id="weather-sunset">--:--</div>
+                                            </div>
+                                            <span class="text-xl ml-2">🌇</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Last Updated -->
+                                    <div class="text-center text-xs text-sumi/50 dark:text-gofun/50">
+                                        <span>京都時間</span>: <span id="weather-last-updated">--:--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-sumi to-kobicha text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-white">MrKyoto</span>
+                    </div>
+                    <p class="text-white text-sm leading-relaxed">
+                        Your gateway to timeless Kyoto — connect, explore, and live in Japan's cultural capital.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Explore</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/activities/" class="hover:text-white transition-colors duration-200">Activities</a></li>
+                        <li><a href="/events/" class="hover:text-white transition-colors duration-200">Events & Festivals</a></li>
+                        <li><a href="/news/" class="hover:text-white transition-colors duration-200">News</a></li>
+                        <li><a href="/live-from-kyoto/" class="hover:text-white transition-colors duration-200">Live from Kyoto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Real Estate</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Property Listings</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Local Areas</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Market Insights</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Neighborhood Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Contact</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="mailto:hello@mrkyoto.com" class="hover:text-white transition-colors duration-200">hello@mrkyoto.com</a></li>
+                        <li><a href="/privacy/" class="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-white transition-colors duration-200">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-white text-sm">
+                    © 2025 MrKyoto.com. All rights reserved. Your gateway to timeless Kyoto.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button class="bg-gradient-to-r from-shinku to-kobicha text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/events-data.js"></script>
+    <script src="/js/events-manager.js"></script>
+    <script src="/js/weather-service.js"></script>
+    <script src="/js/live-kyoto-widget.js"></script>
+    <script src="/js/theme-language-manager.js"></script>
+    <script src="/js/translation-manager.js"></script>
+    <script src="/js/shared-navigation.js"></script>
+    <script src="/js/shared-footer.js"></script>
+
+    <!-- Force Japanese Language for Japanese Page -->
+    <script>
+        // Force Japanese language for this page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🇯🇵 Setting Japanese language for Japanese events page...');
+            
+            // Set language to Japanese
+            localStorage.setItem('mrkyoto-language', 'ja');
+            
+            // Force translation manager to use Japanese
+            if (window.translationManager) {
+                window.translationManager.setLanguage('ja');
+                console.log('✅ Translation manager set to Japanese');
+            } else {
+                console.log('⏳ Translation manager not ready yet, will set later...');
+                // Wait for translation manager to load
+                setTimeout(() => {
+                    if (window.translationManager) {
+                        window.translationManager.setLanguage('ja');
+                        console.log('✅ Translation manager set to Japanese (delayed)');
+                    }
+                }, 2000);
+            }
+            
+            // Hide loading message after a short delay
+            setTimeout(() => {
+                const loadingMessage = document.getElementById('loading-message');
+                if (loadingMessage) {
+                    loadingMessage.style.display = 'none';
+                    console.log('✅ Hidden loading message');
+                }
+            }, 2000);
+        });
+    </script>
+
+    <!-- Theme and Language Toggle Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Fixing theme and language toggles...');
+            
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                console.log('✅ Theme toggle found, adding event listener');
+                themeToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌙 Theme toggle clicked!');
+                    
+                    // Toggle dark mode
+                    const html = document.documentElement;
+                    const isDark = html.classList.contains('dark');
+                    
+                    if (isDark) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        console.log('☀️ Switched to light mode');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        console.log('🌙 Switched to dark mode');
+                    }
+                });
+            } else {
+                console.error('❌ Theme toggle not found');
+            }
+            
+            // Language dropdown functionality
+            const languageToggle = document.getElementById('language-toggle');
+            const languageDropdown = document.getElementById('language-dropdown');
+            
+            if (languageToggle && languageDropdown) {
+                console.log('✅ Language dropdown found, adding event listener');
+                languageToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌍 Language toggle clicked!');
+                    
+                    const isOpen = languageDropdown.classList.contains('opacity-100');
+                    if (isOpen) {
+                        languageDropdown.classList.remove('opacity-100');
+                        console.log('🔽 Closed language dropdown');
+                    } else {
+                        languageDropdown.classList.add('opacity-100');
+                        console.log('🔼 Opened language dropdown');
+                    }
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                        languageDropdown.classList.remove('opacity-100');
+                    }
+                });
+            } else {
+                console.error('❌ Language dropdown elements not found');
+            }
+            
+            // Initialize theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                console.log('🌙 Initialized dark mode');
+            } else {
+                document.documentElement.classList.remove('dark');
+                console.log('☀️ Initialized light mode');
+            }
+        });
+    </script>
+
+    <!-- Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Mobile menu script loaded');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
+            console.log('🔍 Mobile menu found:', !!mobileMenu);
+            if (mobileMenuButton && mobileMenu) {
+                console.log('✅ Both elements found, adding event listener');
+                // Force menu to start hidden and remove conflicting classes
+                mobileMenu.className = 'lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro';
+                mobileMenu.style.display = 'none';
+                console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
+                console.log('🔧 Menu display style:', mobileMenu.style.display);
+                mobileMenuButton.addEventListener('click', function(e) {
+                    console.log('🖱️ Mobile menu button clicked!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.style.display === 'none';
+                    console.log('🔍 Current display state:', mobileMenu.style.display);
+                    console.log('🔍 Is hidden:', isHidden);
+                    if (isHidden) {
+                        mobileMenu.style.display = 'block';
+                        mobileMenu.classList.remove('hidden');
+                        console.log('📱 Menu opened');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        console.log('📱 Menu closed');
+                    }
+                    console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
+                    console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
+                    // Animate the hamburger icon
+                    const icon = mobileMenuButton.querySelector('svg');
+                    if (icon) {
+                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transition = 'transform 0.3s ease';
+                        console.log('🎨 Icon rotated');
+                    }
+                });
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                console.log('✅ Mobile menu event listeners added');
+            } else {
+                console.error('❌ Mobile menu elements not found');
+                console.log('🔍 Available elements with "mobile" in ID:', 
+                    Array.from(document.querySelectorAll('[id*="mobile"]')).map(el => el.id));
+            }
+        });
+    </script>
+
+    <!-- Weather Display Script -->
+    <script>
+        function loadWeatherData() {
+            console.log('🌤️ Loading weather data...');
+            
+            // Simulate weather data for Kyoto
+            const weatherData = {
+                temperature: '22°C',
+                description: '晴れ',
+                humidity: '65',
+                windSpeed: '8',
+                pressure: '1013',
+                visibility: '10',
+                sunrise: '05:30',
+                sunset: '18:45',
+                lastUpdated: '2026年1月15日 14:30'
+            };
+            
+            updateWeatherDisplay(weatherData);
+        }
+        
+        function updateWeatherDisplay(data) {
+            console.log('🌤️ Updating weather display with data:', data);
+            
+            // Update temperature
+            const tempElement = document.getElementById('weather-temperature');
+            if (tempElement) {
+                tempElement.textContent = data.temperature;
+            }
+            
+            // Update description
+            const descElement = document.getElementById('weather-description');
+            if (descElement) {
+                descElement.innerHTML = `<span>${data.description}</span>`;
+            }
+            
+            // Update humidity
+            const humidityElement = document.getElementById('weather-humidity');
+            if (humidityElement) {
+                humidityElement.textContent = `${data.humidity}%`;
+            }
+            
+            // Update wind speed
+            const windElement = document.getElementById('weather-wind');
+            if (windElement) {
+                windElement.textContent = `${data.windSpeed} km/h`;
+            }
+            
+            // Update pressure
+            const pressureElement = document.getElementById('weather-pressure');
+            if (pressureElement) {
+                pressureElement.textContent = `${data.pressure} hPa`;
+            }
+            
+            // Update visibility
+            const visibilityElement = document.getElementById('weather-visibility');
+            if (visibilityElement) {
+                visibilityElement.textContent = `${data.visibility} km`;
+            }
+            
+            // Update sunrise/sunset
+            const sunriseElement = document.getElementById('weather-sunrise');
+            if (sunriseElement) {
+                sunriseElement.textContent = data.sunrise;
+            }
+            
+            const sunsetElement = document.getElementById('weather-sunset');
+            if (sunsetElement) {
+                sunsetElement.textContent = data.sunset;
+            }
+            
+            // Update last updated time
+            const lastUpdatedElement = document.getElementById('weather-last-updated');
+            if (lastUpdatedElement) {
+                lastUpdatedElement.textContent = data.lastUpdated;
+            }
+        }
+
+        function startAutoRefresh() {
+            // Refresh weather data every 5 minutes
+            setInterval(loadWeatherData, 5 * 60 * 1000);
+        }
+
+        // Initialize weather when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌤️ Initializing weather display...');
+            
+            // Load weather data immediately
+            loadWeatherData();
+            
+            // Start auto-refresh
+            startAutoRefresh();
+        });
+    </script>
+    
+    <!-- Initialize Live Kyoto Widget -->
+    <script>
+        // Initialize Live Kyoto Widget when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎥 Initializing Live Kyoto Widget on events page...');
+            
+            // Wait for the widget script to load
+            setTimeout(() => {
+                if (typeof LiveKyotoWidget !== 'undefined') {
+                    console.log('✅ LiveKyotoWidget class found, creating instance...');
+                    window.liveKyotoWidget = new LiveKyotoWidget();
+                    console.log('✅ Live Kyoto Widget initialized on events page');
+                } else {
+                    console.error('❌ LiveKyotoWidget class not found');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

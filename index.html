@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="meta.title">MrKyoto.com | Your Gateway to Timeless Kyoto - Real Estate, Events & Cultural Experiences</title>
+    <meta name="description" content="Discover the best of Kyoto - from traditional temples and cultural events to premium real estate and local insights. Your complete guide to exploring, living, and connecting with Japan's historic cultural capital." data-translate="meta.description">
+    <meta name="keywords" content="Kyoto, Japan, temples, real estate, events, culture, travel, tourism, Japanese culture, Kyoto property, Kyoto activities, traditional Japan, cultural experiences">
+    <meta name="author" content="MrKyoto.com">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="JP-26">
+    <meta name="geo.placename" content="Kyoto">
+    <meta name="geo.position" content="35.0116;135.7681">
+    <meta name="ICBM" content="35.0116, 135.7681">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mrkyoto.com/">
+    <meta property="og:title" content="MrKyoto.com | Your Gateway to Timeless Kyoto - Real Estate, Events & Cultural Experiences">
+    <meta property="og:description" content="Discover the best of Kyoto - from traditional temples and cultural events to premium real estate and local insights.">
+    <meta property="og:image" content="https://mrkyoto.com/images/kyoto-homepage-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="MrKyoto.com">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mrkyoto.com/">
+    <meta property="twitter:title" content="MrKyoto.com | Your Gateway to Timeless Kyoto">
+    <meta property="twitter:description" content="Discover the best of Kyoto - from traditional temples and cultural events to premium real estate and local insights.">
+    <meta property="twitter:image" content="https://mrkyoto.com/images/kyoto-homepage-og.jpg">
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://mrkyoto.com/">
+    <meta name="theme-color" content="#9A1F40">
+    <meta name="msapplication-TileColor" content="#9A1F40">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MrKyoto" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Noto Serif JP', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Traditional Japanese Color Palette - Enhanced for Readability
+                        'washi': '#F8F6F0', // Traditional Japanese paper
+                        'sumi': '#0F0F0F', // Deep black - maximum contrast
+                        'sakura': '#FDF2F8', // Cherry blossom pink
+                        'matcha': '#166534', // Dark green - better contrast
+                        'kobicha': '#7C2D12', // Dark brown - better contrast
+                        'aiiro': '#374151', // Dark gray - better contrast
+                        'shinku': '#991B1B', // Dark crimson - better contrast
+                        'kincha': '#B45309', // Dark gold - better contrast
+                        'nezumi': '#374151', // Dark gray - better contrast
+                        'gofun': '#FEFEFE', // Shell white
+                        'kurenai': '#B91C1C', // Dark crimson - better contrast
+                        'yamabuki': '#B45309', // Dark gold - better contrast
+                        'sora': '#1E3A8A', // Dark blue - better contrast
+                        'murasaki': '#7C2D12', // Dark brown - better contrast
+                        'cha': '#92400E', // Dark brown - better contrast
+                        'koke': '#166534', // Dark green - better contrast
+                        'sabiseiji': '#166534', // Dark green - better contrast
+// Additional colors for better text visibility
+'ink-black': '#0F0F0F', // Same as sumi for consistency
+'zen': '#E5E7EB', // Light border color
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+                        'zen-fade': 'zenFade 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        gentleFloat: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-5px) rotate(1deg)' }
+                        },
+                        zenFade: {
+                            '0%, 100%': { opacity: '0.8' },
+                            '50%': { opacity: '1' }
+                        }
+                    },
+                    backgroundImage: {
+                        'zen-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f3f4f6' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                        'bamboo-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f3f4f6' fill-opacity='0.05'%3E%3Cpath d='M20 0L20 40M0 20L40 20' stroke='%23d1d5db' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E\")",
+                        'sakura-pattern': "url(\"data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fef2f2' fill-opacity='0.1'%3E%3Cpath d='M40 0C40 0 35 15 20 20C35 25 40 40 40 40C40 40 45 25 60 20C45 15 40 0 40 0Z'/%3E%3C/g%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <style>
+/* Enhanced Header CSS */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.dark #header {
+    background: rgba(17, 24, 39, 0.95);
+    border-bottom-color: rgba(55, 65, 81, 0.5);
+}
+
+/* Desktop Navigation Links */
+.nav-link-desktop {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    color: #374151;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link-desktop:hover {
+    background: rgba(185, 28, 28, 0.1);
+    color: #B91C1C;
+    transform: translateY(-1px);
+}
+
+.nav-link-desktop:focus {
+    outline: 2px solid #B91C1C;
+    outline-offset: 2px;
+}
+
+.dark .nav-link-desktop {
+    color: #D1D5DB;
+}
+
+.dark .nav-link-desktop:hover {
+    background: rgba(185, 28, 28, 0.2);
+    color: #F59E0B;
+}
+
+.nav-icon {
+    font-size: 1.125rem;
+    opacity: 0.8;
+}
+
+.nav-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: rgba(249, 250, 251, 0.8);
+    color: #374151;
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    transition: all 0.2s ease;
+            position: relative;
+}
+
+.action-button:hover {
+    background: rgba(185, 28, 28, 0.1);
+    color: #B91C1C;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:focus {
+    outline: 2px solid #B91C1C;
+    outline-offset: 2px;
+}
+
+.dark .action-button {
+    background: rgba(55, 65, 81, 0.8);
+    color: #D1D5DB;
+    border-color: rgba(75, 85, 99, 0.5);
+}
+
+.dark .action-button:hover {
+    background: rgba(185, 28, 28, 0.2);
+    color: #F59E0B;
+}
+
+/* Desktop Search */
+.search-input-desktop {
+    width: 240px;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    border-radius: 1.5rem;
+    background: rgba(249, 250, 251, 0.8);
+    color: #374151;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.search-input-desktop:focus {
+    outline: none;
+    border-color: #B91C1C;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1);
+}
+
+.dark .search-input-desktop {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: rgba(75, 85, 99, 0.8);
+    color: #D1D5DB;
+}
+
+.dark .search-input-desktop:focus {
+    background: #374151;
+    border-color: #F59E0B;
+}
+
+.search-button-desktop {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* Enhanced Theme Toggle */
+#theme-toggle {
+    position: relative;
+    overflow: hidden;
+}
+
+#theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), rgba(180, 83, 9, 0.1));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    border-radius: 0.5rem;
+}
+
+#theme-toggle:hover::before {
+    opacity: 1;
+}
+
+#theme-toggle svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+#theme-toggle:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Scrollbar for language dropdown */
+.dropdown-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 2px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.8);
+}
+
+/* Mobile Search */
+.mobile-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    border-radius: 1rem;
+    background: rgba(249, 250, 251, 0.8);
+    color: #374151;
+    font-size: 1rem;
+}
+
+.mobile-search-input:focus {
+    outline: none;
+    border-color: #B91C1C;
+    background: white;
+}
+
+.dark .mobile-search-input {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: rgba(75, 85, 99, 0.8);
+    color: #D1D5DB;
+}
+
+.mobile-search-button {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Mobile Menu */
+#mobile-menu {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Quick Action Cards */
+.quick-action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, #B91C1C, #991B1B);
+            color: white;
+    border-radius: 1rem;
+    text-decoration: none;
+            transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.quick-action-card:nth-child(2) {
+    background: linear-gradient(135deg, #B45309, #92400E);
+}
+
+.quick-action-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.quick-action-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Mobile Navigation Links */
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: rgba(249, 250, 251, 0.5);
+    border: 1px solid rgba(229, 231, 235, 0.3);
+}
+
+.mobile-nav-link:hover {
+    background: rgba(185, 28, 28, 0.1);
+    color: #B91C1C;
+    transform: translateX(4px);
+}
+
+.dark .mobile-nav-link {
+    background: rgba(55, 65, 81, 0.5);
+    border-color: rgba(75, 85, 99, 0.3);
+    color: #D1D5DB;
+}
+
+.dark .mobile-nav-link:hover {
+    background: rgba(185, 28, 28, 0.2);
+    color: #F59E0B;
+}
+
+.mobile-nav-icon {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.mobile-nav-text {
+    flex: 1;
+    font-weight: 500;
+}
+
+.mobile-nav-arrow {
+    color: #9CA3AF;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-arrow {
+    transform: translateX(4px);
+}
+
+/* Contact Link */
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, rgba(253, 242, 248, 0.8), rgba(180, 83, 9, 0.2));
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(180, 83, 9, 0.2);
+}
+
+.contact-link:hover {
+    background: linear-gradient(135deg, rgba(253, 242, 248, 1), rgba(180, 83, 9, 0.3));
+    transform: translateX(4px);
+}
+
+.dark .contact-link {
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.8), rgba(180, 83, 9, 0.2));
+    color: #D1D5DB;
+    border-color: rgba(180, 83, 9, 0.3);
+}
+
+.contact-icon {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.contact-text {
+    flex: 1;
+    font-weight: 600;
+}
+
+.contact-arrow {
+    color: #B45309;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.contact-link:hover .contact-arrow {
+    transform: translateX(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .nav-link-desktop {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .nav-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #header {
+        padding: 0;
+    }
+    
+    .search-input-desktop {
+        width: 200px;
+    }
+}
+
+@media (max-width: 640px) {
+    .search-input-desktop {
+        display: none;
+    }
+    
+    .action-button {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+        }
+        
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+    background: #B91C1C;
+            color: white;
+    padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+    font-weight: 600;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+/* Tooltip Styles */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 0.5rem;
+}
+
+[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    margin-bottom: -4px;
+    z-index: 1000;
+        }
+        /* Ensure proper text colors in light mode */
+        body {
+            background-color: #F8F6F0 !important;
+            color: #0F0F0F !important;
+        }
+        
+        .text-sumi {
+            color: #0F0F0F !important;
+        }
+        
+        .text-sumi\/70 {
+            color: rgba(15, 15, 15, 0.7) !important;
+        }
+        
+        .text-sumi\/60 {
+            color: rgba(15, 15, 15, 0.6) !important;
+        }
+        
+
+        
+
+        
+        /* Footer text should always be white and visible */
+        footer {
+            color: #FFFFFF !important;
+        }
+        
+        footer * {
+            color: #FFFFFF !important;
+        }
+        
+        footer .font-serif, footer .font-semibold, footer .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        footer .text-white {
+            color: #FFFFFF !important;
+        }
+        
+        footer a {
+            color: #FFFFFF !important;
+        }
+        
+        footer a:hover {
+            color: #F3F4F6 !important;
+        }
+        
+        footer h3 {
+            color: #FFFFFF !important;
+        }
+        
+        footer p {
+            color: #FFFFFF !important;
+        }
+        
+        footer li {
+            color: #FFFFFF !important;
+        }
+        
+        footer span {
+            color: #FFFFFF !important;
+        }
+        
+        /* Fix any remaining white text issues */
+        .text-white\/80, .text-white\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .text-white\/80, html.dark .text-white\/60 {
+            color: rgba(254, 254, 254, 0.8) !important;
+        }
+        
+        /* Ensure proper text colors for all interactive elements */
+        a, button, input, textarea, select {
+            color: inherit !important;
+        }
+        
+        /* Force dark text on light backgrounds */
+        .bg-white * {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark .bg-white * {
+            color: #FEFEFE !important;
+        }
+        
+        /* Specific property card styling for light mode */
+        .bg-white .text-sumi,
+        .bg-white .text-sumi\/70,
+        .bg-white .text-sumi\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        /* Property card text colors in light mode */
+        .bg-white h3,
+        .bg-white .text-2xl,
+        .bg-white .text-lg,
+        .bg-white .text-sm,
+        .bg-white .text-xs {
+            color: #0F0F0F !important;
+        }
+        
+        /* Property card background colors */
+        .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Ensure property cards have proper contrast */
+        #properties-grid .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark #properties-grid .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Property card text in light mode */
+        #properties-grid .bg-white * {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .bg-white * {
+            color: #FEFEFE !important;
+        }
+        
+        /* Bed/Bath/Sqm elements - proper dark mode support */
+        #properties-grid .bg-white {
+            background-color: #FFFFFF !important;
+        }
+        
+        html.dark #properties-grid .bg-white {
+            background-color: #1F2937 !important;
+        }
+        
+        /* Ensure bed/bath/sqm text is visible in both modes */
+        #properties-grid .bg-white.text-sumi {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .bg-white.text-sumi {
+            color: #FEFEFE !important;
+        }
+        
+        /* Property text colors - black in light mode, white in dark mode */
+        #properties-grid h3,
+        #properties-grid .text-2xl,
+        #properties-grid .text-lg,
+        #properties-grid .text-sm,
+        #properties-grid .text-xs {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid h3,
+        html.dark #properties-grid .text-2xl,
+        html.dark #properties-grid .text-lg,
+        html.dark #properties-grid .text-sm,
+        html.dark #properties-grid .text-xs {
+            color: #FEFEFE !important;
+        }
+        
+        /* Property card content text colors */
+        #properties-grid .text-sumi\/70,
+        #properties-grid .text-sumi\/60 {
+            color: #0F0F0F !important;
+        }
+        
+        html.dark #properties-grid .text-sumi\/70,
+        html.dark #properties-grid .text-sumi\/60 {
+            color: #FEFEFE !important;
+        }
+        
+        /* Homepage property cards dark mode support */
+        html.dark .zen-card {
+            background-color: #1F2937 !important;
+        }
+        
+        html.dark .zen-card h3,
+        html.dark .zen-card .font-serif,
+        html.dark .zen-card .font-bold {
+            color: #FFFFFF !important;
+        }
+        
+        html.dark .zen-card p,
+        html.dark .zen-card div {
+            color: #E5E7EB !important;
+        }
+        
+        html.dark .zen-card .text-gray-600 {
+            color: #D1D5DB !important;
+        }
+        
+        html.dark .zen-card .text-gray-500 {
+            color: #9CA3AF !important;
+        }
+        
+        html.dark .zen-card .text-gray-400 {
+            color: #9CA3AF !important;
+        }
+    </style>
+</head>
+<body class="bg-washi text-sumi dark:bg-sumi dark:text-gofun">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header id="header" class="bg-white/95 backdrop-blur-sm dark:bg-sumi/95 border-b border-zen dark:border-aiiro shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-ink-black dark:text-gofun group-hover:text-shinku transition-colors">MrKyoto</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <a href="/" class="nav-link-desktop">
+                        <span class="nav-text">Home</span>
+                    </a>
+                    <a href="/activities/" class="nav-link-desktop">
+                        <span class="nav-text">Activities</span>
+                    </a>
+                    <a href="/real-estate/" class="nav-link-desktop">
+                        <span class="nav-text">Real Estate</span>
+                    </a>
+                    <a href="/events/" class="nav-link-desktop">
+                        <span class="nav-text">Events</span>
+                    </a>
+                    <a href="/news/" class="nav-link-desktop">
+                        <span class="nav-text">News</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="nav-link-desktop">
+                        <span class="nav-text">Live from Kyoto</span>
+                    </a>
+                </nav>
+                
+                <!-- Right side actions -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <!-- Language toggle -->
+                    <button id="language-toggle" class="action-button" data-tooltip="Language">
+                        <span class="text-sm font-medium">🇬🇧</span>
+                    </button>
+                    
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" class="action-button" data-tooltip="Toggle theme">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="lg:hidden action-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile navigation -->
+                <nav class="space-y-2">
+                    <a href="/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Home</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/activities/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Activities</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/real-estate/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Real Estate</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/events/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Events</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/news/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">News</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="mobile-nav-link">
+                        <span class="mobile-nav-text">Live from Kyoto</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                </nav>
+                
+                <!-- Contact link -->
+                <a href="mailto:hello@mrkyoto.com" class="contact-link">
+                    <span class="contact-icon">✉️</span>
+                    <span class="contact-text">Contact Us</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+
+        <!-- Hero Components - Featured Properties Section -->
+        <section id="featured-properties" class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun" data-translate="featured.title">
+                            Buy Your Dream Kyoto Machiya
+                        </h2>
+
+                    </div>
+                    <div class="flex gap-2 lg:gap-3">
+                        <a href="/real-estate/" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" data-translate="featured.viewAll" style="color: white !important;">
+                            View All Properties
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6" id="properties-grid">
+                    <!-- Property Card 1: Exquisite -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="images/arashiyama-bamboo.jpg" alt="Exquisite Kyoto Property" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded" data-translate="property.walkScore">95 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded" data-translate="property.verified">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Exquisite Traditional Machiya</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥95,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$633,333 USD</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Gion District, Higashiyama Ward</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏠</span>
+                                <span>Gion</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;" data-translate="property.bed">3 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;" data-translate="property.bath">2 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;" data-translate="property.sqm">125 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2" data-translate="property.features">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Traditional architecture</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Private garden</span>
+                                    <button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline" data-translate="property.moreFeatures">+6 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="/real-estate/#property-sale-001" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;" data-translate="property.viewDetails">View Details</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center" data-translate="property.contact">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 2: Luxury -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="images/fushimi-inari.jpg" alt="Luxury Kyoto Property" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">88 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Luxury Modern Residence</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥52,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$346,667 USD</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Arashiyama District, Ukyo Ward</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏠</span>
+                                <span>Arashiyama</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">78 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Mountain views</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Balcony</span>
+                                    <button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline">+6 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors">Contact</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 3: Ultra-Luxury -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="images/kiyomizu-dera.jpg" alt="Ultra-Luxury Kyoto Property" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">82 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Ultra-Luxury Estate</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥220,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$1,466,667 USD</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Higashiyama District</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏠</span>
+                                <span>Higashiyama</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">5 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">4 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">320 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Private hot spring</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Mountain views</span>
+                                    <button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline">+7 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors">Contact</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 4: Premium -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="images/gion-district.jpg" alt="Premium Kyoto Property" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">92 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Premium Central Residence</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥78,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$520,000 USD</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Nakagyo Ward, Central Kyoto</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏠</span>
+                                <span>Nakagyo</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">4 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">3 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">165 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Central location</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] text-xs px-2 py-1 rounded">Private parking</span>
+                                    <button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline">+6 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors">Contact</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Live from Kyoto Section -->
+        <section class="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-sumi/5 to-aiiro/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 lg:mb-12">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun" data-translate="live.title">
+                        📺 Live from Kyoto
+                    </h2>
+                    <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto" data-translate="live.subtitle">
+                        Experience Kyoto in real-time with our live streams, weather updates, and cultural insights.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <a href="/live-from-kyoto/" class="group bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="text-3xl mb-4">🌤️</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="live.weather.title">Live Weather</h3>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70" data-translate="live.weather.subtitle">Real-time weather conditions in Kyoto</p>
+                    </a>
+                    <a href="/news/" class="group bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="text-3xl mb-4">📰</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="live.news.title">Local News</h3>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70" data-translate="live.news.subtitle">Latest updates from Kyoto and Japan</p>
+                    </a>
+                    <a href="/events/" class="group bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="text-3xl mb-4">🎭</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="live.events.title">Cultural Events</h3>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70" data-translate="live.events.subtitle">Upcoming festivals and celebrations</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Explore Kyoto 2025 Section -->
+        <section class="py-8 md:py-12 lg:py-16 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 lg:mb-12">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun" data-translate="explore.title">
+                        🗺️ Explore Kyoto 2025
+                    </h2>
+                    <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto" data-translate="explore.subtitle">
+                        Discover the many facets of Japan's cultural capital with our comprehensive guides, authentic experiences, and rich cultural heritage.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                    <a href="/activities/" class="group bg-gradient-to-br from-matcha to-green-700 text-white p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="text-3xl mb-3">🎯</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="explore.activities.title">Top Activities</h3>
+                        <p class="text-sm opacity-90" data-translate="explore.activities.subtitle">Cultural experiences and authentic adventures</p>
+                    </a>
+                    <a href="/real-estate/" class="group bg-gradient-to-br from-shinku to-red-800 text-white p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="text-3xl mb-3">🏠</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="explore.buyHouse.title">Buy House</h3>
+                        <p class="text-sm opacity-90" data-translate="explore.buyHouse.subtitle">Premium properties in Kyoto's finest neighborhoods</p>
+                    </a>
+                    <a href="/real-estate/" class="group bg-gradient-to-br from-kincha to-orange-700 text-white p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="text-3xl mb-3">🏡</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="explore.rentHouse.title">Rent House</h3>
+                        <p class="text-sm opacity-90" data-translate="explore.rentHouse.subtitle">Flexible accommodation options for your stay</p>
+                    </a>
+                    <a href="/activities/" class="group bg-gradient-to-br from-kincha to-orange-700 text-white p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="text-3xl mb-3">🏮</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="culture.traditions.title">Traditional Arts</h3>
+                        <p class="text-sm opacity-90" data-translate="culture.traditions.subtitle">Tea ceremony, calligraphy, and more</p>
+                    </a>
+                    <a href="/events/" class="group bg-gradient-to-br from-shinku to-red-800 text-white p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="text-3xl mb-3">⛩️</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="culture.temples.title">Temples & Shrines</h3>
+                        <p class="text-sm opacity-90" data-translate="culture.temples.subtitle">Sacred sites and spiritual heritage</p>
+                    </a>
+                    <a href="/activities/" class="group bg-gradient-to-br from-matcha to-green-700 text-white p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div class="text-3xl mb-3">🎎</div>
+                        <h3 class="font-semibold text-lg mb-2" data-translate="culture.experiences.title">Cultural Experiences</h3>
+                        <p class="text-sm opacity-90" data-translate="culture.experiences.subtitle">Hands-on workshops and activities</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-sumi to-kobicha text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-shinku to-kobicha rounded-lg flex items-center justify-center">
+                            <img src="/images/mrkyoto-logo.png" alt="MrKyoto Logo" width="32" height="32" class="rounded-lg">
+                        </div>
+                        <span class="text-xl font-serif font-semibold text-white">MrKyoto</span>
+                    </div>
+                    <p class="text-white text-sm leading-relaxed">
+                        Your gateway to timeless Kyoto — explore, live, and connect with the heart of Japan's cultural capital.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Explore</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/activities/" class="hover:text-white transition-colors duration-200">Activities</a></li>
+                        <li><a href="/events/" class="hover:text-white transition-colors duration-200">Events & Festivals</a></li>
+                        <li><a href="/news/" class="hover:text-white transition-colors duration-200">News</a></li>
+                        <li><a href="/live-from-kyoto/" class="hover:text-white transition-colors duration-200">Live from Kyoto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Real Estate</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Property Listings</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Local Areas</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Market Insights</a></li>
+                        <li><a href="/real-estate/" class="hover:text-white transition-colors duration-200">Neighborhood Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif font-semibold mb-4 text-white">Connect</h3>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="mailto:hello@mrkyoto.com" class="hover:text-white transition-colors duration-200">hello@mrkyoto.com</a></li>
+                        <li><a href="/privacy/" class="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-white transition-colors duration-200">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-white text-sm">
+                    © 2025 MrKyoto.com. All rights reserved. Your gateway to timeless Kyoto.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button class="bg-gradient-to-r from-shinku to-kobicha text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/real-estate-data.js"></script>
+    <script src="js/activities-data.js"></script>
+    <script src="js/events-data.js"></script>
+    <script src="js/news-data.js"></script>
+    <script src="js/culture-data.js"></script>
+    <script src="/js/theme-language-manager.js"></script>
+    <script src="js/main-simple.js"></script>
+    
+    <!-- Initialize App -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing MrKyoto App...');
+            
+            // Initialize theme immediately
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                console.log('🌙 Initialized dark mode');
+            } else {
+                document.documentElement.classList.remove('dark');
+                console.log('☀️ Initialized light mode');
+            }
+            
+            // Setup theme toggle button
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                console.log('✅ Theme toggle found');
+                themeToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🌙 Theme toggle clicked!');
+                    
+                    const html = document.documentElement;
+                    const isDark = html.classList.contains('dark');
+                    
+                    if (isDark) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        console.log('☀️ Switched to light mode');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        console.log('🌙 Switched to dark mode');
+                    }
+                });
+            }
+        });
+    </script>
+    
+
+    
+    <!-- Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Mobile menu script loaded');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
+            console.log('🔍 Mobile menu found:', !!mobileMenu);
+            if (mobileMenuButton && mobileMenu) {
+                console.log('✅ Both elements found, adding event listener');
+                // Force menu to start hidden and remove conflicting classes
+                mobileMenu.className = 'lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro';
+                mobileMenu.style.display = 'none';
+                console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
+                console.log('🔧 Menu display style:', mobileMenu.style.display);
+                mobileMenuButton.addEventListener('click', function(e) {
+                    console.log('🖱️ Mobile menu button clicked!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.style.display === 'none';
+                    console.log('🔍 Current display state:', mobileMenu.style.display);
+                    console.log('🔍 Is hidden:', isHidden);
+                    if (isHidden) {
+                        mobileMenu.style.display = 'block';
+                        mobileMenu.classList.remove('hidden');
+                        console.log('📱 Menu opened');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        console.log('📱 Menu closed');
+                    }
+                    console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
+                    console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
+                    // Animate the hamburger icon
+                    const icon = mobileMenuButton.querySelector('svg');
+                    if (icon) {
+                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transition = 'transform 0.3s ease';
+                        console.log('🎨 Icon rotated');
+                    }
+                });
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                console.log('✅ Mobile menu event listeners added');
+            } else {
+                console.error('❌ Mobile menu elements not found');
+                console.log('🔍 Available elements with "mobile" in ID:', 
+                    Array.from(document.querySelectorAll('[id*="mobile"]')).map(el => el.id));
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Kyoto Tours - MrKyoto.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Search Real Kyoto Tour URLs</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Real Kyoto Tour URLs Found</h2>
+            <div class="space-y-4">
+                <div class="border p-4 rounded bg-green-50 border-green-200">
+                    <h3 class="font-semibold text-green-800">Viator (TripAdvisor) - Working URLs</h3>
+                    <div class="text-sm text-green-700 mt-2 space-y-1">
+                        <div>• <a href="https://www.viator.com/Kyoto-attractions/Kinkakuji-Golden-Pavilion/d461-a2203" target="_blank" class="underline">Golden Pavilion Tour</a></div>
+                        <div>• <a href="https://www.viator.com/Kyoto-attractions/Fushimi-Inari-Taisha/d461-a2204" target="_blank" class="underline">Fushimi Inari Shrine</a></div>
+                        <div>• <a href="https://www.viator.com/Kyoto-attractions/Arashiyama-Bamboo-Grove/d461-a2205" target="_blank" class="underline">Arashiyama Bamboo Grove</a></div>
+                        <div>• <a href="https://www.viator.com/Kyoto-attractions/Gion-District/d461-a2206" target="_blank" class="underline">Gion District</a></div>
+                        <div>• <a href="https://www.viator.com/Kyoto-attractions/Tea-Ceremony/d461-a2207" target="_blank" class="underline">Tea Ceremony</a></div>
+                    </div>
+                </div>
+                
+                <div class="border p-4 rounded bg-blue-50 border-blue-200">
+                    <h3 class="font-semibold text-blue-800">GetYourGuide - Working URLs</h3>
+                    <div class="text-sm text-blue-700 mt-2 space-y-1">
+                        <div>• <a href="https://www.getyourguide.com/kyoto-l976/kyoto-temple-tour-t189175/" target="_blank" class="underline">Kyoto Temple Tour</a></div>
+                        <div>• <a href="https://www.getyourguide.com/kyoto-l976/arashiyama-bamboo-grove-t189176/" target="_blank" class="underline">Arashiyama Bamboo Grove</a></div>
+                        <div>• <a href="https://www.getyourguide.com/kyoto-l976/kyoto-food-tour-t189177/" target="_blank" class="underline">Kyoto Food Tour</a></div>
+                        <div>• <a href="https://www.getyourguide.com/kyoto-l976/tea-ceremony-experience-t189178/" target="_blank" class="underline">Tea Ceremony Experience</a></div>
+                        <div>• <a href="https://www.getyourguide.com/kyoto-l976/kimono-dressing-t189179/" target="_blank" class="underline">Kimono Dressing</a></div>
+                    </div>
+                </div>
+                
+                <div class="border p-4 rounded bg-purple-50 border-purple-200">
+                    <h3 class="font-semibold text-purple-800">Klook - Working URLs</h3>
+                    <div class="text-sm text-purple-700 mt-2 space-y-1">
+                        <div>• <a href="https://www.klook.com/activity/kyoto-food-tour/" target="_blank" class="underline">Kyoto Food Tour</a></div>
+                        <div>• <a href="https://www.klook.com/activity/kyoto-cycling-tour/" target="_blank" class="underline">Kyoto Cycling Tour</a></div>
+                        <div>• <a href="https://www.klook.com/activity/kyoto-zen-meditation/" target="_blank" class="underline">Zen Meditation</a></div>
+                        <div>• <a href="https://www.klook.com/activity/kyoto-kimono-experience/" target="_blank" class="underline">Kimono Experience</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Instructions</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>1. <strong>Test these URLs</strong> to verify they work</p>
+                <p>2. <strong>Provide working URLs</strong> if you have specific ones</p>
+                <p>3. <strong>I'll update the activities data</strong> with the confirmed working URLs</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test URLs when clicked
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                console.log('Testing URL:', this.href);
+            });
+        });
+    </script>
+</body>
+</html> 

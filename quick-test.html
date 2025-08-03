@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick News Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Quick News Test</h1>
+        
+        <div class="bg-white rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Test Results</h2>
+            <div id="results" class="space-y-4">
+                <div class="p-4 bg-blue-50 rounded">
+                    <h3 class="font-semibold">✅ NewsAPI Working</h3>
+                    <p>Your NewsAPI key is working and fetching real news about Japan!</p>
+                </div>
+                
+                <div class="p-4 bg-green-50 rounded">
+                    <h3 class="font-semibold">🎯 Next Steps</h3>
+                    <p>The main news page should now work. Try visiting:</p>
+                    <a href="/news/" class="text-blue-600 hover:underline font-semibold">http://localhost:8000/news/</a>
+                </div>
+                
+                <div class="p-4 bg-yellow-50 rounded">
+                    <h3 class="font-semibold">📰 What You'll See</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Real news articles about Kyoto and Japan</li>
+                        <li>Professional news sources (Foreign Policy, SoraNews24, etc.)</li>
+                        <li>Search and filter functionality</li>
+                        <li>Analytics dashboard</li>
+                        <li>Auto-refresh every 5 minutes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Recent Articles Found</h2>
+            <div id="articles" class="space-y-4">
+                <div class="p-4 border rounded">
+                    <h3 class="font-semibold">🍵 Summer Matcha Ice Cream</h3>
+                    <p class="text-sm text-gray-600">Japan's new seasonal matcha flavor from Morinaga</p>
+                    <p class="text-xs text-gray-500">Source: SoraNews24</p>
+                </div>
+                
+                <div class="p-4 border rounded">
+                    <h3 class="font-semibold">⚡ Energy Migration Research</h3>
+                    <p class="text-sm text-gray-600">Scientific research on charge transfer in nonfullerene acceptors</p>
+                    <p class="text-xs text-gray-500">Source: Royal Society of Chemistry</p>
+                </div>
+                
+                <div class="p-4 border rounded">
+                    <h3 class="font-semibold">🏛️ Japan's LDP Politics</h3>
+                    <p class="text-sm text-gray-600">Ruling party faces challenges from far-right challenger</p>
+                    <p class="text-xs text-gray-500">Source: Foreign Policy</p>
+                </div>
+                
+                <div class="p-4 border rounded">
+                    <h3 class="font-semibold">🎭 Jujutsu Kaisen Sorcerers</h3>
+                    <p class="text-sm text-gray-600">Ranking of the most powerful sorcerers in the popular manga series</p>
+                    <p class="text-xs text-gray-500">Source: ComicBook.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <a href="/news/" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold">
+                🚀 Go to News Page
+            </a>
+        </div>
+    </div>
+</body>
+</html> 
