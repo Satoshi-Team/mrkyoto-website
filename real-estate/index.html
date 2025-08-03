@@ -336,7 +336,7 @@
             gap: 1rem;
             padding: 1rem;
             border-radius: 0.75rem;
-            color: #FEFEFE;
+            color: #FEFEFE !important;
             text-decoration: none;
             transition: all 0.3s ease;
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(180, 83, 9, 0.05));
@@ -346,7 +346,7 @@
 
         .mobile-nav-link-golden:hover {
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(180, 83, 9, 0.1));
-            color: #F59E0B;
+            color: #F59E0B !important;
             transform: translateX(4px);
             border-color: rgba(180, 83, 9, 0.4);
             box-shadow: 0 4px 12px rgba(180, 83, 9, 0.2);
@@ -355,18 +355,22 @@
         .mobile-nav-link-golden .mobile-nav-text {
             flex: 1;
             font-weight: 600;
-            color: inherit;
+            color: #FEFEFE !important;
+        }
+
+        .mobile-nav-link-golden:hover .mobile-nav-text {
+            color: #F59E0B !important;
         }
 
         .mobile-nav-link-golden .mobile-nav-arrow {
-            color: #F59E0B;
+            color: #F59E0B !important;
             font-weight: 700;
             transition: transform 0.3s ease;
         }
 
         .mobile-nav-link-golden:hover .mobile-nav-arrow {
             transform: translateX(6px);
-            color: #FCD34D;
+            color: #FCD34D !important;
         }
 
         /* Golden Contact Link */
@@ -377,7 +381,7 @@
             padding: 1rem;
             border-radius: 0.75rem;
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.15), rgba(180, 83, 9, 0.05));
-            color: #FEFEFE;
+            color: #FEFEFE !important;
             text-decoration: none;
             transition: all 0.3s ease;
             border: 1px solid rgba(180, 83, 9, 0.3);
@@ -386,7 +390,7 @@
 
         .contact-link-golden:hover {
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.25), rgba(180, 83, 9, 0.1));
-            color: #F59E0B;
+            color: #F59E0B !important;
             transform: translateX(4px);
             border-color: rgba(180, 83, 9, 0.5);
             box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
@@ -395,18 +399,76 @@
         .contact-link-golden .contact-text {
             flex: 1;
             font-weight: 600;
-            color: inherit;
+            color: #FEFEFE !important;
+        }
+
+        .contact-link-golden:hover .contact-text {
+            color: #F59E0B !important;
         }
 
         .contact-link-golden .contact-arrow {
-            color: #F59E0B;
+            color: #F59E0B !important;
             font-weight: 700;
             transition: transform 0.3s ease;
         }
 
         .contact-link-golden:hover .contact-arrow {
             transform: translateX(6px);
-            color: #FCD34D;
+            color: #FCD34D !important;
+        }
+
+        /* Dark mode overrides to ensure visibility */
+        html.dark .mobile-nav-link-golden {
+            color: #FEFEFE !important;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(180, 83, 9, 0.1));
+        }
+
+        html.dark .mobile-nav-link-golden .mobile-nav-text {
+            color: #FEFEFE !important;
+        }
+
+        html.dark .mobile-nav-link-golden .mobile-nav-arrow {
+            color: #F59E0B !important;
+        }
+
+        html.dark .contact-link-golden {
+            color: #FEFEFE !important;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.25), rgba(180, 83, 9, 0.1));
+        }
+
+        html.dark .contact-link-golden .contact-text {
+            color: #FEFEFE !important;
+        }
+
+        html.dark .contact-link-golden .contact-arrow {
+            color: #F59E0B !important;
+        }
+
+        /* Light mode overrides to ensure proper colors */
+        html:not(.dark) .mobile-nav-link-golden {
+            color: #0F0F0F !important;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(180, 83, 9, 0.05));
+        }
+
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #0F0F0F !important;
+        }
+
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-arrow {
+            color: #B45309 !important;
+        }
+
+        html:not(.dark) .contact-link-golden {
+            color: #0F0F0F !important;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.15), rgba(180, 83, 9, 0.05));
+        }
+
+        html:not(.dark) .contact-link-golden .contact-text {
+            color: #0F0F0F !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-arrow {
+            color: #B45309 !important;
         }
     </style>
 </head>
