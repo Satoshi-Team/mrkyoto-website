@@ -507,24 +507,12 @@ class ThemeLanguageManager {
         });
         
         // Update specific elements
-        this.updateHeaderTheme();
         this.updateFooterTheme();
         this.updateNavigationTheme();
         this.updatePropertyCardsTheme();
     }
 
-    updateHeaderTheme() {
-        const header = document.getElementById('header');
-        if (header) {
-            if (this.currentTheme === 'dark') {
-                header.style.backgroundColor = 'rgba(15, 15, 15, 0.95)';
-                header.style.color = '#F9FAFB';
-            } else {
-                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                header.style.color = '#0A0A0A';
-            }
-        }
-    }
+
 
     updateFooterTheme() {
         const footer = document.querySelector('footer');
