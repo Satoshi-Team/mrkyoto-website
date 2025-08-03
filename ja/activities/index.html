@@ -641,7 +641,7 @@
             gap: 1rem;
             padding: 1rem;
             border-radius: 0.75rem;
-            color: #FEFEFE;
+            color: #FEFEFE !important;
             text-decoration: none;
             transition: all 0.3s ease;
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(180, 83, 9, 0.05));
@@ -651,7 +651,7 @@
 
         .mobile-nav-link-golden:hover {
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(180, 83, 9, 0.1));
-            color: #F59E0B;
+            color: #F59E0B !important;
             transform: translateX(4px);
             border-color: rgba(180, 83, 9, 0.4);
             box-shadow: 0 4px 12px rgba(180, 83, 9, 0.2);
@@ -660,18 +660,22 @@
         .mobile-nav-link-golden .mobile-nav-text {
             flex: 1;
             font-weight: 600;
-            color: inherit;
+            color: #FEFEFE !important;
+        }
+
+        .mobile-nav-link-golden:hover .mobile-nav-text {
+            color: #F59E0B !important;
         }
 
         .mobile-nav-link-golden .mobile-nav-arrow {
-            color: #F59E0B;
+            color: #F59E0B !important;
             font-weight: 700;
             transition: transform 0.3s ease;
         }
 
         .mobile-nav-link-golden:hover .mobile-nav-arrow {
             transform: translateX(6px);
-            color: #FCD34D;
+            color: #FCD34D !important;
         }
 
         /* Golden Contact Link */
@@ -682,7 +686,7 @@
             padding: 1rem;
             border-radius: 0.75rem;
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.15), rgba(180, 83, 9, 0.05));
-            color: #FEFEFE;
+            color: #FEFEFE !important;
             text-decoration: none;
             transition: all 0.3s ease;
             border: 1px solid rgba(180, 83, 9, 0.3);
@@ -691,7 +695,7 @@
 
         .contact-link-golden:hover {
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.25), rgba(180, 83, 9, 0.1));
-            color: #F59E0B;
+            color: #F59E0B !important;
             transform: translateX(4px);
             border-color: rgba(180, 83, 9, 0.5);
             box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
@@ -700,18 +704,49 @@
         .contact-link-golden .contact-text {
             flex: 1;
             font-weight: 600;
-            color: inherit;
+            color: #FEFEFE !important;
+        }
+
+        .contact-link-golden:hover .contact-text {
+            color: #F59E0B !important;
         }
 
         .contact-link-golden .contact-arrow {
-            color: #F59E0B;
+            color: #F59E0B !important;
             font-weight: 700;
             transition: transform 0.3s ease;
         }
 
         .contact-link-golden:hover .contact-arrow {
             transform: translateX(6px);
-            color: #FCD34D;
+            color: #FCD34D !important;
+        }
+
+        /* Dark mode overrides to ensure visibility */
+        html.dark .mobile-nav-link-golden {
+            color: #FEFEFE !important;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(180, 83, 9, 0.1));
+        }
+
+        html.dark .mobile-nav-link-golden .mobile-nav-text {
+            color: #FEFEFE !important;
+        }
+
+        html.dark .mobile-nav-link-golden .mobile-nav-arrow {
+            color: #F59E0B !important;
+        }
+
+        html.dark .contact-link-golden {
+            color: #FEFEFE !important;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.25), rgba(180, 83, 9, 0.1));
+        }
+
+        html.dark .contact-link-golden .contact-text {
+            color: #FEFEFE !important;
+        }
+
+        html.dark .contact-link-golden .contact-arrow {
+            color: #F59E0B !important;
         }
         
         /* Ensure proper text colors in light mode */
@@ -1058,40 +1093,40 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30">
             <div class="px-4 py-6 space-y-4">
-                <!-- Mobile navigation -->
-                <nav class="space-y-2">
-                    <a href="/ja/" class="mobile-nav-link">
-                        <span class="mobile-nav-text" data-translate="nav.home">ホーム</span>
-                        <span class="mobile-nav-arrow">→</span>
-                    </a>
-                    <a href="/ja/activities/" class="mobile-nav-link">
-                        <span class="mobile-nav-text" data-translate="nav.activities">アクティビティ</span>
-                        <span class="mobile-nav-arrow">→</span>
-                    </a>
-                    <a href="/ja/real-estate/" class="mobile-nav-link">
-                        <span class="mobile-nav-text" data-translate="nav.realEstate">不動産</span>
-                        <span class="mobile-nav-arrow">→</span>
-                    </a>
-                    <a href="/ja/events/" class="mobile-nav-link">
-                        <span class="mobile-nav-text" data-translate="nav.events">イベント</span>
-                        <span class="mobile-nav-arrow">→</span>
-                    </a>
-                    <a href="/ja/news/" class="mobile-nav-link">
-                        <span class="mobile-nav-text" data-translate="nav.news">ニュース</span>
-                        <span class="mobile-nav-arrow">→</span>
-                    </a>
-                    <a href="/ja/live-from-kyoto/" class="mobile-nav-link">
-                        <span class="mobile-nav-text" data-translate="nav.liveFromKyoto">京都ライブ</span>
-                        <span class="mobile-nav-arrow">→</span>
-                    </a>
-                </nav>
-                
-                <!-- Contact link -->
-                <a href="mailto:hello@mrkyoto.com" class="contact-link">
-                    <span class="contact-icon">✉️</span>
-                    <span class="contact-text">お問い合わせ</span>
-                    <span class="contact-arrow">→</span>
-                </a>
+                                  <!-- Mobile navigation -->
+                  <nav class="space-y-2">
+                      <a href="/ja/" class="mobile-nav-link-golden">
+                          <span class="mobile-nav-text" data-translate="nav.home">ホーム</span>
+                          <span class="mobile-nav-arrow">→</span>
+                      </a>
+                      <a href="/ja/activities/" class="mobile-nav-link-golden">
+                          <span class="mobile-nav-text" data-translate="nav.activities">アクティビティ</span>
+                          <span class="mobile-nav-arrow">→</span>
+                      </a>
+                      <a href="/ja/real-estate/" class="mobile-nav-link-golden">
+                          <span class="mobile-nav-text" data-translate="nav.realEstate">不動産</span>
+                          <span class="mobile-nav-arrow">→</span>
+                      </a>
+                      <a href="/ja/events/" class="mobile-nav-link-golden">
+                          <span class="mobile-nav-text" data-translate="nav.events">イベント</span>
+                          <span class="mobile-nav-arrow">→</span>
+                      </a>
+                      <a href="/ja/news/" class="mobile-nav-link-golden">
+                          <span class="mobile-nav-text" data-translate="nav.news">ニュース</span>
+                          <span class="mobile-nav-arrow">→</span>
+                      </a>
+                      <a href="/ja/live-from-kyoto/" class="mobile-nav-link-golden">
+                          <span class="mobile-nav-text" data-translate="nav.liveFromKyoto">京都ライブ</span>
+                          <span class="mobile-nav-arrow">→</span>
+                      </a>
+                  </nav>
+                  
+                  <!-- Contact link -->
+                  <a href="mailto:hello@mrkyoto.com" class="contact-link-golden">
+                      <span class="contact-icon">✉️</span>
+                      <span class="contact-text">お問い合わせ</span>
+                      <span class="contact-arrow">→</span>
+                  </a>
             </div>
         </div>
     </header>
@@ -1941,6 +1976,119 @@
                     console.error('❌ LiveKyotoWidget class not found');
                 }
             }, 1000);
+        });
+    </script>
+
+    <!-- Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Mobile menu script loaded');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+            
+            console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
+            console.log('🔍 Mobile menu found:', !!mobileMenu);
+            console.log('🔍 Mobile theme toggle found:', !!mobileThemeToggle);
+            console.log('🔍 Mobile language toggle found:', !!mobileLanguageToggle);
+            
+            if (mobileMenuButton && mobileMenu) {
+                console.log('✅ Both elements found, adding event listener');
+                // Force menu to start hidden with new styling
+                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
+                mobileMenu.style.display = 'none';
+                console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
+                console.log('🔧 Menu display style:', mobileMenu.style.display);
+                
+                mobileMenuButton.addEventListener('click', function(e) {
+                    console.log('🖱️ Mobile menu button clicked!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.style.display === 'none';
+                    console.log('🔍 Current display state:', mobileMenu.style.display);
+                    console.log('🔍 Is hidden:', isHidden);
+                    if (isHidden) {
+                        mobileMenu.style.display = 'block';
+                        mobileMenu.classList.remove('hidden');
+                        console.log('📱 Menu opened');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        console.log('📱 Menu closed');
+                    }
+                    console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
+                    console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
+                    // Animate the hamburger icon
+                    const icon = mobileMenuButton.querySelector('svg');
+                    if (icon) {
+                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transition = 'transform 0.3s ease';
+                        console.log('🎨 Icon rotated');
+                    }
+                });
+                
+                // Setup mobile theme toggle
+                if (mobileThemeToggle) {
+                    mobileThemeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('🌙 Mobile theme toggle clicked!');
+                        
+                        const html = document.documentElement;
+                        const isDark = html.classList.contains('dark');
+                        
+                        if (isDark) {
+                            html.classList.remove('dark');
+                            localStorage.setItem('theme', 'light');
+                            console.log('☀️ Switched to light mode');
+                        } else {
+                            html.classList.add('dark');
+                            localStorage.setItem('theme', 'dark');
+                            console.log('🌙 Switched to dark mode');
+                        }
+                    });
+                }
+                
+                // Setup mobile language toggle
+                if (mobileLanguageToggle) {
+                    mobileLanguageToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('🌍 Mobile language toggle clicked!');
+                        
+                        // Use the same language switching logic as the desktop version
+                        const currentPath = window.location.pathname;
+                        let newPath;
+                        
+                        if (currentPath.startsWith('/ja/')) {
+                            // Currently on Japanese page, switch to English
+                            newPath = currentPath.replace('/ja/', '/');
+                        } else {
+                            // Currently on English page, switch to Japanese
+                            newPath = currentPath.replace(/^\//, '/ja/');
+                        }
+                        
+                        console.log('🔄 Switching from', currentPath, 'to', newPath);
+                        window.location.href = newPath;
+                    });
+                }
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                console.log('✅ Mobile menu event listeners added');
+            } else {
+                console.error('❌ Mobile menu elements not found');
+                console.log('🔍 Available elements with "mobile" in ID:', 
+                    Array.from(document.querySelectorAll('[id*="mobile"]')).map(el => el.id));
+            }
         });
     </script>
 </body>
