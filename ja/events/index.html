@@ -2051,7 +2051,76 @@
 
     <!-- Theme and Language Toggle Fix -->
     <script>
-
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Fixing theme and language toggles for Japanese events page...');
+            
+            // Ensure theme-language-manager is working
+            setTimeout(() => {
+                if (window.themeLanguageManager) {
+                    console.log('✅ ThemeLanguageManager found, ensuring toggles work...');
+                    
+                    // Force theme toggle to work
+                    const themeToggle = document.getElementById('theme-toggle');
+                    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+                    
+                    if (themeToggle) {
+                        console.log('✅ Desktop theme toggle found');
+                        themeToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('🌙 Desktop theme toggle clicked!');
+                            if (window.themeLanguageManager) {
+                                window.themeLanguageManager.toggleTheme();
+                            }
+                        });
+                    }
+                    
+                    if (mobileThemeToggle) {
+                        console.log('✅ Mobile theme toggle found');
+                        mobileThemeToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('🌙 Mobile theme toggle clicked!');
+                            if (window.themeLanguageManager) {
+                                window.themeLanguageManager.toggleTheme();
+                            }
+                        });
+                    }
+                    
+                    // Force language toggle to work
+                    const languageToggle = document.getElementById('language-toggle');
+                    const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+                    
+                    if (languageToggle) {
+                        console.log('✅ Desktop language toggle found');
+                        languageToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('🌍 Desktop language toggle clicked!');
+                            if (window.themeLanguageManager) {
+                                window.themeLanguageManager.changeLanguage('en');
+                            }
+                        });
+                    }
+                    
+                    if (mobileLanguageToggle) {
+                        console.log('✅ Mobile language toggle found');
+                        mobileLanguageToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('🌍 Mobile language toggle clicked!');
+                            if (window.themeLanguageManager) {
+                                window.themeLanguageManager.changeLanguage('en');
+                            }
+                        });
+                    }
+                    
+                    console.log('✅ All toggles configured for Japanese events page');
+                } else {
+                    console.error('❌ ThemeLanguageManager not found');
+                }
+            }, 1000);
+        });
     </script>
 
     <!-- Mobile Menu Functionality -->
