@@ -1756,6 +1756,20 @@
     <script src="/js/theme-language-manager.js"></script>
     <script src="/js/translation-manager.js"></script>
     
+    <!-- Force English language for English page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force English language for English activities page
+            if (window.translationManager) {
+                window.translationManager.currentLanguage = 'en';
+                window.translationManager.applyTranslations();
+            }
+            if (window.themeLanguageManager) {
+                window.themeLanguageManager.currentLanguage = 'en';
+            }
+        });
+    </script>
+    
     <!-- Shared Components -->
     <script src="/js/shared-navigation.js"></script>
     <script src="/js/shared-footer.js"></script>
