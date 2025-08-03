@@ -1161,79 +1161,16 @@
         <!-- ACTIVITIES GRID -->
         <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun mb-6" data-translate="activities.section.availableActivities">利用可能なアクティビティ</h2>
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun mb-6" data-translate="activities.section.availableActivities">Available Activities</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6" id="activities-grid">
                     <!-- Activity cards will be dynamically populated here by JS -->
                     <div class="text-center py-8 col-span-full" id="loading-message">
                         <div class="text-4xl mb-4">⏳</div>
-                        <h3 class="font-serif text-xl font-semibold text-sumi dark:text-white mb-2">アクティビティを読み込み中...</h3>
-                        <p class="text-sumi/70 dark:text-gray-300">最新のアクティビティを読み込むまでお待ちください。</p>
+                        <h3 class="font-serif text-xl font-semibold text-sumi dark:text-white mb-2">Loading Activities...</h3>
+                        <p class="text-sumi/70 dark:text-gray-300">Please wait while we load the latest activities.</p>
                     </div>
                     
-                    <!-- Fallback Activity Cards (will be replaced by JS) -->
-                    <div class="zen-card">
-                        <img src="https://images.unsplash.com/photo-1695686101263-e13359e45d4d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="金閣寺ツアー" class="property-image rounded-t-xl">
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">金閣寺ツアー</h3>
-                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">金箔で覆われた象徴的な金閣寺（金閣）を訪れ、美しい庭園と反射池に囲まれたユネスコ世界遺産を体験してください。</p>
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-lg font-bold text-shinku">¥8,500</span>
-                                <span class="text-sm text-sumi/60">3時間</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
-                                <a href="tel:+81-75-354-8708" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="zen-card">
-                        <img src="https://images.unsplash.com/photo-1682336276985-38ac477bb876?q=80&w=3262&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="伏見稲荷大社" class="property-image rounded-t-xl">
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">伏見稲荷大社</h3>
-                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">伏見稲荷大社の有名な赤い鳥居を探索し、山道をハイキングして神道の伝統について学びましょう。</p>
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-lg font-bold text-shinku">¥6,800</span>
-                                <span class="text-sm text-sumi/60">4時間</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
-                                <a href="tel:+81-75-611-0123" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="zen-card">
-                        <img src="https://images.unsplash.com/photo-1632923754832-60642c12a7ed?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="嵐山竹林" class="property-image rounded-t-xl">
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">嵐山竹林</h3>
-                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">嵐山の魅惑的な竹林を歩き、天龍寺を訪れ、この歴史的な地域の平和な雰囲気を体験しましょう。</p>
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-lg font-bold text-shinku">¥7,200</span>
-                                <span class="text-sm text-sumi/60">3.5時間</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
-                                <a href="tel:+81-75-861-0012" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="zen-card">
-                        <img src="https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="祇園地区" class="property-image rounded-t-xl">
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">祇園地区</h3>
-                            <p class="text-sm text-sumi/80 dark:text-gofun/80 mb-2">祇園の歴史的な芸者地区を発見し、伝統的な通りを歩き、京都の伝統的なエンターテイメント文化について学びましょう。</p>
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-lg font-bold text-shinku">¥6,500</span>
-                                <span class="text-sm text-sumi/60">2.5時間</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="#" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">詳細を見る</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">お問い合わせ</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Activity cards will be dynamically populated by JavaScript -->
                 </div>
             </div>
         </section>
@@ -1250,44 +1187,134 @@
                                 <span class="text-white text-lg">🎥</span>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-sumi dark:text-white" data-translate="liveKyoto.title">京都ライブ</h3>
-                                <p class="text-sm text-sumi/60 dark:text-gray-400" data-translate="liveKyoto.subtitle">リアルタイムカメラ、天気、ソーシャル更新</p>
+                                <h3 class="text-xl font-bold text-sumi dark:text-white" data-translate="Live from Kyoto">Live from Kyoto</h3>
+                                <p class="text-sm text-sumi/60 dark:text-gray-400" data-translate="Real-time cameras, weather & social updates">Real-time cameras, weather & social updates</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Live Content Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Live Weather -->
-                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-sumi/10 dark:border-gray-600/10">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-2xl">🌤️</span>
-                                <h4 class="font-semibold text-sumi dark:text-white" data-translate="liveKyoto.weather.title">京都の天気</h4>
-                            </div>
-                            <div id="kyoto-weather" class="text-sm text-sumi/80 dark:text-gray-300">
-                                <p data-translate="liveKyoto.weather.loading">天気情報を読み込み中...</p>
+                    <!-- Main Content Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Live Camera Section -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-black rounded-lg overflow-hidden shadow-lg">
+                                <!-- Camera Controls -->
+                                <div class="bg-sumi/90 text-white p-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <button id="camera-prev" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="text-center">
+                                            <h4 id="camera-title" class="font-semibold">Kyoto Station Bus Terminal</h4>
+                                            <p id="camera-description" class="text-sm text-gray-300">Live view of Kyoto Station bus terminal and surrounding area</p>
+                                        </div>
+                                        <button id="camera-next" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span id="camera-counter" class="text-sm bg-white/20 px-2 py-1 rounded">1 / 4</span>
+                                        <button class="p-2 hover:bg-white/20 rounded-lg transition-colors" title="Fullscreen">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Camera Embed -->
+                                <div id="camera-embed" class="aspect-video bg-gray-900">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/v9rQqa_VTEY?autoplay=1&mute=1" 
+                                        class="w-full h-full"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Live Camera -->
-                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-sumi/10 dark:border-gray-600/10">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-2xl">📹</span>
-                                <h4 class="font-semibold text-sumi dark:text-white" data-translate="liveKyoto.camera.title">ライブカメラ</h4>
-                            </div>
-                            <div id="kyoto-camera" class="text-sm text-sumi/80 dark:text-gray-300">
-                                <p data-translate="liveKyoto.camera.loading">カメラフィードを読み込み中...</p>
-                            </div>
-                        </div>
-
-                        <!-- Social Updates -->
-                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 border border-sumi/10 dark:border-gray-600/10">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-2xl">📱</span>
-                                <h4 class="font-semibold text-sumi dark:text-white" data-translate="liveKyoto.social.title">ソーシャル更新</h4>
-                            </div>
-                            <div id="kyoto-social" class="text-sm text-sumi/80 dark:text-gray-300">
-                                <p data-translate="liveKyoto.social.loading">ソーシャル更新を読み込み中...</p>
+                        <!-- Weather & Social Sidebar -->
+                        <div class="space-y-6">
+                            <!-- Enhanced Weather Widget -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700/30 shadow-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-semibold text-sumi dark:text-white flex items-center gap-2">
+                                        <span class="text-2xl">🌤️</span>
+                                        <span data-translate="liveKyoto.weather.title">Kyoto Weather</span>
+                                    </h4>
+                                </div>
+                                <div id="kyoto-weather-widget" class="space-y-4">
+                                    <!-- Current Weather -->
+                                    <div class="text-center">
+                                        <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="weather-temperature">
+                                            --°C
+                                        </div>
+                                        <div class="text-6xl mb-3" id="weather-icon">
+                                            🌤️
+                                        </div>
+                                        <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-2" id="weather-description">
+                                            <span data-translate="liveKyoto.weather.loading">Loading weather...</span>
+                                        </div>
+                                        <div class="text-xs text-sumi/60 dark:text-gofun/60" id="weather-feels-like">
+                                            <span data-translate="liveKyoto.weather.feelsLike">Feels like</span> --°C
+                                        </div>
+                                    </div>
+                                    <!-- Weather Details Grid -->
+                                    <div class="grid grid-cols-2 gap-3 text-xs">
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💨</span>
+                                                <span data-translate="liveKyoto.weather.wind">Wind</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-wind">-- km/h</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💧</span>
+                                                <span data-translate="liveKyoto.weather.humidity">Humidity</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-humidity">--%</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">👁️</span>
+                                                <span data-translate="liveKyoto.weather.visibility">Visibility</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-visibility">-- km</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">🌡️</span>
+                                                <span data-translate="liveKyoto.weather.pressure">Pressure</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-pressure">-- hPa</span>
+                                        </div>
+                                    </div>
+                                    <!-- Sunrise/Sunset -->
+                                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg border border-yellow-400/30">
+                                        <div class="flex items-center">
+                                            <span class="text-xl mr-2">🌅</span>
+                                            <div>
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60" data-translate="liveKyoto.weather.sunrise">Sunrise</div>
+                                                <div class="font-semibold text-sm" id="weather-sunrise">--:--</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="text-right">
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60" data-translate="liveKyoto.weather.sunset">Sunset</div>
+                                                <div class="font-semibold text-sm" id="weather-sunset">--:--</div>
+                                            </div>
+                                            <span class="text-xl ml-2">🌇</span>
+                                        </div>
+                                    </div>
+                                    <!-- Last Updated -->
+                                    <div class="text-center text-xs text-sumi/50 dark:text-gofun/50">
+                                        <span data-translate="liveKyoto.weather.lastUpdated">Time in Kyoto</span>: <span id="weather-last-updated">--:--</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1519,14 +1546,14 @@
             // Simulate weather data for Kyoto
             const weatherData = {
                 temperature: '22°C',
-                description: '晴れ',
+                description: 'sunny',
                 humidity: '65',
                 windSpeed: '8',
                 pressure: '1013',
                 visibility: '10',
                 sunrise: '05:30',
                 sunset: '18:45',
-                lastUpdated: '2026年1月15日 14:30'
+                lastUpdated: 'January 15, 2026 14:30'
             };
             
             updateWeatherDisplay(weatherData);
@@ -1544,13 +1571,13 @@
                         <span class="text-sm">${data.description}</span>
                     </div>
                     <div class="text-xs space-y-1">
-                        <div>湿度: ${data.humidity}%</div>
-                        <div>風速: ${data.windSpeed} km/h</div>
-                        <div>気圧: ${data.pressure} hPa</div>
-                        <div>視界: ${data.visibility} km</div>
-                        <div>日の出: ${data.sunrise}</div>
-                        <div>日の入り: ${data.sunset}</div>
-                        <div class="text-xs opacity-70">最終更新: ${data.lastUpdated}</div>
+                        <div>Humidity: ${data.humidity}%</div>
+                        <div>Wind speed: ${data.windSpeed} km/h</div>
+                        <div>Pressure: ${data.pressure} hPa</div>
+                        <div>Visibility: ${data.visibility} km</div>
+                        <div>Sunrise: ${data.sunrise}</div>
+                        <div>Sunset: ${data.sunset}</div>
+                        <div class="text-xs opacity-70">Last updated: ${data.lastUpdated}</div>
                     </div>
                 `;
             }
@@ -1573,22 +1600,19 @@
         });
     </script>
     
-    <!-- Force Japanese Language for Japanese Page -->
+    <!-- Initialize Activities Manager -->
     <script>
-        // Force Japanese language for this page
+        // Initialize activities manager when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🇯🇵 Setting Japanese language for Japanese activities page...');
+            console.log('🎭 Initializing activities manager...');
             
-            // Set language to Japanese
-            localStorage.setItem('mrkyoto-language', 'ja');
-            
-            // Force translation manager to use Japanese
-            if (window.translationManager) {
-                window.translationManager.setLanguage('ja');
-                console.log('✅ Translation manager set to Japanese');
+            // Initialize activities manager
+            if (typeof ActivitiesManager !== 'undefined') {
+                window.activitiesManager = new ActivitiesManager();
+                console.log('✅ Activities manager initialized');
             } else {
-                console.log('⏳ Translation manager not ready yet, will set later...');
-                // Wait for translation manager to load
+                console.log('⏳ Activities manager not ready yet, will initialize later...');
+                // Wait for activities manager to load
                 setTimeout(() => {
                     if (window.translationManager) {
                         window.translationManager.setLanguage('ja');
