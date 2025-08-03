@@ -702,6 +702,51 @@
                         console.log('🎨 Icon rotated');
                     }
                 });
+                
+                // Setup mobile theme toggle
+                if (mobileThemeToggle) {
+                    mobileThemeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('🌙 Mobile theme toggle clicked!');
+                        
+                        const html = document.documentElement;
+                        const isDark = html.classList.contains('dark');
+                        
+                        if (isDark) {
+                            html.classList.remove('dark');
+                            localStorage.setItem('theme', 'light');
+                            console.log('☀️ Switched to light mode');
+                        } else {
+                            html.classList.add('dark');
+                            localStorage.setItem('theme', 'dark');
+                            console.log('🌙 Switched to dark mode');
+                        }
+                    });
+                }
+                
+                // Setup mobile language toggle
+                if (mobileLanguageToggle) {
+                    mobileLanguageToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('🌍 Mobile language toggle clicked!');
+                        
+                        // Use the same language switching logic as the desktop version
+                        const currentPath = window.location.pathname;
+                        let newPath;
+                        
+                        if (currentPath.startsWith('/ja/')) {
+                            // Currently on Japanese page, switch to English
+                            newPath = currentPath.replace('/ja/', '/');
+                        } else {
+                            // Currently on English page, switch to Japanese
+                            newPath = currentPath.replace(/^\//, '/ja/');
+                        }
+                        
+                        console.log('🔄 Switching from', currentPath, 'to', newPath);
+                        window.location.href = newPath;
+                    });
+                }
+                
                 // Close mobile menu when clicking outside
                 document.addEventListener('click', function(event) {
                     if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
