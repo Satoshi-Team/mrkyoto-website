@@ -125,23 +125,23 @@
     Cache-Control = "no-cache"
 
 # Functions (if needed in the future)
-[functions]
-  directory = "functions"
+# [functions]
+#   directory = "functions"
 
 # Edge functions (if needed in the future)
-[edge_functions]
-  directory = "edge-functions"
+# [edge_functions]
+#   directory = "edge-functions"
 
-# Form handling
-[forms]
-  [forms.contact]
-    name = "Contact Form"
-    action = "/thank-you"
-    method = "POST"
-    [forms.contact.fields]
-      name = { required = true }
-      email = { required = true }
-      message = { required = true }
+# Form handling (if needed in the future)
+# [forms]
+#   [forms.contact]
+#     name = "Contact Form"
+#     action = "/thank-you"
+#     method = "POST"
+#     [forms.contact.fields]
+#       name = { required = true }
+#       email = { required = true }
+#       message = { required = true }
 
 # Environment variables (for production)
 [context.production.environment]
