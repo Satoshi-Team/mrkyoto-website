@@ -25,7 +25,7 @@
   ],
   "author": "MrKyoto.com",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "fs-extra": "^11.1.1",
     "glob": "^10.3.10",
     "minify": "^9.1.0"
