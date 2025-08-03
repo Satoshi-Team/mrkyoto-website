@@ -391,23 +391,63 @@
                     </button>
                 </div>
                 
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="lg:hidden action-button">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <!-- Mobile actions -->
+                <div class="lg:hidden flex items-center space-x-2">
+                    <!-- Language toggle -->
+                    <button id="mobile-language-toggle" class="action-button" data-tooltip="Language">
+                        <span class="text-sm font-medium">🇬🇧</span>
+                    </button>
+                    
+                    <!-- Dark mode toggle -->
+                    <button id="mobile-theme-toggle" class="action-button" data-tooltip="Theme Toggle">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="action-button">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
             
             <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-sumi dark:text-gofun hover:text-shinku dark:hover:text-kurenai">Home</a>
-                    <a href="/activities/" class="block px-3 py-2 rounded-md text-base font-medium text-sumi dark:text-gofun hover:text-shinku dark:hover:text-kurenai">Activities</a>
-                    <a href="/real-estate/" class="block px-3 py-2 rounded-md text-base font-medium text-sumi dark:text-gofun hover:text-shinku dark:hover:text-kurenai">Real Estate</a>
-                    <a href="/events/" class="block px-3 py-2 rounded-md text-base font-medium text-sumi dark:text-gofun hover:text-shinku dark:hover:text-kurenai">Events</a>
-                    <a href="/news/" class="block px-3 py-2 rounded-md text-base font-medium text-sumi dark:text-gofun hover:text-shinku dark:hover:text-kurenai">News</a>
-                    <a href="/live-from-kyoto/" class="block px-3 py-2 rounded-md text-base font-medium text-sumi dark:text-gofun hover:text-shinku dark:hover:text-kurenai">Live from Kyoto</a>
+            <div id="mobile-menu" class="lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30">
+                <div class="px-4 py-6 space-y-3">
+                    <a href="/" class="mobile-nav-link-golden">
+                        <span class="mobile-nav-text">Home</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/activities/" class="mobile-nav-link-golden">
+                        <span class="mobile-nav-text">Activities</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/real-estate/" class="mobile-nav-link-golden">
+                        <span class="mobile-nav-text">Real Estate</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/events/" class="mobile-nav-link-golden">
+                        <span class="mobile-nav-text">Events</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/news/" class="mobile-nav-link-golden">
+                        <span class="mobile-nav-text">News</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    <a href="/live-from-kyoto/" class="mobile-nav-link-golden">
+                        <span class="mobile-nav-text">Live from Kyoto</span>
+                        <span class="mobile-nav-arrow">→</span>
+                    </a>
+                    
+                    <!-- Contact link -->
+                    <a href="mailto:hello@mrkyoto.com" class="contact-link-golden">
+                        <span class="contact-icon">✉️</span>
+                        <span class="contact-text">Contact Us</span>
+                        <span class="contact-arrow">→</span>
+                    </a>
                 </div>
             </div>
         </div>
