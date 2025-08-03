@@ -768,6 +768,32 @@
             color: #FFFFFF !important;
         }
 
+        /* ULTIMATE OVERRIDE - Force white text in light mode */
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        /* Override hover states in light mode */
+        html:not(.dark) .mobile-nav-link-golden:hover .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden:hover .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        /* Override all text elements in light mode */
+        html:not(.dark) #mobile-menu .mobile-nav-link-golden,
+        html:not(.dark) #mobile-menu .mobile-nav-link-golden *,
+        html:not(.dark) #mobile-menu .contact-link-golden,
+        html:not(.dark) #mobile-menu .contact-link-golden * {
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }
