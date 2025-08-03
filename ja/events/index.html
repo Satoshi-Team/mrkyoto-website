@@ -1635,8 +1635,8 @@
                     <!-- Success Message (Hidden by default) -->
                     <div id="signup-success" class="hidden mt-6 p-4 bg-[#d9c289]/10 dark:bg-[#d9c289]/20 border border-[#d9c289]/30 dark:border-[#d9c289]/40 rounded-lg">
                         <div class="flex items-center gap-3">
-                            <span class="text-[#d9c289] dark:text-[#d9c289]">✅</span>
-                            <p class="text-[#d9c289] dark:text-[#d9c289] font-medium">
+                            <span class="text-[#d9c289] dark:text-white">✅</span>
+                            <p class="text-[#d9c289] dark:text-white font-medium">
                                 登録ありがとうございます！まもなく最初の更新情報をお届けします。
                             </p>
                         </div>
@@ -1647,21 +1647,21 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                     <div class="text-center">
                         <div class="w-12 h-12 bg-[#d9c289]/20 dark:bg-[#d9c289]/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-[#d9c289] dark:text-[#d9c289] text-xl">🎪</span>
+                            <span class="text-[#d9c289] dark:text-white text-xl">🎪</span>
                         </div>
                         <h3 class="font-semibold text-gray-900 dark:text-white mb-2">独占アクセス</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">今後の祭りやイベントに関する早期通知を受け取る</p>
                     </div>
                     <div class="text-center">
                         <div class="w-12 h-12 bg-[#d9c289]/20 dark:bg-[#d9c289]/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-[#d9c289] dark:text-[#d9c289] text-xl">📅</span>
+                            <span class="text-[#d9c289] dark:text-white text-xl">📅</span>
                         </div>
                         <h3 class="font-semibold text-gray-900 dark:text-white mb-2">キュレーションされたコンテンツ</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">好みに基づいて厳選されたイベントを受け取る</p>
                     </div>
                     <div class="text-center">
                         <div class="w-12 h-12 bg-[#d9c289]/20 dark:bg-[#d9c289]/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-[#d9c289] dark:text-[#d9c289] text-xl">🎭</span>
+                            <span class="text-[#d9c289] dark:text-white text-xl">🎭</span>
                         </div>
                         <h3 class="font-semibold text-gray-900 dark:text-white mb-2">文化インサイト</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">各イベントの歴史と意義について学ぶ</p>
@@ -1987,22 +1987,15 @@
             console.log('🔍 Mobile menu script loaded');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
-            
             console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
             console.log('🔍 Mobile menu found:', !!mobileMenu);
-            console.log('🔍 Mobile theme toggle found:', !!mobileThemeToggle);
-            console.log('🔍 Mobile language toggle found:', !!mobileLanguageToggle);
-            
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Both elements found, adding event listener');
-                // Force menu to start hidden with new styling
-                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
+                // Force menu to start hidden and remove conflicting classes
+                mobileMenu.className = 'lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro';
                 mobileMenu.style.display = 'none';
                 console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
                 console.log('🔧 Menu display style:', mobileMenu.style.display);
-                
                 mobileMenuButton.addEventListener('click', function(e) {
                     console.log('🖱️ Mobile menu button clicked!');
                     e.preventDefault();
@@ -2029,51 +2022,6 @@
                         console.log('🎨 Icon rotated');
                     }
                 });
-                
-                // Setup mobile theme toggle
-                if (mobileThemeToggle) {
-                    mobileThemeToggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        console.log('🌙 Mobile theme toggle clicked!');
-                        
-                        const html = document.documentElement;
-                        const isDark = html.classList.contains('dark');
-                        
-                        if (isDark) {
-                            html.classList.remove('dark');
-                            localStorage.setItem('theme', 'light');
-                            console.log('☀️ Switched to light mode');
-                        } else {
-                            html.classList.add('dark');
-                            localStorage.setItem('theme', 'dark');
-                            console.log('🌙 Switched to dark mode');
-                        }
-                    });
-                }
-                
-                // Setup mobile language toggle
-                if (mobileLanguageToggle) {
-                    mobileLanguageToggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        console.log('🌍 Mobile language toggle clicked!');
-                        
-                        // Use the same language switching logic as the desktop version
-                        const currentPath = window.location.pathname;
-                        let newPath;
-                        
-                        if (currentPath.startsWith('/ja/')) {
-                            // Currently on Japanese page, switch to English
-                            newPath = currentPath.replace('/ja/', '/');
-                        } else {
-                            // Currently on English page, switch to Japanese
-                            newPath = currentPath.replace(/^\//, '/ja/');
-                        }
-                        
-                        console.log('🔄 Switching from', currentPath, 'to', newPath);
-                        window.location.href = newPath;
-                    });
-                }
-                
                 // Close mobile menu when clicking outside
                 document.addEventListener('click', function(event) {
                     if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
