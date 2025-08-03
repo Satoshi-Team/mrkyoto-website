@@ -175,7 +175,7 @@
         }
 
         .dark #header {
-            background: rgba(17, 24, 39, 0.95);
+            background: #000000 !important;
             border-bottom-color: rgba(55, 65, 81, 0.5);
         }
 
@@ -690,6 +690,31 @@
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(180, 83, 9, 0.05));
             border: 1px solid rgba(180, 83, 9, 0.2);
             backdrop-filter: blur(10px);
+        }
+
+        /* Light mode dropdown text - ensure white text */
+        html:not(.dark) .mobile-nav-link-golden {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-arrow {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-arrow {
+            color: #FFFFFF !important;
         }
 
         .mobile-nav-link-golden:hover {
