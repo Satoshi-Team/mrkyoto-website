@@ -1994,26 +1994,26 @@
     <script src="/js/shared-navigation.js"></script>
     <script src="/js/shared-footer.js"></script>
 
-    <!-- Force Japanese Language for Japanese Page -->
+    <!-- Force English Language for English Page -->
     <script>
-        // Force Japanese language for this page
+        // Force English language for this page
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🇯🇵 Setting Japanese language for Japanese events page...');
+            console.log('🇬🇧 Setting English language for English events page...');
             
-            // Set language to Japanese
-            localStorage.setItem('mrkyoto-language', 'ja');
+            // Set language to English
+            localStorage.setItem('mrkyoto-language', 'en');
             
-            // Force translation manager to use Japanese
+            // Force translation manager to use English
             if (window.translationManager) {
-                window.translationManager.setLanguage('ja');
-                console.log('✅ Translation manager set to Japanese');
+                window.translationManager.setLanguage('en');
+                console.log('✅ Translation manager set to English');
             } else {
                 console.log('⏳ Translation manager not ready yet, will set later...');
                 // Wait for translation manager to load
                 setTimeout(() => {
                     if (window.translationManager) {
-                        window.translationManager.setLanguage('ja');
-                        console.log('✅ Translation manager set to Japanese (delayed)');
+                        window.translationManager.setLanguage('en');
+                        console.log('✅ Translation manager set to English (delayed)');
                     }
                 }, 2000);
             }
