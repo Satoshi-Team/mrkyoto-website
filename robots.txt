@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mrkyoto.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+
+# Allow all main content
+Allow: /real-estate/
+Allow: /events/
+Allow: /news/
+Allow: /culture/
+Allow: /activities/
+Allow: /js/
+Allow: /css/
+Allow: /images/ 

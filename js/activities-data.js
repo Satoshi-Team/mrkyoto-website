@@ -379,6 +379,33 @@ const activitiesData = [
         languages: ['English', 'Japanese'],
         cancellation: 'Free cancellation up to 24 hours before',
         featured: false
+    },
+    {
+        id: 15,
+        title: 'Kyoto Tea Ceremony Experience',
+        titleKey: 'activity.kyotoTeaCeremony.title',
+        description: 'Experience the traditional Japanese tea ceremony in a historic tea house, learn about tea culture, and participate in this centuries-old ritual.',
+        descriptionKey: 'activity.kyotoTeaCeremony.description',
+        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center',
+        price: '¥9,200',
+        duration: '2 hours',
+        category: 'Cultural',
+        location: 'Traditional Tea House',
+        rating: 4.9,
+        reviews: 456,
+        difficulty: 'Easy',
+        groupSize: 'Small Group',
+        includes: ['Tea ceremony instruction', 'Traditional sweets', 'Tea house visit', 'Cultural explanation'],
+        highlights: ['Traditional tea ceremony', 'Historic tea house', 'Cultural immersion', 'Authentic experience'],
+        provider: 'Kyoto Tea Culture',
+        providerUrl: 'https://www.kyoto.travel',
+        bookingUrl: 'https://www.viator.com/searchResults/all?text=Kyoto+Tea+Ceremony&pid=P00242318&mcid=42383&medium=link',
+        contact: '+81-75-708-7200',
+        capacity: '6 people per session',
+        availability: 'Daily',
+        languages: ['English', 'Japanese'],
+        cancellation: 'Free cancellation up to 24 hours before',
+        featured: true
     }
 ];
 
