@@ -1213,7 +1213,7 @@
 </head>
 <body class="bg-washi text-sumi dark:bg-sumi dark:text-gofun">
     <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">メインコンテンツにスキップ</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
     <header id="header" class="bg-white/95 backdrop-blur-sm dark:bg-sumi/95 border-b border-zen dark:border-aiiro shadow-sm">
@@ -1475,63 +1475,63 @@
                     <div class="bg-white dark:bg-sumi rounded-xl shadow-lg border border-zen dark:border-aiiro p-4">
                         <h3 class="text-sm font-semibold text-sumi dark:text-gofun mb-3 flex items-center">
                             <span class="mr-2">🎛️</span>
-                            フィルター・ソート
+                            Filters & Sort
                         </h3>
                         
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                             <!-- Category Filter -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">カテゴリ</label>
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">Category</label>
                                 <select id="category-filter" name="category" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent transition-all duration-200 text-sm">
-                                    <option value="all">🎭 すべて</option>
-                                    <option value="traditional">🏛️ 伝統的</option>
-                                    <option value="cultural">🎨 文化的</option>
-                                    <option value="seasonal">🌸 季節的</option>
-                                    <option value="modern">🎪 現代的</option>
-                                    <option value="religious">⛩️ 宗教的</option>
+                                    <option value="all">🎭 All</option>
+                                    <option value="traditional">🏛️ Traditional</option>
+                                    <option value="cultural">🎨 Cultural</option>
+                                    <option value="seasonal">🌸 Seasonal</option>
+                                    <option value="modern">🎪 Modern</option>
+                                    <option value="religious">⛩️ Religious</option>
                                 </select>
                             </div>
                             
                             <!-- Month Filter -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">月</label>
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">Month</label>
                                 <select id="month-filter" name="month" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent transition-all duration-200 text-sm">
-                                    <option value="all">📅 すべての月</option>
-                                    <option value="january">❄️ 1月</option>
-                                    <option value="february">🌨️ 2月</option>
-                                    <option value="march">🌸 3月</option>
-                                    <option value="april">🌺 4月</option>
-                                    <option value="may">🌿 5月</option>
-                                    <option value="june">🌧️ 6月</option>
-                                    <option value="july">🎆 7月</option>
-                                    <option value="august">☀️ 8月</option>
-                                    <option value="september">🍁 9月</option>
-                                    <option value="october">🍂 10月</option>
-                                    <option value="november">🍁 11月</option>
-                                    <option value="december">❄️ 12月</option>
+                                    <option value="all">📅 All Months</option>
+                                    <option value="january">❄️ January</option>
+                                    <option value="february">🌨️ February</option>
+                                    <option value="march">🌸 March</option>
+                                    <option value="april">🌺 April</option>
+                                    <option value="may">🌿 May</option>
+                                    <option value="june">🌧️ June</option>
+                                    <option value="july">🎆 July</option>
+                                    <option value="august">☀️ August</option>
+                                    <option value="september">🍁 September</option>
+                                    <option value="october">🍂 October</option>
+                                    <option value="november">🍁 November</option>
+                                    <option value="december">❄️ December</option>
                                 </select>
                             </div>
 
                             <!-- Sort Filter -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">ソート</label>
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">Sort</label>
                                 <select id="sort-filter" name="sort" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent transition-all duration-200 text-sm">
-                                    <option value="date">📅 日付</option>
-                                    <option value="popular">⭐ 人気</option>
-                                    <option value="name">🔤 名前 A-Z</option>
-                                    <option value="category">🏷️ カテゴリ</option>
+                                    <option value="date">📅 Date</option>
+                                    <option value="popular">⭐ Popular</option>
+                                    <option value="name">🔤 Name A-Z</option>
+                                    <option value="category">🏷️ Category</option>
                                 </select>
                             </div>
 
                             <!-- View Toggle -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">表示</label>
+                                <label class="block text-xs font-medium text-sumi/70 dark:text-gofun/70">View</label>
                                 <div class="flex border border-zen dark:border-aiiro rounded-lg overflow-hidden">
                                     <button id="view-grid" class="flex-1 px-3 py-2 bg-[#000000] text-white text-xs font-medium transition-all duration-300 hover:bg-[#d9c289]">
-                                        <span class="mr-1">⊞</span> グリッド
+                                        <span class="mr-1">⊞</span> Grid
                                     </button>
                                     <button id="view-list" class="flex-1 px-3 py-2 bg-white dark:bg-sumi text-sumi dark:text-gofun text-xs font-medium hover:bg-zen dark:hover:bg-aiiro transition-all duration-300">
-                                        <span class="mr-1">☰</span> リスト
+                                        <span class="mr-1">☰</span> List
                                     </button>
                                 </div>
                             </div>
@@ -1666,7 +1666,7 @@
                                    name="email" 
                                    required
                                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
-                                   placeholder="メールアドレスを入力してください">
+                                   placeholder="Enter your email address">
                         </div>
                         
                         <!-- Event Preferences -->
@@ -1677,19 +1677,19 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <label class="flex items-center space-x-3 cursor-pointer">
                                     <input type="checkbox" name="preferences[]" value="Traditional Festivals" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
-                                    <span class="text-sm text-gray-700 dark:text-gray-300">伝統的な祭り</span>
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Traditional Festivals</span>
                                 </label>
                                 <label class="flex items-center space-x-3 cursor-pointer">
                                     <input type="checkbox" name="preferences[]" value="Seasonal Events" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
-                                    <span class="text-sm text-gray-700 dark:text-gray-300">季節のイベント</span>
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Seasonal Events</span>
                                 </label>
                                 <label class="flex items-center space-x-3 cursor-pointer">
                                     <input type="checkbox" name="preferences[]" value="Cultural Performances" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
-                                    <span class="text-sm text-gray-700 dark:text-gray-300">文化公演</span>
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Cultural Performances</span>
                                 </label>
                                 <label class="flex items-center space-x-3 cursor-pointer">
                                     <input type="checkbox" name="preferences[]" value="Film Festivals" class="w-4 h-4 text-[#d9c289] border-gray-300 rounded focus:ring-[#d9c289]">
-                                    <span class="text-sm text-gray-700 dark:text-gray-300">映画祭</span>
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Film Festivals</span>
                                 </label>
                             </div>
                         </div>
@@ -1697,14 +1697,14 @@
                         <!-- Frequency -->
                         <div>
                             <label for="frequency" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                                更新頻度
+                                Update Frequency
                             </label>
                             <select id="frequency" 
                                     name="frequency" 
                                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#d9c289] focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors">
-                                <option value="weekly">週次更新</option>
-                                <option value="monthly">月次ダイジェスト</option>
-                                <option value="seasonal">季節ハイライト</option>
+                                <option value="weekly">Weekly Updates</option>
+                                <option value="monthly">Monthly Digest</option>
+                                <option value="seasonal">Seasonal Highlights</option>
                             </select>
                         </div>
 
@@ -1731,7 +1731,7 @@
                         <div class="flex items-center gap-3">
                             <span class="text-[#d9c289] dark:text-white">✅</span>
                             <p class="text-[#d9c289] dark:text-white font-medium">
-                                登録ありがとうございます！まもなく最初の更新情報をお届けします。
+                                Thank you for subscribing! You'll receive your first update soon.
                             </p>
                         </div>
                     </div>
@@ -1895,13 +1895,13 @@
                                         <div class="flex items-center">
                                             <span class="text-xl mr-2">🌅</span>
                                             <div>
-                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">日の出</div>
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">Sunrise</div>
                                                 <div class="font-semibold text-sm" id="weather-sunrise">--:--</div>
                                             </div>
                                         </div>
                                         <div class="flex items-center">
                                             <div class="text-right">
-                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">日の入り</div>
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">Sunset</div>
                                                 <div class="font-semibold text-sm" id="weather-sunset">--:--</div>
                                             </div>
                                             <span class="text-xl ml-2">🌇</span>
@@ -1910,7 +1910,7 @@
                                     
                                     <!-- Last Updated -->
                                     <div class="text-center text-xs text-sumi/50 dark:text-gofun/50">
-                                        <span>京都時間</span>: <span id="weather-last-updated">--:--</span>
+                                        <span>Kyoto Time</span>: <span id="weather-last-updated">--:--</span>
                                     </div>
                                 </div>
                             </div>
@@ -2121,7 +2121,7 @@
                 visibility: '10',
                 sunrise: '05:30',
                 sunset: '18:45',
-                lastUpdated: '2026年1月15日 14:30'
+                lastUpdated: 'January 15, 2026 14:30'
             };
             
             updateWeatherDisplay(weatherData);
