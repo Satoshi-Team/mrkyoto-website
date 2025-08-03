@@ -794,6 +794,27 @@
             color: #FFFFFF !important;
         }
 
+        /* Force white text for mobile action buttons in light mode */
+        html:not(.dark) .action-button {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .action-button svg {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .action-button span {
+            color: #FFFFFF !important;
+        }
+
+        /* Specific overrides for mobile theme toggle and menu button */
+        html:not(.dark) #mobile-theme-toggle,
+        html:not(.dark) #mobile-theme-toggle svg,
+        html:not(.dark) #mobile-menu-button,
+        html:not(.dark) #mobile-menu-button svg {
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }
