@@ -41,9 +41,9 @@ class ThemeLanguageManager {
     // Theme Management
     getStoredTheme() {
         const stored = localStorage.getItem('mrkyoto-theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored || (systemPrefersDark ? 'dark' : 'light');
-        console.log('🎨 Stored theme:', stored, 'System prefers dark:', systemPrefersDark, 'Final theme:', theme);
+        // Default to dark mode like our perfect activities page
+        const theme = stored || 'dark';
+        console.log('🎨 Stored theme:', stored, 'Final theme:', theme);
         return theme;
     }
 
