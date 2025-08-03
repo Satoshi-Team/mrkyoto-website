@@ -506,9 +506,8 @@ class ThemeLanguageManager {
             element.style.display = '';
         });
         
-        // Update specific elements (removed updateHeaderTheme to use Tailwind classes)
+        // Update specific elements (removed updateHeaderTheme and updateNavigationTheme to use Tailwind classes)
         this.updateFooterTheme();
-        this.updateNavigationTheme();
         this.updatePropertyCardsTheme();
     }
 
@@ -522,16 +521,7 @@ class ThemeLanguageManager {
         }
     }
 
-    updateNavigationTheme() {
-        const navLinks = document.querySelectorAll('.nav-link-desktop, .mobile-nav-link');
-        navLinks.forEach(link => {
-            if (this.currentTheme === 'dark') {
-                link.style.color = '#F9FAFB';
-            } else {
-                link.style.color = '#0A0A0A';
-            }
-        });
-    }
+
 
     updatePropertyCardsTheme() {
         const propertyCards = document.querySelectorAll('.zen-card, .bg-white');
