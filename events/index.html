@@ -750,6 +750,24 @@
             color: #FFFFFF !important;
         }
 
+        /* Force white text for all mobile navigation elements in light mode */
+        html:not(.dark) .mobile-nav-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        /* Override any conflicting text colors */
+        html:not(.dark) .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-text {
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }

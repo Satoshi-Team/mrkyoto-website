@@ -750,6 +750,24 @@
             color: #FFFFFF !important;
         }
 
+        /* Force white text for all mobile navigation elements in light mode */
+        html:not(.dark) .mobile-nav-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        /* Override any conflicting text colors */
+        html:not(.dark) .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-text {
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }
@@ -1999,8 +2017,8 @@
             console.log('🔍 Mobile menu found:', !!mobileMenu);
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Both elements found, adding event listener');
-                // Force menu to start hidden and remove conflicting classes
-                mobileMenu.className = 'lg:hidden hidden bg-white dark:bg-sumi border-t border-zen dark:border-aiiro';
+                // Force menu to start hidden but preserve golden theme classes
+                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
                 mobileMenu.style.display = 'none';
                 console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
                 console.log('🔧 Menu display style:', mobileMenu.style.display);
