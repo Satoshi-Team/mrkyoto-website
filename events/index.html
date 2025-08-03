@@ -736,6 +736,11 @@
             color: #FEFEFE !important;
         }
 
+        /* Override for light mode to ensure white text */
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }
@@ -778,6 +783,11 @@
             flex: 1;
             font-weight: 600;
             color: #FEFEFE !important;
+        }
+
+        /* Override for light mode to ensure white text */
+        html:not(.dark) .contact-link-golden .contact-text {
+            color: #FFFFFF !important;
         }
 
         .contact-link-golden:hover .contact-text {
