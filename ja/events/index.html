@@ -741,6 +741,15 @@
             color: #FFFFFF !important;
         }
 
+        /* Additional specificity for light mode text */
+        html:not(.dark) .mobile-nav-link-golden span {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden span {
+            color: #FFFFFF !important;
+        }
+
         .mobile-nav-link-golden:hover .mobile-nav-text {
             color: #F59E0B !important;
         }
@@ -1977,48 +1986,7 @@
 
     <!-- Theme and Language Toggle Fix -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔧 Fixing theme and language toggles...');
-            
-            // Theme toggle functionality
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                console.log('✅ Theme toggle found, adding event listener');
-                themeToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🌙 Theme toggle clicked!');
-                    
-                    // Toggle dark mode
-                    const html = document.documentElement;
-                    const isDark = html.classList.contains('dark');
-                    
-                    if (isDark) {
-                        html.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
-                        console.log('☀️ Switched to light mode');
-                    } else {
-                        html.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
-                        console.log('🌙 Switched to dark mode');
-                    }
-                });
-            } else {
-                console.error('❌ Theme toggle not found');
-            }
-            
-            // Language toggle functionality is now handled by theme-language-manager.js
-            
-            // Initialize theme from localStorage
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                console.log('🌙 Initialized dark mode');
-            } else {
-                document.documentElement.classList.remove('dark');
-                console.log('☀️ Initialized light mode');
-            }
-        });
+
     </script>
 
     <!-- Mobile Menu Functionality -->
