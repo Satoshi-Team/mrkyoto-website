@@ -270,6 +270,7 @@ class RealEstateManager {
         console.log('All properties:', allProperties.length, 'total properties');
         console.log('Sale properties:', saleProperties.length);
         console.log('Rental properties:', rentProperties.length);
+        console.log('Property IDs:', allProperties.map(p => p.id));
 
         // Generate simple list HTML
         const propertiesHTML = allProperties.map(property => this.generateSimplePropertyCard(property)).join('');
@@ -277,6 +278,9 @@ class RealEstateManager {
         
         // Add event listeners
         this.setupPropertyCardListeners();
+        
+        // Set "All" filter as active by default
+        this.filterProperties('all');
     }
 
     filterProperties(type) {
@@ -330,59 +334,86 @@ class RealEstateManager {
         const typeColor = isRental ? 'bg-blue-500' : 'bg-red-500';
         
         return `
-            <div class="bg-white dark:bg-sumi rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-gray-200 dark:border-gray-700">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-200 dark:border-gray-700 mx-4 md:mx-0">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <!-- Property Info -->
-                    <div class="flex-1">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="${typeColor} text-white text-xs px-3 py-1 rounded-full font-medium">${typeBadge}</span>
-                            <span class="bg-gray-500 text-white text-xs px-3 py-1 rounded-full">${property.walkScore} Walk</span>
-                            <span class="bg-[#d9c289] text-white text-xs px-3 py-1 rounded-full">Verified</span>
+                    <div class="flex-1 space-y-4">
+                        <!-- Header with badges -->
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="${typeColor} text-white text-sm px-4 py-2 rounded-full font-semibold shadow-md">${typeBadge}</span>
+                            <span class="bg-gray-600 text-white text-sm px-4 py-2 rounded-full font-medium">${property.walkScore} Walk</span>
+                            <span class="bg-[#d9c289] text-white text-sm px-4 py-2 rounded-full font-semibold shadow-md">Verified</span>
                         </div>
                         
-                        <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-2">${property.title}</h3>
-                        
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun">${property.price}</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70">${property.priceUSD}</div>
-                        </div>
-                        
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-3 text-sm text-sumi/70 dark:text-gofun/70">
-                            <div class="flex items-center gap-2">
-                                <span>📍</span>
-                                <span>${property.location}</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span>🏘️</span>
-                                <span>${property.neighborhood}</span>
+                        <!-- Title and Price -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-2xl md:text-3xl text-sumi dark:text-gofun leading-tight">${property.title}</h3>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline gap-3">
+                                <div class="text-3xl md:text-4xl font-bold text-sumi dark:text-gofun">${property.price}</div>
+                                <div class="text-lg text-sumi/70 dark:text-gofun/70">${property.priceUSD}</div>
                             </div>
                         </div>
                         
-                        <div class="flex gap-2 mb-3">
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1 rounded-full">${property.bedrooms} Bed</span>
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1 rounded-full">${property.bathrooms} Bath</span>
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1 rounded-full">${property.size}</span>
+                        <!-- Location Info -->
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-base text-sumi/80 dark:text-gofun/80">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl">📍</span>
+                                <span class="font-medium">${property.location}</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl">🏘️</span>
+                                <span class="font-medium">${property.neighborhood}</span>
+                            </div>
                         </div>
                         
-                        <div class="mb-4">
-                            <div class="text-sm font-semibold text-sumi dark:text-gofun mb-2">Features:</div>
-                            <div class="flex flex-wrap gap-2">
-                                ${property.features.slice(0, 3).map(feature => 
-                                    `<span class="bg-[#d9c289]/10 dark:bg-[#d9c289]/20 text-[#d9c289] dark:text-[#d9c289] text-xs px-3 py-1 rounded-full">${feature}</span>`
+                        <!-- Property Stats -->
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">${property.bedrooms} Bed</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">${property.bathrooms} Bath</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">${property.size}</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">Built: ${property.yearBuilt}</span>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-3">
+                            <div class="text-lg font-semibold text-sumi dark:text-gofun">Features:</div>
+                            <div class="flex flex-wrap gap-3">
+                                ${property.features.slice(0, 4).map(feature => 
+                                    `<span class="bg-[#d9c289]/15 dark:bg-[#d9c289]/25 text-[#d9c289] dark:text-[#d9c289] text-sm px-4 py-2 rounded-full font-medium border border-[#d9c289]/30">${feature}</span>`
                                 ).join('')}
-                                ${property.features.length > 3 ? 
-                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-xs">+${property.features.length - 3} more</span>` : ''
+                                ${property.features.length > 4 ? 
+                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-sm font-medium">+${property.features.length - 4} more features</span>` : ''
                                 }
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Info -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-sumi/70 dark:text-gofun/70">
+                            <div class="flex items-center gap-2">
+                                <span class="font-medium">Agency:</span>
+                                <span>${property.agency}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-medium">Contact:</span>
+                                <span>${property.contact}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-medium">Days on Market:</span>
+                                <span>${property.daysOnMarket || 'N/A'}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-medium">Property ID:</span>
+                                <span class="font-mono">${property.id}</span>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex flex-col gap-2 min-w-[200px]">
-                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-[#000000] text-white py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[#000000]/90 transition-all duration-300">
+                    <div class="flex flex-col gap-4 min-w-[250px] lg:min-w-[200px]">
+                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-[#000000] text-white py-4 px-6 rounded-xl text-base font-semibold hover:bg-[#000000]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                             View Details
                         </button>
-                        <a href="tel:${property.contact}" class="w-full bg-[#d9c289] text-white py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 text-center">
+                        <a href="tel:${property.contact}" class="w-full bg-[#d9c289] text-white py-4 px-6 rounded-xl text-base font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:scale-105">
                             Contact
                         </a>
                     </div>
