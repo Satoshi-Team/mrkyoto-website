@@ -33,6 +33,7 @@ class RealEstateManager {
         this.updateAnalyticsDashboard();
         this.renderCharts();
         this.displayProperties();
+        this.displayRentalProperties(); // Display all rental properties
         this.displayMarketStats();
         this.displayAgencies();
         
@@ -61,9 +62,10 @@ class RealEstateManager {
         
         // Data is available, proceed with initialization
         console.log('Real estate data loaded successfully:', realEstateData);
-                this.displayProperties();
-                this.displayMarketStats();
-                this.displayAgencies();
+        this.displayProperties();
+        this.displayRentalProperties(); // Display all rental properties
+        this.displayMarketStats();
+        this.displayAgencies();
     }
 
     setupEventListeners() {
@@ -282,6 +284,92 @@ class RealEstateManager {
             // Add event listeners to new elements
             this.setupPropertyCardListeners();
         }, 300);
+    }
+
+    displayRentalProperties() {
+        const rentalContainer = document.getElementById('rental-properties-container');
+        if (!rentalContainer) return;
+
+        // Get all rental properties
+        const rentalProperties = realEstateData.getPropertiesForRent();
+        
+        // Generate HTML for all rental properties
+        const rentalHTML = rentalProperties.map(property => this.generateRentalPropertyCard(property)).join('');
+        
+        // Display the properties
+        rentalContainer.innerHTML = rentalHTML;
+        
+        // Add event listeners
+        this.setupPropertyCardListeners();
+    }
+
+    generateRentalPropertyCard(property) {
+        const features = property.features.slice(0, 2).map(feature => 
+            `<span class="bg-[#d9c289]/10 dark:bg-[#d9c289]/20 text-[#d9c289] dark:text-[#d9c289] text-xs px-3 py-1.5 rounded-full font-medium">${feature}</span>`
+        ).join('');
+        
+        const remainingFeatures = property.features.length - 2;
+        const moreFeaturesButton = remainingFeatures > 0 ? 
+            `<button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline font-medium">+${remainingFeatures} more</button>` : '';
+
+        return `
+            <div class="group bg-white dark:bg-sumi rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+                <div class="relative overflow-hidden">
+                    <img src="${property.image}" alt="${property.title}" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-blue-500 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">For Rent</span>
+                    </div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gray-800/80 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-medium">${property.walkScore} Walk</span>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="bg-[#d9c289] text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">Verified</span>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div>
+                        <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-2 group-hover:text-[#d9c289] transition-colors">${property.title}</h3>
+                        <div class="text-3xl font-bold text-sumi dark:text-gofun mb-1">${property.price}</div>
+                        <div class="text-sm text-sumi/60 dark:text-gofun/60">${property.priceUSD}</div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70">
+                            <span class="mr-3 text-lg">📍</span>
+                            <span>${property.location}</span>
+                        </div>
+                        <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70">
+                            <span class="mr-3 text-lg">🏘️</span>
+                            <span>${property.neighborhood}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">${property.bedrooms} Bed</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">${property.bathrooms} Bath</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">${property.size}</span>
+                    </div>
+                    
+                    <div>
+                        <div class="text-sm font-semibold text-sumi dark:text-gofun mb-3">Features:</div>
+                        <div class="flex flex-wrap gap-2">
+                            ${features}
+                            ${moreFeaturesButton}
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3 pt-2">
+                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="flex-1 bg-[#000000] text-white py-3 px-4 rounded-xl text-sm font-semibold hover:bg-[#000000]/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            View Details
+                        </button>
+                        <a href="tel:${property.contact}" class="flex-1 bg-[#d9c289] text-white py-3 px-4 rounded-xl text-sm font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     // Analytics and Data Visualization Methods
