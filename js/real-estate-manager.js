@@ -288,10 +288,27 @@ class RealEstateManager {
 
     displayRentalProperties() {
         const rentalContainer = document.getElementById('rental-properties-container');
-        if (!rentalContainer) return;
+        if (!rentalContainer) {
+            console.warn('Rental properties container not found');
+            return;
+        }
+
+        // Check if realEstateData is available
+        if (typeof realEstateData === 'undefined') {
+            console.warn('Real estate data not available, retrying in 100ms...');
+            setTimeout(() => this.displayRentalProperties(), 100);
+            return;
+        }
 
         // Get all rental properties
         const rentalProperties = realEstateData.getPropertiesForRent();
+        console.log('Rental properties found:', rentalProperties.length);
+        
+        if (rentalProperties.length === 0) {
+            console.warn('No rental properties found in data');
+            rentalContainer.innerHTML = '<p class="text-center text-sumi/70 dark:text-gofun/70">No rental properties available at the moment.</p>';
+            return;
+        }
         
         // Generate HTML for all rental properties
         const rentalHTML = rentalProperties.map(property => this.generateRentalPropertyCard(property)).join('');
@@ -301,6 +318,8 @@ class RealEstateManager {
         
         // Add event listeners
         this.setupPropertyCardListeners();
+        
+        console.log('Rental properties displayed successfully');
     }
 
     generateRentalPropertyCard(property) {
