@@ -2697,52 +2697,58 @@ class RealEstateManager {
 
         const modalHTML = `
             <div id="property-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                <div class="zen-card max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="font-serif text-2xl font-bold text-sumi dark:text-white">${property.title}</h2>
+                <div class="bg-white dark:bg-sumi rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 md:p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 class="font-serif text-2xl md:text-3xl font-bold text-sumi dark:text-gofun">${property.title}</h2>
                             <button onclick="realEstateManager.closePropertyModal()" 
-                                    class="text-sumi/60 dark:text-gray-400 hover:text-sumi dark:hover:text-white text-2xl focus-zen">
+                                    class="text-sumi/60 dark:text-gofun/60 hover:text-sumi dark:hover:text-gofun text-2xl focus:outline-none focus:ring-2 focus:ring-[#d9c289] rounded-full p-1">
                                 ×
                             </button>
                         </div>
                         
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                             <div>
                                 <img src="${property.image}" alt="${property.title}" 
-                                     class="w-full h-64 object-cover rounded-lg mb-4">
-                                <div class="text-2xl font-bold text-kurenai mb-2">${property.price}</div>
-                                <div class="text-sm text-sumi/60 dark:text-gray-400 mb-4">${property.priceUSD}</div>
+                                     class="w-full h-64 md:h-80 object-cover rounded-lg mb-4 shadow-lg">
+                                <div class="text-2xl md:text-3xl font-bold text-red-600 dark:text-red-400 mb-2">${property.price}</div>
+                                <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-4">${property.priceUSD}</div>
                             </div>
                             
-                            <div>
-                                <h3 class="font-semibold text-sumi dark:text-white mb-2">Property Details</h3>
-                                <div class="space-y-2 text-sm text-sumi/70 dark:text-gray-300 mb-4">
-                                    <div><strong>Location:</strong> ${property.location}</div>
-                                    <div><strong>Type:</strong> ${property.type}</div>
-                                    <div><strong>Size:</strong> ${property.size}</div>
-                                    <div><strong>Bedrooms:</strong> ${property.bedrooms}</div>
-                                    <div><strong>Bathrooms:</strong> ${property.bathrooms}</div>
-                                    <div><strong>Year Built:</strong> ${property.yearBuilt}</div>
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Property Details</h3>
+                                    <div class="space-y-2 text-sm text-sumi/80 dark:text-gofun/80 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                        <div class="flex justify-between"><strong>Location:</strong> <span>${property.location}</span></div>
+                                        <div class="flex justify-between"><strong>Type:</strong> <span>${property.type}</span></div>
+                                        <div class="flex justify-between"><strong>Size:</strong> <span>${property.size}</span></div>
+                                        <div class="flex justify-between"><strong>Bedrooms:</strong> <span>${property.bedrooms}</span></div>
+                                        <div class="flex justify-between"><strong>Bathrooms:</strong> <span>${property.bathrooms}</span></div>
+                                        <div class="flex justify-between"><strong>Year Built:</strong> <span>${property.yearBuilt}</span></div>
+                                    </div>
                                 </div>
                                 
-                                <h3 class="font-semibold text-sumi dark:text-white mb-2">Description</h3>
-                                <p class="text-sm text-sumi/70 dark:text-gray-300 mb-4">${property.description}</p>
-                                
-                                <h3 class="font-semibold text-sumi dark:text-white mb-2">Features</h3>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    ${property.features.map(feature => 
-                                        `<span class="bg-washi/50 dark:bg-gray-700/50 text-sumi dark:text-gray-300 px-2 py-1 rounded text-sm">${feature}</span>`
-                                    ).join('')}
+                                <div>
+                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Description</h3>
+                                    <p class="text-sm text-sumi/80 dark:text-gofun/80 leading-relaxed">${property.description}</p>
                                 </div>
                                 
-                                <div class="flex gap-3">
+                                <div>
+                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Features</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${property.features.map(feature => 
+                                            `<span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] px-3 py-2 rounded-full text-sm font-medium border border-[#d9c289]/30">${feature}</span>`
+                                        ).join('')}
+                                    </div>
+                                </div>
+                                
+                                <div class="flex gap-3 pt-4">
                                     <a href="${property.listingUrl}" target="_blank" rel="noopener noreferrer"
-                                       class="flex-1 bg-kurenai text-white px-4 py-2 rounded font-semibold text-center hover:bg-kurenai/90 transition-colors focus-zen">
+                                       class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors duration-200 shadow-lg hover:shadow-xl">
                                         View Full Listing
                                     </a>
                                     <a href="tel:${property.contact}" 
-                                       class="bg-washi/50 dark:bg-gray-700/50 text-sumi dark:text-white px-4 py-2 rounded font-semibold hover:bg-washi/70 dark:hover:bg-gray-600/50 transition-colors focus-zen">
+                                       class="flex-1 bg-[#d9c289] hover:bg-[#d9c289]/90 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors duration-200 shadow-lg hover:shadow-xl">
                                         Call Agent
                                     </a>
                                 </div>
