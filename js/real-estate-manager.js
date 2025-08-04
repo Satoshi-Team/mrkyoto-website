@@ -66,8 +66,8 @@ class RealEstateManager {
         // Data is available, proceed with initialization
         console.log('Real estate data loaded successfully:', realEstateData);
         this.displayAllProperties(); // Display all properties in unified layout
-        this.displayMarketStats();
-        this.displayAgencies();
+                this.displayMarketStats();
+                this.displayAgencies();
     }
 
     setupEventListeners() {
@@ -316,8 +316,8 @@ class RealEstateManager {
             properties = this.getFilteredProperties('rent');
         } else {
             // Show all properties
-            const saleProperties = this.getFilteredProperties('sale');
-            const rentProperties = this.getFilteredProperties('rent');
+        const saleProperties = this.getFilteredProperties('sale');
+        const rentProperties = this.getFilteredProperties('rent');
             properties = [...saleProperties, ...rentProperties];
         }
         
@@ -334,33 +334,40 @@ class RealEstateManager {
         const typeColor = isRental ? 'bg-blue-500' : 'bg-red-500';
         
         return `
-            <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-200 dark:border-gray-700 mx-4 md:mx-0">
-                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div class="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-sumi dark:via-gray-800 dark:to-sumi rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 md:p-8 lg:p-10 border border-gray-200 dark:border-gray-700 mx-4 md:mx-0 overflow-hidden group">
+                <!-- Responsive Background Elements -->
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent dark:from-transparent dark:via-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#d9c289] via-[#000000] to-[#d9c289] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#d9c289]/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-[#000000]/5 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <!-- Content Container -->
+                <div class="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <!-- Property Info -->
                     <div class="flex-1 space-y-4">
                         <!-- Header with badges -->
                         <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <span class="${typeColor} text-white text-sm px-4 py-2 rounded-full font-semibold shadow-md">${typeBadge}</span>
-                            <span class="bg-gray-600 text-white text-sm px-4 py-2 rounded-full font-medium">${property.walkScore} Walk</span>
-                            <span class="bg-[#d9c289] text-white text-sm px-4 py-2 rounded-full font-semibold shadow-md">Verified</span>
+                            <span class="${typeColor} text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-transform duration-200">${typeBadge}</span>
+                            <span class="bg-gradient-to-r from-gray-600 to-gray-700 text-white text-sm px-4 py-2 rounded-full font-medium shadow-md">${property.walkScore} Walk</span>
+                            <span class="bg-gradient-to-r from-[#d9c289] to-[#d9c289]/90 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">Verified</span>
                         </div>
                         
                         <!-- Title and Price -->
                         <div class="space-y-3">
-                            <h3 class="font-bold text-2xl md:text-3xl text-sumi dark:text-gofun leading-tight">${property.title}</h3>
+                            <h3 class="font-bold text-2xl md:text-3xl lg:text-4xl text-sumi dark:text-gofun leading-tight bg-gradient-to-r from-sumi to-gray-700 dark:from-gofun dark:to-gray-300 bg-clip-text text-transparent">${property.title}</h3>
                             <div class="flex flex-col sm:flex-row sm:items-baseline gap-3">
-                                <div class="text-3xl md:text-4xl font-bold text-sumi dark:text-gofun">${property.price}</div>
-                                <div class="text-lg text-sumi/70 dark:text-gofun/70">${property.priceUSD}</div>
+                                <div class="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-red-600 to-red-700 dark:from-red-400 dark:to-red-500 bg-clip-text text-transparent">${property.price}</div>
+                                <div class="text-lg text-sumi/70 dark:text-gofun/70 font-medium">${property.priceUSD}</div>
                             </div>
                         </div>
                         
                         <!-- Location Info -->
                         <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-base text-sumi/80 dark:text-gofun/80">
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-3 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg shadow-sm">
                                 <span class="text-xl">📍</span>
                                 <span class="font-medium">${property.location}</span>
                             </div>
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-3 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg shadow-sm">
                                 <span class="text-xl">🏘️</span>
                                 <span class="font-medium">${property.neighborhood}</span>
                             </div>
@@ -368,10 +375,10 @@ class RealEstateManager {
                         
                         <!-- Property Stats -->
                         <div class="flex flex-wrap gap-3">
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">${property.bedrooms} Bed</span>
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">${property.bathrooms} Bath</span>
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">${property.size}</span>
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium">Built: ${property.yearBuilt}</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.bedrooms} Bed</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.bathrooms} Bath</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.size}</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">Built: ${property.yearBuilt}</span>
                         </div>
                         
                         <!-- Features -->
@@ -379,16 +386,16 @@ class RealEstateManager {
                             <div class="text-lg font-semibold text-sumi dark:text-gofun">Features:</div>
                             <div class="flex flex-wrap gap-3">
                                 ${property.features.slice(0, 4).map(feature => 
-                                    `<span class="bg-[#d9c289]/15 dark:bg-[#d9c289]/25 text-[#d9c289] dark:text-[#d9c289] text-sm px-4 py-2 rounded-full font-medium border border-[#d9c289]/30">${feature}</span>`
+                                    `<span class="bg-gradient-to-r from-[#d9c289]/15 to-[#d9c289]/25 dark:from-[#d9c289]/25 dark:to-[#d9c289]/35 text-[#d9c289] dark:text-[#d9c289] text-sm px-4 py-2 rounded-full font-medium border border-[#d9c289]/30 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105">${feature}</span>`
                                 ).join('')}
                                 ${property.features.length > 4 ? 
-                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-sm font-medium">+${property.features.length - 4} more features</span>` : ''
+                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-sm font-medium hover:underline cursor-pointer">+${property.features.length - 4} more features</span>` : ''
                                 }
                             </div>
                         </div>
                         
                         <!-- Additional Info -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-sumi/70 dark:text-gofun/70">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-sumi/70 dark:text-gofun/70 bg-white/30 dark:bg-gray-800/30 p-4 rounded-lg">
                             <div class="flex items-center gap-2">
                                 <span class="font-medium">Agency:</span>
                                 <span>${property.agency}</span>
@@ -410,10 +417,10 @@ class RealEstateManager {
                     
                     <!-- Action Buttons -->
                     <div class="flex flex-col gap-4 min-w-[250px] lg:min-w-[200px]">
-                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-[#000000] text-white py-4 px-6 rounded-xl text-base font-semibold hover:bg-[#000000]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-gradient-to-r from-[#000000] to-gray-800 text-white py-4 px-6 rounded-xl text-base font-semibold hover:from-gray-800 hover:to-[#000000] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-gray-300 dark:border-gray-600">
                             View Details
                         </button>
-                        <a href="tel:${property.contact}" class="w-full bg-[#d9c289] text-white py-4 px-6 rounded-xl text-base font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <a href="tel:${property.contact}" class="w-full bg-gradient-to-r from-[#d9c289] to-[#d9c289]/90 text-white py-4 px-6 rounded-xl text-base font-semibold hover:from-[#d9c289]/90 hover:to-[#d9c289] transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#d9c289]/30">
                             Contact
                         </a>
                     </div>
@@ -458,7 +465,7 @@ class RealEstateManager {
         rentalContainer.innerHTML = rentalHTML;
         
         // Add event listeners
-        this.setupPropertyCardListeners();
+            this.setupPropertyCardListeners();
         
         console.log('Rental properties displayed successfully');
     }
