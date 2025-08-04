@@ -23,6 +23,10 @@ class RealEstateManager {
         this.alerts = JSON.parse(localStorage.getItem('marketAlerts') || '[]');
         this.liveDataInterval = null;
         this.lastUpdateTime = new Date();
+        
+        // Make instance globally available for button onclick handlers
+        window.realEstateManager = this;
+        
         this.init();
     }
 
@@ -241,7 +245,7 @@ class RealEstateManager {
         });
     }
 
-    displayProperties() {
+        displayProperties() {
         const propertiesGrid = document.getElementById('properties-grid');
         const propertiesList = document.getElementById('properties-list');
         const loadingSkeleton = document.getElementById('loading-skeleton');
@@ -259,29 +263,35 @@ class RealEstateManager {
         setTimeout(() => {
         // Get filtered properties - only show sale properties in main grid
         const saleProperties = this.getFilteredProperties('sale');
-        const allProperties = saleProperties; // Only sale properties in main grid
+        // Additional filter to ensure only sale properties are shown
+        const allProperties = saleProperties.filter(property => 
+            property.id.includes('sale') && !property.id.includes('rent')
+        );
+        
+        console.log('Main grid properties:', allProperties.length, 'sale properties');
+        console.log('Sale property IDs:', allProperties.map(p => p.id));
 
-            // Hide loading skeleton
-            if (loadingSkeleton) {
-                loadingSkeleton.classList.add('hidden');
-            }
+        // Hide loading skeleton
+        if (loadingSkeleton) {
+            loadingSkeleton.classList.add('hidden');
+        }
 
-            // Display properties based on view mode
-            if (this.viewMode === 'grid') {
-                propertiesGrid.classList.remove('hidden');
-                propertiesList.classList.add('hidden');
-                propertiesGrid.innerHTML = this.generatePropertyCards(allProperties);
-            } else {
-                propertiesList.classList.remove('hidden');
-                propertiesGrid.classList.add('hidden');
-                propertiesList.innerHTML = this.generatePropertyList(allProperties);
-            }
+        // Display properties based on view mode
+        if (this.viewMode === 'grid') {
+            propertiesGrid.classList.remove('hidden');
+            propertiesList.classList.add('hidden');
+            propertiesGrid.innerHTML = this.generatePropertyCards(allProperties);
+        } else {
+            propertiesList.classList.remove('hidden');
+            propertiesGrid.classList.add('hidden');
+            propertiesList.innerHTML = this.generatePropertyList(allProperties);
+        }
 
         // Update counters - only for sale properties in main grid
         this.updatePropertyCounters(saleProperties.length, 0); // Rent count is 0 for main grid
-            
-            // Add event listeners to new elements
-            this.setupPropertyCardListeners();
+        
+        // Add event listeners to new elements
+        this.setupPropertyCardListeners();
         }, 300);
     }
 
@@ -301,16 +311,21 @@ class RealEstateManager {
 
         // Get all rental properties
         const rentalProperties = realEstateData.getPropertiesForRent();
-        console.log('Rental properties found:', rentalProperties.length);
+        // Additional filter to ensure only rental properties are shown
+        const filteredRentalProperties = rentalProperties.filter(property => 
+            property.id.includes('rent') && !property.id.includes('sale')
+        );
+        console.log('Rental properties found:', filteredRentalProperties.length);
+        console.log('Rental property IDs:', filteredRentalProperties.map(p => p.id));
         
-        if (rentalProperties.length === 0) {
+        if (filteredRentalProperties.length === 0) {
             console.warn('No rental properties found in data');
             rentalContainer.innerHTML = '<p class="text-center text-sumi/70 dark:text-gofun/70">No rental properties available at the moment.</p>';
             return;
         }
         
         // Generate HTML for all rental properties
-        const rentalHTML = rentalProperties.map(property => this.generateRentalPropertyCard(property)).join('');
+        const rentalHTML = filteredRentalProperties.map(property => this.generateRentalPropertyCard(property)).join('');
         
         // Display the properties
         rentalContainer.innerHTML = rentalHTML;
@@ -1800,6 +1815,9 @@ class RealEstateManager {
             realEstateData.getPropertiesForSale() : 
             realEstateData.getPropertiesForRent();
 
+        console.log(`getFilteredProperties(${type}): Found ${properties.length} properties`);
+        console.log(`Property IDs for ${type}:`, properties.map(p => p.id));
+
         // Strict validation: only show valid properties
         properties = properties.filter(isValidProperty);
 
@@ -2634,6 +2652,22 @@ class RealEstateManager {
         const saleProperties = realEstateData.getPropertiesForSale();
         const rentProperties = realEstateData.getPropertiesForRent();
         console.log('✅ Property Data:', saleProperties.length, 'for sale,', rentProperties.length, 'for rent');
+        
+        // Check for data integrity issues
+        console.log('🔍 Checking data integrity...');
+        saleProperties.forEach(prop => {
+            if (prop.id.includes('rent')) {
+                console.error('❌ Sale property has rent ID:', prop.id);
+            }
+        });
+        rentProperties.forEach(prop => {
+            if (prop.id.includes('sale')) {
+                console.error('❌ Rental property has sale ID:', prop.id);
+            }
+            if (!prop.price.includes('/month')) {
+                console.error('❌ Rental property has incorrect price format:', prop.id, prop.price);
+            }
+        });
         
         // Test comparison tool
         console.log('✅ Comparison Tool: Ready (max 3 properties)');
