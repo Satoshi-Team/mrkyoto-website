@@ -530,17 +530,6 @@
                 
                 <!-- Right side actions -->
                 <div class="hidden md:flex items-center space-x-2">
-                    <!-- Language dropdown -->
-                    <div class="relative">
-                        <button id="language-toggle" class="action-button" data-tooltip="Language">
-                            <span class="text-sm font-medium">🇬🇧</span>
-                        </button>
-                        <div id="language-dropdown" class="language-dropdown hidden absolute right-0 mt-2 w-48 bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg shadow-lg z-50">
-                            <a href="/" class="block px-4 py-2 text-sm text-sumi dark:text-gofun hover:bg-zen dark:hover:bg-aiiro">🇬🇧 English</a>
-                            <a href="/ja/" class="block px-4 py-2 text-sm text-sumi dark:text-gofun hover:bg-zen dark:hover:bg-aiiro">🇯🇵 日本語</a>
-                        </div>
-                    </div>
-                    
                     <!-- Theme toggle -->
                     <button id="theme-toggle" class="action-button" data-tooltip="Theme">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -551,11 +540,6 @@
                 
                 <!-- Mobile actions -->
                 <div class="lg:hidden flex items-center space-x-2">
-                    <!-- Language toggle -->
-                    <button id="mobile-language-toggle" class="action-button text-white" data-tooltip="Language">
-                        <span class="text-sm font-medium">🇬🇧</span>
-                    </button>
-                    
                     <!-- Dark mode toggle -->
                     <button id="mobile-theme-toggle" class="action-button text-white" data-tooltip="Theme Toggle">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1663,12 +1647,10 @@
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
             
             console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
             console.log('🔍 Mobile menu found:', !!mobileMenu);
             console.log('🔍 Mobile theme toggle found:', !!mobileThemeToggle);
-            console.log('🔍 Mobile language toggle found:', !!mobileLanguageToggle);
             
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Both elements found, adding event listener');
@@ -1835,36 +1817,12 @@
             }
             
             // Language toggle functionality
-            const languageToggle = document.getElementById('language-toggle');
-            if (languageToggle) {
-                console.log('✅ Language toggle found, adding event listener');
-                languageToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🌍 Language toggle clicked!');
-                    
-                    // Use the same language switching logic as the desktop version
-                    const currentPath = window.location.pathname;
-                    let newPath;
-                    
-                    if (currentPath.startsWith('/ja/')) {
-                        // Currently on Japanese page, switch to English
-                        newPath = currentPath.replace('/ja/', '/');
-                    } else {
-                        // Currently on English page, switch to Japanese
-                        newPath = currentPath.replace(/^\//, '/ja/');
-                    }
-                    
-                    console.log('🔄 Switching from', currentPath, 'to', newPath);
-                    window.location.href = newPath;
-                });
-            }
+
             
             // Mobile menu functionality
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
             
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Mobile menu elements found');
