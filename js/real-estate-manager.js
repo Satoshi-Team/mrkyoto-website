@@ -36,8 +36,7 @@ class RealEstateManager {
         this.calculateAnalytics();
         this.updateAnalyticsDashboard();
         this.renderCharts();
-        this.displayProperties();
-        this.displayRentalProperties(); // Display all rental properties
+        this.displayAllProperties(); // Display all properties in unified layout
         this.displayMarketStats();
         this.displayAgencies();
         
@@ -66,8 +65,7 @@ class RealEstateManager {
         
         // Data is available, proceed with initialization
         console.log('Real estate data loaded successfully:', realEstateData);
-        this.displayProperties();
-        this.displayRentalProperties(); // Display all rental properties
+        this.displayAllProperties(); // Display all properties in unified layout
         this.displayMarketStats();
         this.displayAgencies();
     }
@@ -96,13 +94,28 @@ class RealEstateManager {
             });
         }
 
+        // Filter buttons for unified layout
+        const filterSale = document.getElementById('filter-sale');
+        const filterRent = document.getElementById('filter-rent');
+        const filterAll = document.getElementById('filter-all');
+        
+        if (filterSale) {
+            filterSale.addEventListener('click', () => this.filterProperties('sale'));
+        }
+        if (filterRent) {
+            filterRent.addEventListener('click', () => this.filterProperties('rent'));
+        }
+        if (filterAll) {
+            filterAll.addEventListener('click', () => this.filterProperties('all'));
+        }
+
         // Advanced filter functionality
         const filterSelects = document.querySelectorAll('.property-filter');
         filterSelects.forEach(select => {
             select.addEventListener('change', (e) => {
                 this.currentFilters[e.target.name] = e.target.value;
                 this.updateFilterCount();
-                this.displayProperties();
+                this.displayAllProperties();
             });
         });
 
@@ -245,54 +258,137 @@ class RealEstateManager {
         });
     }
 
-        displayProperties() {
-        const propertiesGrid = document.getElementById('properties-grid');
-        const propertiesList = document.getElementById('properties-list');
-        const loadingSkeleton = document.getElementById('loading-skeleton');
-        
-        if (!propertiesGrid || !propertiesList) return;
+        displayAllProperties() {
+        const container = document.getElementById('all-properties-container');
+        if (!container) return;
 
-        // Show loading skeleton
-        if (loadingSkeleton) {
-            loadingSkeleton.classList.remove('hidden');
-            propertiesGrid.classList.add('hidden');
-            propertiesList.classList.add('hidden');
-        }
-
-        // Simulate loading delay for better UX
-        setTimeout(() => {
-        // Get filtered properties - only show sale properties in main grid
+        // Get all properties
         const saleProperties = this.getFilteredProperties('sale');
-        // Additional filter to ensure only sale properties are shown
-        const allProperties = saleProperties.filter(property => 
-            property.id.includes('sale') && !property.id.includes('rent')
-        );
+        const rentProperties = this.getFilteredProperties('rent');
+        const allProperties = [...saleProperties, ...rentProperties];
         
-        console.log('Main grid properties:', allProperties.length, 'sale properties');
-        console.log('Sale property IDs:', allProperties.map(p => p.id));
+        console.log('All properties:', allProperties.length, 'total properties');
+        console.log('Sale properties:', saleProperties.length);
+        console.log('Rental properties:', rentProperties.length);
 
-        // Hide loading skeleton
-        if (loadingSkeleton) {
-            loadingSkeleton.classList.add('hidden');
-        }
-
-        // Display properties based on view mode
-        if (this.viewMode === 'grid') {
-            propertiesGrid.classList.remove('hidden');
-            propertiesList.classList.add('hidden');
-            propertiesGrid.innerHTML = this.generatePropertyCards(allProperties);
-        } else {
-            propertiesList.classList.remove('hidden');
-            propertiesGrid.classList.add('hidden');
-            propertiesList.innerHTML = this.generatePropertyList(allProperties);
-        }
-
-        // Update counters - only for sale properties in main grid
-        this.updatePropertyCounters(saleProperties.length, 0); // Rent count is 0 for main grid
+        // Generate simple list HTML
+        const propertiesHTML = allProperties.map(property => this.generateSimplePropertyCard(property)).join('');
+        container.innerHTML = propertiesHTML;
         
-        // Add event listeners to new elements
+        // Add event listeners
         this.setupPropertyCardListeners();
-        }, 300);
+    }
+
+    filterProperties(type) {
+        // Update button styles
+        const filterSale = document.getElementById('filter-sale');
+        const filterRent = document.getElementById('filter-rent');
+        const filterAll = document.getElementById('filter-all');
+        
+        // Reset all buttons
+        [filterSale, filterRent, filterAll].forEach(btn => {
+            if (btn) {
+                btn.className = 'px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition-colors';
+            }
+        });
+        
+        // Highlight active button
+        if (type === 'sale' && filterSale) {
+            filterSale.className = 'px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors';
+        } else if (type === 'rent' && filterRent) {
+            filterRent.className = 'px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors';
+        } else if (type === 'all' && filterAll) {
+            filterAll.className = 'px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors';
+        }
+        
+        // Filter and display properties
+        const container = document.getElementById('all-properties-container');
+        if (!container) return;
+        
+        let properties = [];
+        if (type === 'sale') {
+            properties = this.getFilteredProperties('sale');
+        } else if (type === 'rent') {
+            properties = this.getFilteredProperties('rent');
+        } else {
+            // Show all properties
+            const saleProperties = this.getFilteredProperties('sale');
+            const rentProperties = this.getFilteredProperties('rent');
+            properties = [...saleProperties, ...rentProperties];
+        }
+        
+        const propertiesHTML = properties.map(property => this.generateSimplePropertyCard(property)).join('');
+        container.innerHTML = propertiesHTML;
+        
+        // Add event listeners
+        this.setupPropertyCardListeners();
+    }
+
+    generateSimplePropertyCard(property) {
+        const isRental = property.id.includes('rent');
+        const typeBadge = isRental ? 'For Rent' : 'For Sale';
+        const typeColor = isRental ? 'bg-blue-500' : 'bg-red-500';
+        
+        return `
+            <div class="bg-white dark:bg-sumi rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <!-- Property Info -->
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="${typeColor} text-white text-xs px-3 py-1 rounded-full font-medium">${typeBadge}</span>
+                            <span class="bg-gray-500 text-white text-xs px-3 py-1 rounded-full">${property.walkScore} Walk</span>
+                            <span class="bg-[#d9c289] text-white text-xs px-3 py-1 rounded-full">Verified</span>
+                        </div>
+                        
+                        <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-2">${property.title}</h3>
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun">${property.price}</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70">${property.priceUSD}</div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-3 text-sm text-sumi/70 dark:text-gofun/70">
+                            <div class="flex items-center gap-2">
+                                <span>📍</span>
+                                <span>${property.location}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span>🏘️</span>
+                                <span>${property.neighborhood}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-2 mb-3">
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1 rounded-full">${property.bedrooms} Bed</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1 rounded-full">${property.bathrooms} Bath</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1 rounded-full">${property.size}</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="text-sm font-semibold text-sumi dark:text-gofun mb-2">Features:</div>
+                            <div class="flex flex-wrap gap-2">
+                                ${property.features.slice(0, 3).map(feature => 
+                                    `<span class="bg-[#d9c289]/10 dark:bg-[#d9c289]/20 text-[#d9c289] dark:text-[#d9c289] text-xs px-3 py-1 rounded-full">${feature}</span>`
+                                ).join('')}
+                                ${property.features.length > 3 ? 
+                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-xs">+${property.features.length - 3} more</span>` : ''
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col gap-2 min-w-[200px]">
+                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-[#000000] text-white py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[#000000]/90 transition-all duration-300">
+                            View Details
+                        </button>
+                        <a href="tel:${property.contact}" class="w-full bg-[#d9c289] text-white py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 text-center">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     displayRentalProperties() {

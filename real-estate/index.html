@@ -653,100 +653,36 @@
         <!-- Search and Filter Section -->
 
 
-        <!-- Main Properties Grid Section -->
+        <!-- All Properties Section - Simple Layout -->
         <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                         <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun">
-                            Buy Your Dream Kyoto Machiya
+                            🏠 All Properties in Kyoto
                         </h2>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70">
+                            Complete listing of all sale and rental properties
+                        </p>
                     </div>
                     <div class="flex gap-2 lg:gap-3">
-                        <button class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
-                            View All Properties
+                        <button id="filter-sale" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
+                            For Sale
+                        </button>
+                        <button id="filter-rent" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition-colors">
+                            For Rent
+                        </button>
+                        <button id="filter-all" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition-colors">
+                            All
                         </button>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6" id="properties-grid">
-                    <!-- Property Card 1: Exquisite Traditional Machiya -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/arashiyama-bamboo.jpg" alt="Exquisite Traditional Machiya in Gion" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">95 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Exquisite Traditional Machiya in Gion</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥95,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$633,333</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Gion District, Higashiyama Ward</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Gion</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">3 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">125 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Traditional architecture</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Private garden</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+6 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <button onclick="realEstateManager.showPropertyModal('sale-001')" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</button>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Property Card 2: Luxury Modern Apartment -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/fushimi-inari.jpg" alt="Luxury Modern Apartment in Arashiyama" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">88 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Luxury Modern Apartment in Arashiyama</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥52,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$346,667</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Arashiyama District, Ukyo Ward</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Arashiyama</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">78 sqm</span>
-                            </div>
+                <div id="all-properties-container" class="space-y-4">
+                    <!-- All properties will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
                             <div class="mb-4">
                                 <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
                                 <div class="flex flex-wrap gap-1">
@@ -1041,30 +977,7 @@
             </div>
         </section>
 
-        <!-- Rental Properties Section -->
-        <section class="py-6 md:py-8 lg:py-12 bg-gray-50 dark:bg-gray-900">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun">
-                            🏠 Premium Rental Properties in Kyoto
-                        </h2>
-                        <p class="text-sm text-sumi/70 dark:text-gofun/70">
-                            Discover exclusive rental opportunities in Kyoto's most prestigious districts
-                        </p>
-                    </div>
-                    <div class="flex gap-2 lg:gap-3">
-                        <button class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
-                            View All Rentals
-                        </button>
-                    </div>
-                </div>
-                
-                <div id="rental-properties-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                    <!-- Rental properties will be dynamically loaded here -->
-                </div>
-            </div>
-        </section>
+
 
         <!-- Live from Kyoto Section -->
         <section class="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-sumi/5 to-aiiro/10">
