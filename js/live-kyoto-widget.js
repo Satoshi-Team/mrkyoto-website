@@ -8,6 +8,8 @@ class LiveKyotoWidget {
         console.log('🎥 Live Kyoto Widget constructor called');
         
         this.currentCameraIndex = 0;
+        this.lastWorkingCameraIndex = 0;
+        this.streamHealthCheck = null;
         this.cameras = [
             {
                 id: 'v9rQqa_VTEY',
@@ -562,6 +564,13 @@ class LiveKyotoWidget {
         console.log('🎥 Switching to previous camera...');
         this.currentCameraIndex = (this.currentCameraIndex - 1 + this.cameras.length) % this.cameras.length;
         console.log('🎥 New camera index:', this.currentCameraIndex);
+        
+        // Clear any existing health check
+        if (this.streamHealthCheck) {
+            clearInterval(this.streamHealthCheck);
+            this.streamHealthCheck = null;
+        }
+        
         this.updateCameraInfo();
         this.updateCameraEmbed();
     }
@@ -570,6 +579,13 @@ class LiveKyotoWidget {
         console.log('🎥 Switching to next camera...');
         this.currentCameraIndex = (this.currentCameraIndex + 1) % this.cameras.length;
         console.log('🎥 New camera index:', this.currentCameraIndex);
+        
+        // Clear any existing health check
+        if (this.streamHealthCheck) {
+            clearInterval(this.streamHealthCheck);
+            this.streamHealthCheck = null;
+        }
+        
         this.updateCameraInfo();
         this.updateCameraEmbed();
     }
@@ -613,19 +629,126 @@ class LiveKyotoWidget {
             const iframeSrc = `https://www.youtube.com/embed/${camera.id}?autoplay=1&mute=1`;
             console.log('🎥 Iframe src:', iframeSrc);
             
-            embedEl.innerHTML = `
-                <iframe 
-                    src="${iframeSrc}" 
-                    class="w-full h-full rounded-lg"
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `;
+            // Create iframe with error handling
+            const iframe = document.createElement('iframe');
+            iframe.src = iframeSrc;
+            iframe.className = 'w-full h-full rounded-lg';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            
+            // Add error handling for broken streams
+            iframe.onerror = () => {
+                console.log('❌ Stream error detected, trying next camera...');
+                this.handleStreamError();
+            };
+            
+            // Add load event to detect if stream is working
+            iframe.onload = () => {
+                console.log('✅ Stream loaded successfully');
+                this.lastWorkingCameraIndex = this.currentCameraIndex;
+            };
+            
+            // Clear previous content and add new iframe
+            embedEl.innerHTML = '';
+            embedEl.appendChild(iframe);
+            
+            // Set a timeout to detect if stream fails to load
+            setTimeout(() => {
+                this.checkStreamHealth();
+            }, 5000);
+            
             console.log('🎥 Camera embed updated successfully');
         } else {
             console.error('❌ Camera embed element not found');
         }
+    }
+    
+    handleStreamError() {
+        console.log('🔄 Handling stream error, trying next camera...');
+        this.nextCamera();
+    }
+    
+    checkStreamHealth() {
+        const embedEl = document.getElementById('camera-embed');
+        if (!embedEl) return;
+        
+        const iframe = embedEl.querySelector('iframe');
+        if (!iframe) return;
+        
+        // Check if iframe has loaded content
+        try {
+            // If we can't access the iframe content due to CORS, we'll use a different approach
+            // Set up a periodic check to see if the stream is working
+            this.streamHealthCheck = setInterval(() => {
+                this.monitorStreamHealth();
+            }, 10000); // Check every 10 seconds
+        } catch (error) {
+            console.log('⚠️ Cannot directly check iframe content due to CORS, using fallback monitoring');
+        }
+    }
+    
+    monitorStreamHealth() {
+        // This method will be called periodically to check stream health
+        console.log('🔍 Monitoring stream health...');
+        
+        const embedEl = document.getElementById('camera-embed');
+        if (!embedEl) return;
+        
+        const iframe = embedEl.querySelector('iframe');
+        if (!iframe) return;
+        
+        // Check if iframe is still in the DOM and has a valid src
+        if (iframe.src && iframe.src.includes('youtube.com')) {
+            console.log('✅ Stream appears to be healthy');
+        } else {
+            console.log('❌ Stream appears to be broken, switching to next camera...');
+            this.handleStreamError();
+        }
+    }
+    
+    // Enhanced error handling for broken streams
+    handleStreamError() {
+        console.log('🔄 Handling stream error, trying next camera...');
+        
+        // Don't switch if we're already on the last working camera
+        if (this.currentCameraIndex === this.lastWorkingCameraIndex) {
+            console.log('⚠️ Already on last working camera, cycling through all cameras...');
+        }
+        
+        // Try the next camera
+        this.nextCamera();
+        
+        // If we've tried all cameras and still have issues, show a fallback message
+        setTimeout(() => {
+            const embedEl = document.getElementById('camera-embed');
+            if (embedEl) {
+                const iframe = embedEl.querySelector('iframe');
+                if (!iframe || !iframe.src) {
+                    console.log('⚠️ All streams appear to be down, showing fallback message');
+                    embedEl.innerHTML = `
+                        <div class="w-full h-full flex items-center justify-center bg-gray-900 text-white rounded-lg">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">📹</div>
+                                <div class="text-lg font-semibold mb-2">Stream Temporarily Unavailable</div>
+                                <div class="text-sm text-gray-400">Please try again in a few moments</div>
+                                <button onclick="window.liveKyotoWidget.retryStream()" 
+                                        class="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                                    Retry Stream
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }, 3000);
+    }
+    
+    retryStream() {
+        console.log('🔄 Retrying stream...');
+        this.currentCameraIndex = 0; // Start from the first camera
+        this.updateCameraInfo();
+        this.updateCameraEmbed();
     }
 
     // Widget Update
@@ -748,10 +871,21 @@ class LiveKyotoWidget {
 
     // Auto refresh
     startAutoRefresh() {
-        setInterval(() => {
+        this.weatherRefreshInterval = setInterval(() => {
             this.loadWeatherData();
             this.updateWidget();
         }, 300000); // Refresh every 5 minutes
+    }
+    
+    // Cleanup method to clear all intervals
+    cleanup() {
+        if (this.weatherRefreshInterval) {
+            clearInterval(this.weatherRefreshInterval);
+        }
+        if (this.streamHealthCheck) {
+            clearInterval(this.streamHealthCheck);
+        }
+        console.log('🧹 Live Kyoto Widget cleanup completed');
     }
     
     // Load streams from YouTube playlist

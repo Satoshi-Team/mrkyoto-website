@@ -70,8 +70,8 @@ class RealEstateManager {
         // Data is available, proceed with initialization
         console.log(`${isJapanesePage ? 'Japanese' : 'English'} real estate data loaded successfully:`, dataSource);
         this.displayAllProperties(); // Display all properties in unified layout
-        this.displayMarketStats();
-        this.displayAgencies();
+                this.displayMarketStats();
+                this.displayAgencies();
     }
 
     setupEventListeners() {
@@ -284,8 +284,8 @@ class RealEstateManager {
         // Get all properties
         const saleProperties = this.getFilteredProperties('sale');
         const rentProperties = this.getFilteredProperties('rent');
-        const allProperties = [...saleProperties, ...rentProperties];
-        
+            const allProperties = [...saleProperties, ...rentProperties];
+
         console.log('All properties:', allProperties.length, 'total properties');
         console.log('Sale properties:', saleProperties.length);
         console.log('Rental properties:', rentProperties.length);
@@ -335,7 +335,7 @@ class RealEstateManager {
             properties = this.getFilteredProperties('sale');
         } else if (type === 'rent') {
             properties = this.getFilteredProperties('rent');
-        } else {
+            } else {
             // Show all properties
         const saleProperties = this.getFilteredProperties('sale');
         const rentProperties = this.getFilteredProperties('rent');
@@ -346,7 +346,7 @@ class RealEstateManager {
         container.innerHTML = propertiesHTML;
         
         // Add event listeners
-        this.setupPropertyCardListeners();
+            this.setupPropertyCardListeners();
     }
 
     generateSimplePropertyCard(property) {
