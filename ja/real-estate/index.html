@@ -739,6 +739,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🏯 Japanese Real Estate page loaded');
             
+            // Test if real estate data is available
+            if (typeof realEstateData !== 'undefined') {
+                console.log('✅ Real estate data is available');
+                console.log('Rental properties count:', realEstateData.getPropertiesForRent().length);
+                console.log('Sale properties count:', realEstateData.getPropertiesForSale().length);
+            } else {
+                console.error('❌ Real estate data is NOT available');
+            }
+            
             // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
                 new ThemeLanguageManager();
@@ -750,7 +759,10 @@
             
             // Initialize real estate functionality
             if (typeof RealEstateManager !== 'undefined') {
+                console.log('🏠 Initializing RealEstateManager...');
                 new RealEstateManager();
+            } else {
+                console.error('❌ RealEstateManager is NOT available');
             }
         });
     </script>
