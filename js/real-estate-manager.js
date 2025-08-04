@@ -56,18 +56,22 @@ class RealEstateManager {
     }
 
     loadRealEstateData() {
-        // Check if realEstateData is available
-        if (typeof realEstateData === 'undefined') {
-            console.warn('Real estate data not loaded yet, retrying in 100ms...');
+        // Determine which data source to use based on current page
+        const isJapanesePage = window.location.pathname.includes('/ja/');
+        const dataSource = isJapanesePage ? realEstateDataJA : realEstateData;
+        
+        // Check if the appropriate data source is available
+        if (typeof dataSource === 'undefined') {
+            console.warn(`${isJapanesePage ? 'Japanese' : 'English'} real estate data not loaded yet, retrying in 100ms...`);
             setTimeout(() => this.loadRealEstateData(), 100);
             return;
         }
         
         // Data is available, proceed with initialization
-        console.log('Real estate data loaded successfully:', realEstateData);
+        console.log(`${isJapanesePage ? 'Japanese' : 'English'} real estate data loaded successfully:`, dataSource);
         this.displayAllProperties(); // Display all properties in unified layout
-                this.displayMarketStats();
-                this.displayAgencies();
+        this.displayMarketStats();
+        this.displayAgencies();
     }
 
     setupEventListeners() {
@@ -1946,11 +1950,18 @@ class RealEstateManager {
     }
 
     getFilteredProperties(type) {
-        if (!realEstateData) return [];
+        // Determine which data source to use based on current page
+        const isJapanesePage = window.location.pathname.includes('/ja/');
+        const dataSource = isJapanesePage ? realEstateDataJA : realEstateData;
+        
+        if (!dataSource) {
+            console.warn(`Data source not available for ${isJapanesePage ? 'Japanese' : 'English'} page`);
+            return [];
+        }
 
         let properties = type === 'sale' ? 
-            realEstateData.getPropertiesForSale() : 
-            realEstateData.getPropertiesForRent();
+            dataSource.getPropertiesForSale() : 
+            dataSource.getPropertiesForRent();
 
         console.log(`getFilteredProperties(${type}): Found ${properties.length} properties`);
         console.log(`Property IDs for ${type}:`, properties.map(p => p.id));
