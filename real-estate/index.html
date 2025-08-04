@@ -1062,6 +1062,9 @@
                 
                 <div id="rental-properties-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                     <!-- Rental properties will be dynamically loaded here -->
+                    <div class="text-center col-span-full py-8">
+                        <p class="text-sumi/70 dark:text-gofun/70">Loading rental properties...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2051,6 +2054,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🏯 English Real Estate page loaded');
             
+            // Test if real estate data is available
+            if (typeof realEstateData !== 'undefined') {
+                console.log('✅ Real estate data is available');
+                console.log('Rental properties count:', realEstateData.getPropertiesForRent().length);
+                console.log('Sale properties count:', realEstateData.getPropertiesForSale().length);
+            } else {
+                console.error('❌ Real estate data is NOT available');
+            }
+            
             // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
                 new ThemeLanguageManager();
@@ -2062,9 +2074,96 @@
             
             // Initialize real estate functionality
             if (typeof RealEstateManager !== 'undefined') {
+                console.log('🏠 Initializing RealEstateManager...');
                 new RealEstateManager();
+            } else {
+                console.error('❌ RealEstateManager is NOT available');
             }
         });
+    </script>
+
+    <!-- Manual Fallback for Rental Properties -->
+    <script>
+        // Manual fallback for rental properties if automatic loading fails
+        setTimeout(() => {
+            const rentalContainer = document.getElementById('rental-properties-container');
+            if (rentalContainer && rentalContainer.children.length === 1) {
+                console.log('🔄 Manual fallback: Loading rental properties...');
+                if (typeof realEstateData !== 'undefined') {
+                    const rentalProperties = realEstateData.getPropertiesForRent();
+                    if (rentalProperties.length > 0) {
+                        const rentalHTML = rentalProperties.map(property => `
+                            <div class="group bg-white dark:bg-sumi rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+                                <div class="relative overflow-hidden">
+                                    <img src="${property.image}" alt="${property.title}" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-blue-500 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">For Rent</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4">
+                                        <span class="bg-gray-800/80 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-medium">${property.walkScore} Walk</span>
+                                    </div>
+                                    <div class="absolute bottom-4 right-4">
+                                        <span class="bg-[#d9c289] text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">Verified</span>
+                                    </div>
+                                </div>
+                                <div class="p-6 space-y-4">
+                                    <div>
+                                        <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-2 group-hover:text-[#d9c289] transition-colors">${property.title}</h3>
+                                        <div class="text-3xl font-bold text-sumi dark:text-gofun mb-1">${property.price}</div>
+                                        <div class="text-sm text-sumi/60 dark:text-gofun/60">${property.priceUSD}</div>
+                                    </div>
+                                    
+                                    <div class="space-y-3">
+                                        <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70">
+                                            <span class="mr-3 text-lg">📍</span>
+                                            <span>${property.location}</span>
+                                        </div>
+                                        <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70">
+                                            <span class="mr-3 text-lg">🏘️</span>
+                                            <span>${property.neighborhood}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex gap-2">
+                                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">${property.bedrooms} Bed</span>
+                                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">${property.bathrooms} Bath</span>
+                                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">${property.size}</span>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="text-sm font-semibold text-sumi dark:text-gofun mb-3">Features:</div>
+                                        <div class="flex flex-wrap gap-2">
+                                            ${property.features.slice(0, 2).map(feature => 
+                                                `<span class="bg-[#d9c289]/10 dark:bg-[#d9c289]/20 text-[#d9c289] dark:text-[#d9c289] text-xs px-3 py-1.5 rounded-full font-medium">${feature}</span>`
+                                            ).join('')}
+                                            ${property.features.length > 2 ? 
+                                                `<button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline font-medium">+${property.features.length - 2} more</button>` : ''
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex gap-3 pt-2">
+                                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="flex-1 bg-[#000000] text-white py-3 px-4 rounded-xl text-sm font-semibold hover:bg-[#000000]/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                            View Details
+                                        </button>
+                                        <a href="tel:${property.contact}" class="flex-1 bg-[#d9c289] text-white py-3 px-4 rounded-xl text-sm font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                            Contact
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        rentalContainer.innerHTML = rentalHTML;
+                        console.log('✅ Manual fallback: Rental properties displayed successfully');
+                    } else {
+                        rentalContainer.innerHTML = '<p class="text-center text-sumi/70 dark:text-gofun/70 col-span-full">No rental properties available at the moment.</p>';
+                    }
+                } else {
+                    rentalContainer.innerHTML = '<p class="text-center text-sumi/70 dark:text-gofun/70 col-span-full">Real estate data not available.</p>';
+                }
+            }
+        }, 2000); // Wait 2 seconds before trying manual fallback
     </script>
 
     <!-- Properties List View (Hidden by default) -->
