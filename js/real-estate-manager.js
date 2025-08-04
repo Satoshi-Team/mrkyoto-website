@@ -334,7 +334,12 @@ class RealEstateManager {
 
     generateSimplePropertyCard(property) {
         const isRental = property.id.includes('rent');
-        const typeBadge = isRental ? 'For Rent' : 'For Sale';
+        const isJapanesePage = window.location.pathname.includes('/ja/');
+        
+        // Use Japanese text for Japanese pages
+        const typeBadge = isRental ? 
+            (isJapanesePage ? '賃貸物件' : 'For Rent') : 
+            (isJapanesePage ? '売買物件' : 'For Sale');
         const typeColor = isRental ? 'bg-blue-500' : 'bg-red-500';
         
         return `
@@ -355,8 +360,8 @@ class RealEstateManager {
                         <!-- Header with badges -->
                         <div class="flex flex-wrap items-center gap-3 mb-4">
                             <span class="${typeColor} text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-transform duration-200">${typeBadge}</span>
-                            <span class="bg-gradient-to-r from-gray-600 to-gray-700 text-white text-sm px-4 py-2 rounded-full font-medium shadow-md">${property.walkScore} Walk</span>
-                            <span class="bg-gradient-to-r from-[#d9c289] to-[#d9c289]/90 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">Verified</span>
+                            <span class="bg-gradient-to-r from-gray-600 to-gray-700 text-white text-sm px-4 py-2 rounded-full font-medium shadow-md">${property.walkScore} ${isJapanesePage ? '徒歩' : 'Walk'}</span>
+                            <span class="bg-gradient-to-r from-[#d9c289] to-[#d9c289]/90 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">${isJapanesePage ? '認証済み' : 'Verified'}</span>
                         </div>
                         
                         <!-- Title and Price -->
@@ -382,21 +387,21 @@ class RealEstateManager {
                         
                         <!-- Property Stats -->
                         <div class="flex flex-wrap gap-3">
-                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.bedrooms} Bed</span>
-                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.bathrooms} Bath</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.bedrooms} ${isJapanesePage ? '寝室' : 'Bed'}</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.bathrooms} ${isJapanesePage ? '浴室' : 'Bath'}</span>
                             <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${property.size}</span>
-                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">Built: ${property.yearBuilt}</span>
+                            <span class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 text-sm px-4 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">${isJapanesePage ? '築年' : 'Built'}: ${property.yearBuilt}</span>
                         </div>
                         
                         <!-- Features -->
                         <div class="space-y-3">
-                            <div class="text-lg font-semibold text-sumi dark:text-gofun">Features:</div>
+                            <div class="text-lg font-semibold text-sumi dark:text-gofun">${isJapanesePage ? '特徴:' : 'Features:'}</div>
                             <div class="flex flex-wrap gap-3">
                                 ${property.features.slice(0, 4).map(feature => 
                                     `<span class="bg-gradient-to-r from-[#d9c289]/15 to-[#d9c289]/25 dark:from-[#d9c289]/25 dark:to-[#d9c289]/35 text-[#d9c289] dark:text-[#d9c289] text-sm px-4 py-2 rounded-full font-medium border border-[#d9c289]/30 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105">${feature}</span>`
                                 ).join('')}
                                 ${property.features.length > 4 ? 
-                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-sm font-medium hover:underline cursor-pointer">+${property.features.length - 4} more features</span>` : ''
+                                    `<span class="text-[#d9c289] dark:text-[#d9c289] text-sm font-medium hover:underline cursor-pointer">+${property.features.length - 4} ${isJapanesePage ? 'その他の特徴' : 'more features'}</span>` : ''
                                 }
                             </div>
                         </div>
@@ -404,19 +409,19 @@ class RealEstateManager {
                         <!-- Additional Info -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-sumi/90 dark:text-gofun/90 bg-white/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-md backdrop-blur-sm">
                             <div class="flex items-center gap-2">
-                                <span class="font-medium">Agency:</span>
+                                <span class="font-medium">${isJapanesePage ? '不動産会社:' : 'Agency:'}</span>
                                 <span>${property.agency}</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="font-medium">Contact:</span>
+                                <span class="font-medium">${isJapanesePage ? '連絡先:' : 'Contact:'}</span>
                                 <span>${property.contact}</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="font-medium">Days on Market:</span>
+                                <span class="font-medium">${isJapanesePage ? '市場日数:' : 'Days on Market:'}</span>
                                 <span>${property.daysOnMarket || 'N/A'}</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="font-medium">Property ID:</span>
+                                <span class="font-medium">${isJapanesePage ? '物件ID:' : 'Property ID:'}</span>
                                 <span class="font-mono">${property.id}</span>
                             </div>
                         </div>
@@ -424,11 +429,11 @@ class RealEstateManager {
                     
                     <!-- Action Buttons -->
                     <div class="flex flex-col gap-4 min-w-[250px] lg:min-w-[200px]">
-                        <button onclick="realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-gradient-to-r from-[#000000] to-gray-800 text-white py-4 px-6 rounded-xl text-base font-semibold hover:from-gray-800 hover:to-[#000000] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-gray-300 dark:border-gray-600">
-                            View Details
+                        <button onclick="window.realEstateManager.showPropertyModal('${property.id}')" class="w-full bg-gradient-to-r from-[#000000] to-gray-800 text-white py-4 px-6 rounded-xl text-base font-semibold hover:from-gray-800 hover:to-[#000000] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-gray-300 dark:border-gray-600">
+                            ${isJapanesePage ? '詳細を見る' : 'View Details'}
                         </button>
                         <a href="tel:${property.contact}" class="w-full bg-gradient-to-r from-[#d9c289] to-[#d9c289]/90 text-white py-4 px-6 rounded-xl text-base font-semibold hover:from-[#d9c289]/90 hover:to-[#d9c289] transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#d9c289]/30">
-                            Contact
+                            ${isJapanesePage ? 'お問い合わせ' : 'Contact'}
                         </a>
                     </div>
                 </div>
