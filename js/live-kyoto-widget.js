@@ -43,6 +43,16 @@ class LiveKyotoWidget {
         this.updateWidget();
         this.startAutoRefresh();
         
+        // Force weather update with fallback data if needed
+        setTimeout(() => {
+            console.log('🌤️ Forcing weather update...');
+            if (!this.weatherData) {
+                console.log('🌤️ No weather data, using fallback...');
+                this.weatherData = this.getEnhancedFallbackWeatherData();
+            }
+            this.updateWeatherDisplay();
+        }, 2000);
+        
         // Add global click handler for debugging
         document.addEventListener('click', (e) => {
             if (e.target.closest('#camera-prev') || e.target.closest('#camera-next')) {
@@ -81,6 +91,17 @@ class LiveKyotoWidget {
             console.log('🎥 Testing previousCamera from global function');
             this.previousCamera();
         };
+        
+        window.testWeatherUpdate = () => {
+            console.log('🌤️ Testing weather update from global function');
+            this.updateWeatherDisplay();
+        };
+        
+        window.forceWeatherUpdate = () => {
+            console.log('🌤️ Forcing weather update with fallback data');
+            this.weatherData = this.getEnhancedFallbackWeatherData();
+            this.updateWeatherDisplay();
+        };
     }
 
     // Weather Data Integration
@@ -98,17 +119,20 @@ class LiveKyotoWidget {
             
             // Use the dedicated weather service as backup
             if (window.WeatherService) {
+                console.log('🌤️ Using WeatherService...');
                 const weatherService = new WeatherService();
                 this.weatherData = await weatherService.getKyotoWeather();
                 console.log('✅ Weather data loaded from service:', this.weatherData);
             } else {
                 console.log('⚠️ WeatherService not available, using fallback');
                 this.weatherData = this.getEnhancedFallbackWeatherData();
+                console.log('✅ Fallback weather data loaded:', this.weatherData);
             }
         } catch (error) {
             console.error('❌ Error loading weather data:', error);
             console.log('⚠️ Using enhanced fallback weather data');
             this.weatherData = this.getEnhancedFallbackWeatherData();
+            console.log('✅ Fallback weather data loaded after error:', this.weatherData);
         }
     }
 
@@ -767,6 +791,7 @@ class LiveKyotoWidget {
         
         // Check if weather widget container exists
         const weatherWidget = document.getElementById('kyoto-weather-widget');
+        console.log('🌤️ Weather widget container found:', !!weatherWidget);
         if (!weatherWidget) {
             console.error('❌ Weather widget container not found!');
             return;
