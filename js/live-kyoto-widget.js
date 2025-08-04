@@ -43,6 +43,10 @@ class LiveKyotoWidget {
         this.updateWidget();
         this.startAutoRefresh();
         
+        // Immediately try to update weather display
+        console.log('🌤️ Immediately updating weather display...');
+        this.updateWeatherDisplay();
+        
         // Force weather update with fallback data if needed
         setTimeout(() => {
             console.log('🌤️ Forcing weather update...');
@@ -52,6 +56,25 @@ class LiveKyotoWidget {
             }
             this.updateWeatherDisplay();
         }, 2000);
+        
+        // Additional test with hardcoded data
+        setTimeout(() => {
+            console.log('🌤️ Testing with hardcoded weather data...');
+            const testWeather = {
+                temperature: 22,
+                feelsLike: 24,
+                humidity: 65,
+                description: 'Partly cloudy',
+                icon: '02d',
+                windSpeed: 8,
+                pressure: 1013,
+                visibility: 10,
+                sunrise: new Date(new Date().setHours(6, 30, 0, 0)),
+                sunset: new Date(new Date().setHours(17, 30, 0, 0))
+            };
+            this.weatherData = testWeather;
+            this.updateWeatherDisplay();
+        }, 3000);
         
         // Add global click handler for debugging
         document.addEventListener('click', (e) => {
@@ -797,6 +820,12 @@ class LiveKyotoWidget {
             return;
         }
         
+        // Log all weather-related elements to see what's available
+        console.log('🔍 Searching for weather elements...');
+        const allElements = document.querySelectorAll('[id*="weather"]');
+        console.log('🔍 Found elements with "weather" in ID:', allElements.length);
+        allElements.forEach(el => console.log('🔍 Element:', el.id, el.textContent));
+        
         // Update individual weather elements
         const temperatureEl = document.getElementById('weather-temperature');
         const iconEl = document.getElementById('weather-icon');
@@ -833,11 +862,40 @@ class LiveKyotoWidget {
             console.log('🌤️ Updated icon:', weather.icon);
         }
         if (descriptionEl) {
-            descriptionEl.textContent = weather.description;
-            console.log('🌤️ Updated description:', weather.description);
+            // Check if we're on a Japanese page and translate the description
+            const isJapanesePage = window.location.pathname.includes('/ja/');
+            let displayDescription = weather.description;
+            
+            if (isJapanesePage) {
+                // Translate common weather descriptions to Japanese
+                const translations = {
+                    'Clear sky': '晴れ',
+                    'Partly cloudy': '部分的に曇り',
+                    'Light rain': '小雨',
+                    'Light snow': '小雪',
+                    'Overcast': '曇り',
+                    'Foggy': '霧',
+                    'Light drizzle': '小雨',
+                    'Moderate rain': '中程度の雨',
+                    'Heavy rain': '大雨',
+                    'Light snow fall': '小雪',
+                    'Moderate snow fall': '中程度の雪',
+                    'Heavy snow fall': '大雪'
+                };
+                displayDescription = translations[weather.description] || weather.description;
+            }
+            
+            descriptionEl.textContent = displayDescription;
+            console.log('🌤️ Updated description:', displayDescription);
         }
         if (feelsLikeEl) {
-            feelsLikeEl.innerHTML = `<span data-translate="liveKyoto.weather.feelsLike">Feels like</span> ${weather.feelsLike}°C`;
+            // Check if we're on a Japanese page
+            const isJapanesePage = window.location.pathname.includes('/ja/');
+            if (isJapanesePage) {
+                feelsLikeEl.textContent = `体感温度 ${weather.feelsLike}°C`;
+            } else {
+                feelsLikeEl.innerHTML = `<span data-translate="liveKyoto.weather.feelsLike">Feels like</span> ${weather.feelsLike}°C`;
+            }
             console.log('🌤️ Updated feels like:', weather.feelsLike);
         }
         if (windEl) {
