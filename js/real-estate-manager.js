@@ -334,13 +334,15 @@ class RealEstateManager {
         const typeColor = isRental ? 'bg-blue-500' : 'bg-red-500';
         
         return `
-            <div class="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-sumi dark:via-gray-800 dark:to-sumi rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 md:p-8 lg:p-10 border border-gray-200 dark:border-gray-700 mx-4 md:mx-0 overflow-hidden group">
+            <div class="relative bg-gradient-to-br from-white via-[#d9c289]/10 to-white dark:from-sumi dark:via-[#d9c289]/20 dark:to-sumi rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 md:p-8 lg:p-10 border border-gray-200 dark:border-gray-700 mx-4 md:mx-0 overflow-hidden group">
                 <!-- Responsive Background Elements -->
-                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent dark:from-transparent dark:via-white/10 dark:to-transparent opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#d9c289] via-[#000000] to-[#d9c289] opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#d9c289]/20 to-transparent rounded-full blur-2xl opacity-100 transition-opacity duration-700"></div>
-                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-[#000000]/10 to-transparent rounded-full blur-3xl opacity-100 transition-opacity duration-700"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-[#d9c289]/5 to-transparent rounded-full blur-3xl opacity-100 animate-pulse"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-[#d9c289]/5 via-white/20 to-[#d9c289]/5 dark:from-[#d9c289]/10 dark:via-white/10 dark:to-[#d9c289]/10 opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#d9c289] via-[#000000] to-[#d9c289] opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-[#d9c289]/30 to-transparent rounded-full blur-3xl opacity-100 transition-opacity duration-700"></div>
+                <div class="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-tr from-[#000000]/20 to-transparent rounded-full blur-3xl opacity-100 transition-opacity duration-700"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-br from-[#d9c289]/15 to-transparent rounded-full blur-3xl opacity-100 animate-pulse"></div>
+                <div class="absolute top-1/4 right-1/4 w-20 h-20 bg-gradient-to-br from-[#000000]/10 to-transparent rounded-full blur-2xl opacity-100 animate-pulse delay-1000"></div>
+                <div class="absolute bottom-1/4 left-1/4 w-16 h-16 bg-gradient-to-br from-[#d9c289]/20 to-transparent rounded-full blur-2xl opacity-100 animate-pulse delay-500"></div>
                 
                 <!-- Content Container -->
                 <div class="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
