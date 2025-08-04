@@ -355,20 +355,20 @@ class RealEstateManager {
                         
                         <!-- Title and Price -->
                         <div class="space-y-3">
-                            <h3 class="font-bold text-2xl md:text-3xl lg:text-4xl text-sumi dark:text-gofun leading-tight bg-gradient-to-r from-sumi to-gray-700 dark:from-gofun dark:to-gray-300 bg-clip-text text-transparent">${property.title}</h3>
+                            <h3 class="font-bold text-2xl md:text-3xl lg:text-4xl text-sumi dark:text-gofun leading-tight drop-shadow-sm">${property.title}</h3>
                             <div class="flex flex-col sm:flex-row sm:items-baseline gap-3">
-                                <div class="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-red-600 to-red-700 dark:from-red-400 dark:to-red-500 bg-clip-text text-transparent">${property.price}</div>
-                                <div class="text-lg text-sumi/70 dark:text-gofun/70 font-medium">${property.priceUSD}</div>
+                                <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 dark:text-red-400 drop-shadow-sm">${property.price}</div>
+                                <div class="text-lg text-sumi/80 dark:text-gofun/80 font-medium drop-shadow-sm">${property.priceUSD}</div>
                             </div>
                         </div>
                         
                         <!-- Location Info -->
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-base text-sumi/80 dark:text-gofun/80">
-                            <div class="flex items-center gap-3 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-base text-sumi/90 dark:text-gofun/90">
+                            <div class="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 px-4 py-2 rounded-lg shadow-md backdrop-blur-sm">
                                 <span class="text-xl">📍</span>
                                 <span class="font-medium">${property.location}</span>
                             </div>
-                            <div class="flex items-center gap-3 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg shadow-sm">
+                            <div class="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 px-4 py-2 rounded-lg shadow-md backdrop-blur-sm">
                                 <span class="text-xl">🏘️</span>
                                 <span class="font-medium">${property.neighborhood}</span>
                             </div>
@@ -396,7 +396,7 @@ class RealEstateManager {
                         </div>
                         
                         <!-- Additional Info -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-sumi/70 dark:text-gofun/70 bg-white/30 dark:bg-gray-800/30 p-4 rounded-lg">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-sumi/90 dark:text-gofun/90 bg-white/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-md backdrop-blur-sm">
                             <div class="flex items-center gap-2">
                                 <span class="font-medium">Agency:</span>
                                 <span>${property.agency}</span>
