@@ -2716,7 +2716,7 @@ class RealEstateManager {
                             </div>
                             
                             <div class="space-y-6">
-                                <div>
+                            <div>
                                     <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Property Details</h3>
                                     <div class="space-y-2 text-sm text-sumi/80 dark:text-gofun/80 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                                         <div class="flex justify-between"><strong>Location:</strong> <span>${property.location}</span></div>
@@ -2736,9 +2736,9 @@ class RealEstateManager {
                                 <div>
                                     <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Features</h3>
                                     <div class="flex flex-wrap gap-2">
-                                        ${property.features.map(feature => 
+                                    ${property.features.map(feature => 
                                             `<span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] px-3 py-2 rounded-full text-sm font-medium border border-[#d9c289]/30">${feature}</span>`
-                                        ).join('')}
+                                    ).join('')}
                                     </div>
                                 </div>
                                 
