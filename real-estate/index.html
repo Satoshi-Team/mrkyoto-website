@@ -1675,8 +1675,14 @@
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Both elements found, adding event listener');
                 // Force menu to start hidden with new styling
-                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
+                mobileMenu.className = 'lg:hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
                 mobileMenu.style.display = 'none';
+                mobileMenu.style.position = 'absolute';
+                mobileMenu.style.top = '100%';
+                mobileMenu.style.left = '0';
+                mobileMenu.style.right = '0';
+                mobileMenu.style.width = '100%';
+                mobileMenu.style.zIndex = '9999';
                 console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
                 console.log('🔧 Menu display style:', mobileMenu.style.display);
                 
@@ -1690,7 +1696,13 @@
                     if (isHidden) {
                         mobileMenu.style.display = 'block';
                         mobileMenu.classList.remove('hidden');
+                        mobileMenu.style.visibility = 'visible';
+                        mobileMenu.style.opacity = '1';
                         console.log('📱 Menu opened');
+                        console.log('🔍 Menu display:', mobileMenu.style.display);
+                        console.log('🔍 Menu visibility:', mobileMenu.style.visibility);
+                        console.log('🔍 Menu opacity:', mobileMenu.style.opacity);
+                        console.log('🔍 Menu classes:', mobileMenu.className);
                     } else {
                         mobileMenu.style.display = 'none';
                         mobileMenu.classList.add('hidden');
