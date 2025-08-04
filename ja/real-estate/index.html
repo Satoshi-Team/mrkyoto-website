@@ -616,18 +616,9 @@
             </div>
         </section>
 
-        <!-- Live from Kyoto Section -->
-        <section class="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-sumi/5 to-aiiro/10">
+        <!-- LIVE FROM KYOTO WIDGET -->
+        <section class="py-6 md:py-8 lg:py-12 bg-washi dark:bg-aiiro">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 lg:mb-12">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun">
-                        🎥 京都ライブ
-                    </h2>
-                    <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
-                        リアルタイムストリーム、天気更新、文化情報で京都を体験
-                    </p>
-                </div>
-                
                 <!-- Live from Kyoto Widget -->
                 <div class="zen-card p-6 bg-gradient-to-br from-washi/50 to-sumi/5 dark:from-gray-800/50 dark:to-gray-700/5 border border-sumi/10 dark:border-gray-600/10">
                     <!-- Widget Header -->
@@ -640,12 +631,6 @@
                                 <h3 class="text-xl font-bold text-sumi dark:text-white">京都ライブ</h3>
                                 <p class="text-sm text-sumi/60 dark:text-gray-400">リアルタイムカメラ、天気、ソーシャルアップデート</p>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-                                <span class="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
-                                LIVE
-                            </span>
                         </div>
                     </div>
 
@@ -674,7 +659,7 @@
                                         </button>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <span id="camera-counter" class="text-sm bg-white/20 px-2 py-1 rounded">1 / 15</span>
+                                        <span id="camera-counter" class="text-sm bg-white/20 px-2 py-1 rounded">1 / 4</span>
                                         <button class="p-2 hover:bg-white/20 rounded-lg transition-colors" title="Fullscreen">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
@@ -699,76 +684,86 @@
                         <!-- Weather & Social Sidebar -->
                         <div class="space-y-6">
                             
-                            <!-- Weather Widget -->
-                            <div>
-                                <h4 class="text-lg font-semibold text-sumi dark:text-white mb-3 flex items-center gap-2">
-                                    <span>🌤️</span>
-                                    <span>京都の天気</span>
-                                </h4>
-                                <div id="kyoto-weather-widget">
-                                    <!-- Weather content will be populated by JavaScript -->
+                            <!-- Enhanced Weather Widget -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700/30 shadow-lg">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-semibold text-sumi dark:text-white flex items-center gap-2">
+                                        <span class="text-2xl">🌤️</span>
+                                        <span>京都の天気</span>
+                                    </h4>
                                 </div>
-                            </div>
-
-                            <!-- Social Media Feed -->
-                            <div>
-                                <h4 class="text-lg font-semibold text-sumi dark:text-white mb-3 flex items-center gap-2">
-                                    <span>📱</span>
-                                    <span>ソーシャルアップデート</span>
-                                </h4>
-                                <div id="kyoto-social-widget">
-                                    <!-- Social content will be populated by JavaScript -->
-                                </div>
-                            </div>
-
-                            <!-- Quick Links -->
-                            <div>
-                                <h4 class="text-lg font-semibold text-sumi dark:text-white mb-3 flex items-center gap-2">
-                                    <span>🔗</span>
-                                    <span>クイックリンク</span>
-                                </h4>
-                                <div class="space-y-2">
-                                    <a href="https://www.instagram.com/explore/tags/kyoto/" target="_blank" rel="noopener noreferrer" 
-                                       class="flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg hover:shadow-md transition-all border border-gray-200 dark:border-gray-700">
-                                        <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
-                                            <span class="text-white text-sm">📷</span>
+                                
+                                <div id="kyoto-weather-widget" class="space-y-4">
+                                    <!-- Current Weather -->
+                                    <div class="text-center">
+                                        <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="weather-temperature">
+                                            --°C
                                         </div>
-                                        <div class="flex-1">
-                                            <div class="font-semibold text-sm text-sumi dark:text-white">Instagramの#kyoto</div>
-                                            <div class="text-xs text-sumi/60 dark:text-gray-400">最新の写真とストーリー</div>
+                                        <div class="text-6xl mb-3" id="weather-icon">
+                                            🌤️
                                         </div>
-                                        <svg class="w-4 h-4 text-sumi/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                        </svg>
-                                    </a>
+                                        <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-2" id="weather-description">
+                                            天気を読み込み中...
+                                        </div>
+                                        <div class="text-xs text-sumi/60 dark:text-gofun/60" id="weather-feels-like">
+                                            体感温度 --°C
+                                        </div>
+                                    </div>
                                     
-                                    <a href="https://twitter.com/hashtag/kyoto" target="_blank" rel="noopener noreferrer" 
-                                       class="flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg hover:shadow-md transition-all border border-gray-200 dark:border-gray-700">
-                                        <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full flex items-center justify-center">
-                                            <span class="text-white text-sm">🐦</span>
+                                    <!-- Weather Details Grid -->
+                                    <div class="grid grid-cols-2 gap-3 text-xs">
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💨</span>
+                                                <span>風</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-wind">-- km/h</span>
                                         </div>
-                                        <div class="flex-1">
-                                            <div class="font-semibold text-sm text-sumi dark:text-white">Twitterの#kyoto</div>
-                                            <div class="text-xs text-sumi/60 dark:text-gray-400">リアルタイム更新とニュース</div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">💧</span>
+                                                <span>湿度</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-humidity">--%</span>
                                         </div>
-                                        <svg class="w-4 h-4 text-sumi/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                        </svg>
-                                    </a>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">👁️</span>
+                                                <span>視界</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-visibility">-- km</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-white/50 dark:bg-sumi/20 rounded-lg">
+                                            <div class="flex items-center">
+                                                <span class="mr-2">🌡️</span>
+                                                <span>気圧</span>
+                                            </div>
+                                            <span class="font-semibold" id="weather-pressure">-- hPa</span>
+                                        </div>
+                                    </div>
                                     
-                                    <a href="https://www.youtube.com/playlist?list=PLRZI-uS7qxtBsJeiJJfYy_paW2jy3N9Vz" target="_blank" rel="noopener noreferrer" 
-                                       class="flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg hover:shadow-md transition-all border border-gray-200 dark:border-gray-700">
-                                        <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                                            <span class="text-white text-sm">▶️</span>
+                                    <!-- Sunrise/Sunset -->
+                                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg border border-yellow-400/30">
+                                        <div class="flex items-center">
+                                            <span class="text-xl mr-2">🌅</span>
+                                            <div>
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">日の出</div>
+                                                <div class="font-semibold text-sm" id="weather-sunrise">--:--</div>
+                                            </div>
                                         </div>
-                                        <div class="flex-1">
-                                            <div class="font-semibold text-sm text-sumi dark:text-white">京都ライブカメラ</div>
-                                            <div class="text-xs text-sumi/60 dark:text-gray-400">すべてのカメラストリーム</div>
+                                        <div class="flex items-center">
+                                            <div class="text-right">
+                                                <div class="text-xs text-sumi/60 dark:text-gofun/60">日の入り</div>
+                                                <div class="font-semibold text-sm" id="weather-sunset">--:--</div>
+                                            </div>
+                                            <span class="text-xl ml-2">🌇</span>
                                         </div>
-                                        <svg class="w-4 h-4 text-sumi/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                        </svg>
-                                    </a>
+                                    </div>
+                                    
+                                    <!-- Last Updated -->
+                                    <div class="text-center text-xs text-sumi/50 dark:text-gofun/50">
+                                        京都時間: <span id="weather-last-updated">--:--</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
