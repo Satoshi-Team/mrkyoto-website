@@ -837,390 +837,163 @@
              </div>
          </section>
 
-        <!-- Additional Properties Section -->
-        <section class="py-6 md:py-8 lg:py-12 bg-gradient-to-br from-gray-50 to-purple-50 dark:from-sumi dark:to-purple-900/20">
+        <!-- Search and Filter Section -->
+        <section class="py-6 md:py-8 bg-white dark:bg-sumi border-b border-zen dark:border-aiiro">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
-                    <!-- Property Card 5: Historic Kyo-machiya -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/arashiyama-bamboo.jpg" alt="Historic Kyo-machiya in Pontocho" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">94 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Historic Kyo-machiya in Pontocho</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥68,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$453,333</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Pontocho District, Nakagyo Ward</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Pontocho</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">95 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Historic architecture</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">River views</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-sale-005" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
+                <!-- Search Bar -->
+                <div class="relative mb-6">
+                    <input type="text" id="property-search" placeholder="Search properties by location, neighborhood, or features..." 
+                           class="w-full px-4 py-3 pl-12 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-sumi/50 dark:text-gofun/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Property Type</label>
+                        <select name="type" class="property-filter w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                            <option value="all">All Types</option>
+                            <option value="sale">For Sale</option>
+                            <option value="rent">For Rent</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Price Range</label>
+                        <select name="priceRange" class="property-filter w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                            <option value="all">All Prices</option>
+                            <option value="under-50m">Under ¥50M</option>
+                            <option value="50m-100m">¥50M-100M</option>
+                            <option value="100m-200m">¥100M-200M</option>
+                            <option value="over-200m">Over ¥200M</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Sort By</label>
+                        <select name="sort" class="property-filter w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                            <option value="newest">Newest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="size">Size</option>
+                            <option value="walk-score">Walk Score</option>
+                            <option value="year-built">Year Built</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <button id="view-grid" class="flex-1 px-3 py-2 bg-[#d9c289] text-white rounded-lg hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                            Grid
+                        </button>
+                        <button id="view-list" class="flex-1 px-3 py-2 bg-white dark:bg-sumi text-sumi dark:text-gofun border border-zen dark:border-aiiro rounded-lg hover:bg-zen dark:hover:bg-aiiro transition-colors">
+                            List
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Advanced Filters -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Bedrooms</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" value="1" class="bedroom-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">1 Bedroom</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="2" class="bedroom-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">2 Bedrooms</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="3" class="bedroom-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">3 Bedrooms</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="4+" class="bedroom-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">4+ Bedrooms</span>
+                            </label>
                         </div>
                     </div>
-
-                    <!-- Property Card 6: Modern Penthouse -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/fushimi-inari.jpg" alt="Modern Penthouse in Kamigyo" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">89 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Modern Penthouse in Kamigyo</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥125,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$833,333</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Kamigyo Ward, Near Imperial Palace</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Kamigyo</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">3 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">180 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Penthouse views</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Terrace</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+6 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-sale-006" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Neighborhoods</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" value="Gion" class="neighborhood-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Gion</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="Arashiyama" class="neighborhood-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Arashiyama</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="Higashiyama" class="neighborhood-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Higashiyama</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="Nakagyo" class="neighborhood-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Nakagyo</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="Kamigyo" class="neighborhood-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Kamigyo</span>
+                            </label>
                         </div>
                     </div>
-
-                    <!-- Property Card 7: Traditional House -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/kiyomizu-dera.jpg" alt="Traditional House in Kiyomizu" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">91 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Traditional House in Kiyomizu</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥88,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$586,667</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Kiyomizu District, Higashiyama Ward</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Kiyomizu</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">4 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">140 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Temple views</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Traditional architecture</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-sale-007" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Features</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" value="garden" class="feature-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Garden</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="parking" class="feature-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Parking</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="balcony" class="feature-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Balcony</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="modern" class="feature-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Modern</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="traditional" class="feature-filter mr-2">
+                                <span class="text-sm text-sumi dark:text-gofun">Traditional</span>
+                            </label>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Property Card 8: Contemporary Apartment -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/gion-district.jpg" alt="Contemporary Apartment in Shimogyo" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">87 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Contemporary Apartment in Shimogyo</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥42,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$280,000</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Shimogyo Ward, Near Kyoto Station</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Shimogyo</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">70 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Near Kyoto Station</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Modern amenities</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-sale-008" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
-                        </div>
+                <!-- Filter Actions -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="clear-filters" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                        Clear All Filters
+                    </button>
+                    <button id="save-search" class="px-4 py-2 bg-[#d9c289] text-white rounded-lg hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                        Save Search
+                    </button>
+                    <div class="flex items-center text-sm text-sumi/60 dark:text-gofun/60">
+                        <span id="filter-count">0</span> filters applied
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Rental Properties Section -->
-        <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-4">
-                        Premium Rental Properties
-                    </h2>
-                    <p class="text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
-                        Experience Kyoto living with our premium rental properties
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
-                    <!-- Rental Property 1: Luxury Apartment -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/arashiyama-bamboo.jpg" alt="Luxury Apartment in Gion" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">For Rent</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">94 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Luxury Apartment in Gion</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥280,000/month</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$1,867/month</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Gion District, Higashiyama Ward</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Gion</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">85 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Luxury finishes</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Balcony</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-rent-001" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rental Property 2: Traditional Machiya -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/fushimi-inari.jpg" alt="Traditional Machiya Rental in Arashiyama" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">For Rent</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">86 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Traditional Machiya Rental in Arashiyama</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥180,000/month</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$1,200/month</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Arashiyama District, Ukyo Ward</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Arashiyama</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">3 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">110 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Traditional architecture</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Garden</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+4 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-rent-002" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rental Property 3: Modern Studio -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="/images/kiyomizu-dera.jpg" alt="Modern Studio in Nakagyo" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">For Rent</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">93 Walk</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Modern Studio in Nakagyo</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥120,000/month</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$800/month</div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                <span class="mr-2">📍</span>
-                                <span>Nakagyo Ward, Central Kyoto</span>
-                            </div>
-                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                <span class="mr-2">🏘️</span>
-                                <span>Nakagyo</span>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bed</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">45 sqm</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Modern design</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Efficient layout</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+4 more</button>
-                                </div>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="/real-estate/#property-rent-003" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Live from Kyoto Section -->
-        <section class="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-sumi/5 to-aiiro/10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 lg:mb-12">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun">
-                        🎥 Live from Kyoto
-                    </h2>
-                    <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
-                        Experience Kyoto in real-time with our live streams, weather updates, and cultural insights.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    <div class="bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="text-3xl mb-4">🌤️</div>
-                        <h3 class="font-semibold text-lg mb-2">Live Weather</h3>
-                        <p class="text-sm text-sumi/70 dark:text-gofun/70">Real-time weather conditions in Kyoto</p>
-                    </div>
-                    <div class="bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="text-3xl mb-4">📰</div>
-                        <h3 class="font-semibold text-lg mb-2">Local News</h3>
-                        <p class="text-sm text-sumi/70 dark:text-gofun/70">Latest updates from Kyoto and Japan</p>
-                    </div>
-                    <div class="bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="text-3xl mb-4">🎭</div>
-                        <h3 class="font-semibold text-lg mb-2">Cultural Events</h3>
-                        <p class="text-sm text-sumi/70 dark:text-gofun/70">Live streams of festivals and events</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Properties Grid Section -->
+        <!-- Main Properties Grid Section -->
         <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                         <h2 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-sumi dark:text-gofun">
-                            Premium Kyoto Properties
+                            Buy Your Dream Kyoto Machiya
                         </h2>
                     </div>
                     <div class="flex gap-2 lg:gap-3">
@@ -1414,9 +1187,604 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Property Card 5: Historic Kyo-machiya -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="/images/arashiyama-bamboo.jpg" alt="Historic Kyo-machiya in Pontocho" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">94 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Historic Kyo-machiya in Pontocho</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥68,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$453,333</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Pontocho District, Nakagyo Ward</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏘️</span>
+                                <span>Pontocho</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">95 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Historic architecture</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">River views</span>
+                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="/real-estate/#property-sale-005" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 6: Modern Penthouse -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="/images/fushimi-inari.jpg" alt="Modern Penthouse in Kamigyo" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">89 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Modern Penthouse in Kamigyo</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥125,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$833,333</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Kamigyo Ward, Near Imperial Palace</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏘️</span>
+                                <span>Kamigyo</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">3 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">180 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Penthouse views</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Terrace</span>
+                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+6 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="/real-estate/#property-sale-006" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 7: Traditional House -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="/images/kiyomizu-dera.jpg" alt="Traditional House in Kiyomizu" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">91 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Traditional House in Kiyomizu</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥88,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$586,667</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Kiyomizu District, Higashiyama Ward</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏘️</span>
+                                <span>Kiyomizu</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">4 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">140 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Temple views</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Traditional architecture</span>
+                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="/real-estate/#property-sale-007" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 8: Contemporary Apartment -->
+                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img src="/images/gion-district.jpg" alt="Contemporary Apartment in Shimogyo" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">For Sale</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">87 Walk</span>
+                            </div>
+                            <div class="absolute bottom-3 right-3">
+                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Contemporary Apartment in Shimogyo</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥42,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$280,000</div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
+                                <span class="mr-2">📍</span>
+                                <span>Shimogyo Ward, Near Kyoto Station</span>
+                            </div>
+                            <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
+                                <span class="mr-2">🏘️</span>
+                                <span>Shimogyo</span>
+                            </div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bed</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">1 Bath</span>
+                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">70 sqm</span>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Near Kyoto Station</span>
+                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Modern amenities</span>
+                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+5 more</button>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="/real-estate/#property-sale-008" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Live from Kyoto Section -->
+        <section class="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-sumi/5 to-aiiro/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 lg:mb-12">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun">
+                        🎥 Live from Kyoto
+                    </h2>
+                    <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
+                        Experience Kyoto in real-time with our live streams, weather updates, and cultural insights.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="text-3xl mb-4">🌤️</div>
+                        <h3 class="font-semibold text-lg mb-2">Live Weather</h3>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70">Real-time weather conditions in Kyoto</p>
+                    </div>
+                    <div class="bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="text-3xl mb-4">📰</div>
+                        <h3 class="font-semibold text-lg mb-2">Local News</h3>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70">Latest updates from Kyoto and Japan</p>
+                    </div>
+                    <div class="bg-white dark:bg-sumi p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="text-3xl mb-4">🎭</div>
+                        <h3 class="font-semibold text-lg mb-2">Cultural Events</h3>
+                        <p class="text-sm text-sumi/70 dark:text-gofun/70">Live streams of festivals and events</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Analytics Dashboard -->
+        <section class="py-8 md:py-12 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-2">
+                            📊 Market Analytics Dashboard
+                        </h2>
+                        <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70">
+                            Real-time market insights and property trends for Kyoto
+                        </p>
+                    </div>
+                    <div class="flex gap-2 lg:gap-3">
+                        <button id="refresh-analytics" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
+                            🔄 Refresh Data
+                        </button>
+                        <button id="export-analytics" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#d9c289] text-white rounded hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                            📊 Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Market Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Total Properties</p>
+                                <p id="total-properties" class="text-2xl font-bold text-sumi dark:text-gofun">14</p>
+                            </div>
+                            <div class="text-3xl">🏠</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Avg Sale Price</p>
+                                <p id="avg-sale-price" class="text-2xl font-bold text-sumi dark:text-gofun">¥85.0M</p>
+                            </div>
+                            <div class="text-3xl">💰</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Avg Rent Price</p>
+                                <p id="avg-rent-price" class="text-2xl font-bold text-sumi dark:text-gofun">¥208K</p>
+                            </div>
+                            <div class="text-3xl">🏡</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Market Health</p>
+                                <p id="market-health" class="text-2xl font-bold text-sumi dark:text-gofun">Strong</p>
+                            </div>
+                            <div class="text-3xl">📈</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analytics -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-8">
+                    <div class="analytics-card">
+                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Price Trends</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Price Trend:</span>
+                                <span id="price-trend" class="text-sm font-semibold text-green-600">+5.2%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Health Indicator:</span>
+                                <span id="health-indicator" class="text-sm font-semibold text-sumi dark:text-gofun">Strong</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Avg Days on Market:</span>
+                                <span id="avg-days-on-market" class="text-sm font-semibold text-sumi dark:text-gofun">12.5 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Market Insights</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Market Outlook:</span>
+                                <span id="market-outlook" class="text-sm font-semibold text-green-600">Positive</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Inventory Level:</span>
+                                <span id="inventory-level" class="text-sm font-semibold text-sumi dark:text-gofun">Low</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Buyer Demand:</span>
+                                <span id="buyer-demand" class="text-sm font-semibold text-green-600">High</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
+                    <div class="analytics-card">
+                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Price Distribution</h3>
+                        <div class="h-64">
+                            <canvas id="price-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Neighborhood Performance</h3>
+                        <div class="h-64">
+                            <canvas id="neighborhood-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Market Trends</h3>
+                        <div class="h-64">
+                            <canvas id="trends-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Data Indicator -->
+                <div id="live-indicator" class="text-center text-sm text-sumi/60 dark:text-gofun/60">
+                    <div class="flex items-center justify-center space-x-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span>Live Data</span>
+                        <span class="text-gray-500">•</span>
+                        <span>Last updated: <span id="last-update-time"></span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Neighborhood Insights -->
+        <section class="py-8 md:py-12 bg-gradient-to-br from-sumi/5 to-aiiro/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 lg:mb-12">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-4">
+                        🏘️ Neighborhood Insights
+                    </h2>
+                    <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
+                        Discover the best neighborhoods in Kyoto with detailed market analysis and investment potential
+                    </p>
+                </div>
+                
+                <div id="neighborhood-insights" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Neighborhood cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Property Comparison Tools -->
+        <section class="py-8 md:py-12 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-2">
+                            ⚖️ Property Comparison
+                        </h2>
+                        <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70">
+                            Compare up to 3 properties side by side
+                        </p>
+                    </div>
+                    <div class="flex gap-2 lg:gap-3">
+                        <button id="clear-comparison" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
+                            Clear All
+                        </button>
+                        <button id="export-comparison" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#d9c289] text-white rounded hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add Property to Comparison -->
+                <div class="bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg p-6 mb-8">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="text" id="comparison-search" placeholder="Search properties to compare..." 
+                                   class="w-full px-4 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                        </div>
+                        <button id="add-to-comparison" class="px-6 py-2 bg-[#d9c289] text-white rounded-lg hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                            Add to Comparison
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Comparison Grid -->
+                <div id="comparison-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Comparison cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Comparison Analytics -->
+                <div id="comparison-analytics-panel" class="hidden mt-8">
+                    <div class="bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg p-6">
+                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Comparison Analytics</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-medium text-sumi dark:text-gofun mb-2">Price Analysis</h4>
+                                <div id="price-analysis" class="text-sm text-sumi/70 dark:text-gofun/70">
+                                    <!-- Price analysis will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-sumi dark:text-gofun mb-2">Investment Analysis</h4>
+                                <div id="investment-analysis" class="text-sm text-sumi/70 dark:text-gofun/70">
+                                    <!-- Investment analysis will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Alerts & Notifications -->
+        <section class="py-8 md:py-12 bg-gradient-to-br from-sumi/5 to-aiiro/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-2">
+                            🔔 Market Alerts
+                        </h2>
+                        <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70">
+                            Stay informed with personalized market alerts and notifications
+                        </p>
+                    </div>
+                    <button id="create-alert" class="px-6 py-2 bg-[#d9c289] text-white rounded-lg hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                        Create Alert
+                    </button>
+                </div>
+
+                <!-- Alert Statistics -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Price Drops</p>
+                                <p id="price-drops" class="text-2xl font-bold text-sumi dark:text-gofun">3</p>
+                            </div>
+                            <div class="text-3xl">📉</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">New Alerts</p>
+                                <p id="new-alerts" class="text-2xl font-bold text-sumi dark:text-gofun">8</p>
+                            </div>
+                            <div class="text-3xl">🆕</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Market Updates</p>
+                                <p id="market-updates" class="text-2xl font-bold text-sumi dark:text-gofun">2</p>
+                            </div>
+                            <div class="text-3xl">📊</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Saved Searches</p>
+                                <p id="saved-searches" class="text-2xl font-bold text-sumi dark:text-gofun">5</p>
+                            </div>
+                            <div class="text-3xl">🔍</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Alerts -->
+                <div id="active-alerts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Alert cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="py-8 md:py-12 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-2">
+                            🗺️ Interactive Property Map
+                        </h2>
+                        <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70">
+                            Explore properties on an interactive map of Kyoto
+                        </p>
+                    </div>
+                    <div class="flex gap-2 lg:gap-3">
+                        <button id="toggle-map-view" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
+                            📍 Show All Properties
+                        </button>
+                        <button id="center-map" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#d9c289] text-white rounded hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
+                            🎯 Center Map
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Map Controls -->
+                <div class="bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg p-4 mb-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Map Type</label>
+                            <select id="map-type" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                                <option value="roadmap">Road Map</option>
+                                <option value="satellite">Satellite</option>
+                                <option value="hybrid">Hybrid</option>
+                                <option value="terrain">Terrain</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Property Type</label>
+                            <select id="map-property-filter" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                                <option value="all">All Properties</option>
+                                <option value="sale">For Sale</option>
+                                <option value="rent">For Rent</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Price Range</label>
+                            <select id="map-price-filter" class="w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
+                                <option value="all">All Prices</option>
+                                <option value="under-50m">Under ¥50M</option>
+                                <option value="50m-100m">¥50M-100M</option>
+                                <option value="over-100m">Over ¥100M</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Container -->
+                <div class="relative bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg overflow-hidden" style="height: 500px;">
+                    <div id="map-loading" class="absolute inset-0 flex items-center justify-center bg-white dark:bg-sumi z-10">
+                        <div class="text-center">
+                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#d9c289] mx-auto mb-4"></div>
+                            <p class="text-sumi dark:text-gofun">Loading map...</p>
+                        </div>
+                    </div>
+                    <div id="property-map" class="w-full h-full"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results Container -->
+        <div id="search-results" class="hidden absolute top-full left-0 right-0 bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto">
+            <!-- Search results will be populated by JavaScript -->
+        </div>
+
+        <!-- Loading Skeleton -->
+        <div id="loading-skeleton" class="hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
+                <div class="bg-white dark:bg-sumi rounded-xl shadow-lg animate-pulse">
+                    <div class="h-48 bg-gray-200 dark:bg-gray-700 rounded-t-xl"></div>
+                    <div class="p-4">
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                        <div class="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                        <div class="flex gap-2">
+                            <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded flex-1"></div>
+                            <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded flex-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat skeleton cards -->
+            </div>
+        </div>
 
         <!-- Contact Section -->
         <section class="py-16 bg-gradient-to-br from-sakura to-washi dark:from-sumi dark:to-aiiro">
@@ -1433,6 +1801,78 @@
             </div>
         </section>
     </main>
+
+    <!-- Property Modal -->
+    <div id="property-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white dark:bg-sumi rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 id="modal-title" class="text-2xl font-serif font-bold text-sumi dark:text-gofun">Property Details</h2>
+                        <button onclick="realEstateManager.closePropertyModal()" class="text-sumi/60 dark:text-gofun/60 hover:text-sumi dark:hover:text-gofun">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div id="modal-content" class="space-y-6">
+                        <!-- Modal content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shortcuts Help Modal -->
+    <div id="shortcuts-help" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white dark:bg-sumi rounded-lg max-w-2xl w-full">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-2xl font-serif font-bold text-sumi dark:text-gofun">Keyboard Shortcuts</h2>
+                        <button onclick="realEstateManager.toggleShortcutsHelp()" class="text-sumi/60 dark:text-gofun/60 hover:text-sumi dark:hover:text-gofun">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h3 class="font-semibold text-sumi dark:text-gofun mb-2">Navigation</h3>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>Ctrl/Cmd + K</span>
+                                        <span>Focus search</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Ctrl/Cmd + G</span>
+                                        <span>Grid view</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Ctrl/Cmd + L</span>
+                                        <span>List view</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-semibold text-sumi dark:text-gofun mb-2">Help</h3>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>?</span>
+                                        <span>Show/hide shortcuts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-sumi text-gofun py-12">
@@ -1475,6 +1915,18 @@
     <script src="/js/translation-manager.js"></script>
     <script src="/js/theme-language-manager.js"></script>
     
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+    <script>
+        function initMap() {
+            // This function will be called when Google Maps API loads
+            console.log('Google Maps API loaded');
+        }
+    </script>
+
     <!-- Mobile Menu Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1798,5 +2250,14 @@
             }
         });
     </script>
+
+    <!-- Properties List View (Hidden by default) -->
+    <section id="properties-list" class="hidden py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-6">
+                <!-- List items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 </body>
 </html> 
