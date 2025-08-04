@@ -846,7 +846,9 @@
             // Initialize real estate functionality
             if (typeof RealEstateManager !== 'undefined') {
                 console.log('🏠 Initializing RealEstateManager...');
-                new RealEstateManager();
+                const manager = new RealEstateManager();
+                console.log('✅ RealEstateManager initialized:', manager);
+                console.log('🔍 Global realEstateManager available:', window.realEstateManager);
             } else {
                 console.error('❌ RealEstateManager is NOT available');
             }

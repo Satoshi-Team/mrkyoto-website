@@ -103,14 +103,25 @@ class RealEstateManager {
         const filterRent = document.getElementById('filter-rent');
         const filterAll = document.getElementById('filter-all');
         
+        console.log('🔍 Filter buttons found:', { filterSale: !!filterSale, filterRent: !!filterRent, filterAll: !!filterAll });
+        
         if (filterSale) {
-            filterSale.addEventListener('click', () => this.filterProperties('sale'));
+            filterSale.addEventListener('click', () => {
+                console.log('🖱️ Filter Sale clicked');
+                this.filterProperties('sale');
+            });
         }
         if (filterRent) {
-            filterRent.addEventListener('click', () => this.filterProperties('rent'));
+            filterRent.addEventListener('click', () => {
+                console.log('🖱️ Filter Rent clicked');
+                this.filterProperties('rent');
+            });
         }
         if (filterAll) {
-            filterAll.addEventListener('click', () => this.filterProperties('all'));
+            filterAll.addEventListener('click', () => {
+                console.log('🖱️ Filter All clicked');
+                this.filterProperties('all');
+            });
         }
 
         // Advanced filter functionality
@@ -263,8 +274,12 @@ class RealEstateManager {
     }
 
         displayAllProperties() {
+        console.log('🔧 Displaying all properties...');
         const container = document.getElementById('all-properties-container');
-        if (!container) return;
+        if (!container) {
+            console.error('❌ Container not found: all-properties-container');
+            return;
+        }
 
         // Get all properties
         const saleProperties = this.getFilteredProperties('sale');
@@ -288,6 +303,8 @@ class RealEstateManager {
     }
 
     filterProperties(type) {
+        console.log('🔧 Filtering properties by type:', type);
+        
         // Update button styles
         const filterSale = document.getElementById('filter-sale');
         const filterRent = document.getElementById('filter-rent');
@@ -2706,9 +2723,21 @@ class RealEstateManager {
     }
 
     showPropertyModal(propertyId) {
-        if (!realEstateData) return;
+        console.log('🔧 Showing property modal for ID:', propertyId);
         
-        const property = realEstateData.getPropertyById(propertyId);
+        // Determine which data source to use based on current page
+        const isJapanesePage = window.location.pathname.includes('/ja/');
+        const dataSource = isJapanesePage ? realEstateDataJA : realEstateData;
+        
+        console.log('🔧 Data source:', isJapanesePage ? 'Japanese' : 'English', dataSource);
+        
+        if (!dataSource) {
+            console.warn(`Data source not available for ${isJapanesePage ? 'Japanese' : 'English'} page`);
+            return;
+        }
+        
+        const property = dataSource.getPropertyById(propertyId);
+        console.log('🔧 Property found:', property);
         if (!property) return;
 
         const modalHTML = `
@@ -2717,7 +2746,7 @@ class RealEstateManager {
                     <div class="p-6 md:p-8">
                         <div class="flex justify-between items-start mb-6">
                             <h2 class="font-serif text-2xl md:text-3xl font-bold text-sumi dark:text-gofun">${property.title}</h2>
-                            <button onclick="realEstateManager.closePropertyModal()" 
+                            <button onclick="window.realEstateManager.closePropertyModal()" 
                                     class="text-sumi/60 dark:text-gofun/60 hover:text-sumi dark:hover:text-gofun text-2xl focus:outline-none focus:ring-2 focus:ring-[#d9c289] rounded-full p-1">
                                 ×
                             </button>
@@ -2733,24 +2762,24 @@ class RealEstateManager {
                             
                             <div class="space-y-6">
                             <div>
-                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Property Details</h3>
+                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">${isJapanesePage ? '物件詳細' : 'Property Details'}</h3>
                                     <div class="space-y-2 text-sm text-sumi/80 dark:text-gofun/80 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                                        <div class="flex justify-between"><strong>Location:</strong> <span>${property.location}</span></div>
-                                        <div class="flex justify-between"><strong>Type:</strong> <span>${property.type}</span></div>
-                                        <div class="flex justify-between"><strong>Size:</strong> <span>${property.size}</span></div>
-                                        <div class="flex justify-between"><strong>Bedrooms:</strong> <span>${property.bedrooms}</span></div>
-                                        <div class="flex justify-between"><strong>Bathrooms:</strong> <span>${property.bathrooms}</span></div>
-                                        <div class="flex justify-between"><strong>Year Built:</strong> <span>${property.yearBuilt}</span></div>
+                                        <div class="flex justify-between"><strong>${isJapanesePage ? '所在地:' : 'Location:'}</strong> <span>${property.location}</span></div>
+                                        <div class="flex justify-between"><strong>${isJapanesePage ? 'タイプ:' : 'Type:'}</strong> <span>${property.type}</span></div>
+                                        <div class="flex justify-between"><strong>${isJapanesePage ? 'サイズ:' : 'Size:'}</strong> <span>${property.size}</span></div>
+                                        <div class="flex justify-between"><strong>${isJapanesePage ? '寝室:' : 'Bedrooms:'}</strong> <span>${property.bedrooms}</span></div>
+                                        <div class="flex justify-between"><strong>${isJapanesePage ? '浴室:' : 'Bathrooms:'}</strong> <span>${property.bathrooms}</span></div>
+                                        <div class="flex justify-between"><strong>${isJapanesePage ? '築年:' : 'Year Built:'}</strong> <span>${property.yearBuilt}</span></div>
                                     </div>
                                 </div>
                                 
                                 <div>
-                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Description</h3>
+                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">${isJapanesePage ? '説明' : 'Description'}</h3>
                                     <p class="text-sm text-sumi/80 dark:text-gofun/80 leading-relaxed">${property.description}</p>
                                 </div>
                                 
                                 <div>
-                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">Features</h3>
+                                    <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">${isJapanesePage ? '特徴' : 'Features'}</h3>
                                     <div class="flex flex-wrap gap-2">
                                     ${property.features.map(feature => 
                                             `<span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-[#d9c289] px-3 py-2 rounded-full text-sm font-medium border border-[#d9c289]/30">${feature}</span>`
@@ -2761,11 +2790,11 @@ class RealEstateManager {
                                 <div class="flex gap-3 pt-4">
                                     <a href="${property.listingUrl}" target="_blank" rel="noopener noreferrer"
                                        class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors duration-200 shadow-lg hover:shadow-xl">
-                                        View Full Listing
+                                        ${isJapanesePage ? '完全リストを見る' : 'View Full Listing'}
                                     </a>
                                     <a href="tel:${property.contact}" 
                                        class="flex-1 bg-[#d9c289] hover:bg-[#d9c289]/90 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors duration-200 shadow-lg hover:shadow-xl">
-                                        Call Agent
+                                        ${isJapanesePage ? 'エージェントに電話' : 'Call Agent'}
                                     </a>
                                 </div>
                             </div>
