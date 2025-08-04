@@ -614,130 +614,94 @@
     <!-- Main Content -->
     <main id="main-content" class="min-h-screen">
         <!-- Hero Section -->
-        <section class="bg-gradient-to-br from-[#d9c289] via-[#000000] to-[#d9c289] text-white py-8 md:py-12 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 items-center">
+        <section class="relative bg-gradient-to-br from-[#d9c289] via-[#000000] to-[#d9c289] text-white py-16 md:py-20 lg:py-24 overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-20 right-10 w-40 h-40 bg-[#d9c289]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-yellow-300/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 items-center">
                     <!-- Hero Content -->
-                    <div class="lg:col-span-2">
-                        <div class="mb-4">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white/90">
-                                <span class="w-2 h-2 bg-[#d9c289] rounded-full mr-2 animate-pulse"></span>
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/15 backdrop-blur-sm border border-white/20 text-white/90 shadow-lg">
+                                <span class="w-2 h-2 bg-[#d9c289] rounded-full mr-3 animate-pulse"></span>
                                 <span>Premium Properties</span>
-                            </span>
-                        </div>
-                        
-                        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                            Buy Your Dream
-                            <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                                Kyoto Machiya
-                            </span>
-                        </h1>
-                        
-                        <p class="text-base md:text-lg opacity-90 mb-6 leading-relaxed">
-                            Discover premium real estate in Kyoto's most prestigious districts.
-                            <span class="font-semibold text-yellow-200">Traditional machiya</span>,
-                            <span class="font-semibold text-yellow-200">modern apartments</span>.
-                        </p>
-                        
-                        <!-- Quick Actions -->
-                        <div class="flex flex-wrap gap-3">
-                            <button class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold rounded-lg hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
-                                <span class="mr-2">🏠</span>
-                                <span>View All Properties</span>
-                            </button>
-                            <button class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-300 border border-white/30 text-sm">
-                                <span class="mr-2">🔍</span>
-                                <span>Property Search</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Compact Stats -->
-                    <div class="lg:col-span-2">
-                        <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-xl">
-                            <h3 class="font-semibold mb-4 text-sm flex items-center">
-                                <span class="mr-2">📊</span>
-                                <span>Property Overview</span>
-                            </h3>
-                            
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
-                                    <div class="flex items-center">
-                                        <span class="text-lg mr-2">🏠</span>
-                                        <span class="text-xs opacity-90">Properties</span>
-                                    </div>
-                                    <span class="font-bold text-lg" id="hero-total-properties">12</span>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
-                                    <div class="flex items-center">
-                                        <span class="text-lg mr-2">💰</span>
-                                        <span class="text-xs opacity-90">For Sale</span>
-                                    </div>
-                                    <span class="font-bold text-lg" id="hero-for-sale">8</span>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
-                                    <div class="flex items-center">
-                                        <span class="text-lg mr-2">🏡</span>
-                                        <span class="text-xs opacity-90">For Rent</span>
-                                    </div>
-                                    <span class="font-bold text-lg" id="hero-for-rent">6</span>
-                                </div>
-                                
-                                <div class="flex items-center justify-between p-2 bg-white/10 rounded-lg">
-                                    <div class="flex items-center">
-                                        <span class="text-lg mr-2">⭐</span>
-                                        <span class="text-xs opacity-90">Verified</span>
-                                    </div>
-                                    <span class="font-bold text-lg" id="hero-verified">12</span>
-                                </div>
                             </div>
+                            
+                            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+                                Buy Your Dream
+                                <span class="block bg-gradient-to-r from-yellow-300 via-orange-300 to-yellow-200 bg-clip-text text-transparent">
+                                    Kyoto Machiya
+                                </span>
+                            </h1>
+                            
+                            <p class="text-lg md:text-xl opacity-95 leading-relaxed max-w-2xl">
+                                Discover premium real estate in Kyoto's most prestigious districts.
+                                <span class="font-semibold text-yellow-200">Traditional machiya</span>,
+                                <span class="font-semibold text-yellow-200">modern apartments</span>, and exclusive properties.
+                            </p>
                         </div>
                                          </div>
 
                      <!-- Rental Property 4: Family House -->
-                     <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                         <div class="relative">
-                             <img src="/images/gion-district.jpg" alt="Family House in Kamigyo" class="w-full h-48 object-cover">
-                             <div class="absolute top-3 left-3">
-                                 <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">For Rent</span>
+                     <div class="group bg-white dark:bg-sumi rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+                         <div class="relative overflow-hidden">
+                             <img src="/images/gion-district.jpg" alt="Family House in Kamigyo" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                             <div class="absolute top-4 left-4">
+                                 <span class="bg-blue-500 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">For Rent</span>
                              </div>
-                             <div class="absolute top-3 right-3">
-                                 <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">88 Walk</span>
+                             <div class="absolute top-4 right-4">
+                                 <span class="bg-gray-800/80 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-medium">88 Walk</span>
                              </div>
-                             <div class="absolute bottom-3 right-3">
-                                 <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded">Verified</span>
+                             <div class="absolute bottom-4 right-4">
+                                 <span class="bg-[#d9c289] text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">Verified</span>
                              </div>
                          </div>
-                         <div class="p-4">
-                             <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">Family House in Kamigyo</h3>
-                             <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥350,000/month</div>
-                             <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$2,333/month</div>
-                             <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
-                                 <span class="mr-2">📍</span>
-                                 <span>Kamigyo Ward, Near Imperial Palace</span>
+                         <div class="p-6 space-y-4">
+                             <div>
+                                 <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-2 group-hover:text-[#d9c289] transition-colors">Family House in Kamigyo</h3>
+                                 <div class="text-3xl font-bold text-sumi dark:text-gofun mb-1">¥350,000<span class="text-lg font-normal">/month</span></div>
+                                 <div class="text-sm text-sumi/60 dark:text-gofun/60">$2,333/month</div>
                              </div>
-                             <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-4">
-                                 <span class="mr-2">🏘️</span>
-                                 <span>Kamigyo</span>
-                             </div>
-                             <div class="flex gap-2 mb-4">
-                                 <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">4 Bed</span>
-                                 <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">2 Bath</span>
-                                 <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;">160 sqm</span>
-                             </div>
-                             <div class="mb-4">
-                                 <div class="text-sm font-medium text-sumi dark:text-gofun mb-2">Features:</div>
-                                 <div class="flex flex-wrap gap-1">
-                                     <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Family friendly</span>
-                                     <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">Garden</span>
-                                     <button class="text-[#d9c289] dark:text-white text-xs hover:underline">+4 more</button>
+                             
+                             <div class="space-y-3">
+                                 <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70">
+                                     <span class="mr-3 text-lg">📍</span>
+                                     <span>Kamigyo Ward, Near Imperial Palace</span>
+                                 </div>
+                                 <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70">
+                                     <span class="mr-3 text-lg">🏘️</span>
+                                     <span>Kamigyo</span>
                                  </div>
                              </div>
+                             
                              <div class="flex gap-2">
-                                 <button onclick="realEstateManager.showPropertyModal('rent-004')" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;">View Details</button>
-                                 <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center">Contact</a>
+                                 <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">4 Bed</span>
+                                 <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">2 Bath</span>
+                                 <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full font-medium">160 sqm</span>
+                             </div>
+                             
+                             <div>
+                                 <div class="text-sm font-semibold text-sumi dark:text-gofun mb-3">Features:</div>
+                                 <div class="flex flex-wrap gap-2">
+                                     <span class="bg-[#d9c289]/10 dark:bg-[#d9c289]/20 text-[#d9c289] dark:text-[#d9c289] text-xs px-3 py-1.5 rounded-full font-medium">Family friendly</span>
+                                     <span class="bg-[#d9c289]/10 dark:bg-[#d9c289]/20 text-[#d9c289] dark:text-[#d9c289] text-xs px-3 py-1.5 rounded-full font-medium">Garden</span>
+                                     <button class="text-[#d9c289] dark:text-[#d9c289] text-xs hover:underline font-medium">+4 more</button>
+                                 </div>
+                             </div>
+                             
+                             <div class="flex gap-3 pt-2">
+                                 <button onclick="realEstateManager.showPropertyModal('rent-004')" class="flex-1 bg-[#000000] text-white py-3 px-4 rounded-xl text-sm font-semibold hover:bg-[#000000]/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                     View Details
+                                 </button>
+                                 <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-3 px-4 rounded-xl text-sm font-semibold hover:bg-[#d9c289]/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                     Contact
+                                 </a>
                              </div>
                          </div>
                      </div>
@@ -838,154 +802,7 @@
          </section>
 
         <!-- Search and Filter Section -->
-        <section class="py-6 md:py-8 bg-white dark:bg-sumi border-b border-zen dark:border-aiiro">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Search Bar -->
-                <div class="relative mb-6">
-                    <input type="text" id="property-search" placeholder="Search properties by location, neighborhood, or features..." 
-                           class="w-full px-4 py-3 pl-12 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun focus:ring-2 focus:ring-[#d9c289] focus:border-transparent">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-sumi/50 dark:text-gofun/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
-                </div>
 
-                <!-- Filters -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    <div>
-                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Property Type</label>
-                        <select name="type" class="property-filter w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
-                            <option value="all">All Types</option>
-                            <option value="sale">For Sale</option>
-                            <option value="rent">For Rent</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Price Range</label>
-                        <select name="priceRange" class="property-filter w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
-                            <option value="all">All Prices</option>
-                            <option value="under-50m">Under ¥50M</option>
-                            <option value="50m-100m">¥50M-100M</option>
-                            <option value="100m-200m">¥100M-200M</option>
-                            <option value="over-200m">Over ¥200M</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Sort By</label>
-                        <select name="sort" class="property-filter w-full px-3 py-2 border border-zen dark:border-aiiro rounded-lg bg-white dark:bg-sumi text-sumi dark:text-gofun">
-                            <option value="newest">Newest First</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                            <option value="size">Size</option>
-                            <option value="walk-score">Walk Score</option>
-                            <option value="year-built">Year Built</option>
-                        </select>
-                    </div>
-                    
-                    <div class="flex gap-2">
-                        <button id="view-grid" class="flex-1 px-3 py-2 bg-[#d9c289] text-white rounded-lg hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
-                            Grid
-                        </button>
-                        <button id="view-list" class="flex-1 px-3 py-2 bg-white dark:bg-sumi text-sumi dark:text-gofun border border-zen dark:border-aiiro rounded-lg hover:bg-zen dark:hover:bg-aiiro transition-colors">
-                            List
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Advanced Filters -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                    <div>
-                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Bedrooms</label>
-                        <div class="space-y-2">
-                            <label class="flex items-center">
-                                <input type="checkbox" value="1" class="bedroom-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">1 Bedroom</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="2" class="bedroom-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">2 Bedrooms</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="3" class="bedroom-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">3 Bedrooms</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="4+" class="bedroom-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">4+ Bedrooms</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Neighborhoods</label>
-                        <div class="space-y-2">
-                            <label class="flex items-center">
-                                <input type="checkbox" value="Gion" class="neighborhood-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Gion</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="Arashiyama" class="neighborhood-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Arashiyama</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="Higashiyama" class="neighborhood-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Higashiyama</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="Nakagyo" class="neighborhood-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Nakagyo</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="Kamigyo" class="neighborhood-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Kamigyo</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-sumi dark:text-gofun mb-2">Features</label>
-                        <div class="space-y-2">
-                            <label class="flex items-center">
-                                <input type="checkbox" value="garden" class="feature-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Garden</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="parking" class="feature-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Parking</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="balcony" class="feature-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Balcony</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="modern" class="feature-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Modern</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" value="traditional" class="feature-filter mr-2">
-                                <span class="text-sm text-sumi dark:text-gofun">Traditional</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Filter Actions -->
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <button id="clear-filters" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
-                        Clear All Filters
-                    </button>
-                    <button id="save-search" class="px-4 py-2 bg-[#d9c289] text-white rounded-lg hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
-                        Save Search
-                    </button>
-                    <div class="flex items-center text-sm text-sumi/60 dark:text-gofun/60">
-                        <span id="filter-count">0</span> filters applied
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Main Properties Grid Section -->
         <section class="py-6 md:py-8 lg:py-12 bg-white dark:bg-sumi">
@@ -1552,104 +1369,116 @@
         </section>
 
         <!-- Market Analytics Dashboard -->
-        <section class="py-8 md:py-12 bg-white dark:bg-sumi">
+        <section class="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-sumi">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 lg:mb-8">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-2">
-                            📊 Market Analytics Dashboard
-                        </h2>
-                        <p class="text-base md:text-lg text-sumi/70 dark:text-gofun/70">
-                            Real-time market insights and property trends for Kyoto
-                        </p>
+                <div class="text-center mb-12 lg:mb-16">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-[#d9c289]/10 text-[#d9c289] mb-4">
+                        <span class="w-2 h-2 bg-[#d9c289] rounded-full mr-2 animate-pulse"></span>
+                        Live Market Data
                     </div>
-                    <div class="flex gap-2 lg:gap-3">
-                        <button id="refresh-analytics" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#000000] text-white rounded hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
-                            🔄 Refresh Data
-                        </button>
-                        <button id="export-analytics" class="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base bg-[#d9c289] text-white rounded hover:bg-[#d9c289]/80 transition-colors" style="color: white !important;">
-                            📊 Export
-                        </button>
-                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-sumi dark:text-gofun mb-4">
+                        📊 Market Analytics Dashboard
+                    </h2>
+                    <p class="text-lg md:text-xl text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
+                        Real-time market insights and property trends for Kyoto
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-center gap-4 mb-12">
+                    <button id="refresh-analytics" class="inline-flex items-center px-6 py-3 bg-[#000000] text-white rounded-xl hover:bg-[#000000]/90 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold">
+                        <span class="mr-2">🔄</span>
+                        Refresh Data
+                    </button>
+                    <button id="export-analytics" class="inline-flex items-center px-6 py-3 bg-[#d9c289] text-white rounded-xl hover:bg-[#d9c289]/90 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold">
+                        <span class="mr-2">📊</span>
+                        Export
+                    </button>
                 </div>
 
                 <!-- Market Stats Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
-                    <div class="analytics-card">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 dark:border-gray-700 transform hover:-translate-y-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Total Properties</p>
-                                <p id="total-properties" class="text-2xl font-bold text-sumi dark:text-gofun">14</p>
+                                <p class="text-sm font-medium text-sumi/60 dark:text-gofun/60 mb-2">Total Properties</p>
+                                <p id="total-properties" class="text-3xl font-bold text-sumi dark:text-gofun">14</p>
                             </div>
-                            <div class="text-3xl">🏠</div>
+                            <div class="text-4xl group-hover:scale-110 transition-transform duration-300">🏠</div>
                         </div>
                     </div>
                     
-                    <div class="analytics-card">
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 dark:border-gray-700 transform hover:-translate-y-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Avg Sale Price</p>
-                                <p id="avg-sale-price" class="text-2xl font-bold text-sumi dark:text-gofun">¥85.0M</p>
+                                <p class="text-sm font-medium text-sumi/60 dark:text-gofun/60 mb-2">Avg Sale Price</p>
+                                <p id="avg-sale-price" class="text-3xl font-bold text-sumi dark:text-gofun">¥85.0M</p>
                             </div>
-                            <div class="text-3xl">💰</div>
+                            <div class="text-4xl group-hover:scale-110 transition-transform duration-300">💰</div>
                         </div>
                     </div>
                     
-                    <div class="analytics-card">
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 dark:border-gray-700 transform hover:-translate-y-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Avg Rent Price</p>
-                                <p id="avg-rent-price" class="text-2xl font-bold text-sumi dark:text-gofun">¥208K</p>
+                                <p class="text-sm font-medium text-sumi/60 dark:text-gofun/60 mb-2">Avg Rent Price</p>
+                                <p id="avg-rent-price" class="text-3xl font-bold text-sumi dark:text-gofun">¥208K</p>
                             </div>
-                            <div class="text-3xl">🏡</div>
+                            <div class="text-4xl group-hover:scale-110 transition-transform duration-300">🏡</div>
                         </div>
                     </div>
                     
-                    <div class="analytics-card">
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 dark:border-gray-700 transform hover:-translate-y-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-sumi/60 dark:text-gofun/60">Market Health</p>
-                                <p id="market-health" class="text-2xl font-bold text-sumi dark:text-gofun">Strong</p>
+                                <p class="text-sm font-medium text-sumi/60 dark:text-gofun/60 mb-2">Market Health</p>
+                                <p id="market-health" class="text-3xl font-bold text-green-600">Strong</p>
                             </div>
-                            <div class="text-3xl">📈</div>
+                            <div class="text-4xl group-hover:scale-110 transition-transform duration-300">📈</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Detailed Analytics -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-8">
-                    <div class="analytics-card">
-                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Price Trends</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Price Trend:</span>
-                                <span id="price-trend" class="text-sm font-semibold text-green-600">+5.2%</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-6 flex items-center">
+                            <span class="mr-3">📈</span>
+                            Price Trends
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <span class="text-sm font-medium text-sumi/70 dark:text-gofun/70">Price Trend:</span>
+                                <span id="price-trend" class="text-sm font-bold text-green-600">+5.2%</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Health Indicator:</span>
-                                <span id="health-indicator" class="text-sm font-semibold text-sumi dark:text-gofun">Strong</span>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <span class="text-sm font-medium text-sumi/70 dark:text-gofun/70">Health Indicator:</span>
+                                <span id="health-indicator" class="text-sm font-bold text-sumi dark:text-gofun">Strong</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Avg Days on Market:</span>
-                                <span id="avg-days-on-market" class="text-sm font-semibold text-sumi dark:text-gofun">12.5 days</span>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <span class="text-sm font-medium text-sumi/70 dark:text-gofun/70">Avg Days on Market:</span>
+                                <span id="avg-days-on-market" class="text-sm font-bold text-sumi dark:text-gofun">12.5 days</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="analytics-card">
-                        <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-4">Market Insights</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Market Outlook:</span>
-                                <span id="market-outlook" class="text-sm font-semibold text-green-600">Positive</span>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-xl text-sumi dark:text-gofun mb-6 flex items-center">
+                            <span class="mr-3">💡</span>
+                            Market Insights
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <span class="text-sm font-medium text-sumi/70 dark:text-gofun/70">Market Outlook:</span>
+                                <span id="market-outlook" class="text-sm font-bold text-green-600">Positive</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Inventory Level:</span>
-                                <span id="inventory-level" class="text-sm font-semibold text-sumi dark:text-gofun">Low</span>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <span class="text-sm font-medium text-sumi/70 dark:text-gofun/70">Inventory Level:</span>
+                                <span id="inventory-level" class="text-sm font-bold text-sumi dark:text-gofun">Low</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Buyer Demand:</span>
-                                <span id="buyer-demand" class="text-sm font-semibold text-green-600">High</span>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <span class="text-sm font-medium text-sumi/70 dark:text-gofun/70">Buyer Demand:</span>
+                                <span id="buyer-demand" class="text-sm font-bold text-green-600">High</span>
                             </div>
                         </div>
                     </div>
