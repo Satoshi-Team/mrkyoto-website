@@ -257,10 +257,9 @@ class RealEstateManager {
 
         // Simulate loading delay for better UX
         setTimeout(() => {
-        // Get filtered properties
+        // Get filtered properties - only show sale properties in main grid
         const saleProperties = this.getFilteredProperties('sale');
-        const rentProperties = this.getFilteredProperties('rent');
-            const allProperties = [...saleProperties, ...rentProperties];
+        const allProperties = saleProperties; // Only sale properties in main grid
 
             // Hide loading skeleton
             if (loadingSkeleton) {
@@ -278,8 +277,8 @@ class RealEstateManager {
                 propertiesList.innerHTML = this.generatePropertyList(allProperties);
             }
 
-        // Update counters
-        this.updatePropertyCounters(saleProperties.length, rentProperties.length);
+        // Update counters - only for sale properties in main grid
+        this.updatePropertyCounters(saleProperties.length, 0); // Rent count is 0 for main grid
             
             // Add event listeners to new elements
             this.setupPropertyCardListeners();
