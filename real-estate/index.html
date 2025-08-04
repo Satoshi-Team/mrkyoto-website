@@ -1656,10 +1656,12 @@
         });
     </script>
     
-    <!-- Mobile Menu Functionality -->
+    <!-- Enhanced Mobile Menu Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔍 Mobile menu script loaded');
+            console.log('🔍 Enhanced mobile menu script loaded');
+            
+            // Get all mobile elements
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
@@ -1670,46 +1672,87 @@
             console.log('🔍 Mobile theme toggle found:', !!mobileThemeToggle);
             console.log('🔍 Mobile language toggle found:', !!mobileLanguageToggle);
             
+            // Enhanced mobile menu functionality
             if (mobileMenuButton && mobileMenu) {
-                console.log('✅ Both elements found, adding event listener');
-                // Force menu to start hidden with new styling
-                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
+                console.log('✅ Both elements found, adding enhanced event listeners');
+                
+                // Ensure proper initial state
+                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30 z-50';
                 mobileMenu.style.display = 'none';
+                mobileMenu.style.position = 'absolute';
+                mobileMenu.style.top = '100%';
+                mobileMenu.style.left = '0';
+                mobileMenu.style.right = '0';
+                mobileMenu.style.width = '100%';
+                
                 console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
                 console.log('🔧 Menu display style:', mobileMenu.style.display);
+                console.log('🔧 Menu position:', mobileMenu.style.position);
                 
+                // Enhanced hamburger menu toggle
                 mobileMenuButton.addEventListener('click', function(e) {
                     console.log('🖱️ Mobile menu button clicked!');
                     e.preventDefault();
                     e.stopPropagation();
+                    
                     const isHidden = mobileMenu.style.display === 'none';
                     console.log('🔍 Current display state:', mobileMenu.style.display);
                     console.log('🔍 Is hidden:', isHidden);
+                    
                     if (isHidden) {
+                        // Open menu
                         mobileMenu.style.display = 'block';
                         mobileMenu.classList.remove('hidden');
-                        console.log('📱 Menu opened');
+                        mobileMenu.style.opacity = '0';
+                        mobileMenu.style.transform = 'translateY(-10px)';
+                        
+                        // Animate in
+                        setTimeout(() => {
+                            mobileMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            mobileMenu.style.opacity = '1';
+                            mobileMenu.style.transform = 'translateY(0)';
+                        }, 10);
+                        
+                        console.log('📱 Menu opened with animation');
                     } else {
-                        mobileMenu.style.display = 'none';
-                        mobileMenu.classList.add('hidden');
-                        console.log('📱 Menu closed');
+                        // Close menu
+                        mobileMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        mobileMenu.style.opacity = '0';
+                        mobileMenu.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            mobileMenu.style.display = 'none';
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        
+                        console.log('📱 Menu closed with animation');
                     }
+                    
                     console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
                     console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
-                    // Animate the hamburger icon
+                    
+                    // Enhanced hamburger icon animation
                     const icon = mobileMenuButton.querySelector('svg');
                     if (icon) {
-                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
+                        const isOpen = mobileMenu.style.display !== 'none';
                         icon.style.transition = 'transform 0.3s ease';
-                        console.log('🎨 Icon rotated');
+                        icon.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+                        console.log('🎨 Icon rotated to:', isOpen ? '90deg' : '0deg');
                     }
                 });
                 
-                // Setup mobile theme toggle
+                // Enhanced mobile theme toggle with visual feedback
                 if (mobileThemeToggle) {
                     mobileThemeToggle.addEventListener('click', function(e) {
                         e.preventDefault();
+                        e.stopPropagation();
                         console.log('🌙 Mobile theme toggle clicked!');
+                        
+                        // Add visual feedback
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 150);
                         
                         const html = document.documentElement;
                         const isDark = html.classList.contains('dark');
@@ -1723,14 +1766,31 @@
                             localStorage.setItem('theme', 'dark');
                             console.log('🌙 Switched to dark mode');
                         }
+                        
+                        // Update theme toggle icon if it exists
+                        const themeIcon = this.querySelector('svg');
+                        if (themeIcon) {
+                            themeIcon.style.transition = 'transform 0.3s ease';
+                            themeIcon.style.transform = 'rotate(180deg)';
+                            setTimeout(() => {
+                                themeIcon.style.transform = 'rotate(0deg)';
+                            }, 300);
+                        }
                     });
                 }
                 
-                // Setup mobile language toggle
+                // Enhanced mobile language toggle with visual feedback
                 if (mobileLanguageToggle) {
                     mobileLanguageToggle.addEventListener('click', function(e) {
                         e.preventDefault();
+                        e.stopPropagation();
                         console.log('🌍 Mobile language toggle clicked!');
+                        
+                        // Add visual feedback
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 150);
                         
                         // Use the same language switching logic as the desktop version
                         const currentPath = window.location.pathname;
@@ -1745,22 +1805,73 @@
                         }
                         
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
-                        window.location.href = newPath;
+                        
+                        // Add loading state
+                        this.style.opacity = '0.5';
+                        setTimeout(() => {
+                            window.location.href = newPath;
+                        }, 200);
                     });
                 }
                 
-                // Close mobile menu when clicking outside
+                // Enhanced outside click detection
                 document.addEventListener('click', function(event) {
                     if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.style.display = 'none';
-                        mobileMenu.classList.add('hidden');
+                        if (mobileMenu.style.display !== 'none') {
+                            mobileMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            mobileMenu.style.opacity = '0';
+                            mobileMenu.style.transform = 'translateY(-10px)';
+                            
+                            setTimeout(() => {
+                                mobileMenu.style.display = 'none';
+                                mobileMenu.classList.add('hidden');
+                            }, 300);
+                            
+                            // Reset hamburger icon
+                            const icon = mobileMenuButton.querySelector('svg');
+                            if (icon) {
+                                icon.style.transform = 'rotate(0deg)';
+                            }
+                            
+                            console.log('📱 Menu closed by outside click');
+                        }
+                    }
+                });
+                
+                // Enhanced touch/swipe support for mobile
+                let touchStartY = 0;
+                let touchEndY = 0;
+                
+                mobileMenu.addEventListener('touchstart', function(e) {
+                    touchStartY = e.touches[0].clientY;
+                });
+                
+                mobileMenu.addEventListener('touchend', function(e) {
+                    touchEndY = e.changedTouches[0].clientY;
+                    const swipeDistance = touchStartY - touchEndY;
+                    
+                    // If swiped up more than 50px, close menu
+                    if (swipeDistance > 50) {
+                        mobileMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        mobileMenu.style.opacity = '0';
+                        mobileMenu.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            mobileMenu.style.display = 'none';
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        
+                        // Reset hamburger icon
                         const icon = mobileMenuButton.querySelector('svg');
                         if (icon) {
                             icon.style.transform = 'rotate(0deg)';
                         }
+                        
+                        console.log('📱 Menu closed by swipe up');
                     }
                 });
-                console.log('✅ Mobile menu event listeners added');
+                
+                console.log('✅ Enhanced mobile menu event listeners added');
             } else {
                 console.error('❌ Mobile menu elements not found');
                 console.log('🔍 Available elements with "mobile" in ID:', 
