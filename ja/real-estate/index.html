@@ -939,6 +939,71 @@
                 console.log('✅ Direct weather element test completed');
             }, 500);
             
+            // Immediate weather test - run right away
+            console.log('🌤️ Running immediate weather test...');
+            const immediateElements = {
+                temperature: document.getElementById('weather-temperature'),
+                icon: document.getElementById('weather-icon'),
+                description: document.getElementById('weather-description'),
+                feelsLike: document.getElementById('weather-feels-like'),
+                wind: document.getElementById('weather-wind'),
+                humidity: document.getElementById('weather-humidity'),
+                visibility: document.getElementById('weather-visibility'),
+                pressure: document.getElementById('weather-pressure'),
+                sunrise: document.getElementById('weather-sunrise'),
+                sunset: document.getElementById('weather-sunset'),
+                lastUpdated: document.getElementById('weather-last-updated')
+            };
+            
+            console.log('🔍 Immediate weather elements found:', Object.keys(immediateElements).filter(key => immediateElements[key]));
+            
+            // Update immediately if elements exist
+            if (immediateElements.temperature) {
+                immediateElements.temperature.textContent = '22°C';
+                console.log('✅ Immediately updated temperature');
+            }
+            if (immediateElements.icon) {
+                immediateElements.icon.textContent = '⛅';
+                console.log('✅ Immediately updated icon');
+            }
+            if (immediateElements.description) {
+                immediateElements.description.textContent = '部分的に曇り';
+                console.log('✅ Immediately updated description');
+            }
+            if (immediateElements.feelsLike) {
+                immediateElements.feelsLike.textContent = '体感温度 24°C';
+                console.log('✅ Immediately updated feels like');
+            }
+            if (immediateElements.wind) {
+                immediateElements.wind.textContent = '8 km/h';
+                console.log('✅ Immediately updated wind');
+            }
+            if (immediateElements.humidity) {
+                immediateElements.humidity.textContent = '65%';
+                console.log('✅ Immediately updated humidity');
+            }
+            if (immediateElements.visibility) {
+                immediateElements.visibility.textContent = '10 km';
+                console.log('✅ Immediately updated visibility');
+            }
+            if (immediateElements.pressure) {
+                immediateElements.pressure.textContent = '1013 hPa';
+                console.log('✅ Immediately updated pressure');
+            }
+            if (immediateElements.sunrise) {
+                immediateElements.sunrise.textContent = '06:30';
+                console.log('✅ Immediately updated sunrise');
+            }
+            if (immediateElements.sunset) {
+                immediateElements.sunset.textContent = '17:30';
+                console.log('✅ Immediately updated sunset');
+            }
+            if (immediateElements.lastUpdated) {
+                const timeString = new Date().toLocaleTimeString('ja-JP', {hour: '2-digit', minute: '2-digit'});
+                immediateElements.lastUpdated.textContent = timeString;
+                console.log('✅ Immediately updated last updated time');
+            }
+            
             // Global test function
             window.testWeatherUpdate = () => {
                 console.log('🌤️ Manual weather test triggered...');

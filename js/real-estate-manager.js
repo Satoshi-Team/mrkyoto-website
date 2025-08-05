@@ -578,15 +578,15 @@ class RealEstateManager {
     }
 
     calculateAnalytics() {
-        if (!realEstateData) return;
+        if (!this.realEstateData) return;
 
         const allProperties = [
-            ...realEstateData.getPropertiesForSale(),
-            ...realEstateData.getPropertiesForRent()
+            ...this.realEstateData.getPropertiesForSale(),
+            ...this.realEstateData.getPropertiesForRent()
         ].filter(isValidProperty);
 
-        const saleProperties = realEstateData.getPropertiesForSale().filter(isValidProperty);
-        const rentProperties = realEstateData.getPropertiesForRent().filter(isValidProperty);
+        const saleProperties = this.realEstateData.getPropertiesForSale().filter(isValidProperty);
+        const rentProperties = this.realEstateData.getPropertiesForRent().filter(isValidProperty);
 
         // Calculate price statistics
         const salePrices = saleProperties.map(p => {
