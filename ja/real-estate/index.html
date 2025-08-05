@@ -957,52 +957,83 @@
             
             console.log('🔍 Immediate weather elements found:', Object.keys(immediateElements).filter(key => immediateElements[key]));
             
-            // Update immediately if elements exist
+            // Force update all elements with test data
             if (immediateElements.temperature) {
                 immediateElements.temperature.textContent = '22°C';
-                console.log('✅ Immediately updated temperature');
+                console.log('✅ Immediately updated temperature to 22°C');
+            } else {
+                console.log('❌ Temperature element not found');
             }
             if (immediateElements.icon) {
                 immediateElements.icon.textContent = '⛅';
-                console.log('✅ Immediately updated icon');
+                console.log('✅ Immediately updated icon to ⛅');
+            } else {
+                console.log('❌ Icon element not found');
             }
             if (immediateElements.description) {
                 immediateElements.description.textContent = '部分的に曇り';
-                console.log('✅ Immediately updated description');
+                console.log('✅ Immediately updated description to 部分的に曇り');
+            } else {
+                console.log('❌ Description element not found');
             }
             if (immediateElements.feelsLike) {
                 immediateElements.feelsLike.textContent = '体感温度 24°C';
-                console.log('✅ Immediately updated feels like');
+                console.log('✅ Immediately updated feels like to 体感温度 24°C');
+            } else {
+                console.log('❌ Feels like element not found');
             }
             if (immediateElements.wind) {
                 immediateElements.wind.textContent = '8 km/h';
-                console.log('✅ Immediately updated wind');
+                console.log('✅ Immediately updated wind to 8 km/h');
+            } else {
+                console.log('❌ Wind element not found');
             }
             if (immediateElements.humidity) {
                 immediateElements.humidity.textContent = '65%';
-                console.log('✅ Immediately updated humidity');
+                console.log('✅ Immediately updated humidity to 65%');
+            } else {
+                console.log('❌ Humidity element not found');
             }
             if (immediateElements.visibility) {
                 immediateElements.visibility.textContent = '10 km';
-                console.log('✅ Immediately updated visibility');
+                console.log('✅ Immediately updated visibility to 10 km');
+            } else {
+                console.log('❌ Visibility element not found');
             }
             if (immediateElements.pressure) {
                 immediateElements.pressure.textContent = '1013 hPa';
-                console.log('✅ Immediately updated pressure');
+                console.log('✅ Immediately updated pressure to 1013 hPa');
+            } else {
+                console.log('❌ Pressure element not found');
             }
             if (immediateElements.sunrise) {
                 immediateElements.sunrise.textContent = '06:30';
-                console.log('✅ Immediately updated sunrise');
+                console.log('✅ Immediately updated sunrise to 06:30');
+            } else {
+                console.log('❌ Sunrise element not found');
             }
             if (immediateElements.sunset) {
                 immediateElements.sunset.textContent = '17:30';
-                console.log('✅ Immediately updated sunset');
+                console.log('✅ Immediately updated sunset to 17:30');
+            } else {
+                console.log('❌ Sunset element not found');
             }
             if (immediateElements.lastUpdated) {
                 const timeString = new Date().toLocaleTimeString('ja-JP', {hour: '2-digit', minute: '2-digit'});
                 immediateElements.lastUpdated.textContent = timeString;
-                console.log('✅ Immediately updated last updated time');
+                console.log('✅ Immediately updated last updated time to', timeString);
+            } else {
+                console.log('❌ Last updated element not found');
             }
+            
+            // Test if elements are actually updated
+            setTimeout(() => {
+                console.log('🔍 Checking if elements were actually updated...');
+                const tempEl = document.getElementById('weather-temperature');
+                const descEl = document.getElementById('weather-description');
+                console.log('Temperature element content:', tempEl ? tempEl.textContent : 'NOT FOUND');
+                console.log('Description element content:', descEl ? descEl.textContent : 'NOT FOUND');
+            }, 100);
             
             // Global test function
             window.testWeatherUpdate = () => {
@@ -1026,23 +1057,72 @@
                 console.log('🔍 Found weather elements:', Object.keys(elements).filter(key => elements[key]));
                 
                 // Update with test data
-                if (elements.temperature) elements.temperature.textContent = '22°C';
-                if (elements.icon) elements.icon.textContent = '⛅';
+                if (elements.temperature) {
+                    elements.temperature.textContent = '22°C';
+                    console.log('✅ Updated temperature to 22°C');
+                } else {
+                    console.log('❌ Temperature element not found');
+                }
+                if (elements.icon) {
+                    elements.icon.textContent = '⛅';
+                    console.log('✅ Updated icon to ⛅');
+                } else {
+                    console.log('❌ Icon element not found');
+                }
                 if (elements.description) {
                     elements.description.textContent = isJapanesePage ? '部分的に曇り' : 'Partly cloudy';
+                    console.log('✅ Updated description');
+                } else {
+                    console.log('❌ Description element not found');
                 }
                 if (elements.feelsLike) {
                     elements.feelsLike.textContent = isJapanesePage ? '体感温度 24°C' : 'Feels like 24°C';
+                    console.log('✅ Updated feels like');
+                } else {
+                    console.log('❌ Feels like element not found');
                 }
-                if (elements.wind) elements.wind.textContent = '8 km/h';
-                if (elements.humidity) elements.humidity.textContent = '65%';
-                if (elements.visibility) elements.visibility.textContent = '10 km';
-                if (elements.pressure) elements.pressure.textContent = '1013 hPa';
-                if (elements.sunrise) elements.sunrise.textContent = '06:30';
-                if (elements.sunset) elements.sunset.textContent = '17:30';
+                if (elements.wind) {
+                    elements.wind.textContent = '8 km/h';
+                    console.log('✅ Updated wind to 8 km/h');
+                } else {
+                    console.log('❌ Wind element not found');
+                }
+                if (elements.humidity) {
+                    elements.humidity.textContent = '65%';
+                    console.log('✅ Updated humidity to 65%');
+                } else {
+                    console.log('❌ Humidity element not found');
+                }
+                if (elements.visibility) {
+                    elements.visibility.textContent = '10 km';
+                    console.log('✅ Updated visibility to 10 km');
+                } else {
+                    console.log('❌ Visibility element not found');
+                }
+                if (elements.pressure) {
+                    elements.pressure.textContent = '1013 hPa';
+                    console.log('✅ Updated pressure to 1013 hPa');
+                } else {
+                    console.log('❌ Pressure element not found');
+                }
+                if (elements.sunrise) {
+                    elements.sunrise.textContent = '06:30';
+                    console.log('✅ Updated sunrise to 06:30');
+                } else {
+                    console.log('❌ Sunrise element not found');
+                }
+                if (elements.sunset) {
+                    elements.sunset.textContent = '17:30';
+                    console.log('✅ Updated sunset to 17:30');
+                } else {
+                    console.log('❌ Sunset element not found');
+                }
                 if (elements.lastUpdated) {
                     const timeString = new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {hour: '2-digit', minute: '2-digit'});
                     elements.lastUpdated.textContent = timeString;
+                    console.log('✅ Updated last updated time to', timeString);
+                } else {
+                    console.log('❌ Last updated element not found');
                 }
                 
                 console.log('✅ Manual weather test completed');
