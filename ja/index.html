@@ -59,7 +59,7 @@ darkMode: 'class',
                     colors: {
                         // Traditional Japanese Color Palette - Enhanced for Readability
                         'washi': '#F8F6F0', // Traditional Japanese paper
-                        'sumi': '#0F0F0F', // Deep black - maximum contrast
+                        'sumi': '#1F2937', // Dark gray - better contrast for light mode
                         'sakura': '#FDF2F8', // Cherry blossom pink
                         'matcha': '#166534', // Dark green - better contrast
                         'kobicha': '#7C2D12', // Dark brown - better contrast
@@ -75,9 +75,9 @@ darkMode: 'class',
                         'cha': '#92400E', // Dark brown - better contrast
                         'koke': '#166534', // Dark green - better contrast
                         'sabiseiji': '#166534', // Dark green - better contrast
-// Additional colors for better text visibility
-'ink-black': '#0F0F0F', // Same as sumi for consistency
-'zen': '#E5E7EB', // Light border color
+                        // Additional colors for better text visibility
+                        'ink-black': '#1F2937', // Better contrast for light mode
+                        'zen': '#E5E7EB', // Light border color
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.8s ease-out',
@@ -840,22 +840,40 @@ html:not(.dark) .action-button svg {
     margin-bottom: -4px;
     z-index: 1000;
         }
+        /* Property Cards */
+        .property-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .property-card {
+            background: #1F2937;
+        }
+
         /* Ensure proper text colors in light mode */
         body {
             background-color: #F8F6F0 !important;
-            color: #0F0F0F !important;
+            color: #1F2937 !important;
         }
         
         .text-sumi {
-            color: #0F0F0F !important;
+            color: #1F2937 !important;
         }
         
         .text-sumi\/70 {
-            color: rgba(15, 15, 15, 0.7) !important;
+            color: rgba(31, 41, 55, 0.7) !important;
         }
         
         .text-sumi\/60 {
-            color: rgba(15, 15, 15, 0.6) !important;
+            color: rgba(31, 41, 55, 0.6) !important;
         }
         
         /* Ensure dark mode classes have proper specificity */
@@ -1244,22 +1262,15 @@ html:not(.dark) .action-button svg {
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6" id="properties-grid">
                     <!-- Property Card 1: Exquisite -->
-                    <div class="bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop" alt="Exquisite Kyoto Property" class="w-full h-48 object-cover">
-                            <div class="absolute top-3 left-3">
+                    <div class="property-card bg-white dark:bg-sumi rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-shinku text-white text-xs px-3 py-1 rounded-full font-medium">売出中</span>
+                                <span class="bg-matcha text-white text-xs px-3 py-1 rounded-full">認証済み</span>
                             </div>
-                            <div class="absolute top-3 right-3">
-                                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded" data-translate="property.walkScore">95 歩行</span>
-                            </div>
-                            <div class="absolute bottom-3 right-3">
-                                <span class="bg-[#d9c289] text-white text-xs px-2 py-1 rounded" data-translate="property.verified">認証済み</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-2">優雅な伝統町家</h3>
-                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-1">¥95,000,000</div>
-                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-3">$633,333 USD</div>
+                            <h3 class="font-semibold text-lg text-sumi dark:text-gofun mb-3">優雅な伝統町家</h3>
+                            <div class="text-2xl font-bold text-sumi dark:text-gofun mb-2">¥95,000,000</div>
+                            <div class="text-sm text-sumi/70 dark:text-gofun/70 mb-4">$633,333 USD</div>
                             <div class="flex items-center text-sm text-sumi/70 dark:text-gofun/70 mb-3">
                                 <span class="mr-2">📍</span>
                                 <span>祇園地区、東山区</span>
@@ -1269,21 +1280,21 @@ html:not(.dark) .action-button svg {
                                 <span>祇園</span>
                             </div>
                             <div class="flex gap-2 mb-4">
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;" data-translate="property.bed">3 寝室</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;" data-translate="property.bath">2 浴室</span>
-                                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded" style="background-color: #4B5563 !important; color: white !important;" data-translate="property.sqm">125 平米</span>
+                                <span class="bg-aiiro text-white text-xs px-2 py-1 rounded">3 寝室</span>
+                                <span class="bg-aiiro text-white text-xs px-2 py-1 rounded">2 浴室</span>
+                                <span class="bg-aiiro text-white text-xs px-2 py-1 rounded">125 平米</span>
                             </div>
                             <div class="mb-4">
                                 <div class="text-sm font-medium text-sumi dark:text-gofun mb-2" data-translate="property.features">特徴:</div>
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">伝統建築</span>
-                                    <span class="bg-[#d9c289]/20 dark:bg-[#d9c289]/30 text-[#d9c289] dark:text-white text-xs px-2 py-1 rounded">プライベート庭園</span>
-                                    <button class="text-[#d9c289] dark:text-white text-xs hover:underline" data-translate="property.moreFeatures">+6 その他</button>
+                                    <span class="bg-kincha/20 text-kincha dark:text-kincha text-xs px-2 py-1 rounded">伝統建築</span>
+                                    <span class="bg-kincha/20 text-kincha dark:text-kincha text-xs px-2 py-1 rounded">プライベート庭園</span>
+                                    <button class="text-kincha dark:text-kincha text-xs hover:underline" data-translate="property.moreFeatures">+6 その他</button>
                                 </div>
                             </div>
                             <div class="flex gap-2">
-                                <a href="/ja/real-estate/#property-sale-001" class="flex-1 bg-[#000000] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#000000]/80 transition-colors text-center" style="color: white !important;" data-translate="property.viewDetails">詳細を見る</a>
-                                <a href="tel:+81-75-123-4567" class="flex-1 bg-[#d9c289] text-white py-2 px-3 rounded text-sm font-medium hover:bg-[#d9c289]/80 transition-colors text-center" data-translate="property.contact">お問い合わせ</a>
+                                <a href="/ja/real-estate/#property-sale-001" class="flex-1 bg-shinku text-white py-2 px-3 rounded text-sm font-medium hover:bg-kurenai transition-colors text-center" data-translate="property.viewDetails">詳細を見る</a>
+                                <a href="tel:+81-75-123-4567" class="flex-1 bg-kincha text-white py-2 px-3 rounded text-sm font-medium hover:bg-kincha/80 transition-colors text-center" data-translate="property.contact">お問い合わせ</a>
                             </div>
                         </div>
                     </div>
