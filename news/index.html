@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyoto Real-time News Hub | Live News from Kyoto & Japan | MrKyoto.com</title>
-    <meta name="description" content="Get real-time news updates from Kyoto and Japan. Don't miss the latest breaking news, cultural events, and development information from verified news sources.">
-    <meta name="keywords" content="Kyoto social media, Instagram Kyoto, TikTok Kyoto, Facebook Kyoto, Snapchat Kyoto, #kyoto, Kyoto trends, social media hub, Kyoto content">
+    <title data-translate="meta.title">Kyoto Real-time News Hub | Live News from Kyoto & Japan | MrKyoto.com</title>
+    <meta name="description" content="Get real-time news updates from Kyoto and Japan. Don't miss the latest breaking news, cultural events, and development information from verified news sources." data-translate="meta.description">
+    <meta name="keywords" content="Kyoto news, Japan news, Kyoto events, Kyoto culture, Kyoto real estate, Kyoto tourism, Kyoto activities, Japanese news, Kyoto breaking news, Kyoto latest news">
     <meta name="author" content="MrKyoto.com">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
@@ -16,9 +16,9 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mrkyoto.com/news/">
-    <meta property="og:title" content="Kyoto Social Media Hub | Live #kyoto Content from Instagram, TikTok & More">
-    <meta property="og:description" content="Discover real-time #kyoto content from Instagram, TikTok, Facebook, and Snapchat.">
-    <meta property="og:image" content="https://mrkyoto.com/images/kyoto-social-hub-og.jpg">
+    <meta property="og:title" content="Kyoto Real-time News Hub | Live News from Kyoto & Japan">
+    <meta property="og:description" content="Get real-time news updates from Kyoto and Japan. Don't miss the latest breaking news, cultural events, and development information from verified news sources.">
+    <meta property="og:image" content="https://mrkyoto.com/images/kyoto-news-og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="MrKyoto.com">
@@ -26,9 +26,9 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mrkyoto.com/news/">
-    <meta property="twitter:title" content="Kyoto Social Media Hub | Live #kyoto Content">
-    <meta property="twitter:description" content="Discover real-time #kyoto content from Instagram, TikTok, Facebook, and Snapchat.">
-    <meta property="twitter:image" content="https://mrkyoto.com/images/kyoto-social-hub-og.jpg">
+    <meta property="twitter:title" content="Kyoto Real-time News Hub | Live News from Kyoto & Japan">
+    <meta property="twitter:description" content="Get real-time news updates from Kyoto and Japan. Don't miss the latest breaking news, cultural events, and development information from verified news sources.">
+    <meta property="twitter:image" content="https://mrkyoto.com/images/kyoto-news-og.jpg">
     <!-- Additional SEO -->
     <link rel="canonical" href="https://mrkyoto.com/news/">
     <meta name="theme-color" content="#9A1F40">
@@ -610,38 +610,156 @@
             </div>
         </section>
 
-        <!-- Latest News Section -->
-        <section id="latest-news" class="py-16 bg-white dark:bg-sumi">
+        <!-- News Analytics Dashboard -->
+        <section class="py-12 bg-washi dark:bg-aiiro">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-4">
-                        <span data-translate="news.latest.title">Latest News</span>
-                    </h2>
-                    <p class="text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
-                        <span data-translate="news.latest.description">Get the latest news and events from Kyoto and Japan.</span>
-                    </p>
-                </div>
-                
-                <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- News articles will be loaded here by JavaScript -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- News Stats -->
+                    <div class="bg-white dark:bg-sumi rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-sumi dark:text-gofun mb-4">📊 News Statistics</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Total Articles</span>
+                                <span id="total-articles" class="font-semibold text-shinku">0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Sources</span>
+                                <span id="total-sources" class="font-semibold text-matcha">0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Last Updated</span>
+                                <span id="last-updated" class="font-semibold text-kincha">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trending Topics -->
+                    <div class="bg-white dark:bg-sumi rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-sumi dark:text-gofun mb-4">🔥 Trending Topics</h3>
+                        <div id="trending-topics" class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Categories -->
+                    <div class="bg-white dark:bg-sumi rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-sumi dark:text-gofun mb-4">📂 Categories</h3>
+                        <div id="news-categories" class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-sumi/70 dark:text-gofun/70">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Social Media Section -->
-        <section id="social-media" class="py-16 bg-washi dark:bg-aiiro">
+        <!-- Search and Filters -->
+        <section class="py-8 bg-white dark:bg-sumi border-b border-zen dark:border-aiiro">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-4 items-center justify-between">
+                    <!-- Search Bar -->
+                    <div class="flex-1 max-w-md">
+                        <div class="relative">
+                            <input type="text" id="news-search" placeholder="Search news..." 
+                                   class="w-full px-4 py-3 pl-10 bg-washi dark:bg-aiiro border border-zen dark:border-aiiro rounded-lg focus:ring-2 focus:ring-shinku focus:border-transparent">
+                            <svg class="absolute left-3 top-3.5 w-5 h-5 text-sumi/50 dark:text-gofun/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Filters -->
+                    <div class="flex gap-2">
+                        <select id="category-filter" class="px-4 py-3 bg-washi dark:bg-aiiro border border-zen dark:border-aiiro rounded-lg focus:ring-2 focus:ring-shinku">
+                            <option value="all">All Categories</option>
+                            <option value="tourism">Tourism</option>
+                            <option value="culture">Culture</option>
+                            <option value="real-estate">Real Estate</option>
+                            <option value="events">Events</option>
+                            <option value="business">Business</option>
+                        </select>
+                        
+                        <select id="sort-filter" class="px-4 py-3 bg-washi dark:bg-aiiro border border-zen dark:border-aiiro rounded-lg focus:ring-2 focus:ring-shinku">
+                            <option value="latest">Latest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                        
+                        <button id="clear-filters" class="px-4 py-3 bg-zen dark:bg-aiiro text-sumi dark:text-gofun rounded-lg hover:bg-zen/80 dark:hover:bg-aiiro/80 transition-colors">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News Section -->
+        <section id="latest-news" class="py-16 bg-white dark:bg-sumi">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row justify-between items-center mb-8">
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-2">
+                            <span data-translate="news.latest.title">Latest News</span>
+                        </h2>
+                        <p class="text-lg text-sumi/70 dark:text-gofun/70">
+                            <span data-translate="news.latest.description">Get the latest news and events from Kyoto and Japan.</span>
+                        </p>
+                    </div>
+                    
+                    <!-- View Toggle -->
+                    <div class="flex gap-2 mt-4 lg:mt-0">
+                        <button id="grid-view" class="px-4 py-2 bg-shinku text-white rounded-lg hover:bg-kurenai transition-colors">
+                            Grid
+                        </button>
+                        <button id="list-view" class="px-4 py-2 bg-zen dark:bg-aiiro text-sumi dark:text-gofun rounded-lg hover:bg-zen/80 dark:hover:bg-aiiro/80 transition-colors">
+                            List
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Loading State -->
+                <div id="news-loading" class="hidden text-center py-12">
+                    <div class="inline-flex items-center space-x-2">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-shinku"></div>
+                        <span class="text-sumi dark:text-gofun">Loading news...</span>
+                    </div>
+                </div>
+                
+                <!-- News Grid -->
+                <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- News articles will be loaded here by JavaScript -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="news-empty" class="hidden text-center py-12">
+                    <div class="text-sumi/50 dark:text-gofun/50">
+                        <svg class="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <p class="text-lg font-semibold mb-2">No news found</p>
+                        <p class="text-sm">Try adjusting your search or filters</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured News Section -->
+        <section class="py-16 bg-washi dark:bg-aiiro">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl lg:text-4xl font-serif font-bold text-sumi dark:text-gofun mb-4">
-                        <span data-translate="news.social.title">Social Media</span>
+                        <span data-translate="news.featured.title">Featured News</span>
                     </h2>
                     <p class="text-lg text-sumi/70 dark:text-gofun/70 max-w-3xl mx-auto">
-                        <span data-translate="news.social.description">Discover real-time #kyoto content from Instagram, TikTok, Facebook, and Snapchat.</span>
+                        <span data-translate="news.featured.description">Top stories and breaking news from Kyoto and Japan.</span>
                     </p>
                 </div>
                 
-                <div id="social-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Social media content will be loaded here by JavaScript -->
+                <div id="featured-news" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Featured articles will be loaded here by JavaScript -->
                 </div>
             </div>
         </section>
@@ -698,9 +816,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/news-manager.js"></script>
+    <script src="/js/api-config.js"></script>
     <script src="/js/news-data.js"></script>
-    <script src="/js/real-news-hub.js"></script>
+    <script src="/js/news-manager.js"></script>
     <script src="/js/translation-manager.js"></script>
     <script src="/js/theme-language-manager.js"></script>
     
@@ -819,7 +937,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('📰 Japanese News page loaded');
+            console.log('📰 English News page loaded');
             
             // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
