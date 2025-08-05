@@ -2602,9 +2602,9 @@ class RealEstateManager {
     }
 
     displayMarketStats() {
-        if (!realEstateData) return;
+        if (!this.realEstateData) return;
         
-        const stats = realEstateData.getMarketStats();
+        const stats = this.realEstateData.getMarketStats();
         const statsContainer = document.getElementById('market-stats');
         
         if (!statsContainer) return;
@@ -2632,13 +2632,13 @@ class RealEstateManager {
     }
 
     displayAgencies() {
-        if (!realEstateData) return;
+        if (!this.realEstateData) return;
         
         const agenciesContainer = document.getElementById('agencies-section');
         if (!agenciesContainer) return;
 
-        const agencies = realEstateData.getAgencies();
-        const rentalAgencies = realEstateData.getRentalAgencies();
+        const agencies = this.realEstateData.getAgencies();
+        const rentalAgencies = this.realEstateData.getRentalAgencies();
 
         agenciesContainer.innerHTML = `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

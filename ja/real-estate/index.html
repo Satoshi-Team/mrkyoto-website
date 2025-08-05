@@ -856,6 +856,17 @@
             } else {
                 console.error('❌ LiveKyotoWidget class not found');
             }
+            
+            // Force weather update after a short delay
+            setTimeout(() => {
+                console.log('🌤️ Forcing weather update after initialization...');
+                if (window.liveKyotoWidget) {
+                    window.liveKyotoWidget.loadWeatherData();
+                    window.liveKyotoWidget.updateWeatherDisplay();
+                } else {
+                    console.error('❌ LiveKyotoWidget not available for forced update');
+                }
+            }, 1000);
         });
     </script>
 
