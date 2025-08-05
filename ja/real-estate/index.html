@@ -817,6 +817,102 @@
     <script src="/js/live-kyoto-widget.js"></script>
     
     <script>
+        // Immediate weather test - run right away before anything else
+        console.log('🌤️ Running immediate weather test...');
+        const immediateElements = {
+            temperature: document.getElementById('weather-temperature'),
+            icon: document.getElementById('weather-icon'),
+            description: document.getElementById('weather-description'),
+            feelsLike: document.getElementById('weather-feels-like'),
+            wind: document.getElementById('weather-wind'),
+            humidity: document.getElementById('weather-humidity'),
+            visibility: document.getElementById('weather-visibility'),
+            pressure: document.getElementById('weather-pressure'),
+            sunrise: document.getElementById('weather-sunrise'),
+            sunset: document.getElementById('weather-sunset'),
+            lastUpdated: document.getElementById('weather-last-updated')
+        };
+        
+        console.log('🔍 Immediate weather elements found:', Object.keys(immediateElements).filter(key => immediateElements[key]));
+        
+        // Force update all elements with test data
+        if (immediateElements.temperature) {
+            immediateElements.temperature.textContent = '22°C';
+            console.log('✅ Immediately updated temperature to 22°C');
+        } else {
+            console.log('❌ Temperature element not found');
+        }
+        if (immediateElements.icon) {
+            immediateElements.icon.textContent = '⛅';
+            console.log('✅ Immediately updated icon to ⛅');
+        } else {
+            console.log('❌ Icon element not found');
+        }
+        if (immediateElements.description) {
+            immediateElements.description.textContent = '部分的に曇り';
+            console.log('✅ Immediately updated description to 部分的に曇り');
+        } else {
+            console.log('❌ Description element not found');
+        }
+        if (immediateElements.feelsLike) {
+            immediateElements.feelsLike.textContent = '体感温度 24°C';
+            console.log('✅ Immediately updated feels like to 体感温度 24°C');
+        } else {
+            console.log('❌ Feels like element not found');
+        }
+        if (immediateElements.wind) {
+            immediateElements.wind.textContent = '8 km/h';
+            console.log('✅ Immediately updated wind to 8 km/h');
+        } else {
+            console.log('❌ Wind element not found');
+        }
+        if (immediateElements.humidity) {
+            immediateElements.humidity.textContent = '65%';
+            console.log('✅ Immediately updated humidity to 65%');
+        } else {
+            console.log('❌ Humidity element not found');
+        }
+        if (immediateElements.visibility) {
+            immediateElements.visibility.textContent = '10 km';
+            console.log('✅ Immediately updated visibility to 10 km');
+        } else {
+            console.log('❌ Visibility element not found');
+        }
+        if (immediateElements.pressure) {
+            immediateElements.pressure.textContent = '1013 hPa';
+            console.log('✅ Immediately updated pressure to 1013 hPa');
+        } else {
+            console.log('❌ Pressure element not found');
+        }
+        if (immediateElements.sunrise) {
+            immediateElements.sunrise.textContent = '06:30';
+            console.log('✅ Immediately updated sunrise to 06:30');
+        } else {
+            console.log('❌ Sunrise element not found');
+        }
+        if (immediateElements.sunset) {
+            immediateElements.sunset.textContent = '17:30';
+            console.log('✅ Immediately updated sunset to 17:30');
+        } else {
+            console.log('❌ Sunset element not found');
+        }
+        if (immediateElements.lastUpdated) {
+            const timeString = new Date().toLocaleTimeString('ja-JP', {hour: '2-digit', minute: '2-digit'});
+            immediateElements.lastUpdated.textContent = timeString;
+            console.log('✅ Immediately updated last updated time to', timeString);
+        } else {
+            console.log('❌ Last updated element not found');
+        }
+        
+        // Test if elements are actually updated
+        setTimeout(() => {
+            console.log('🔍 Checking if elements were actually updated...');
+            const tempEl = document.getElementById('weather-temperature');
+            const descEl = document.getElementById('weather-description');
+            console.log('Temperature element content:', tempEl ? tempEl.textContent : 'NOT FOUND');
+            console.log('Description element content:', descEl ? descEl.textContent : 'NOT FOUND');
+        }, 100);
+        
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🏯 Japanese Real Estate page loaded');
             

@@ -1749,7 +1749,7 @@ class RealEstateManager {
 
     simulateMarketUpdates() {
         // Simulate price changes
-        const properties = [...realEstateData.getPropertiesForSale(), ...realEstateData.getPropertiesForRent()];
+        const properties = [...this.realEstateData.getPropertiesForSale(), ...this.realEstateData.getPropertiesForRent()];
         properties.forEach(property => {
             if (Math.random() < 0.1) { // 10% chance of price change
                 const currentPrice = parseInt(property.price.replace(/[^\d]/g, ''));
