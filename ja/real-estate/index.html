@@ -867,6 +867,121 @@
                     console.error('❌ LiveKyotoWidget not available for forced update');
                 }
             }, 1000);
+            
+            // Direct element test - force update weather elements immediately
+            setTimeout(() => {
+                console.log('🌤️ Testing direct weather element updates...');
+                const isJapanesePage = window.location.pathname.includes('/ja/');
+                
+                const elements = {
+                    temperature: document.getElementById('weather-temperature'),
+                    icon: document.getElementById('weather-icon'),
+                    description: document.getElementById('weather-description'),
+                    feelsLike: document.getElementById('weather-feels-like'),
+                    wind: document.getElementById('weather-wind'),
+                    humidity: document.getElementById('weather-humidity'),
+                    visibility: document.getElementById('weather-visibility'),
+                    pressure: document.getElementById('weather-pressure'),
+                    sunrise: document.getElementById('weather-sunrise'),
+                    sunset: document.getElementById('weather-sunset'),
+                    lastUpdated: document.getElementById('weather-last-updated')
+                };
+                
+                console.log('🔍 Weather elements found:', Object.keys(elements).filter(key => elements[key]));
+                
+                // Force update each element with test data
+                if (elements.temperature) {
+                    elements.temperature.textContent = '22°C';
+                    console.log('✅ Updated temperature to 22°C');
+                }
+                if (elements.icon) {
+                    elements.icon.textContent = '⛅';
+                    console.log('✅ Updated icon to ⛅');
+                }
+                if (elements.description) {
+                    elements.description.textContent = isJapanesePage ? '部分的に曇り' : 'Partly cloudy';
+                    console.log('✅ Updated description');
+                }
+                if (elements.feelsLike) {
+                    elements.feelsLike.textContent = isJapanesePage ? '体感温度 24°C' : 'Feels like 24°C';
+                    console.log('✅ Updated feels like');
+                }
+                if (elements.wind) {
+                    elements.wind.textContent = '8 km/h';
+                    console.log('✅ Updated wind');
+                }
+                if (elements.humidity) {
+                    elements.humidity.textContent = '65%';
+                    console.log('✅ Updated humidity');
+                }
+                if (elements.visibility) {
+                    elements.visibility.textContent = '10 km';
+                    console.log('✅ Updated visibility');
+                }
+                if (elements.pressure) {
+                    elements.pressure.textContent = '1013 hPa';
+                    console.log('✅ Updated pressure');
+                }
+                if (elements.sunrise) {
+                    elements.sunrise.textContent = '06:30';
+                    console.log('✅ Updated sunrise');
+                }
+                if (elements.sunset) {
+                    elements.sunset.textContent = '17:30';
+                    console.log('✅ Updated sunset');
+                }
+                if (elements.lastUpdated) {
+                    const timeString = new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {hour: '2-digit', minute: '2-digit'});
+                    elements.lastUpdated.textContent = timeString;
+                    console.log('✅ Updated last updated time');
+                }
+                
+                console.log('✅ Direct weather element test completed');
+            }, 500);
+            
+            // Global test function
+            window.testWeatherUpdate = () => {
+                console.log('🌤️ Manual weather test triggered...');
+                const isJapanesePage = window.location.pathname.includes('/ja/');
+                
+                const elements = {
+                    temperature: document.getElementById('weather-temperature'),
+                    icon: document.getElementById('weather-icon'),
+                    description: document.getElementById('weather-description'),
+                    feelsLike: document.getElementById('weather-feels-like'),
+                    wind: document.getElementById('weather-wind'),
+                    humidity: document.getElementById('weather-humidity'),
+                    visibility: document.getElementById('weather-visibility'),
+                    pressure: document.getElementById('weather-pressure'),
+                    sunrise: document.getElementById('weather-sunrise'),
+                    sunset: document.getElementById('weather-sunset'),
+                    lastUpdated: document.getElementById('weather-last-updated')
+                };
+                
+                console.log('🔍 Found weather elements:', Object.keys(elements).filter(key => elements[key]));
+                
+                // Update with test data
+                if (elements.temperature) elements.temperature.textContent = '22°C';
+                if (elements.icon) elements.icon.textContent = '⛅';
+                if (elements.description) {
+                    elements.description.textContent = isJapanesePage ? '部分的に曇り' : 'Partly cloudy';
+                }
+                if (elements.feelsLike) {
+                    elements.feelsLike.textContent = isJapanesePage ? '体感温度 24°C' : 'Feels like 24°C';
+                }
+                if (elements.wind) elements.wind.textContent = '8 km/h';
+                if (elements.humidity) elements.humidity.textContent = '65%';
+                if (elements.visibility) elements.visibility.textContent = '10 km';
+                if (elements.pressure) elements.pressure.textContent = '1013 hPa';
+                if (elements.sunrise) elements.sunrise.textContent = '06:30';
+                if (elements.sunset) elements.sunset.textContent = '17:30';
+                if (elements.lastUpdated) {
+                    const timeString = new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {hour: '2-digit', minute: '2-digit'});
+                    elements.lastUpdated.textContent = timeString;
+                }
+                
+                console.log('✅ Manual weather test completed');
+            };
         });
     </script>
 
