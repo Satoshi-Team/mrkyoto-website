@@ -43,6 +43,26 @@ class LiveKyotoWidget {
         this.updateWidget();
         this.startAutoRefresh();
         
+        // Test camera navigation setup
+        setTimeout(() => {
+            console.log('🎥 Testing camera navigation setup...');
+            const nextBtn = document.getElementById('camera-next');
+            const prevBtn = document.getElementById('camera-prev');
+            
+            console.log('🎥 Camera buttons found:', {
+                nextBtn: !!nextBtn,
+                prevBtn: !!prevBtn
+            });
+            
+            if (nextBtn && prevBtn) {
+                console.log('✅ Camera navigation buttons found');
+                console.log('🎥 Current camera index:', this.currentCameraIndex);
+                console.log('🎥 Total cameras:', this.cameras.length);
+            } else {
+                console.log('❌ Camera navigation buttons not found');
+            }
+        }, 2000);
+        
         // Immediately try to update weather display
         console.log('🌤️ Immediately updating weather display...');
         this.updateWeatherDisplay();
@@ -289,6 +309,26 @@ class LiveKyotoWidget {
                 this.updateWeatherDisplay();
             } else {
                 console.log('❌ updateWeatherDisplay method not found');
+            }
+        };
+        
+        window.testCameraSwitching = () => {
+            console.log('🎥 Testing camera switching...');
+            console.log('🎥 LiveKyotoWidget instance:', window.liveKyotoWidget);
+            console.log('🎥 Current camera index:', this.currentCameraIndex);
+            console.log('🎥 Total cameras:', this.cameras.length);
+            
+            const nextBtn = document.getElementById('camera-next');
+            const prevBtn = document.getElementById('camera-prev');
+            
+            console.log('🎥 Next button found:', !!nextBtn);
+            console.log('🎥 Prev button found:', !!prevBtn);
+            
+            if (nextBtn) {
+                console.log('🎥 Manually triggering next camera...');
+                this.nextCamera();
+            } else {
+                console.log('❌ Next camera button not found');
             }
         };
     }
@@ -735,6 +775,8 @@ class LiveKyotoWidget {
             setTimeout(() => this.setupCameraNavigation(), 500);
             return;
         }
+        
+        console.log('🎥 Camera navigation elements found successfully, setting up event listeners...');
 
         // Remove any existing event listeners to prevent duplicates
         const newPrevBtn = prevBtn.cloneNode(true);
@@ -795,6 +837,9 @@ class LiveKyotoWidget {
 
     nextCamera() {
         console.log('🎥 Switching to next camera...');
+        console.log('🎥 Current camera index before switch:', this.currentCameraIndex);
+        console.log('🎥 Total cameras available:', this.cameras.length);
+        
         this.currentCameraIndex = (this.currentCameraIndex + 1) % this.cameras.length;
         console.log('🎥 New camera index:', this.currentCameraIndex);
         
@@ -806,6 +851,8 @@ class LiveKyotoWidget {
         
         this.updateCameraInfo();
         this.updateCameraEmbed();
+        
+        console.log('🎥 Camera switch completed');
     }
 
     updateCameraInfo() {
