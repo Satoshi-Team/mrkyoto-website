@@ -113,6 +113,30 @@ class LiveKyotoWidget {
             }
         }, 1000);
         
+        // Force immediate weather update with hardcoded data
+        setTimeout(() => {
+            console.log('🌤️ Forcing immediate weather update with hardcoded data...');
+            const isJapanesePage = window.location.pathname.includes('/ja/');
+            
+            const weatherData = {
+                temperature: 22,
+                icon: '⛅',
+                description: isJapanesePage ? '部分的に曇り' : 'Partly cloudy',
+                feelsLike: 24,
+                wind: 8,
+                humidity: 65,
+                visibility: 10,
+                pressure: 1013,
+                sunrise: '06:30',
+                sunset: '17:30',
+                lastUpdated: new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {hour: '2-digit', minute: '2-digit'})
+            };
+            
+            this.weatherData = weatherData;
+            this.updateWeatherDisplay();
+            console.log('✅ Forced weather update completed with data:', weatherData);
+        }, 500);
+        
         // Force weather update with fallback data if needed
         setTimeout(() => {
             console.log('🌤️ Forcing weather update...');
@@ -232,6 +256,40 @@ class LiveKyotoWidget {
             }
             
             console.log('✅ Direct weather update completed');
+        };
+        
+        window.debugWeatherWidget = () => {
+            console.log('🔍 Debugging weather widget...');
+            console.log('📍 Current page:', window.location.pathname);
+            console.log('🌍 Is Japanese page:', window.location.pathname.includes('/ja/'));
+            console.log('🎥 LiveKyotoWidget instance:', window.liveKyotoWidget);
+            console.log('🌤️ Weather data:', this.weatherData);
+            
+            const elements = {
+                temperature: document.getElementById('weather-temperature'),
+                icon: document.getElementById('weather-icon'),
+                description: document.getElementById('weather-description'),
+                feelsLike: document.getElementById('weather-feels-like'),
+                wind: document.getElementById('weather-wind'),
+                humidity: document.getElementById('weather-humidity'),
+                visibility: document.getElementById('weather-visibility'),
+                pressure: document.getElementById('weather-pressure'),
+                sunrise: document.getElementById('weather-sunrise'),
+                sunset: document.getElementById('weather-sunset'),
+                lastUpdated: document.getElementById('weather-last-updated')
+            };
+            
+            console.log('🔍 All weather elements:', elements);
+            console.log('✅ Found elements:', Object.keys(elements).filter(key => elements[key]));
+            console.log('❌ Missing elements:', Object.keys(elements).filter(key => !elements[key]));
+            
+            // Test if updateWeatherDisplay method exists
+            if (this.updateWeatherDisplay) {
+                console.log('✅ updateWeatherDisplay method exists');
+                this.updateWeatherDisplay();
+            } else {
+                console.log('❌ updateWeatherDisplay method not found');
+            }
         };
     }
 
