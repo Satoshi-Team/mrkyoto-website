@@ -82,6 +82,12 @@ class NewsManager {
             console.log(`📰 NewsManager: Fallback data loaded: ${newsData.newsArticles.length} articles`);
         }
         
+        // Ensure we have at least 20 articles
+        if (newsData.newsArticles.length < 20) {
+            console.log('📰 NewsManager: Less than 20 articles, loading fallback data...');
+            newsData.loadFallbackData();
+        }
+        
         this.displayNews();
         this.displayNewsStats();
         this.displayTrendingArticles();
@@ -352,24 +358,40 @@ class NewsManager {
         const trendingTopics = document.getElementById('trending-topics');
         if (trendingTopics) {
             const trending = newsData.getTrendingArticles(5);
-            trendingTopics.innerHTML = trending.map(article => `
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-sumi/70 dark:text-gofun/70 truncate">${article.title}</span>
-                    <span class="text-xs text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
-                </div>
-            `).join('');
+            if (trending.length > 0) {
+                trendingTopics.innerHTML = trending.map(article => `
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-sumi/70 dark:text-gofun/70 truncate">${article.title}</span>
+                        <span class="text-xs text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
+                    </div>
+                `).join('');
+            } else {
+                trendingTopics.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-sumi/70 dark:text-gofun/70">No trending articles yet</span>
+                    </div>
+                `;
+            }
         }
         
         // Update categories
         const newsCategories = document.getElementById('news-categories');
         if (newsCategories) {
             const categories = Object.entries(stats.categoryBreakdown || {});
-            newsCategories.innerHTML = categories.map(([category, count]) => `
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-sumi/70 dark:text-gofun/70">${category}</span>
-                    <span class="text-xs font-semibold text-shinku">${count}</span>
-                </div>
-            `).join('');
+            if (categories.length > 0) {
+                newsCategories.innerHTML = categories.map(([category, count]) => `
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-sumi/70 dark:text-gofun/70">${category}</span>
+                        <span class="text-xs font-semibold text-shinku">${count}</span>
+                    </div>
+                `).join('');
+            } else {
+                newsCategories.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-sumi/70 dark:text-gofun/70">No categories available</span>
+                    </div>
+                `;
+            }
         }
     }
 

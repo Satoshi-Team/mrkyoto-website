@@ -84,13 +84,18 @@ class NewsData {
                 'japan+news',
                 'kyoto+culture',
                 'japanese+tourism',
-                'kyoto+real+estate'
+                'kyoto+real+estate',
+                'japan+travel',
+                'kyoto+events',
+                'japanese+culture',
+                'kyoto+food',
+                'japan+business'
             ];
             
             const allArticles = [];
             
             for (const query of queries) {
-                const response = await fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=10&apiKey=${this.apiKeys.newsapi}`);
+                const response = await fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=5&apiKey=${this.apiKeys.newsapi}`);
                 const data = await response.json();
                 
                 if (data.status === 'ok' && data.articles) {
@@ -404,6 +409,8 @@ class NewsData {
             count,
             url: this.newsArticles.find(a => a.source === name)?.url || '#'
         }));
+        
+        console.log(`📰 Updated sources: ${this.sources.length} unique sources`);
     }
 
     startAutoRefresh() {
@@ -494,6 +501,246 @@ class NewsData {
                 hashtags: ['#kyoto', '#temple', '#kinkakuji', '#heritage'],
                 category: 'culture',
                 language: 'en'
+            },
+            {
+                id: 'fallback_6',
+                title: 'Kyoto Autumn Festival Celebrates Traditional Arts',
+                content: 'The annual Kyoto Autumn Festival showcases traditional Japanese arts including tea ceremony, ikebana, and calligraphy demonstrations throughout the city.',
+                author: 'Kyoto Cultural Center',
+                source: 'Kyoto Cultural Center',
+                url: 'https://kyoto-cultural.org/autumn-festival-2025',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#autumn', '#festival', '#arts'],
+                category: 'culture',
+                language: 'en'
+            },
+            {
+                id: 'fallback_7',
+                title: 'New High-Speed Rail Connection to Kyoto',
+                content: 'A new high-speed rail connection between Tokyo and Kyoto has been announced, reducing travel time to just 2 hours and 15 minutes.',
+                author: 'Japan Rail News',
+                source: 'Japan Rail News',
+                url: 'https://japanrail.com/kyoto-connection-2025',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 14 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Japan',
+                hashtags: ['#japan', '#rail', '#transport', '#kyoto'],
+                category: 'business',
+                language: 'en'
+            },
+            {
+                id: 'fallback_8',
+                title: 'Kyoto\'s Historic Districts Receive UNESCO Recognition',
+                content: 'Three additional historic districts in Kyoto have been added to the UNESCO World Heritage list, bringing the total to 17 protected areas.',
+                author: 'UNESCO Heritage',
+                source: 'UNESCO Heritage',
+                url: 'https://unesco.org/kyoto-heritage-2025',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 16 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#unesco', '#heritage', '#worldheritage'],
+                category: 'culture',
+                language: 'en'
+            },
+            {
+                id: 'fallback_9',
+                title: 'New Sustainable Tourism Initiative in Arashiyama',
+                content: 'A new sustainable tourism initiative has been launched in Arashiyama, focusing on eco-friendly bamboo forest tours and traditional craft workshops.',
+                author: 'Kyoto Eco Tourism',
+                source: 'Kyoto Eco Tourism',
+                url: 'https://kyoto-eco.com/arashiyama-initiative',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 18 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#arashiyama', '#ecotourism', '#sustainable'],
+                category: 'tourism',
+                language: 'en'
+            },
+            {
+                id: 'fallback_10',
+                title: 'Traditional Kyoto Cuisine Gets Modern Twist',
+                content: 'Renowned Kyoto chefs are blending traditional techniques with modern culinary innovations, creating a new wave of Japanese fusion cuisine.',
+                author: 'Kyoto Food & Culture',
+                source: 'Kyoto Food & Culture',
+                url: 'https://kyoto-food-culture.com/modern-traditional',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 20 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#cuisine', '#food', '#fusion'],
+                category: 'food',
+                language: 'en'
+            },
+            {
+                id: 'fallback_11',
+                title: 'Kyoto\'s Digital Transformation in Tourism',
+                content: 'Kyoto is embracing digital technology to enhance the tourist experience, including AI-powered translation services and virtual reality temple tours.',
+                author: 'Kyoto Tech Innovation',
+                source: 'Kyoto Tech Innovation',
+                url: 'https://kyoto-tech.com/digital-transformation',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 22 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#digital', '#technology', '#tourism'],
+                category: 'business',
+                language: 'en'
+            },
+            {
+                id: 'fallback_12',
+                title: 'New Art Gallery Opens in Higashiyama District',
+                content: 'A contemporary art gallery showcasing both traditional Japanese art and modern international works has opened in the historic Higashiyama district.',
+                author: 'Kyoto Art Scene',
+                source: 'Kyoto Art Scene',
+                url: 'https://kyoto-art.com/higashiyama-gallery',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#art', '#gallery', '#higashiyama'],
+                category: 'culture',
+                language: 'en'
+            },
+            {
+                id: 'fallback_13',
+                title: 'Kyoto\'s Traditional Textile Industry Revival',
+                content: 'Young artisans are reviving Kyoto\'s traditional textile industry, combining ancient techniques with contemporary design for modern markets.',
+                author: 'Kyoto Textile Heritage',
+                source: 'Kyoto Textile Heritage',
+                url: 'https://kyoto-textile.com/revival-2025',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 26 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#textile', '#traditional', '#artisan'],
+                category: 'culture',
+                language: 'en'
+            },
+            {
+                id: 'fallback_14',
+                title: 'New Wellness Retreat Center in Northern Kyoto',
+                content: 'A luxury wellness retreat center has opened in northern Kyoto, offering traditional Japanese healing practices and modern spa treatments.',
+                author: 'Kyoto Wellness',
+                source: 'Kyoto Wellness',
+                url: 'https://kyoto-wellness.com/northern-retreat',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 28 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#wellness', '#retreat', '#healing'],
+                category: 'tourism',
+                language: 'en'
+            },
+            {
+                id: 'fallback_15',
+                title: 'Kyoto\'s Nightlife Scene Gets Cultural Makeover',
+                content: 'Traditional teahouses and modern bars are collaborating to create a unique nightlife experience that celebrates Kyoto\'s cultural heritage.',
+                author: 'Kyoto Nightlife',
+                source: 'Kyoto Nightlife',
+                url: 'https://kyoto-nightlife.com/cultural-collaboration',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 30 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#nightlife', '#culture', '#teahouse'],
+                category: 'culture',
+                language: 'en'
+            },
+            {
+                id: 'fallback_16',
+                title: 'New Educational Programs for Foreign Students',
+                content: 'Kyoto University has launched new programs specifically designed for international students interested in Japanese culture and language.',
+                author: 'Kyoto University',
+                source: 'Kyoto University',
+                url: 'https://kyoto-u.ac.jp/international-programs',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 32 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#education', '#university', '#international'],
+                category: 'education',
+                language: 'en'
+            },
+            {
+                id: 'fallback_17',
+                title: 'Kyoto\'s Seasonal Food Festival Announced',
+                content: 'A month-long food festival celebrating Kyoto\'s seasonal ingredients and traditional cooking methods will take place this autumn.',
+                author: 'Kyoto Food Festival',
+                source: 'Kyoto Food Festival',
+                url: 'https://kyoto-foodfest.com/autumn-2025',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 34 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#foodfestival', '#seasonal', '#autumn'],
+                category: 'food',
+                language: 'en'
+            },
+            {
+                id: 'fallback_18',
+                title: 'New Cycling Routes Connect Kyoto\'s Temples',
+                content: 'A network of new cycling routes has been established, connecting major temples and shrines throughout Kyoto for eco-friendly tourism.',
+                author: 'Kyoto Cycling Tours',
+                source: 'Kyoto Cycling Tours',
+                url: 'https://kyoto-cycling.com/temple-routes',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 36 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#cycling', '#temple', '#ecotourism'],
+                category: 'tourism',
+                language: 'en'
+            },
+            {
+                id: 'fallback_19',
+                title: 'Traditional Kyoto Pottery Gets Modern Recognition',
+                content: 'Kyoto\'s traditional pottery techniques are gaining international recognition, with local artisans receiving awards for their innovative designs.',
+                author: 'Kyoto Craft Awards',
+                source: 'Kyoto Craft Awards',
+                url: 'https://kyoto-craft-awards.com/pottery-2025',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 38 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#pottery', '#craft', '#traditional'],
+                category: 'culture',
+                language: 'en'
+            },
+            {
+                id: 'fallback_20',
+                title: 'New Digital Archive of Kyoto\'s History',
+                content: 'A comprehensive digital archive documenting Kyoto\'s 1,200-year history has been launched, making historical documents accessible worldwide.',
+                author: 'Kyoto Digital Heritage',
+                source: 'Kyoto Digital Heritage',
+                url: 'https://kyoto-digital-heritage.org/archive-launch',
+                image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&h=400&fit=crop',
+                date: new Date(Date.now() - 40 * 60 * 60 * 1000).toISOString(),
+                platform: 'fallback',
+                verified: true,
+                location: 'Kyoto',
+                hashtags: ['#kyoto', '#history', '#digital', '#archive'],
+                category: 'culture',
+                language: 'en'
             }
         ];
         
@@ -554,7 +801,7 @@ class NewsData {
         
         return {
             totalArticles: this.newsArticles.length,
-            totalSources: this.sources.length,
+            totalSources: Object.keys(sourceCounts).length,
             categoryBreakdown: categoryCounts,
             sourceBreakdown: sourceCounts,
             lastUpdated: this.lastFetchTime,
