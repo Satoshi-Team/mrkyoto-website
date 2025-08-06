@@ -82,10 +82,23 @@ class NewsManager {
             console.log(`📰 NewsManager: Fallback data loaded: ${newsData.newsArticles.length} articles`);
         }
         
-        this.displayNews();
-        this.displayNewsStats();
-        this.displayTrendingArticles();
-        this.displayFeaturedNews();
+        // Ensure we have data before displaying
+        if (newsData.newsArticles.length > 0) {
+            this.displayNews();
+            this.displayNewsStats();
+            this.displayTrendingArticles();
+            this.displayFeaturedNews();
+        } else {
+            console.log('📰 NewsManager: Still no articles available');
+        }
+        
+        // Force refresh after a delay to ensure data is displayed
+        setTimeout(() => {
+            if (newsData.newsArticles.length > 0) {
+                this.displayNews();
+                this.displayNewsStats();
+            }
+        }, 1000);
     }
 
     setupEventListeners() {
@@ -397,6 +410,13 @@ class NewsManager {
                 `;
             }
         }
+        
+        // Force update if data is available
+        setTimeout(() => {
+            if (newsData.newsArticles.length > 0) {
+                this.displayNewsStats();
+            }
+        }, 500);
     }
 
     displayTrendingArticles() {

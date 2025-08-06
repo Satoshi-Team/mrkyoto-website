@@ -78,39 +78,21 @@ class NewsData {
 
     async fetchFromNewsAPI() {
         try {
-            // Enhanced query to get more articles about Japan/Kyoto
-            const queries = [
-                'kyoto+japan',
-                'japan+news',
-                'kyoto+culture',
-                'japanese+tourism',
-                'kyoto+real+estate',
-                'japan+travel',
-                'kyoto+events',
-                'japanese+culture',
-                'kyoto+food',
-                'japan+business'
-            ];
+            // Use a single validated API source with comprehensive query
+            const response = await fetch(`https://newsapi.org/v2/everything?q=kyoto+japan&language=en&sortBy=publishedAt&pageSize=50&apiKey=${this.apiKeys.newsapi}`);
+            const data = await response.json();
             
-            const allArticles = [];
-            
-            for (const query of queries) {
-                const response = await fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=20&apiKey=${this.apiKeys.newsapi}`);
-                const data = await response.json();
+            if (data.status === 'ok' && data.articles) {
+                console.log(`📰 Fetched ${data.articles.length} articles from NewsAPI`);
+                const transformedArticles = data.articles
+                    .map(article => this.transformNewsAPIArticle(article))
+                    .filter(article => article !== null && article.content && article.content !== 'undefined');
                 
-                if (data.status === 'ok' && data.articles) {
-                    console.log(`📰 Fetched ${data.articles.length} articles for query: ${query}`);
-                    const transformedArticles = data.articles
-                        .map(article => this.transformNewsAPIArticle(article))
-                        .filter(article => article !== null);
-                    allArticles.push(...transformedArticles);
-                } else if (data.status === 'error') {
-                    console.warn('NewsAPI error:', data.message);
-                }
+                console.log(`📰 Transformed ${transformedArticles.length} valid articles`);
+                return transformedArticles;
+            } else if (data.status === 'error') {
+                console.warn('NewsAPI error:', data.message);
             }
-            
-            console.log(`📰 Total NewsAPI articles: ${allArticles.length}`);
-            return allArticles;
         } catch (error) {
             console.warn('NewsAPI fetch failed:', error);
         }
@@ -271,10 +253,16 @@ class NewsData {
                 return null;
             }
             
+            // Ensure content is not undefined
+            const content = article.description || article.content || 'No content available';
+            if (content === 'undefined' || !content) {
+                return null;
+            }
+            
             return {
                 id: `newsapi_${article.url?.replace(/[^a-zA-Z0-9]/g, '') || Date.now()}`,
                 title: article.title || 'No Title',
-                content: article.description || article.content || 'No content available',
+                content: content,
                 author: article.author || 'Unknown Author',
                 source: article.source?.name || 'NewsAPI',
                 url: article.url || '#',
@@ -788,7 +776,7 @@ class NewsData {
         return this.sources;
     }
 
-    getNewsStats() {
+        getNewsStats() {
         const categoryCounts = {};
         const sourceCounts = {};
         
@@ -796,10 +784,10 @@ class NewsData {
             categoryCounts[article.category] = (categoryCounts[article.category] || 0) + 1;
             sourceCounts[article.source] = (sourceCounts[article.source] || 0) + 1;
         });
-
+        
         return {
             totalArticles: this.newsArticles.length,
-            totalSources: this.sources.length,
+            totalSources: Object.keys(sourceCounts).length,
             categoryBreakdown: categoryCounts,
             sourceBreakdown: sourceCounts,
             lastUpdated: this.lastFetchTime,
