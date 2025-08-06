@@ -82,12 +82,6 @@ class NewsManager {
             console.log(`📰 NewsManager: Fallback data loaded: ${newsData.newsArticles.length} articles`);
         }
         
-        // Ensure we have at least 20 articles
-        if (newsData.newsArticles.length < 20) {
-            console.log('📰 NewsManager: Less than 20 articles, loading fallback data...');
-            newsData.loadFallbackData();
-        }
-        
         this.displayNews();
         this.displayNewsStats();
         this.displayTrendingArticles();
@@ -155,7 +149,7 @@ class NewsManager {
         });
     }
 
-    displayNews() {
+        displayNews() {
         const newsGrid = document.getElementById('news-grid');
         const newsLoading = document.getElementById('news-loading');
         const newsEmpty = document.getElementById('news-empty');
@@ -168,20 +162,30 @@ class NewsManager {
         
         const filteredNews = this.getFilteredNews();
         
+        console.log(`📰 Displaying ${filteredNews.length} articles`);
+        
         if (filteredNews.length === 0) {
             newsGrid.classList.add('hidden');
             if (newsEmpty) newsEmpty.classList.remove('hidden');
             return;
         }
-
+        
         if (newsEmpty) newsEmpty.classList.add('hidden');
         
         // Generate news cards
         const newsCards = this.generateNewsCards(filteredNews);
         newsGrid.innerHTML = newsCards;
-
+        
         // Update counters
         this.updateNewsCounters(filteredNews.length);
+        
+        // Force display of grid even if empty initially
+        setTimeout(() => {
+            if (newsGrid.children.length === 0 && newsData.newsArticles.length > 0) {
+                console.log('📰 Forcing display of articles...');
+                this.displayNews();
+            }
+        }, 1000);
     }
 
     getFilteredNews() {
@@ -363,14 +367,14 @@ class NewsManager {
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70 truncate">${article.title}</span>
                         <span class="text-xs text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
-                </div>
+                    </div>
                 `).join('');
             } else {
                 trendingTopics.innerHTML = `
                     <div class="flex items-center justify-between">
-                        <span class="text-sm text-sumi/70 dark:text-gofun/70">No trending articles yet</span>
-            </div>
-        `;
+                        <span class="text-sm text-sumi/70 dark:text-gofun/70">No trending articles</span>
+                    </div>
+                `;
             }
         }
         
@@ -383,14 +387,14 @@ class NewsManager {
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">${category}</span>
                         <span class="text-xs font-semibold text-shinku">${count}</span>
-                        </div>
+                    </div>
                 `).join('');
             } else {
                 newsCategories.innerHTML = `
                     <div class="flex items-center justify-between">
-                        <span class="text-sm text-sumi/70 dark:text-gofun/70">No categories available</span>
-            </div>
-        `;
+                        <span class="text-sm text-sumi/70 dark:text-gofun/70">No categories</span>
+                    </div>
+                `;
             }
         }
     }
