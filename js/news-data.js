@@ -97,15 +97,15 @@ class NewsData {
             for (const query of queries) {
                 const response = await fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=5&apiKey=${this.apiKeys.newsapi}`);
                 const data = await response.json();
-                
-                if (data.status === 'ok' && data.articles) {
+            
+            if (data.status === 'ok' && data.articles) {
                     console.log(`📰 Fetched ${data.articles.length} articles for query: ${query}`);
-                    const transformedArticles = data.articles
-                        .map(article => this.transformNewsAPIArticle(article))
+                const transformedArticles = data.articles
+                    .map(article => this.transformNewsAPIArticle(article))
                         .filter(article => article !== null);
                     allArticles.push(...transformedArticles);
-                } else if (data.status === 'error') {
-                    console.warn('NewsAPI error:', data.message);
+            } else if (data.status === 'error') {
+                console.warn('NewsAPI error:', data.message);
                 }
             }
             
@@ -295,9 +295,9 @@ class NewsData {
 
     transformRSSItem(item, feedUrl) {
         try {
-            const title = item.querySelector('title')?.textContent || '';
-            const description = item.querySelector('description')?.textContent || '';
-            const link = item.querySelector('link')?.textContent || '';
+        const title = item.querySelector('title')?.textContent || '';
+        const description = item.querySelector('description')?.textContent || '';
+        const link = item.querySelector('link')?.textContent || '';
             const pubDate = item.querySelector('pubDate')?.textContent || '';
             
             return {
@@ -771,7 +771,7 @@ class NewsData {
         if (!query) return this.newsArticles;
         
         const searchTerm = query.toLowerCase();
-        return this.newsArticles.filter(article =>
+        return this.newsArticles.filter(article => 
             article.title.toLowerCase().includes(searchTerm) ||
             article.content.toLowerCase().includes(searchTerm) ||
             article.hashtags.some(tag => tag.toLowerCase().includes(searchTerm))
@@ -798,7 +798,7 @@ class NewsData {
             categoryCounts[article.category] = (categoryCounts[article.category] || 0) + 1;
             sourceCounts[article.source] = (sourceCounts[article.source] || 0) + 1;
         });
-        
+
         return {
             totalArticles: this.newsArticles.length,
             totalSources: Object.keys(sourceCounts).length,
@@ -856,7 +856,7 @@ class NewsData {
     getRelatedArticles(articleId, limit = 3) {
         const currentArticle = this.getArticleById(articleId);
         if (!currentArticle) return [];
-        
+
         return this.newsArticles
             .filter(article => 
                 article.id !== articleId &&

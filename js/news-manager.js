@@ -149,7 +149,7 @@ class NewsManager {
         // Listen for news updates
         window.addEventListener('newsUpdated', (event) => {
             console.log('📰 NewsManager: Received news update event');
-            this.displayNews();
+                this.displayNews();
             this.displayNewsStats();
             this.updateAnalyticsDashboard();
         });
@@ -173,13 +173,13 @@ class NewsManager {
             if (newsEmpty) newsEmpty.classList.remove('hidden');
             return;
         }
-        
+
         if (newsEmpty) newsEmpty.classList.add('hidden');
         
         // Generate news cards
         const newsCards = this.generateNewsCards(filteredNews);
         newsGrid.innerHTML = newsCards;
-        
+
         // Update counters
         this.updateNewsCounters(filteredNews.length);
     }
@@ -265,22 +265,22 @@ class NewsManager {
             <article class="bg-white dark:bg-sumi rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div class="relative">
                     <img src="${article.image}" alt="${article.title}" class="w-full h-48 object-cover">
-                    <div class="absolute top-4 left-4">
+                        <div class="absolute top-4 left-4">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${categoryColor}">
                             ${categoryIcon} ${article.category}
-                        </span>
-                    </div>
+                            </span>
+                        </div>
                     <div class="absolute top-4 right-4">
                         <button class="text-white hover:text-yellow-300 transition-colors" onclick="newsManager.toggleFavorite('${article.id}')">
                             ${this.favorites.includes(article.id) ? '★' : '☆'}
                         </button>
                     </div>
-                </div>
-                
+                    </div>
+                    
                 <div class="p-6">
                     <h3 class="text-xl font-semibold text-sumi dark:text-gofun mb-3 line-clamp-2">
                         <a href="${article.url}" target="_blank" class="hover:text-shinku transition-colors">
-                            ${article.title}
+                        ${article.title}
                         </a>
                     </h3>
                     
@@ -293,8 +293,8 @@ class NewsManager {
                             <span class="text-sumi/50 dark:text-gofun/50">${article.source}</span>
                             <span class="text-sumi/50 dark:text-gofun/50">•</span>
                             <span class="text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
-                        </div>
-                        
+                    </div>
+                    
                         <div class="flex space-x-1">
                             ${article.hashtags.slice(0, 3).map(tag => `
                                 <span class="text-xs bg-zen dark:bg-aiiro text-sumi dark:text-gofun px-2 py-1 rounded">
@@ -302,8 +302,8 @@ class NewsManager {
                                 </span>
                             `).join('')}
                         </div>
-                    </div>
-                </div>
+                        </div>
+                        </div>
             </article>
         `;
     }
@@ -363,14 +363,14 @@ class NewsManager {
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70 truncate">${article.title}</span>
                         <span class="text-xs text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
-                    </div>
+                </div>
                 `).join('');
             } else {
                 trendingTopics.innerHTML = `
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">No trending articles yet</span>
-                    </div>
-                `;
+            </div>
+        `;
             }
         }
         
@@ -383,14 +383,14 @@ class NewsManager {
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">${category}</span>
                         <span class="text-xs font-semibold text-shinku">${count}</span>
-                    </div>
+                        </div>
                 `).join('');
             } else {
                 newsCategories.innerHTML = `
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">No categories available</span>
-                    </div>
-                `;
+            </div>
+        `;
             }
         }
     }
@@ -422,7 +422,7 @@ class NewsManager {
                             <span class="text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
                         </div>
                     </div>
-                </div>
+            </div>
             `).join('');
         }
     }
@@ -515,4 +515,4 @@ class NewsManager {
 }
 
 // Initialize global news manager instance
-window.newsManager = new NewsManager(); 
+    window.newsManager = new NewsManager();
