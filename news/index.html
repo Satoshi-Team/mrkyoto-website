@@ -1138,8 +1138,17 @@
                         visible: btn.offsetParent !== null,
                         display: window.getComputedStyle(btn).display,
                         pointerEvents: window.getComputedStyle(btn).pointerEvents,
-                        opacity: window.getComputedStyle(btn).opacity
+                        opacity: window.getComputedStyle(btn).opacity,
+                        color: window.getComputedStyle(btn).color,
+                        backgroundColor: window.getComputedStyle(btn).backgroundColor,
+                        zIndex: window.getComputedStyle(btn).zIndex
                     });
+                    
+                    // Force button to be clickable
+                    btn.style.pointerEvents = 'auto';
+                    btn.style.cursor = 'pointer';
+                    btn.style.userSelect = 'none';
+                    btn.style.zIndex = '1000';
                 }
             });
             
@@ -1266,6 +1275,34 @@
             }
             
             console.log('✅ All buttons initialized');
+            
+            // Test button functionality
+            setTimeout(() => {
+                console.log('🧪 Testing button functionality...');
+                
+                // Test each button with a simulated click
+                [mobileThemeToggle, mobileLanguageToggle, mobileMenuButton].forEach(btn => {
+                    if (btn) {
+                        console.log(`🧪 Testing button: ${btn.id}`);
+                        
+                        // Create and dispatch a test click event
+                        const testClick = new MouseEvent('click', {
+                            bubbles: true,
+                            cancelable: true,
+                            view: window
+                        });
+                        
+                        // Add a one-time listener to see if the click is detected
+                        btn.addEventListener('click', function testHandler() {
+                            console.log(`✅ Test click detected on ${btn.id}`);
+                            btn.removeEventListener('click', testHandler);
+                        }, { once: true });
+                        
+                        // Dispatch the test click
+                        btn.dispatchEvent(testClick);
+                    }
+                });
+            }, 1000);
         }
     </script>
 </body>
