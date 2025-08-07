@@ -464,19 +464,19 @@
                 <!-- Mobile actions -->
                 <div class="lg:hidden flex items-center space-x-2">
                     <!-- Language toggle -->
-                    <button id="mobile-language-toggle" class="action-button" data-tooltip="Language">
+                    <button id="mobile-language-toggle" class="action-button text-white" data-tooltip="Language">
                         <span class="text-sm font-medium">🇯🇵</span>
                     </button>
                     
                     <!-- Dark mode toggle -->
-                    <button id="mobile-theme-toggle" class="action-button" data-tooltip="テーマ切り替え">
+                    <button id="mobile-theme-toggle" class="action-button text-white" data-tooltip="テーマ切り替え">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
                     
                     <!-- Mobile menu button -->
-                    <button id="mobile-menu-button" class="action-button">
+                    <button id="mobile-menu-button" class="action-button text-white">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -537,10 +537,10 @@
                         <span data-translate="news.hero.subtitle">京都と日本からの最新ニュースをお届けします。検証済みニュースソースからの速報、文化イベント、開発情報をお見逃しなく。</span>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#latest-news" class="inline-flex items-center px-8 py-4 bg-shinku text-white font-semibold rounded-lg hover:bg-kurenai transition-colors">
+                        <a href="#latest-news" class="inline-flex items-center px-8 py-4 bg-[#000000] text-white font-semibold rounded-lg hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
                             <span data-translate="news.hero.latestNews">最新ニュース</span>
                         </a>
-                        <a href="#live-cams" class="inline-flex items-center px-8 py-4 bg-matcha text-white font-semibold rounded-lg hover:bg-koke transition-colors">
+                        <a href="#live-cams" class="inline-flex items-center px-8 py-4 bg-[#d9c289] text-white font-semibold rounded-lg hover:bg-[#d9c289]/80 transition-colors">
                             <span data-translate="news.hero.liveCams">ライブカメラ</span>
                         </a>
                     </div>
@@ -605,7 +605,7 @@
                     
                     <!-- View Toggle -->
                     <div class="flex gap-2 mt-4 lg:mt-0">
-                        <button id="grid-view" class="px-4 py-2 bg-shinku text-white rounded-lg hover:bg-kurenai transition-colors">
+                        <button id="grid-view" class="px-4 py-2 bg-[#000000] text-white rounded-lg hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
                             グリッド
                         </button>
                         <button id="list-view" class="px-4 py-2 bg-zen dark:bg-aiiro text-sumi dark:text-gofun rounded-lg hover:bg-zen/80 dark:hover:bg-aiiro/80 transition-colors">
@@ -667,9 +667,9 @@
                 <p class="text-lg text-sumi/70 dark:text-gofun/70 mb-8">
                     <span data-translate="news.contact.description">京都のニュースについてご質問がございましたら、お気軽にお問い合わせください。</span>
                 </p>
-                <a href="mailto:info@mrkyoto.com" class="inline-flex items-center px-8 py-4 bg-shinku text-white font-semibold rounded-lg hover:bg-kurenai transition-colors">
-                    <span data-translate="news.contact.button">お問い合わせ</span>
-                </a>
+                                        <a href="mailto:info@mrkyoto.com" class="inline-flex items-center px-8 py-4 bg-[#000000] text-white font-semibold rounded-lg hover:bg-[#000000]/80 transition-colors" style="color: white !important;">
+                            <span data-translate="news.contact.button">お問い合わせ</span>
+                        </a>
             </div>
         </section>
     </main>
