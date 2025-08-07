@@ -1102,15 +1102,22 @@
             // Mobile menu functionality
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Adding mobile menu toggle to:', mobileMenuButton.id);
+                console.log('📱 Mobile menu element found:', !!mobileMenu);
+                console.log('📱 Mobile menu initial state - hidden:', mobileMenu.classList.contains('hidden'));
                 
                 // Test click to ensure button is responsive
                 mobileMenuButton.style.cursor = 'pointer';
                 mobileMenuButton.style.userSelect = 'none';
+                mobileMenuButton.style.zIndex = '1000';
                 
                 mobileMenuButton.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('📱 Mobile menu button clicked!');
+                    console.log('📱 Event target:', e.target);
+                    console.log('📱 Event currentTarget:', e.currentTarget);
+                    console.log('📱 Button ID:', mobileMenuButton.id);
+                    console.log('📱 Mobile menu hidden before toggle:', mobileMenu.classList.contains('hidden'));
                     
                     mobileMenu.classList.toggle('hidden');
                     console.log('📱 Mobile menu toggled, hidden:', mobileMenu.classList.contains('hidden'));
@@ -1183,6 +1190,15 @@
                 [mobileThemeToggle, mobileLanguageToggle, mobileMenuButton].forEach(btn => {
                     if (btn) {
                         console.log(`🧪 Testing button: ${btn.id}`);
+                        console.log(`🧪 Button element:`, btn);
+                        console.log(`🧪 Button computed styles:`, {
+                            display: window.getComputedStyle(btn).display,
+                            visibility: window.getComputedStyle(btn).visibility,
+                            opacity: window.getComputedStyle(btn).opacity,
+                            pointerEvents: window.getComputedStyle(btn).pointerEvents,
+                            position: window.getComputedStyle(btn).position,
+                            zIndex: window.getComputedStyle(btn).zIndex
+                        });
                         
                         // Create and dispatch a test click event
                         const testClick = new MouseEvent('click', {
@@ -1201,6 +1217,33 @@
                         btn.dispatchEvent(testClick);
                     }
                 });
+                
+                // Test mobile menu specifically
+                if (mobileMenu) {
+                    console.log('🧪 Testing mobile menu...');
+                    console.log('🧪 Mobile menu initial state:', {
+                        hidden: mobileMenu.classList.contains('hidden'),
+                        display: window.getComputedStyle(mobileMenu).display,
+                        visibility: window.getComputedStyle(mobileMenu).visibility,
+                        opacity: window.getComputedStyle(mobileMenu).opacity,
+                        zIndex: window.getComputedStyle(mobileMenu).zIndex
+                    });
+                    
+                    // Test mobile menu toggle
+                    mobileMenu.classList.remove('hidden');
+                    console.log('🧪 Mobile menu after removing hidden:', {
+                        hidden: mobileMenu.classList.contains('hidden'),
+                        display: window.getComputedStyle(mobileMenu).display,
+                        visibility: window.getComputedStyle(mobileMenu).visibility
+                    });
+                    
+                    mobileMenu.classList.add('hidden');
+                    console.log('🧪 Mobile menu after adding hidden:', {
+                        hidden: mobileMenu.classList.contains('hidden'),
+                        display: window.getComputedStyle(mobileMenu).display,
+                        visibility: window.getComputedStyle(mobileMenu).visibility
+                    });
+                }
             }, 1000);
         }
         
