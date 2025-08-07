@@ -808,6 +808,25 @@ html:not(.dark) .action-button svg {
             top: 6px;
         }
         
+        /* Language Dropdown */
+        .language-dropdown {
+            transition: all 0.2s ease;
+        }
+        
+        .language-dropdown a {
+            transition: all 0.2s ease;
+        }
+        
+        .language-dropdown a:hover {
+            background: rgba(185, 28, 28, 0.1);
+            color: #B91C1C;
+        }
+        
+        .dark .language-dropdown a:hover {
+            background: rgba(185, 28, 28, 0.2);
+            color: #F59E0B;
+        }
+        
 /* Tooltip Styles */
 [data-tooltip] {
     position: relative;
@@ -1144,13 +1163,19 @@ html:not(.dark) .action-button svg {
                 
                 <!-- Right side actions -->
                 <div class="hidden md:flex items-center space-x-2">
-                    <!-- Language toggle -->
-                    <button id="language-toggle" class="action-button" data-tooltip="Language">
-                        <span class="text-sm font-medium">🇯🇵</span>
-                    </button>
+                    <!-- Language dropdown -->
+                    <div class="relative">
+                        <button id="language-toggle" class="action-button" data-tooltip="Language">
+                            <span class="text-sm font-medium">🇯🇵</span>
+                        </button>
+                        <div id="language-dropdown" class="language-dropdown hidden absolute right-0 mt-2 w-48 bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg shadow-lg z-50">
+                            <a href="/" class="block px-4 py-2 text-sm text-sumi dark:text-gofun hover:bg-zen dark:hover:bg-aiiro">🇬🇧 English</a>
+                            <a href="/ja/" class="block px-4 py-2 text-sm text-sumi dark:text-gofun hover:bg-zen dark:hover:bg-aiiro">🇯🇵 日本語</a>
+                        </div>
+                    </div>
                     
-                    <!-- Dark mode toggle -->
-                    <button id="theme-toggle" class="action-button" data-tooltip="テーマ切り替え">
+                    <!-- Theme toggle -->
+                    <button id="theme-toggle" class="action-button" data-tooltip="テーマ">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
@@ -1160,21 +1185,21 @@ html:not(.dark) .action-button svg {
                 <!-- Mobile actions -->
                 <div class="lg:hidden flex items-center space-x-2">
                     <!-- Language toggle -->
-                    <button id="mobile-language-toggle" class="action-button text-white" data-tooltip="Language">
+                    <button id="mobile-language-toggle" class="action-button" data-tooltip="Language">
                         <span class="text-sm font-medium">🇯🇵</span>
                     </button>
                     
                     <!-- Dark mode toggle -->
-                    <button id="mobile-theme-toggle" class="action-button text-white" data-tooltip="テーマ切り替え">
+                    <button id="mobile-theme-toggle" class="action-button" data-tooltip="テーマ切り替え">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
                     
                     <!-- Mobile menu button -->
-                    <button id="mobile-menu-button" class="action-button text-white">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    <button id="mobile-menu-button" class="action-button">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
