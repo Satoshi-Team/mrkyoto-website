@@ -924,11 +924,10 @@
     <!-- Footer will be inserted by shared-footer.js -->
 
     <!-- Scripts -->
-    <script src="/js/weather-service.js"></script>
     <script src="/js/live-kyoto-widget.js"></script>
-    <script src="/js/theme-language-manager.js"></script>
+    <script src="/js/weather-service.js"></script>
     <script src="/js/translation-manager.js"></script>
-    <script src="/js/shared-header.js"></script>
+    <script src="/js/theme-language-manager.js"></script>
     <script src="/js/shared-navigation.js"></script>
     <script src="/js/shared-footer.js"></script>
     
@@ -1318,17 +1317,8 @@
             console.log('🎨 Skipping ThemeLanguageManager initialization for live-from-kyoto page');
             console.log('🎨 All theme and language functionality handled by initializeAllButtons()');
             
-            // Initialize Translation Manager
-            console.log('🌍 Initializing Translation Manager...');
             if (typeof TranslationManager !== 'undefined') {
-                if (!window.translationManager) {
-                    window.translationManager = new TranslationManager();
-                    console.log('✅ Translation Manager initialized');
-                } else {
-                    console.log('✅ Translation Manager already exists');
-                }
-            } else {
-                console.error('❌ TranslationManager class not found');
+                new TranslationManager();
             }
             
             // Initialize mobile menu functionality
@@ -1350,9 +1340,15 @@
                 }
             }
             
-            // Initialize weather and live widget
-            initializeWeather();
-            initializeLiveWidget();
+            // Initialize live Kyoto functionality
+            if (typeof LiveKyotoWidget !== 'undefined') {
+                new LiveKyotoWidget();
+            }
+            
+            // Initialize weather service
+            if (typeof WeatherService !== 'undefined') {
+                new WeatherService();
+            }
         });
     </script>
     
