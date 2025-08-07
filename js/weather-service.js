@@ -73,8 +73,20 @@ class WeatherService {
         const today = new Date().toISOString().split('T')[0];
         const todayIndex = daily.time.findIndex(date => date === today);
         
-        const sunrise = todayIndex >= 0 ? daily.sunrise[todayIndex] : '06:30';
-        const sunset = todayIndex >= 0 ? daily.sunset[todayIndex] : '17:30';
+        // Format sunrise and sunset times properly
+        let sunrise = '06:30';
+        let sunset = '17:30';
+        
+        if (todayIndex >= 0 && daily.sunrise && daily.sunset) {
+            try {
+                const sunriseDate = new Date(daily.sunrise[todayIndex]);
+                const sunsetDate = new Date(daily.sunset[todayIndex]);
+                sunrise = sunriseDate.toTimeString().slice(0, 5);
+                sunset = sunsetDate.toTimeString().slice(0, 5);
+            } catch (error) {
+                console.error('❌ Error parsing sunrise/sunset times:', error);
+            }
+        }
         
         const weatherData = {
             temperature: Math.round(current.temperature_2m),
