@@ -910,6 +910,8 @@
     <script src="/js/theme-language-manager.js"></script>
     <script src="/js/translation-manager.js"></script>
     <script src="/js/shared-header.js"></script>
+    <script src="/js/shared-navigation.js"></script>
+    <script src="/js/shared-footer.js"></script>
     
     <!-- Initialize Theme and Language Manager -->
     <script>
@@ -1005,113 +1007,37 @@
         });
     </script>
     
-    <!-- Mobile Menu Functionality -->
+    <!-- Mobile Menu Initialization -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔍 Mobile menu script loaded');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+            console.log('🎥 Live from Kyoto page loaded');
             
-            console.log('🔍 Mobile menu button found:', !!mobileMenuButton);
-            console.log('🔍 Mobile menu found:', !!mobileMenu);
-            console.log('🔍 Mobile theme toggle found:', !!mobileThemeToggle);
-            console.log('🔍 Mobile language toggle found:', !!mobileLanguageToggle);
-            if (mobileMenuButton && mobileMenu) {
-                console.log('✅ Both elements found, adding event listener');
-                // Force menu to start hidden with new styling
-                mobileMenu.className = 'lg:hidden hidden bg-gradient-to-br from-sumi to-aiiro border-t border-kincha/30';
-                mobileMenu.style.display = 'none';
-                console.log('🔧 Initial state - Menu hidden:', mobileMenu.classList.contains('hidden'));
-                console.log('🔧 Menu display style:', mobileMenu.style.display);
-                mobileMenuButton.addEventListener('click', function(e) {
-                    console.log('🖱️ Mobile menu button clicked!');
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const isHidden = mobileMenu.style.display === 'none';
-                    console.log('🔍 Current display state:', mobileMenu.style.display);
-                    console.log('🔍 Is hidden:', isHidden);
-                    if (isHidden) {
-                        mobileMenu.style.display = 'block';
-                        mobileMenu.classList.remove('hidden');
-                        console.log('📱 Menu opened');
-                    } else {
-                        mobileMenu.style.display = 'none';
-                        mobileMenu.classList.add('hidden');
-                        console.log('📱 Menu closed');
-                    }
-                    console.log('🔄 Menu display after toggle:', mobileMenu.style.display);
-                    console.log('🔄 Menu hidden class after toggle:', mobileMenu.classList.contains('hidden'));
-                    // Animate the hamburger icon
-                    const icon = mobileMenuButton.querySelector('svg');
-                    if (icon) {
-                        icon.style.transform = mobileMenu.style.display === 'none' ? 'rotate(0deg)' : 'rotate(90deg)';
-                        icon.style.transition = 'transform 0.3s ease';
-                        console.log('🎨 Icon rotated');
-                    }
-                });
-                
-                // Setup mobile theme toggle
-                if (mobileThemeToggle) {
-                    mobileThemeToggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        console.log('🌙 Mobile theme toggle clicked!');
-                        
-                        const html = document.documentElement;
-                        const isDark = html.classList.contains('dark');
-                        
-                        if (isDark) {
-                            html.classList.remove('dark');
-                            localStorage.setItem('theme', 'light');
-                            console.log('☀️ Switched to light mode');
-                        } else {
-                            html.classList.add('dark');
-                            localStorage.setItem('theme', 'dark');
-                            console.log('🌙 Switched to dark mode');
-                        }
-                    });
-                }
-                
-                // Setup mobile language toggle
-                if (mobileLanguageToggle) {
-                    mobileLanguageToggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        console.log('🌍 Mobile language toggle clicked!');
-                        
-                        // Use the same language switching logic as the desktop version
-                        const currentPath = window.location.pathname;
-                        let newPath;
-                        
-                        if (currentPath.startsWith('/ja/')) {
-                            // Currently on Japanese page, switch to English
-                            newPath = currentPath.replace('/ja/', '/');
-                        } else {
-                            // Currently on English page, switch to Japanese
-                            newPath = currentPath.replace(/^\//, '/ja/');
-                        }
-                        
-                        console.log('🔄 Switching from', currentPath, 'to', newPath);
-                        window.location.href = newPath;
-                    });
-                }
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.style.display = 'none';
-                        mobileMenu.classList.add('hidden');
-                        const icon = mobileMenuButton.querySelector('svg');
-                        if (icon) {
-                            icon.style.transform = 'rotate(0deg)';
-                        }
-                    }
-                });
-                console.log('✅ Mobile menu event listeners added');
+            // Initialize mobile menu functionality
+            if (typeof initializeMobileMenu !== 'undefined') {
+                initializeMobileMenu();
+                console.log('✅ Mobile menu initialized');
             } else {
-                console.error('❌ Mobile menu elements not found');
-                console.log('🔍 Available elements with "mobile" in ID:', 
-                    Array.from(document.querySelectorAll('[id*="mobile"]')).map(el => el.id));
+                console.error('❌ initializeMobileMenu function not found');
+                // Fallback: Manual mobile menu initialization
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuButton && mobileMenu) {
+                    console.log('🔄 Using fallback mobile menu initialization');
+                    mobileMenuButton.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                        console.log('📱 Mobile menu toggled');
+                    });
+                }
+            }
+            
+            // Initialize theme and language managers
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                new ThemeLanguageManager();
+            }
+            
+            if (typeof TranslationManager !== 'undefined') {
+                new TranslationManager();
             }
         });
     </script>
