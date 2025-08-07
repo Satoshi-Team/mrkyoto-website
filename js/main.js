@@ -512,21 +512,35 @@ class MrKyotoApp {
     }
 
     setupWeatherWidget() {
-        // Mock weather data - in a real app, you'd fetch from a weather API
-        const weatherData = {
-            temperature: '22°C',
-            condition: 'Partly Cloudy',
-            humidity: '65%',
-            icon: '🌤️'
-        };
-
-        // Update weather widget every 30 minutes
-        setInterval(() => {
-            // Simulate weather changes
-            const conditions = ['🌤️', '☀️', '🌧️', '⛅', '🌨️'];
-            const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
-            console.log('Weather updated:', randomCondition);
-        }, 1800000); // 30 minutes
+        console.log('🌤️ Setting up weather widget...');
+        
+        // Initialize weather service if available
+        if (window.WeatherService) {
+            console.log('🌤️ WeatherService available, initializing...');
+            const weatherService = new WeatherService();
+            
+            // Load weather data immediately
+            weatherService.getKyotoWeather().then(weatherData => {
+                console.log('🌤️ Weather data loaded:', weatherData);
+                weatherService.updateWeatherDisplay(weatherData);
+            }).catch(error => {
+                console.error('❌ Error loading weather data:', error);
+            });
+            
+            // Update weather every 5 minutes
+            setInterval(() => {
+                console.log('🌤️ Updating weather data...');
+                weatherService.getKyotoWeather().then(weatherData => {
+                    weatherService.updateWeatherDisplay(weatherData);
+                }).catch(error => {
+                    console.error('❌ Error updating weather data:', error);
+                });
+            }, 5 * 60 * 1000); // 5 minutes
+            
+            console.log('✅ Weather widget setup complete');
+        } else {
+            console.warn('⚠️ WeatherService not available');
+        }
     }
 
     setupNotifications() {

@@ -338,55 +338,60 @@ class LiveKyotoWidget {
         try {
             console.log('🌤️ Loading weather data...');
             
-            // Always use fallback data for now to ensure it works
-            console.log('🌤️ Using fallback weather data immediately...');
-            this.weatherData = this.getEnhancedFallbackWeatherData();
-            console.log('✅ Fallback weather data loaded:', this.weatherData);
-            
-            // Try direct API call first for immediate data
-            const directWeather = await this.fetchDirectWeather();
-            if (directWeather) {
-                this.weatherData = directWeather;
-                console.log('✅ Direct weather data loaded:', this.weatherData);
-                return;
-            }
-            
-            // Use the dedicated weather service as backup
+            // Use the improved WeatherService
             if (window.WeatherService) {
                 console.log('🌤️ Using WeatherService...');
                 const weatherService = new WeatherService();
                 this.weatherData = await weatherService.getKyotoWeather();
                 console.log('✅ Weather data loaded from service:', this.weatherData);
-            } else {
-                console.log('⚠️ WeatherService not available, using fallback');
-                this.weatherData = this.getEnhancedFallbackWeatherData();
-                console.log('✅ Fallback weather data loaded:', this.weatherData);
+                
+                // Update display immediately
+                this.updateWeatherDisplay();
+                return;
             }
-        } catch (error) {
-            console.error('❌ Error loading weather data:', error);
+            
+            // Fallback to direct API call
+            const directWeather = await this.fetchDirectWeather();
+            if (directWeather) {
+                this.weatherData = directWeather;
+                console.log('✅ Direct weather data loaded:', this.weatherData);
+                this.updateWeatherDisplay();
+                return;
+            }
+            
+            // Use enhanced fallback data
             console.log('⚠️ Using enhanced fallback weather data');
             this.weatherData = this.getEnhancedFallbackWeatherData();
+            console.log('✅ Fallback weather data loaded:', this.weatherData);
+            this.updateWeatherDisplay();
+            
+        } catch (error) {
+            console.error('❌ Error loading weather data:', error);
+            console.log('⚠️ Using enhanced fallback weather data after error');
+            this.weatherData = this.getEnhancedFallbackWeatherData();
             console.log('✅ Fallback weather data loaded after error:', this.weatherData);
+            this.updateWeatherDisplay();
         }
     }
 
     async fetchDirectWeather() {
         try {
             console.log('🌤️ Fetching direct weather data...');
-            const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0116&longitude=135.7681&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,pressure_msl&timezone=auto');
+            const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.0116&longitude=135.7681&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&daily=sunrise,sunset&timezone=Asia%2FTokyo');
             
             if (response.ok) {
                 const data = await response.json();
                 console.log('🌤️ Raw weather data:', data);
                 
                 const current = data.current;
+                const daily = data.daily;
                 
-                // Calculate sunrise and sunset times for Kyoto
-                const now = new Date();
-                const sunrise = new Date(now);
-                sunrise.setHours(6, 30, 0, 0); // Approximate sunrise time
-                const sunset = new Date(now);
-                sunset.setHours(17, 30, 0, 0); // Approximate sunset time
+                // Get today's sunrise and sunset times
+                const today = new Date().toISOString().split('T')[0];
+                const todayIndex = daily.time.findIndex(date => date === today);
+                
+                const sunrise = todayIndex >= 0 ? daily.sunrise[todayIndex] : '06:30';
+                const sunset = todayIndex >= 0 ? daily.sunset[todayIndex] : '17:30';
                 
                 const weatherData = {
                     temperature: Math.round(current.temperature_2m),
@@ -399,7 +404,11 @@ class LiveKyotoWidget {
                     visibility: 10, // Default visibility
                     sunrise: sunrise,
                     sunset: sunset,
-                    source: 'Open-Meteo Direct'
+                    source: 'Open-Meteo Direct',
+                    lastUpdated: new Date().toLocaleTimeString(this.isJapanesePage ? 'ja-JP' : 'en-US', {
+                        hour: '2-digit', 
+                        minute: '2-digit'
+                    })
                 };
                 
                 console.log('🌤️ Processed weather data:', weatherData);
@@ -507,67 +516,82 @@ class LiveKyotoWidget {
 
     getEnhancedFallbackWeatherData() {
         const now = new Date();
-        const month = now.getMonth(); // 0-11
+        const month = now.getMonth();
         const hour = now.getHours();
+        const isJapanesePage = window.location.pathname.includes('/ja/');
         
-        // Realistic Kyoto weather patterns based on season and time
-        let temperature, description, icon, humidity, windSpeed, pressure, visibility;
-        
-        // Seasonal temperature ranges for Kyoto
-        const seasonalTemps = {
-            winter: { min: -2, max: 12 },    // Dec-Feb
-            spring: { min: 8, max: 22 },     // Mar-May
-            summer: { min: 20, max: 35 },    // Jun-Aug
-            autumn: { min: 10, max: 25 }     // Sep-Nov
+        // Kyoto seasonal weather patterns
+        const seasons = {
+            winter: { // Dec-Feb
+                tempRange: { min: -2, max: 12 },
+                conditions: [
+                    { desc: isJapanesePage ? '晴れ' : 'Clear sky', icon: '☀️', prob: 0.6 },
+                    { desc: isJapanesePage ? '部分的に曇り' : 'Partly cloudy', icon: '⛅', prob: 0.3 },
+                    { desc: isJapanesePage ? '小雪' : 'Light snow', icon: '🌨️', prob: 0.1 }
+                ],
+                humidity: { min: 50, max: 80 },
+                wind: { min: 8, max: 20 },
+                pressure: { min: 1010, max: 1050 },
+                visibility: { min: 8, max: 13 }
+            },
+            spring: { // Mar-May
+                tempRange: { min: 8, max: 22 },
+                conditions: [
+                    { desc: isJapanesePage ? '晴れ' : 'Clear sky', icon: '☀️', prob: 0.5 },
+                    { desc: isJapanesePage ? '部分的に曇り' : 'Partly cloudy', icon: '⛅', prob: 0.3 },
+                    { desc: isJapanesePage ? '小雨' : 'Light rain', icon: '🌧️', prob: 0.2 }
+                ],
+                humidity: { min: 40, max: 70 },
+                wind: { min: 5, max: 15 },
+                pressure: { min: 1010, max: 1040 },
+                visibility: { min: 8, max: 15 }
+            },
+            summer: { // Jun-Aug
+                tempRange: { min: 20, max: 35 },
+                conditions: [
+                    { desc: isJapanesePage ? '晴れ' : 'Clear sky', icon: '☀️', prob: 0.4 },
+                    { desc: isJapanesePage ? '部分的に曇り' : 'Partly cloudy', icon: '⛅', prob: 0.4 },
+                    { desc: isJapanesePage ? '小雨' : 'Light rain', icon: '🌧️', prob: 0.2 }
+                ],
+                humidity: { min: 60, max: 90 },
+                wind: { min: 3, max: 12 },
+                pressure: { min: 1005, max: 1025 },
+                visibility: { min: 6, max: 12 }
+            },
+            autumn: { // Sep-Nov
+                tempRange: { min: 10, max: 25 },
+                conditions: [
+                    { desc: isJapanesePage ? '晴れ' : 'Clear sky', icon: '☀️', prob: 0.6 },
+                    { desc: isJapanesePage ? '部分的に曇り' : 'Partly cloudy', icon: '⛅', prob: 0.3 },
+                    { desc: isJapanesePage ? '小雨' : 'Light rain', icon: '🌧️', prob: 0.1 }
+                ],
+                humidity: { min: 45, max: 75 },
+                wind: { min: 5, max: 18 },
+                pressure: { min: 1010, max: 1040 },
+                visibility: { min: 8, max: 14 }
+            }
         };
-        
+
         // Determine season
         let season;
         if (month >= 11 || month <= 1) season = 'winter';
         else if (month >= 2 && month <= 4) season = 'spring';
         else if (month >= 5 && month <= 7) season = 'summer';
         else season = 'autumn';
+
+        const seasonData = seasons[season];
         
-        const tempRange = seasonalTemps[season];
+        // Calculate temperature based on time of day
+        const tempRange = seasonData.tempRange;
         const baseTemp = (tempRange.min + tempRange.max) / 2;
+        const timeAdjustment = hour >= 6 && hour <= 18 ? 
+            (tempRange.max - baseTemp) * 0.7 : 
+            (tempRange.min - baseTemp) * 0.7;
         
-        // Time-based temperature adjustment
-        let timeAdjustment = 0;
-        if (hour >= 6 && hour <= 18) {
-            // Daytime - warmer
-            timeAdjustment = (tempRange.max - baseTemp) * 0.7;
-        } else {
-            // Nighttime - cooler
-            timeAdjustment = (tempRange.min - baseTemp) * 0.7;
-        }
+        const temperature = Math.round(baseTemp + timeAdjustment + (Math.random() - 0.5) * 4);
         
-        temperature = Math.round(baseTemp + timeAdjustment + (Math.random() - 0.5) * 4);
-        
-        // Weather conditions based on season
-        const weatherConditions = {
-            winter: [
-                { desc: 'Clear sky', icon: '01d', prob: 0.6 },
-                { desc: 'Partly cloudy', icon: '02d', prob: 0.3 },
-                { desc: 'Light snow', icon: '13d', prob: 0.1 }
-            ],
-            spring: [
-                { desc: 'Clear sky', icon: '01d', prob: 0.5 },
-                { desc: 'Partly cloudy', icon: '02d', prob: 0.3 },
-                { desc: 'Light rain', icon: '10d', prob: 0.2 }
-            ],
-            summer: [
-                { desc: 'Clear sky', icon: '01d', prob: 0.4 },
-                { desc: 'Partly cloudy', icon: '02d', prob: 0.4 },
-                { desc: 'Light rain', icon: '10d', prob: 0.2 }
-            ],
-            autumn: [
-                { desc: 'Clear sky', icon: '01d', prob: 0.6 },
-                { desc: 'Partly cloudy', icon: '02d', prob: 0.3 },
-                { desc: 'Light rain', icon: '10d', prob: 0.1 }
-            ]
-        };
-        
-        const conditions = weatherConditions[season];
+        // Select weather condition
+        const conditions = seasonData.conditions;
         const random = Math.random();
         let selectedCondition = conditions[0];
         
@@ -577,66 +601,39 @@ class LiveKyotoWidget {
                 break;
             }
         }
+
+        // Calculate other parameters
+        const humidity = Math.floor(Math.random() * (seasonData.humidity.max - seasonData.humidity.min)) + seasonData.humidity.min;
+        const windSpeed = Math.floor(Math.random() * (seasonData.wind.max - seasonData.wind.min)) + seasonData.wind.min;
+        const pressure = Math.floor(Math.random() * (seasonData.pressure.max - seasonData.pressure.min)) + seasonData.pressure.min;
+        const visibility = Math.floor(Math.random() * (seasonData.visibility.max - seasonData.visibility.min)) + seasonData.visibility.min;
+
+        // Calculate sunrise/sunset
+        const sunriseHours = { winter: 6.5, spring: 5.5, summer: 4.5, autumn: 5.5 };
+        const sunsetHours = { winter: 17.5, spring: 18.5, summer: 19.5, autumn: 18.5 };
         
-        description = selectedCondition.desc;
-        icon = hour >= 6 && hour <= 18 ? selectedCondition.icon : selectedCondition.icon.replace('d', 'n');
+        const sunrise = new Date();
+        sunrise.setHours(Math.floor(sunriseHours[season]), Math.round((sunriseHours[season] % 1) * 60), 0, 0);
         
-        // Realistic humidity based on season and weather
-        if (description.includes('rain') || description.includes('snow')) {
-            humidity = Math.floor(Math.random() * 20) + 70; // 70-90%
-        } else {
-            humidity = Math.floor(Math.random() * 30) + 40; // 40-70%
-        }
-        
-        // Wind speed based on season
-        const windRanges = {
-            winter: { min: 8, max: 20 },
-            spring: { min: 5, max: 15 },
-            summer: { min: 3, max: 12 },
-            autumn: { min: 5, max: 18 }
-        };
-        const windRange = windRanges[season];
-        windSpeed = Math.floor(Math.random() * (windRange.max - windRange.min)) + windRange.min;
-        
-        // Pressure based on weather conditions
-        if (description.includes('rain') || description.includes('snow')) {
-            pressure = Math.floor(Math.random() * 30) + 1000; // 1000-1030 hPa
-        } else {
-            pressure = Math.floor(Math.random() * 40) + 1010; // 1010-1050 hPa
-        }
-        
-        // Visibility based on weather
-        if (description.includes('rain') || description.includes('snow')) {
-            visibility = Math.floor(Math.random() * 3) + 5; // 5-8 km
-        } else {
-            visibility = Math.floor(Math.random() * 5) + 8; // 8-13 km
-        }
-        
-        // Calculate sunrise and sunset based on season
-        const sunriseHours = {
-            winter: 6.5, spring: 5.5, summer: 4.5, autumn: 5.5
-        };
-        const sunsetHours = {
-            winter: 17.5, spring: 18.5, summer: 19.5, autumn: 18.5
-        };
-        
-        const sunriseHour = sunriseHours[season];
-        const sunsetHour = sunsetHours[season];
-        
-        const sunrise = new Date(now.getFullYear(), now.getMonth(), now.getDate(), Math.floor(sunriseHour), Math.round((sunriseHour % 1) * 60));
-        const sunset = new Date(now.getFullYear(), now.getMonth(), now.getDate(), Math.floor(sunsetHour), Math.round((sunsetHour % 1) * 60));
+        const sunset = new Date();
+        sunset.setHours(Math.floor(sunsetHours[season]), Math.round((sunsetHours[season] % 1) * 60), 0, 0);
 
         return {
             temperature,
             feelsLike: temperature + Math.floor(Math.random() * 3) - 1,
             humidity,
-            description,
-            icon,
+            description: selectedCondition.desc,
+            icon: selectedCondition.icon,
             windSpeed,
             pressure,
             visibility,
-            sunrise,
-            sunset
+            sunrise: sunrise.toTimeString().slice(0, 5),
+            sunset: sunset.toTimeString().slice(0, 5),
+            source: 'Enhanced Fallback',
+            lastUpdated: new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {
+                hour: '2-digit', 
+                minute: '2-digit'
+            })
         };
     }
 
@@ -706,49 +703,50 @@ class LiveKyotoWidget {
     }
 
     getWeatherDescription(code) {
+        const isJapanesePage = window.location.pathname.includes('/ja/');
         const descriptions = {
-            0: 'Clear sky',
-            1: 'Mainly clear',
-            2: 'Partly cloudy',
-            3: 'Overcast',
-            45: 'Foggy',
-            48: 'Depositing rime fog',
-            51: 'Light drizzle',
-            53: 'Moderate drizzle',
-            55: 'Dense drizzle',
-            56: 'Light freezing drizzle',
-            57: 'Dense freezing drizzle',
-            61: 'Slight rain',
-            63: 'Moderate rain',
-            65: 'Heavy rain',
-            66: 'Light freezing rain',
-            67: 'Heavy freezing rain',
-            71: 'Slight snow fall',
-            73: 'Moderate snow fall',
-            75: 'Heavy snow fall',
-            77: 'Snow grains',
-            80: 'Slight rain showers',
-            81: 'Moderate rain showers',
-            82: 'Violent rain showers',
-            85: 'Slight snow showers',
-            86: 'Heavy snow showers',
-            95: 'Thunderstorm',
-            96: 'Thunderstorm with slight hail',
-            99: 'Thunderstorm with heavy hail'
+            0: isJapanesePage ? '晴れ' : 'Clear sky',
+            1: isJapanesePage ? 'ほぼ晴れ' : 'Mainly clear',
+            2: isJapanesePage ? '部分的に曇り' : 'Partly cloudy',
+            3: isJapanesePage ? '曇り' : 'Overcast',
+            45: isJapanesePage ? '霧' : 'Foggy',
+            48: isJapanesePage ? '着氷性の霧' : 'Depositing rime fog',
+            51: isJapanesePage ? '軽い霧雨' : 'Light drizzle',
+            53: isJapanesePage ? '霧雨' : 'Moderate drizzle',
+            55: isJapanesePage ? '強い霧雨' : 'Dense drizzle',
+            56: isJapanesePage ? '軽い着氷性の霧雨' : 'Light freezing drizzle',
+            57: isJapanesePage ? '着氷性の霧雨' : 'Dense freezing drizzle',
+            61: isJapanesePage ? '小雨' : 'Slight rain',
+            63: isJapanesePage ? '雨' : 'Moderate rain',
+            65: isJapanesePage ? '大雨' : 'Heavy rain',
+            66: isJapanesePage ? '軽い着氷性の雨' : 'Light freezing rain',
+            67: isJapanesePage ? '着氷性の雨' : 'Heavy freezing rain',
+            71: isJapanesePage ? '小雪' : 'Slight snow fall',
+            73: isJapanesePage ? '雪' : 'Moderate snow fall',
+            75: isJapanesePage ? '大雪' : 'Heavy snow fall',
+            77: isJapanesePage ? '細かい雪' : 'Snow grains',
+            80: isJapanesePage ? '軽いにわか雨' : 'Slight rain showers',
+            81: isJapanesePage ? 'にわか雨' : 'Moderate rain showers',
+            82: isJapanesePage ? '激しいにわか雨' : 'Violent rain showers',
+            85: isJapanesePage ? '軽いにわか雪' : 'Slight snow showers',
+            86: isJapanesePage ? 'にわか雪' : 'Heavy snow showers',
+            95: isJapanesePage ? '雷雨' : 'Thunderstorm',
+            96: isJapanesePage ? '軽い雹を伴う雷雨' : 'Thunderstorm with slight hail',
+            99: isJapanesePage ? '激しい雹を伴う雷雨' : 'Thunderstorm with heavy hail'
         };
-        return descriptions[code] || 'Clear sky';
+        return descriptions[code] || (isJapanesePage ? '晴れ' : 'Clear sky');
     }
 
     convertWeatherCodeToIcon(code) {
         const iconMap = {
-            0: '01d', 1: '01d', 2: '02d', 3: '03d',
-            45: '50d', 48: '50d',
-            51: '09d', 53: '09d', 55: '09d', 56: '09d', 57: '09d',
-            61: '10d', 63: '10d', 65: '10d', 66: '10d', 67: '10d',
-            71: '13d', 73: '13d', 75: '13d', 77: '13d',
-            80: '09d', 81: '10d', 82: '10d',
-            85: '13d', 86: '13d',
-            95: '11d', 96: '11d', 99: '11d'
+            0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+            45: '🌫️', 48: '🌫️',
+            51: '🌦️', 53: '🌧️', 55: '🌧️', 56: '🌧️', 57: '🌧️',
+            61: '🌧️', 63: '🌧️', 65: '🌧️', 66: '🌧️', 67: '🌧️',
+            71: '🌨️', 73: '🌨️', 75: '🌨️', 77: '🌨️',
+            80: '🌦️', 81: '🌧️', 82: '🌧️',
+            85: '🌨️', 86: '🌨️',
+            95: '⛈️', 96: '⛈️', 99: '⛈️'
         };
         return iconMap[code] || '01d';
     }
@@ -1071,86 +1069,83 @@ class LiveKyotoWidget {
             lastUpdatedEl: !!lastUpdatedEl
         });
         
+        // Update temperature
         if (temperatureEl) {
             temperatureEl.textContent = `${weather.temperature}°C`;
             console.log('🌤️ Updated temperature:', weather.temperature);
         }
+        
+        // Update icon
         if (iconEl) {
-            iconEl.textContent = this.getWeatherIcon(weather.icon);
+            iconEl.textContent = weather.icon;
             console.log('🌤️ Updated icon:', weather.icon);
         }
+        
+        // Update description
         if (descriptionEl) {
-            // Check if we're on a Japanese page and translate the description
-            const isJapanesePage = window.location.pathname.includes('/ja/');
-            let displayDescription = weather.description;
-            
-            if (isJapanesePage) {
-                // Translate common weather descriptions to Japanese
-                const translations = {
-                    'Clear sky': '晴れ',
-                    'Partly cloudy': '部分的に曇り',
-                    'Light rain': '小雨',
-                    'Light snow': '小雪',
-                    'Overcast': '曇り',
-                    'Foggy': '霧',
-                    'Light drizzle': '小雨',
-                    'Moderate rain': '中程度の雨',
-                    'Heavy rain': '大雨',
-                    'Light snow fall': '小雪',
-                    'Moderate snow fall': '中程度の雪',
-                    'Heavy snow fall': '大雪'
-                };
-                displayDescription = translations[weather.description] || weather.description;
-            }
-            
-            descriptionEl.textContent = displayDescription;
-            console.log('🌤️ Updated description:', displayDescription);
+            descriptionEl.textContent = weather.description;
+            console.log('🌤️ Updated description:', weather.description);
         }
+        
+        // Update feels like
         if (feelsLikeEl) {
-            // Check if we're on a Japanese page
             const isJapanesePage = window.location.pathname.includes('/ja/');
-            if (isJapanesePage) {
-                feelsLikeEl.textContent = `体感温度 ${weather.feelsLike}°C`;
-            } else {
-                feelsLikeEl.innerHTML = `<span data-translate="liveKyoto.weather.feelsLike">Feels like</span> ${weather.feelsLike}°C`;
-            }
+            const feelsLikeText = isJapanesePage ? 
+                `体感温度 ${weather.feelsLike}°C` : 
+                `Feels like ${weather.feelsLike}°C`;
+            feelsLikeEl.textContent = feelsLikeText;
             console.log('🌤️ Updated feels like:', weather.feelsLike);
         }
+        
+        // Update wind
         if (windEl) {
             windEl.textContent = `${weather.windSpeed} km/h`;
             console.log('🌤️ Updated wind:', weather.windSpeed);
         }
+        
+        // Update humidity
         if (humidityEl) {
             humidityEl.textContent = `${weather.humidity}%`;
             console.log('🌤️ Updated humidity:', weather.humidity);
         }
+        
+        // Update visibility
         if (visibilityEl) {
             visibilityEl.textContent = `${weather.visibility} km`;
             console.log('🌤️ Updated visibility:', weather.visibility);
         }
+        
+        // Update pressure
         if (pressureEl) {
             pressureEl.textContent = `${weather.pressure} hPa`;
             console.log('🌤️ Updated pressure:', weather.pressure);
         }
+        
+        // Update sunrise
         if (sunriseEl) {
-            sunriseEl.textContent = weather.sunrise.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+            sunriseEl.textContent = weather.sunrise;
             console.log('🌤️ Updated sunrise:', weather.sunrise);
         }
+        
+        // Update sunset
         if (sunsetEl) {
-            sunsetEl.textContent = weather.sunset.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+            sunsetEl.textContent = weather.sunset;
             console.log('🌤️ Updated sunset:', weather.sunset);
         }
+        
+        // Update last updated
         if (lastUpdatedEl) {
-            lastUpdatedEl.textContent = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
-            console.log('🌤️ Updated last updated time');
+            const isJapanesePage = window.location.pathname.includes('/ja/');
+            const timeText = weather.lastUpdated || 
+                new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                });
+            lastUpdatedEl.textContent = timeText;
+            console.log('🌤️ Updated last updated:', timeText);
         }
         
-        // Trigger translation update for dynamic content
-        if (window.translationManager) {
-            window.translationManager.updateDynamicContent();
-        }
-        
-        console.log('🌤️ Weather display update complete');
+        console.log('✅ Weather display updated successfully');
     }
 
     getWeatherIcon(iconCode) {
