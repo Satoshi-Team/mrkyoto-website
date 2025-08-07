@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4L3294LB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HW4L3294LB');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>京都ライブ - リアルタイムカメラ、天気、ソーシャル更新 - MrKyoto.com</title>
@@ -769,19 +779,19 @@
                 <!-- Mobile actions -->
                 <div class="lg:hidden flex items-center space-x-2">
                     <!-- Language toggle -->
-                    <button id="mobile-language-toggle" class="action-button text-white" data-tooltip="Language">
+                    <button id="mobile-language-toggle" class="action-button" data-tooltip="Language">
                         <span class="text-sm font-medium">🇯🇵</span>
                     </button>
                     
                     <!-- Dark mode toggle -->
-                    <button id="mobile-theme-toggle" class="action-button text-white" data-tooltip="テーマ切り替え">
+                    <button id="mobile-theme-toggle" class="action-button" data-tooltip="テーマ切り替え">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
                     
                 <!-- Mobile menu button -->
-                    <button id="mobile-menu-button" class="action-button text-white">
+                    <button id="mobile-menu-button" class="action-button">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -1125,10 +1135,31 @@
                 mobileMenu: !!mobileMenu
             });
             
+            // Debug: Log all buttons with their IDs
+            const allButtons = document.querySelectorAll('button[id*="toggle"], button[id*="menu"]');
+            console.log('🔍 All toggle/menu buttons found:', Array.from(allButtons).map(btn => btn.id));
+            
+            // Debug: Check if buttons are visible and clickable
+            [themeToggle, mobileThemeToggle, languageToggle, mobileLanguageToggle, mobileMenuButton].forEach(btn => {
+                if (btn) {
+                    console.log(`🔍 Button ${btn.id}:`, {
+                        visible: btn.offsetParent !== null,
+                        display: window.getComputedStyle(btn).display,
+                        pointerEvents: window.getComputedStyle(btn).pointerEvents,
+                        opacity: window.getComputedStyle(btn).opacity
+                    });
+                }
+            });
+            
             // Theme toggle functionality
             [themeToggle, mobileThemeToggle].forEach(button => {
                 if (button) {
                     console.log('✅ Adding theme toggle to:', button.id);
+                    
+                    // Test click to ensure button is responsive
+                    button.style.cursor = 'pointer';
+                    button.style.userSelect = 'none';
+                    
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
@@ -1147,6 +1178,15 @@
                             console.log('🌙 Switched to dark mode');
                         }
                     });
+                    
+                    // Add a test click handler to verify the button is working
+                    button.addEventListener('mousedown', function() {
+                        console.log(`🖱️ Button ${button.id} mousedown detected`);
+                    });
+                    
+                    button.addEventListener('touchstart', function() {
+                        console.log(`👆 Button ${button.id} touchstart detected`);
+                    });
                 }
             });
             
@@ -1154,6 +1194,11 @@
             [languageToggle, mobileLanguageToggle].forEach(button => {
                 if (button) {
                     console.log('✅ Adding language toggle to:', button.id);
+                    
+                    // Test click to ensure button is responsive
+                    button.style.cursor = 'pointer';
+                    button.style.userSelect = 'none';
+                    
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
@@ -1171,12 +1216,26 @@
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
                         window.location.href = newPath;
                     });
+                    
+                    // Add a test click handler to verify the button is working
+                    button.addEventListener('mousedown', function() {
+                        console.log(`🖱️ Button ${button.id} mousedown detected`);
+                    });
+                    
+                    button.addEventListener('touchstart', function() {
+                        console.log(`👆 Button ${button.id} touchstart detected`);
+                    });
                 }
             });
             
             // Mobile menu functionality
             if (mobileMenuButton && mobileMenu) {
                 console.log('✅ Adding mobile menu toggle to:', mobileMenuButton.id);
+                
+                // Test click to ensure button is responsive
+                mobileMenuButton.style.cursor = 'pointer';
+                mobileMenuButton.style.userSelect = 'none';
+                
                 mobileMenuButton.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -1193,6 +1252,15 @@
                     }
                 });
                 
+                // Add a test click handler to verify the button is working
+                mobileMenuButton.addEventListener('mousedown', function() {
+                    console.log(`🖱️ Button ${mobileMenuButton.id} mousedown detected`);
+                });
+                
+                mobileMenuButton.addEventListener('touchstart', function() {
+                    console.log(`👆 Button ${mobileMenuButton.id} touchstart detected`);
+                });
+                
                 // Close mobile menu when clicking outside
                 document.addEventListener('click', function(event) {
                     if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
@@ -1204,6 +1272,35 @@
                     }
                 });
             }
+            
+            // Debug mobile navigation links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link-golden, .contact-link-golden');
+            console.log('🔍 Found mobile navigation links:', mobileNavLinks.length);
+            
+            mobileNavLinks.forEach((link, index) => {
+                console.log(`🔍 Mobile nav link ${index + 1}:`, {
+                    href: link.href,
+                    text: link.textContent.trim(),
+                    visible: link.offsetParent !== null,
+                    display: window.getComputedStyle(link).display,
+                    pointerEvents: window.getComputedStyle(link).pointerEvents,
+                    opacity: window.getComputedStyle(link).opacity,
+                    zIndex: window.getComputedStyle(link).zIndex
+                });
+                
+                // Add click debugging
+                link.addEventListener('click', function(e) {
+                    console.log(`🔗 Mobile nav link clicked: ${link.href}`);
+                });
+                
+                link.addEventListener('mousedown', function() {
+                    console.log(`🖱️ Mobile nav link mousedown: ${link.href}`);
+                });
+                
+                link.addEventListener('touchstart', function() {
+                    console.log(`👆 Mobile nav link touchstart: ${link.href}`);
+                });
+            });
             
             console.log('✅ All buttons initialized');
         }
