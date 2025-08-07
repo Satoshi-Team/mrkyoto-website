@@ -539,29 +539,29 @@
 
         /* Light mode overrides to ensure proper colors */
         html:not(.dark) .mobile-nav-link-golden {
-            color: #000000 !important;
+            color: #FFFFFF !important;
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(180, 83, 9, 0.05));
         }
 
         html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
-            color: #000000 !important;
+            color: #FFFFFF !important;
         }
 
         html:not(.dark) .mobile-nav-link-golden .mobile-nav-arrow {
-            color: #B45309 !important;
+            color: #F59E0B !important;
         }
 
         html:not(.dark) .contact-link-golden {
-            color: #000000 !important;
+            color: #FFFFFF !important;
             background: linear-gradient(135deg, rgba(180, 83, 9, 0.15), rgba(180, 83, 9, 0.05));
         }
 
         html:not(.dark) .contact-link-golden .contact-text {
-            color: #000000 !important;
+            color: #FFFFFF !important;
         }
 
         html:not(.dark) .contact-link-golden .contact-arrow {
-            color: #B45309 !important;
+            color: #F59E0B !important;
         }
         
         /* Enhanced Header CSS from Events Page */
@@ -1092,6 +1092,50 @@
             if (typeof TranslationManager !== 'undefined') {
                 new TranslationManager();
             }
+            
+            // Fallback button functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            const languageToggle = document.getElementById('language-toggle');
+            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+            
+            // Theme toggle fallback
+            [themeToggle, mobileThemeToggle].forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const html = document.documentElement;
+                        const isDark = html.classList.contains('dark');
+                        
+                        if (isDark) {
+                            html.classList.remove('dark');
+                            localStorage.setItem('theme', 'light');
+                        } else {
+                            html.classList.add('dark');
+                            localStorage.setItem('theme', 'dark');
+                        }
+                    });
+                }
+            });
+            
+            // Language toggle fallback
+            [languageToggle, mobileLanguageToggle].forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const currentPath = window.location.pathname;
+                        let newPath;
+                        
+                        if (currentPath.startsWith('/ja/')) {
+                            newPath = currentPath.replace('/ja/', '/');
+                        } else {
+                            newPath = currentPath.replace(/^\//, '/ja/');
+                        }
+                        
+                        window.location.href = newPath;
+                    });
+                }
+            });
             
             // Initialize news functionality
             if (typeof NewsManager !== 'undefined') {

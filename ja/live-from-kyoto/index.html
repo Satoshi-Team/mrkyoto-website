@@ -1071,80 +1071,49 @@
                 new TranslationManager();
             }
             
-            // Initialize live Kyoto functionality
-            if (typeof LiveKyotoWidget !== 'undefined') {
-                new LiveKyotoWidget();
-            }
-            
-            // Initialize weather service
-            if (typeof WeatherService !== 'undefined') {
-                new WeatherService();
-            }
-        });
-    </script>
-    
-    <!-- Theme and Language Toggle Fix -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔧 Fixing theme and language toggles for Japanese live-from-kyoto page...');
-            
-            // Theme toggle functionality
+            // Fallback button functionality
             const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                console.log('✅ Theme toggle found, adding event listener');
-                themeToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🌙 Theme toggle clicked!');
-                    
-                    // Toggle dark mode
-                    const html = document.documentElement;
-                    const isDark = html.classList.contains('dark');
-                    
-                    if (isDark) {
-                        html.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
-                        console.log('☀️ Switched to light mode');
-                    } else {
-                        html.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
-                        console.log('🌙 Switched to dark mode');
-                    }
-                });
-            }
-            
-            // Language toggle functionality
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
             const languageToggle = document.getElementById('language-toggle');
-            if (languageToggle) {
-                console.log('✅ Language toggle found, adding event listener');
-                languageToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🌍 Language toggle clicked!');
-                    
-                    // Use the same language switching logic as the desktop version
-                    const currentPath = window.location.pathname;
-                    let newPath;
-                    
-                    if (currentPath.startsWith('/ja/')) {
-                        // Currently on Japanese page, switch to English
-                        newPath = currentPath.replace('/ja/', '/');
-                    } else {
-                        // Currently on English page, switch to Japanese
-                        newPath = currentPath.replace(/^\//, '/ja/');
-                    }
-                    
-                    console.log('🔄 Switching from', currentPath, 'to', newPath);
-                    window.location.href = newPath;
-                });
-            }
-        });
-    </script>
-    
-    <!-- Mobile Menu Initialization -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎥 Japanese Live from Kyoto page loaded');
+            const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+            
+            // Theme toggle fallback
+            [themeToggle, mobileThemeToggle].forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const html = document.documentElement;
+                        const isDark = html.classList.contains('dark');
+                        
+                        if (isDark) {
+                            html.classList.remove('dark');
+                            localStorage.setItem('theme', 'light');
+                        } else {
+                            html.classList.add('dark');
+                            localStorage.setItem('theme', 'dark');
+                        }
+                    });
+                }
+            });
+            
+            // Language toggle fallback
+            [languageToggle, mobileLanguageToggle].forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const currentPath = window.location.pathname;
+                        let newPath;
+                        
+                        if (currentPath.startsWith('/ja/')) {
+                            newPath = currentPath.replace('/ja/', '/');
+                        } else {
+                            newPath = currentPath.replace(/^\//, '/ja/');
+                        }
+                        
+                        window.location.href = newPath;
+                    });
+                }
+            });
             
             // Initialize mobile menu functionality
             if (typeof initializeMobileMenu !== 'undefined') {
@@ -1165,15 +1134,6 @@
                 }
             }
             
-            // Initialize theme and language managers
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                new ThemeLanguageManager();
-            }
-            
-            if (typeof TranslationManager !== 'undefined') {
-                new TranslationManager();
-            }
-            
             // Initialize live Kyoto functionality
             if (typeof LiveKyotoWidget !== 'undefined') {
                 new LiveKyotoWidget();
@@ -1185,5 +1145,9 @@
             }
         });
     </script>
+    
+
+    
+
 </body>
 </html> 
