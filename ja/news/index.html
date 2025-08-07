@@ -1004,46 +1004,6 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('📰 Japanese News page loaded');
-            
-            // Initialize all button functionality immediately
-            initializeAllButtons();
-            
-            // Initialize mobile menu functionality
-            if (typeof initializeMobileMenu !== 'undefined') {
-                initializeMobileMenu();
-                console.log('✅ Mobile menu initialized');
-            } else {
-                console.error('❌ initializeMobileMenu function not found');
-                // Fallback: Manual mobile menu initialization
-                const mobileMenuButton = document.getElementById('mobile-menu-button');
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                if (mobileMenuButton && mobileMenu) {
-                    console.log('🔄 Using fallback mobile menu initialization');
-                    mobileMenuButton.addEventListener('click', function() {
-                        mobileMenu.classList.toggle('hidden');
-                        console.log('📱 Mobile menu toggled');
-                    });
-                }
-            }
-            
-            // Initialize theme and language managers
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                new ThemeLanguageManager();
-            }
-            
-            if (typeof TranslationManager !== 'undefined') {
-                new TranslationManager();
-            }
-            
-            // Initialize news functionality
-            if (typeof NewsManager !== 'undefined') {
-                new NewsManager();
-            }
-        });
-        
         // Comprehensive button initialization function
         function initializeAllButtons() {
             console.log('🔧 Initializing all buttons...');
@@ -1200,6 +1160,47 @@
                 });
             }, 1000);
         }
+        
+        // DOM Content Loaded Event Listener
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📰 Japanese News page loaded');
+            
+            // Initialize all button functionality immediately
+            initializeAllButtons();
+            
+            // Initialize mobile menu functionality
+            if (typeof initializeMobileMenu !== 'undefined') {
+                initializeMobileMenu();
+                console.log('✅ Mobile menu initialized');
+            } else {
+                console.error('❌ initializeMobileMenu function not found');
+                // Fallback: Manual mobile menu initialization
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuButton && mobileMenu) {
+                    console.log('🔄 Using fallback mobile menu initialization');
+                    mobileMenuButton.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                        console.log('📱 Mobile menu toggled');
+                    });
+                }
+            }
+            
+            // Initialize theme and language managers
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                new ThemeLanguageManager();
+            }
+            
+            if (typeof TranslationManager !== 'undefined') {
+                new TranslationManager();
+            }
+            
+            // Initialize news functionality
+            if (typeof NewsManager !== 'undefined') {
+                new NewsManager();
+            }
+        });
     </script>
 </body>
 </html> 
