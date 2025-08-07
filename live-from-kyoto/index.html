@@ -1268,32 +1268,7 @@
                     }
                 });
                 
-                // Test mobile menu specifically
-                if (mobileMenu) {
-                    console.log('🧪 Testing mobile menu...');
-                    console.log('🧪 Mobile menu initial state:', {
-                        hidden: mobileMenu.classList.contains('hidden'),
-                        display: window.getComputedStyle(mobileMenu).display,
-                        visibility: window.getComputedStyle(mobileMenu).visibility,
-                        opacity: window.getComputedStyle(mobileMenu).opacity,
-                        zIndex: window.getComputedStyle(mobileMenu).zIndex
-                    });
-                    
-                    // Test mobile menu toggle
-                    mobileMenu.classList.remove('hidden');
-                    console.log('🧪 Mobile menu after removing hidden:', {
-                        hidden: mobileMenu.classList.contains('hidden'),
-                        display: window.getComputedStyle(mobileMenu).display,
-                        visibility: window.getComputedStyle(mobileMenu).visibility
-                    });
-                    
-                    mobileMenu.classList.add('hidden');
-                    console.log('🧪 Mobile menu after adding hidden:', {
-                        hidden: mobileMenu.classList.contains('hidden'),
-                        display: window.getComputedStyle(mobileMenu).display,
-                        visibility: window.getComputedStyle(mobileMenu).visibility
-                    });
-                }
+
             }, 1000);
         }
         
