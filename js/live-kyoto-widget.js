@@ -67,94 +67,10 @@ class LiveKyotoWidget {
         console.log('🌤️ Immediately updating weather display...');
         this.updateWeatherDisplay();
         
-        // Test direct element updates
-        setTimeout(() => {
-            console.log('🌤️ Testing direct element updates...');
-            const elements = {
-                temperature: document.getElementById('weather-temperature'),
-                icon: document.getElementById('weather-icon'),
-                description: document.getElementById('weather-description'),
-                feelsLike: document.getElementById('weather-feels-like'),
-                wind: document.getElementById('weather-wind'),
-                humidity: document.getElementById('weather-humidity'),
-                visibility: document.getElementById('weather-visibility'),
-                pressure: document.getElementById('weather-pressure'),
-                sunrise: document.getElementById('weather-sunrise'),
-                sunset: document.getElementById('weather-sunset'),
-                lastUpdated: document.getElementById('weather-last-updated')
-            };
-            
-            console.log('🔍 Found weather elements:', elements);
-            
-            // Test updating each element directly
-            if (elements.temperature) {
-                elements.temperature.textContent = '22°C';
-                console.log('✅ Updated temperature element');
-            }
-            if (elements.icon) {
-                elements.icon.textContent = '⛅';
-                console.log('✅ Updated icon element');
-            }
-            if (elements.description) {
-                elements.description.textContent = '部分的に曇り';
-                console.log('✅ Updated description element');
-            }
-            if (elements.feelsLike) {
-                elements.feelsLike.textContent = '体感温度 24°C';
-                console.log('✅ Updated feels like element');
-            }
-            if (elements.wind) {
-                elements.wind.textContent = '8 km/h';
-                console.log('✅ Updated wind element');
-            }
-            if (elements.humidity) {
-                elements.humidity.textContent = '65%';
-                console.log('✅ Updated humidity element');
-            }
-            if (elements.visibility) {
-                elements.visibility.textContent = '10 km';
-                console.log('✅ Updated visibility element');
-            }
-            if (elements.pressure) {
-                elements.pressure.textContent = '1013 hPa';
-                console.log('✅ Updated pressure element');
-            }
-            if (elements.sunrise) {
-                elements.sunrise.textContent = '06:30';
-                console.log('✅ Updated sunrise element');
-            }
-            if (elements.sunset) {
-                elements.sunset.textContent = '17:30';
-                console.log('✅ Updated sunset element');
-            }
-            if (elements.lastUpdated) {
-                elements.lastUpdated.textContent = new Date().toLocaleTimeString('ja-JP', {hour: '2-digit', minute: '2-digit'});
-                console.log('✅ Updated last updated element');
-            }
-        }, 1000);
-        
         // Force immediate weather update with hardcoded data
         setTimeout(() => {
-            console.log('🌤️ Forcing immediate weather update with hardcoded data...');
-            const isJapanesePage = window.location.pathname.includes('/ja/');
-            
-            const weatherData = {
-                temperature: 22,
-                icon: '⛅',
-                description: isJapanesePage ? '部分的に曇り' : 'Partly cloudy',
-                feelsLike: 24,
-                wind: 8,
-                humidity: 65,
-                visibility: 10,
-                pressure: 1013,
-                sunrise: '06:30',
-                sunset: '17:30',
-                lastUpdated: new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {hour: '2-digit', minute: '2-digit'})
-            };
-            
-            this.weatherData = weatherData;
-            this.updateWeatherDisplay();
-            console.log('✅ Forced weather update completed with data:', weatherData);
+            console.log('🌤️ Forcing immediate weather update...');
+            this.loadWeatherData();
         }, 500);
         
         // Force weather update with fallback data if needed
@@ -166,25 +82,6 @@ class LiveKyotoWidget {
             }
             this.updateWeatherDisplay();
         }, 2000);
-        
-        // Additional test with hardcoded data
-        setTimeout(() => {
-            console.log('🌤️ Testing with hardcoded weather data...');
-            const testWeather = {
-                temperature: 22,
-                feelsLike: 24,
-                humidity: 65,
-                description: 'Partly cloudy',
-                icon: '02d',
-                windSpeed: 8,
-                pressure: 1013,
-                visibility: 10,
-                sunrise: new Date(new Date().setHours(6, 30, 0, 0)),
-                sunset: new Date(new Date().setHours(17, 30, 0, 0))
-            };
-            this.weatherData = testWeather;
-            this.updateWeatherDisplay();
-        }, 3000);
         
         // Add global click handler for debugging
         document.addEventListener('click', (e) => {
@@ -238,44 +135,7 @@ class LiveKyotoWidget {
         
         window.testDirectWeatherUpdate = () => {
             console.log('🌤️ Testing direct weather element updates');
-            const isJapanesePage = window.location.pathname.includes('/ja/');
-            
-            const elements = {
-                temperature: document.getElementById('weather-temperature'),
-                icon: document.getElementById('weather-icon'),
-                description: document.getElementById('weather-description'),
-                feelsLike: document.getElementById('weather-feels-like'),
-                wind: document.getElementById('weather-wind'),
-                humidity: document.getElementById('weather-humidity'),
-                visibility: document.getElementById('weather-visibility'),
-                pressure: document.getElementById('weather-pressure'),
-                sunrise: document.getElementById('weather-sunrise'),
-                sunset: document.getElementById('weather-sunset'),
-                lastUpdated: document.getElementById('weather-last-updated')
-            };
-            
-            console.log('🔍 Weather elements found:', Object.keys(elements).filter(key => elements[key]));
-            
-            if (elements.temperature) elements.temperature.textContent = '22°C';
-            if (elements.icon) elements.icon.textContent = '⛅';
-            if (elements.description) {
-                elements.description.textContent = isJapanesePage ? '部分的に曇り' : 'Partly cloudy';
-            }
-            if (elements.feelsLike) {
-                elements.feelsLike.textContent = isJapanesePage ? '体感温度 24°C' : 'Feels like 24°C';
-            }
-            if (elements.wind) elements.wind.textContent = '8 km/h';
-            if (elements.humidity) elements.humidity.textContent = '65%';
-            if (elements.visibility) elements.visibility.textContent = '10 km';
-            if (elements.pressure) elements.pressure.textContent = '1013 hPa';
-            if (elements.sunrise) elements.sunrise.textContent = '06:30';
-            if (elements.sunset) elements.sunset.textContent = '17:30';
-            if (elements.lastUpdated) {
-                const timeString = new Date().toLocaleTimeString(isJapanesePage ? 'ja-JP' : 'en-US', {hour: '2-digit', minute: '2-digit'});
-                elements.lastUpdated.textContent = timeString;
-            }
-            
-            console.log('✅ Direct weather update completed');
+            this.loadWeatherData();
         };
         
         window.debugWeatherWidget = () => {
@@ -650,68 +510,68 @@ class LiveKyotoWidget {
     }
 
     convertWeatherAPIIcon(code) {
-        // Convert WeatherAPI.com codes to OpenWeatherMap format
+        // Convert WeatherAPI.com codes to emoji icons
         const iconMap = {
-            1000: '01d', // Clear
-            1003: '02d', // Partly cloudy
-            1006: '03d', // Cloudy
-            1009: '04d', // Overcast
-            1030: '50d', // Mist
-            1063: '09d', // Patchy rain
-            1066: '13d', // Patchy snow
-            1069: '13d', // Patchy sleet
-            1087: '11d', // Thundery outbreaks
-            1114: '13d', // Blowing snow
-            1117: '13d', // Blizzard
-            1135: '50d', // Fog
-            1147: '50d', // Freezing fog
-            1150: '09d', // Patchy light drizzle
-            1153: '09d', // Light drizzle
-            1168: '09d', // Freezing drizzle
-            1171: '09d', // Heavy freezing drizzle
-            1180: '09d', // Patchy light rain
-            1183: '09d', // Light rain
-            1186: '10d', // Moderate rain at times
-            1189: '10d', // Moderate rain
-            1192: '10d', // Heavy rain at times
-            1195: '10d', // Heavy rain
-            1198: '09d', // Light freezing rain
-            1201: '10d', // Moderate or heavy freezing rain
-            1204: '13d', // Light sleet
-            1207: '13d', // Moderate or heavy sleet
-            1210: '13d', // Patchy light snow
-            1213: '13d', // Light snow
-            1216: '13d', // Patchy moderate snow
-            1219: '13d', // Moderate snow
-            1222: '13d', // Patchy heavy snow
-            1225: '13d', // Heavy snow
-            1237: '13d', // Ice pellets
-            1240: '09d', // Light rain shower
-            1243: '10d', // Moderate or heavy rain shower
-            1246: '10d', // Torrential rain shower
-            1249: '13d', // Light sleet showers
-            1252: '13d', // Moderate or heavy sleet showers
-            1255: '13d', // Light snow showers
-            1258: '13d', // Moderate or heavy snow showers
-            1261: '13d', // Light showers of ice pellets
-            1264: '13d', // Moderate or heavy showers of ice pellets
-            1273: '11d', // Patchy light rain with thunder
-            1276: '11d'  // Moderate or heavy rain with thunder
+            1000: '☀️', // Clear
+            1003: '⛅', // Partly cloudy
+            1006: '☁️', // Cloudy
+            1009: '☁️', // Overcast
+            1030: '🌫️', // Mist
+            1063: '🌦️', // Patchy rain
+            1066: '🌨️', // Patchy snow
+            1069: '🌨️', // Patchy sleet
+            1087: '⛈️', // Thundery outbreaks
+            1114: '🌨️', // Blowing snow
+            1117: '🌨️', // Blizzard
+            1135: '🌫️', // Fog
+            1147: '🌫️', // Freezing fog
+            1150: '🌦️', // Patchy light drizzle
+            1153: '🌧️', // Light drizzle
+            1168: '🌧️', // Freezing drizzle
+            1171: '🌧️', // Heavy freezing drizzle
+            1180: '🌦️', // Patchy light rain
+            1183: '🌧️', // Light rain
+            1186: '🌧️', // Moderate rain at times
+            1189: '🌧️', // Moderate rain
+            1192: '🌧️', // Heavy rain at times
+            1195: '🌧️', // Heavy rain
+            1198: '🌧️', // Light freezing rain
+            1201: '🌧️', // Moderate or heavy freezing rain
+            1204: '🌨️', // Light sleet
+            1207: '🌨️', // Moderate or heavy sleet
+            1210: '🌨️', // Patchy light snow
+            1213: '🌨️', // Light snow
+            1216: '🌨️', // Patchy moderate snow
+            1219: '🌨️', // Moderate snow
+            1222: '🌨️', // Patchy heavy snow
+            1225: '🌨️', // Heavy snow
+            1237: '🌨️', // Ice pellets
+            1240: '🌦️', // Light rain shower
+            1243: '🌧️', // Moderate or heavy rain shower
+            1246: '🌧️', // Torrential rain shower
+            1249: '🌨️', // Light sleet showers
+            1252: '🌨️', // Moderate or heavy sleet showers
+            1255: '🌨️', // Light snow showers
+            1258: '🌨️', // Moderate or heavy snow showers
+            1261: '🌨️', // Light showers of ice pellets
+            1264: '🌨️', // Moderate or heavy showers of ice pellets
+            1273: '⛈️', // Patchy light rain with thunder
+            1276: '⛈️'  // Moderate or heavy rain with thunder
         };
-        return iconMap[code] || '01d';
+        return iconMap[code] || '🌤️';
     }
 
     convertAccuWeatherIcon(code) {
-        // Convert AccuWeather codes to OpenWeatherMap format
+        // Convert AccuWeather codes to emoji icons
         const iconMap = {
-            1: '01d', 2: '01d', 3: '02d', 4: '02d', 5: '02d', 6: '03d', 7: '03d', 8: '04d',
-            11: '50d', 12: '09d', 13: '09d', 14: '09d', 15: '11d', 16: '11d', 17: '11d',
-            18: '10d', 19: '10d', 20: '10d', 21: '10d', 22: '10d', 23: '10d', 24: '10d',
-            25: '10d', 26: '10d', 29: '10d', 30: '10d', 31: '10d', 32: '10d', 33: '10d',
-            34: '10d', 35: '10d', 36: '10d', 37: '10d', 38: '10d', 39: '10d', 40: '10d',
-            41: '13d', 42: '13d', 43: '13d', 44: '13d'
+            1: '☀️', 2: '☀️', 3: '⛅', 4: '⛅', 5: '⛅', 6: '☁️', 7: '☁️', 8: '☁️',
+            11: '🌫️', 12: '🌦️', 13: '🌦️', 14: '🌦️', 15: '⛈️', 16: '⛈️', 17: '⛈️',
+            18: '🌧️', 19: '🌧️', 20: '🌧️', 21: '🌧️', 22: '🌧️', 23: '🌧️', 24: '🌧️',
+            25: '🌧️', 26: '🌧️', 29: '🌧️', 30: '🌧️', 31: '🌧️', 32: '🌧️', 33: '🌧️',
+            34: '🌧️', 35: '🌧️', 36: '🌧️', 37: '🌧️', 38: '🌧️', 39: '🌧️', 40: '🌧️',
+            41: '🌨️', 42: '🌨️', 43: '🌨️', 44: '🌨️'
         };
-        return iconMap[code] || '01d';
+        return iconMap[code] || '🌤️';
     }
 
     getWeatherDescription(code) {

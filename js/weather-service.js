@@ -4,20 +4,21 @@
 class WeatherService {
     constructor() {
         this.cache = new Map();
-        this.cacheTimeout = 5 * 60 * 1000; // 5 minutes
+        this.cacheTimeout = 1 * 60 * 1000; // 1 minute (reduced for testing)
         this.kyotoCoordinates = { lat: 35.0116, lon: 135.7681 };
         this.isJapanesePage = window.location.pathname.includes('/ja/');
+        
+        // Clear any existing cache on initialization
+        this.cache.clear();
+        console.log('🌤️ WeatherService initialized with cleared cache');
     }
 
     async getKyotoWeather() {
         const cacheKey = 'kyoto_weather';
-        const cached = this.cache.get(cacheKey);
         
-        if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
-            console.log('🌤️ Using cached weather data');
-            return cached.data;
-        }
-
+        // Force fresh data for now to ensure proper formatting
+        console.log('🌤️ Forcing fresh weather data fetch...');
+        
         try {
             // Try Open-Meteo API first (free, no API key required)
             const weatherData = await this.fetchFromOpenMeteo();
