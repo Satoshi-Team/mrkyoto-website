@@ -1046,14 +1046,37 @@
                     window.location.href = newPath;
                 });
             }
-            
-
         });
     </script>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('📰 Japanese News page loaded');
+            
+            // Debug: Check if shared navigation is loaded
+            console.log('🔍 Checking shared navigation availability...');
+            console.log('🔍 initializeMobileMenu available:', typeof initializeMobileMenu !== 'undefined');
+            console.log('🔍 Mobile menu button exists:', !!document.getElementById('mobile-menu-button'));
+            console.log('🔍 Mobile menu exists:', !!document.getElementById('mobile-menu'));
+            
+            // Initialize mobile menu functionality
+            if (typeof initializeMobileMenu !== 'undefined') {
+                initializeMobileMenu();
+                console.log('✅ Mobile menu initialized');
+            } else {
+                console.error('❌ initializeMobileMenu function not found');
+                // Fallback: Manual mobile menu initialization
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuButton && mobileMenu) {
+                    console.log('🔄 Using fallback mobile menu initialization');
+                    mobileMenuButton.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                        console.log('📱 Mobile menu toggled');
+                    });
+                }
+            }
             
             // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
