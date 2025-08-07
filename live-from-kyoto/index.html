@@ -1012,6 +1012,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🎥 Live from Kyoto page loaded');
             
+            // Initialize all button functionality immediately
+            initializeAllButtons();
+            
             // Initialize mobile menu functionality
             if (typeof initializeMobileMenu !== 'undefined') {
                 initializeMobileMenu();
@@ -1039,37 +1042,63 @@
             if (typeof TranslationManager !== 'undefined') {
                 new TranslationManager();
             }
+        });
+        
+        // Comprehensive button initialization function
+        function initializeAllButtons() {
+            console.log('🔧 Initializing all buttons...');
             
-            // Fallback button functionality
+            // Get all button elements
             const themeToggle = document.getElementById('theme-toggle');
             const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
             const languageToggle = document.getElementById('language-toggle');
             const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
             
-            // Theme toggle fallback
+            console.log('🔍 Found buttons:', {
+                themeToggle: !!themeToggle,
+                mobileThemeToggle: !!mobileThemeToggle,
+                languageToggle: !!languageToggle,
+                mobileLanguageToggle: !!mobileLanguageToggle,
+                mobileMenuButton: !!mobileMenuButton,
+                mobileMenu: !!mobileMenu
+            });
+            
+            // Theme toggle functionality
             [themeToggle, mobileThemeToggle].forEach(button => {
                 if (button) {
+                    console.log('✅ Adding theme toggle to:', button.id);
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
+                        e.stopPropagation();
+                        console.log('🌙 Theme toggle clicked!');
+                        
                         const html = document.documentElement;
                         const isDark = html.classList.contains('dark');
                         
                         if (isDark) {
                             html.classList.remove('dark');
                             localStorage.setItem('theme', 'light');
+                            console.log('☀️ Switched to light mode');
                         } else {
                             html.classList.add('dark');
                             localStorage.setItem('theme', 'dark');
+                            console.log('🌙 Switched to dark mode');
                         }
                     });
                 }
             });
             
-            // Language toggle fallback
+            // Language toggle functionality
             [languageToggle, mobileLanguageToggle].forEach(button => {
                 if (button) {
+                    console.log('✅ Adding language toggle to:', button.id);
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
+                        e.stopPropagation();
+                        console.log('🌍 Language toggle clicked!');
+                        
                         const currentPath = window.location.pathname;
                         let newPath;
                         
@@ -1079,11 +1108,45 @@
                             newPath = currentPath.replace(/^\//, '/ja/');
                         }
                         
+                        console.log('🔄 Switching from', currentPath, 'to', newPath);
                         window.location.href = newPath;
                     });
                 }
             });
-        });
+            
+            // Mobile menu functionality
+            if (mobileMenuButton && mobileMenu) {
+                console.log('✅ Adding mobile menu toggle to:', mobileMenuButton.id);
+                mobileMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile menu button clicked!');
+                    
+                    mobileMenu.classList.toggle('hidden');
+                    console.log('📱 Mobile menu toggled, hidden:', mobileMenu.classList.contains('hidden'));
+                    
+                    // Animate the hamburger icon
+                    const icon = mobileMenuButton.querySelector('svg');
+                    if (icon) {
+                        icon.style.transform = mobileMenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transition = 'transform 0.3s ease';
+                    }
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+            
+            console.log('✅ All buttons initialized');
+        }
     </script>
     
     <!-- Simple Weather Loading (Direct Approach) -->
