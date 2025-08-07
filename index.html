@@ -159,7 +159,7 @@ darkMode: 'class',
     gap: 0.5rem;
     padding: 0.75rem 1rem;
     border-radius: 0.75rem;
-    color: #374151;
+    color: #374151 !important;
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s ease;
@@ -169,7 +169,7 @@ darkMode: 'class',
 
 .nav-link-desktop:hover {
     background: rgba(185, 28, 28, 0.1);
-    color: #B91C1C;
+    color: #B91C1C !important;
     transform: translateY(-1px);
 }
 
@@ -179,12 +179,20 @@ darkMode: 'class',
 }
 
 .dark .nav-link-desktop {
-    color: #FEFEFE;
+    color: #FEFEFE !important;
 }
 
 .dark .nav-link-desktop:hover {
     background: rgba(185, 28, 28, 0.2);
-    color: #F59E0B;
+    color: #F59E0B !important;
+}
+
+.dark .nav-link-desktop .nav-text {
+    color: #FEFEFE !important;
+}
+
+.dark .nav-link-desktop:hover .nav-text {
+    color: #F59E0B !important;
 }
 
 .nav-icon {
@@ -1132,7 +1140,7 @@ html:not(.dark) .action-button svg {
             gap: 0.5rem;
             padding: 0.75rem 1rem;
             border-radius: 0.75rem;
-            color: #374151;
+            color: #374151 !important;
             font-weight: 500;
             text-decoration: none;
             transition: all 0.2s ease;
@@ -1142,7 +1150,7 @@ html:not(.dark) .action-button svg {
 
         .nav-link-desktop:hover {
             background: rgba(185, 28, 28, 0.1);
-            color: #B91C1C;
+            color: #B91C1C !important;
             transform: translateY(-1px);
         }
 
@@ -1152,12 +1160,20 @@ html:not(.dark) .action-button svg {
         }
 
         .dark .nav-link-desktop {
-            color: #FEFEFE;
+            color: #FEFEFE !important;
         }
 
         .dark .nav-link-desktop:hover {
             background: rgba(185, 28, 28, 0.2);
-            color: #F59E0B;
+            color: #F59E0B !important;
+        }
+
+        .dark .nav-link-desktop .nav-text {
+            color: #FEFEFE !important;
+        }
+
+        .dark .nav-link-desktop:hover .nav-text {
+            color: #F59E0B !important;
         }
 
         .nav-icon {
