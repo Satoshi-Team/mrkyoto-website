@@ -143,6 +143,15 @@ darkMode: 'class',
     border-bottom-color: rgba(55, 65, 81, 0.5);
 }
 
+/* Logo styling */
+#header .text-ink-black {
+    color: #0F0F0F !important;
+}
+
+.dark #header .text-ink-black {
+    color: #FEFEFE !important;
+}
+
 /* Desktop Navigation Links */
 .nav-link-desktop {
     display: flex;
@@ -170,7 +179,7 @@ darkMode: 'class',
 }
 
 .dark .nav-link-desktop {
-    color: #D1D5DB;
+    color: #FEFEFE;
 }
 
 .dark .nav-link-desktop:hover {
@@ -200,7 +209,7 @@ darkMode: 'class',
     color: #374151;
     border: 1px solid rgba(229, 231, 235, 0.5);
     transition: all 0.2s ease;
-            position: relative;
+    position: relative;
 }
 
 .action-button:hover {
@@ -217,7 +226,7 @@ darkMode: 'class',
 
 .dark .action-button {
     background: rgba(55, 65, 81, 0.8);
-    color: #D1D5DB;
+    color: #FEFEFE;
     border-color: rgba(75, 85, 99, 0.5);
 }
 
@@ -340,7 +349,7 @@ darkMode: 'class',
 .dark .mobile-search-input {
     background: rgba(55, 65, 81, 0.8);
     border-color: rgba(75, 85, 99, 0.8);
-    color: #D1D5DB;
+    color: #FEFEFE;
 }
 
 .mobile-search-button {
@@ -428,7 +437,7 @@ darkMode: 'class',
 .dark .mobile-nav-link {
     background: rgba(55, 65, 81, 0.5);
     border-color: rgba(75, 85, 99, 0.3);
-    color: #D1D5DB;
+    color: #FEFEFE;
 }
 
 .dark .mobile-nav-link:hover {
@@ -478,7 +487,7 @@ darkMode: 'class',
 
 .dark .contact-link {
     background: linear-gradient(135deg, rgba(55, 65, 81, 0.8), rgba(180, 83, 9, 0.2));
-    color: #D1D5DB;
+    color: #FEFEFE;
     border-color: rgba(180, 83, 9, 0.3);
 }
 
@@ -656,6 +665,30 @@ html:not(.dark) .action-button {
 
 html:not(.dark) .action-button svg {
     color: #0F0F0F !important;
+}
+
+/* Mobile menu button specific styling */
+#mobile-menu-button {
+    color: #0F0F0F !important;
+}
+
+.dark #mobile-menu-button {
+    color: #FEFEFE !important;
+}
+
+#mobile-menu-button svg {
+    color: inherit !important;
+}
+
+/* Mobile action buttons */
+#mobile-language-toggle,
+#mobile-theme-toggle {
+    color: #0F0F0F !important;
+}
+
+.dark #mobile-language-toggle,
+.dark #mobile-theme-toggle {
+    color: #FEFEFE !important;
 }
 
 .contact-link:hover .contact-arrow {
@@ -1119,7 +1152,7 @@ html:not(.dark) .action-button svg {
         }
 
         .dark .nav-link-desktop {
-            color: #D1D5DB;
+            color: #FEFEFE;
         }
 
         .dark .nav-link-desktop:hover {
@@ -1166,7 +1199,7 @@ html:not(.dark) .action-button svg {
 
         .dark .action-button {
             background: rgba(55, 65, 81, 0.8);
-            color: #D1D5DB;
+            color: #FEFEFE;
             border-color: rgba(75, 85, 99, 0.5);
         }
 
