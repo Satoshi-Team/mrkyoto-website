@@ -1069,6 +1069,9 @@
     <script src="/js/shared-footer.js"></script>
     
     <script>
+        // Global processing flag to prevent infinite loops
+        let globalLanguageProcessing = false;
+        
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🎥 Japanese Live Kyoto page loaded');
             console.log('🎥 Page URL:', window.location.href);
@@ -1078,10 +1081,9 @@
             // Initialize all button functionality immediately
             initializeAllButtons();
             
-            // Initialize theme and language managers
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                new ThemeLanguageManager();
-            }
+            // Initialize theme and language managers (disabled for live-from-kyoto pages)
+            console.log('🎨 Skipping ThemeLanguageManager initialization for live-from-kyoto page');
+            console.log('🎨 All theme and language functionality handled by initializeAllButtons()');
             
             if (typeof TranslationManager !== 'undefined') {
                 new TranslationManager();
@@ -1220,21 +1222,23 @@
                     button.style.cursor = 'pointer';
                     button.style.userSelect = 'none';
                     
-                    // Prevent multiple rapid clicks
-                    let isProcessing = false;
-                    
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        // Prevent multiple rapid clicks
-                        if (isProcessing) {
-                            console.log('🚫 Language toggle already processing, ignoring click');
+                        // Prevent multiple rapid clicks using global flag
+                        if (globalLanguageProcessing) {
+                            console.log('🚫 Global language processing already active, ignoring click');
                             return;
                         }
                         
-                        isProcessing = true;
+                        globalLanguageProcessing = true;
                         console.log('🌍 Language toggle clicked!');
+                        console.log('🌍 Event target:', e.target);
+                        console.log('🌍 Event currentTarget:', e.currentTarget);
+                        console.log('🌍 Button ID:', button.id);
+                        console.log('🌍 Current URL:', window.location.href);
+                        console.log('🌍 Current pathname:', window.location.pathname);
                         
                         const currentPath = window.location.pathname;
                         let newPath;
@@ -1245,10 +1249,32 @@
                             newPath = currentPath.replace(/^\//, '/ja/');
                         }
                         
+                        // Prevent navigation if we're already on the target page
+                        if (currentPath === newPath) {
+                            console.log('🚫 Already on target page, no navigation needed');
+                            globalLanguageProcessing = false;
+                            return;
+                        }
+                        
+                        // Check session storage for recent navigation
+                        const lastNavigation = sessionStorage.getItem('lastLanguageNavigation');
+                        const now = Date.now();
+                        if (lastNavigation && (now - parseInt(lastNavigation)) < 2000) {
+                            console.log('🚫 Navigation too recent, preventing rapid switching');
+                            globalLanguageProcessing = false;
+                            return;
+                        }
+                        
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
+                        console.log('🔄 Full new URL will be:', window.location.origin + newPath);
+                        
+                        // Store navigation timestamp
+                        sessionStorage.setItem('lastLanguageNavigation', now.toString());
                         
                         // Add a small delay to prevent rapid switching
                         setTimeout(() => {
+                            console.log('🔄 About to navigate to:', newPath);
+                            console.log('🔄 Current time:', new Date().toISOString());
                             window.location.href = newPath;
                         }, 100);
                     });

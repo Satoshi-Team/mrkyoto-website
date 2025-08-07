@@ -925,6 +925,9 @@
     
     <!-- Consolidated Initialization - Fixed multiple initialization conflicts -->
     <script>
+        // Global processing flag to prevent infinite loops
+        let globalLanguageProcessing = false;
+        
         // Comprehensive button initialization function
         function initializeAllButtons() {
             console.log('🔧 Initializing all buttons...');
@@ -1028,20 +1031,17 @@
                     button.style.cursor = 'pointer';
                     button.style.userSelect = 'none';
                     
-                    // Prevent multiple rapid clicks
-                    let isProcessing = false;
-                    
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        // Prevent multiple rapid clicks
-                        if (isProcessing) {
-                            console.log('🚫 Language toggle already processing, ignoring click');
+                        // Prevent multiple rapid clicks using global flag
+                        if (globalLanguageProcessing) {
+                            console.log('🚫 Global language processing already active, ignoring click');
                             return;
                         }
                         
-                        isProcessing = true;
+                        globalLanguageProcessing = true;
                         console.log('🌍 Language toggle clicked!');
                         console.log('🌍 Event target:', e.target);
                         console.log('🌍 Event currentTarget:', e.currentTarget);
@@ -1058,8 +1058,27 @@
                             newPath = currentPath.replace(/^\//, '/ja/');
                         }
                         
+                        // Prevent navigation if we're already on the target page
+                        if (currentPath === newPath) {
+                            console.log('🚫 Already on target page, no navigation needed');
+                            globalLanguageProcessing = false;
+                            return;
+                        }
+                        
+                        // Check session storage for recent navigation
+                        const lastNavigation = sessionStorage.getItem('lastLanguageNavigation');
+                        const now = Date.now();
+                        if (lastNavigation && (now - parseInt(lastNavigation)) < 2000) {
+                            console.log('🚫 Navigation too recent, preventing rapid switching');
+                            globalLanguageProcessing = false;
+                            return;
+                        }
+                        
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
                         console.log('🔄 Full new URL will be:', window.location.origin + newPath);
+                        
+                        // Store navigation timestamp
+                        sessionStorage.setItem('lastLanguageNavigation', now.toString());
                         
                         // Add a small delay to prevent rapid switching
                         setTimeout(() => {
@@ -1201,18 +1220,9 @@
             // Initialize all button functionality immediately
             initializeAllButtons();
             
-            // Initialize Theme and Language Manager
-            console.log('🎨 Initializing Theme and Language Manager...');
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                if (!window.themeLanguageManager) {
-                    window.themeLanguageManager = new ThemeLanguageManager();
-                    console.log('✅ Theme and Language Manager initialized');
-                } else {
-                    console.log('✅ Theme and Language Manager already exists');
-                }
-            } else {
-                console.error('❌ ThemeLanguageManager class not found');
-            }
+            // Initialize Theme and Language Manager (disabled for live-from-kyoto pages)
+            console.log('🎨 Skipping ThemeLanguageManager initialization for live-from-kyoto page');
+            console.log('🎨 All theme and language functionality handled by initializeAllButtons()');
             
             // Initialize Translation Manager
             console.log('🌍 Initializing Translation Manager...');

@@ -240,6 +240,12 @@ class ThemeLanguageManager {
         console.log('🌍 Current URL:', window.location.pathname);
         console.log('🌍 Current language detected:', this.getCurrentLanguage());
         
+        // Skip language toggle setup for live-from-kyoto pages (handled by initializeAllButtons)
+        if (window.location.pathname.includes('live-from-kyoto')) {
+            console.log('⚠️ Live-from-kyoto page detected, skipping ThemeLanguageManager language setup');
+            return;
+        }
+        
         const languageToggle = document.getElementById('language-toggle');
         const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
         
@@ -255,6 +261,17 @@ class ThemeLanguageManager {
         
         if (mobileLanguageToggle && mobileLanguageToggle.hasAttribute('data-language-toggle-initialized')) {
             console.log('⚠️ Mobile language toggle already initialized by initializeAllButtons, skipping ThemeLanguageManager setup');
+            return;
+        }
+        
+        // Additional check: if any language toggle has event listeners, skip setup
+        if (languageToggle && languageToggle.onclick !== null) {
+            console.log('⚠️ Language toggle already has click handler, skipping ThemeLanguageManager setup');
+            return;
+        }
+        
+        if (mobileLanguageToggle && mobileLanguageToggle.onclick !== null) {
+            console.log('⚠️ Mobile language toggle already has click handler, skipping ThemeLanguageManager setup');
             return;
         }
         
