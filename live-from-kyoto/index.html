@@ -923,113 +923,8 @@
     <script src="/js/shared-navigation.js"></script>
     <script src="/js/shared-footer.js"></script>
     
-    <!-- Initialize Theme and Language Manager -->
+    <!-- Consolidated Initialization -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎨 Initializing Theme and Language Manager...');
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                if (!window.themeLanguageManager) {
-                    window.themeLanguageManager = new ThemeLanguageManager();
-                    console.log('✅ Theme and Language Manager initialized');
-                } else {
-                    console.log('✅ Theme and Language Manager already exists');
-                }
-            } else {
-                console.error('❌ ThemeLanguageManager class not found');
-            }
-        });
-    </script>
-    
-    <!-- Initialize Translation Manager -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🌍 Initializing Translation Manager...');
-            if (typeof TranslationManager !== 'undefined') {
-                if (!window.translationManager) {
-                    window.translationManager = new TranslationManager();
-                    console.log('✅ Translation Manager initialized');
-                } else {
-                    console.log('✅ Translation Manager already exists');
-                }
-            } else {
-                console.error('❌ TranslationManager class not found');
-            }
-        });
-    </script>
-    <script src="/js/shared-navigation.js"></script>
-    <script src="/js/shared-footer.js"></script>
-    
-    <!-- Theme and Language Toggle Fix -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔧 Fixing theme and language toggles...');
-            
-            // Theme toggle functionality
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                console.log('✅ Theme toggle found, adding event listener');
-                themeToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🌙 Theme toggle clicked!');
-                    
-                    // Toggle dark mode
-                    const html = document.documentElement;
-                    const isDark = html.classList.contains('dark');
-                    
-                    if (isDark) {
-                        html.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
-                        console.log('☀️ Switched to light mode');
-                    } else {
-                        html.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
-                        console.log('🌙 Switched to dark mode');
-                    }
-                });
-            }
-            
-
-        });
-    </script>
-    
-    <!-- Mobile Menu Initialization -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎥 Live from Kyoto page loaded');
-            
-            // Initialize all button functionality immediately
-            initializeAllButtons();
-            
-            // Initialize mobile menu functionality
-            if (typeof initializeMobileMenu !== 'undefined') {
-                initializeMobileMenu();
-                console.log('✅ Mobile menu initialized');
-            } else {
-                console.error('❌ initializeMobileMenu function not found');
-                // Fallback: Manual mobile menu initialization
-                const mobileMenuButton = document.getElementById('mobile-menu-button');
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                if (mobileMenuButton && mobileMenu) {
-                    console.log('🔄 Using fallback mobile menu initialization');
-                    mobileMenuButton.addEventListener('click', function() {
-                        mobileMenu.classList.toggle('hidden');
-                        console.log('📱 Mobile menu toggled');
-                    });
-                }
-            }
-            
-            // Initialize theme and language managers
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                new ThemeLanguageManager();
-            }
-            
-            if (typeof TranslationManager !== 'undefined') {
-                new TranslationManager();
-            }
-        });
-        
         // Comprehensive button initialization function
         function initializeAllButtons() {
             console.log('🔧 Initializing all buttons...');
@@ -1281,6 +1176,63 @@
                 });
             }, 1000);
         }
+        
+        // Consolidated DOMContentLoaded listener
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎥 Live from Kyoto page loaded');
+            
+            // Initialize all button functionality immediately
+            initializeAllButtons();
+            
+            // Initialize Theme and Language Manager
+            console.log('🎨 Initializing Theme and Language Manager...');
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                if (!window.themeLanguageManager) {
+                    window.themeLanguageManager = new ThemeLanguageManager();
+                    console.log('✅ Theme and Language Manager initialized');
+                } else {
+                    console.log('✅ Theme and Language Manager already exists');
+                }
+            } else {
+                console.error('❌ ThemeLanguageManager class not found');
+            }
+            
+            // Initialize Translation Manager
+            console.log('🌍 Initializing Translation Manager...');
+            if (typeof TranslationManager !== 'undefined') {
+                if (!window.translationManager) {
+                    window.translationManager = new TranslationManager();
+                    console.log('✅ Translation Manager initialized');
+                } else {
+                    console.log('✅ Translation Manager already exists');
+                }
+            } else {
+                console.error('❌ TranslationManager class not found');
+            }
+            
+            // Initialize mobile menu functionality
+            if (typeof initializeMobileMenu !== 'undefined') {
+                initializeMobileMenu();
+                console.log('✅ Mobile menu initialized');
+            } else {
+                console.error('❌ initializeMobileMenu function not found');
+                // Fallback: Manual mobile menu initialization
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuButton && mobileMenu) {
+                    console.log('🔄 Using fallback mobile menu initialization');
+                    mobileMenuButton.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                        console.log('📱 Mobile menu toggled');
+                    });
+                }
+            }
+            
+            // Initialize weather and live widget
+            initializeWeather();
+            initializeLiveWidget();
+        });
     </script>
     
     <!-- Simple Weather Loading (Direct Approach) -->
@@ -1426,21 +1378,14 @@
             setInterval(loadWeatherData, 5 * 60 * 1000);
         }
 
-        // Initialize weather when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        // Weather and widget initialization functions
+        function initializeWeather() {
             console.log('🌤️ Initializing weather display...');
-            
-            // Load weather data immediately
             loadWeatherData();
-            
-            // Start auto-refresh
             startAutoRefresh();
-        });
-    </script>
-    
-    <!-- Initialize Live Kyoto Widget -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        }
+        
+        function initializeLiveWidget() {
             console.log('🎥 Initializing Live Kyoto Widget...');
             
             // Test if test button exists
@@ -1454,23 +1399,7 @@
             } else {
                 console.error('❌ LiveKyotoWidget class not found');
             }
-            
-            // Initialize theme manager
-            if (typeof ThemeLanguageManager !== 'undefined') {
-                window.themeLanguageManager = new ThemeLanguageManager();
-                console.log('✅ ThemeLanguageManager initialized on live-from-kyoto page');
-            } else {
-                console.warn('⚠️ ThemeLanguageManager not available on live-from-kyoto page');
-            }
-            
-            // Initialize translation manager
-            if (typeof TranslationManager !== 'undefined') {
-                new TranslationManager();
-                console.log('✅ TranslationManager initialized on live-from-kyoto page');
-            } else {
-                console.warn('⚠️ TranslationManager not available on live-from-kyoto page');
-            }
-        });
+        }
     </script>
 
     <!-- Footer -->

@@ -241,9 +241,22 @@ class ThemeLanguageManager {
         console.log('🌍 Current language detected:', this.getCurrentLanguage());
         
         const languageToggle = document.getElementById('language-toggle');
+        const mobileLanguageToggle = document.getElementById('mobile-language-toggle');
         
         console.log('🌍 Language toggle found:', !!languageToggle);
+        console.log('🌍 Mobile language toggle found:', !!mobileLanguageToggle);
         console.log('🌍 Language toggle element:', languageToggle);
+        
+        // Check if language toggles are already initialized by initializeAllButtons
+        if (languageToggle && languageToggle.hasAttribute('data-language-toggle-initialized')) {
+            console.log('⚠️ Language toggle already initialized by initializeAllButtons, skipping ThemeLanguageManager setup');
+            return;
+        }
+        
+        if (mobileLanguageToggle && mobileLanguageToggle.hasAttribute('data-language-toggle-initialized')) {
+            console.log('⚠️ Mobile language toggle already initialized by initializeAllButtons, skipping ThemeLanguageManager setup');
+            return;
+        }
         
         if (languageToggle) {
             // Remove any existing event listeners
