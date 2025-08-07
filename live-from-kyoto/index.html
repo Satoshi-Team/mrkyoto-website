@@ -1128,18 +1128,32 @@
                     console.log('📱 Button ID:', mobileMenuButton.id);
                     console.log('📱 Mobile menu hidden before toggle:', mobileMenu.classList.contains('hidden'));
                     
-                    mobileMenu.classList.toggle('hidden');
-                    console.log('📱 Mobile menu toggled, hidden:', mobileMenu.classList.contains('hidden'));
+                    // Get current state before toggle
+                    const wasHidden = mobileMenu.classList.contains('hidden');
+                    console.log('📱 Mobile menu was hidden before toggle:', wasHidden);
                     
-                    // Force mobile menu visibility with inline styles
-                    if (mobileMenu.classList.contains('hidden')) {
+                    // Use data attribute to track state more reliably
+                    const currentState = mobileMenu.getAttribute('data-menu-open') === 'true';
+                    const newState = !currentState;
+                    mobileMenu.setAttribute('data-menu-open', newState.toString());
+                    
+                    // Toggle the hidden class
+                    mobileMenu.classList.toggle('hidden');
+                    const isNowHidden = mobileMenu.classList.contains('hidden');
+                    console.log('📱 Mobile menu is now hidden after toggle:', isNowHidden);
+                    console.log('📱 Mobile menu data-menu-open:', newState);
+                    
+                    // Force mobile menu visibility with inline styles based on data attribute
+                    if (!newState) {
                         mobileMenu.style.display = 'none';
                         mobileMenu.style.visibility = 'hidden';
                         mobileMenu.style.opacity = '0';
+                        console.log('📱 Mobile menu hidden with inline styles');
                     } else {
                         mobileMenu.style.display = 'block';
                         mobileMenu.style.visibility = 'visible';
                         mobileMenu.style.opacity = '1';
+                        console.log('📱 Mobile menu shown with inline styles');
                     }
                     
                     console.log('📱 Mobile menu computed styles after toggle:', {
@@ -1152,11 +1166,12 @@
                         width: window.getComputedStyle(mobileMenu).width
                     });
                     
-                    // Animate the hamburger icon
+                    // Animate the hamburger icon based on data attribute
                     const icon = mobileMenuButton.querySelector('svg');
                     if (icon) {
-                        icon.style.transform = mobileMenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
+                        icon.style.transform = newState ? 'rotate(90deg)' : 'rotate(0deg)';
                         icon.style.transition = 'transform 0.3s ease';
+                        console.log('📱 Hamburger icon rotated:', newState ? '90deg' : '0deg');
                     }
                 });
                 
@@ -1173,10 +1188,16 @@
                 document.addEventListener('click', function(event) {
                     if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
                         mobileMenu.classList.add('hidden');
+                        mobileMenu.setAttribute('data-menu-open', 'false');
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.style.visibility = 'hidden';
+                        mobileMenu.style.opacity = '0';
+                        
                         const icon = mobileMenuButton.querySelector('svg');
                         if (icon) {
                             icon.style.transform = 'rotate(0deg)';
                         }
+                        console.log('📱 Mobile menu closed by outside click');
                     }
                 });
             }
