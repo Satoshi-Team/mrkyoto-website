@@ -661,19 +661,19 @@
                                 <!-- Mobile actions -->
                 <div class="lg:hidden flex items-center space-x-2">
                     <!-- Language toggle -->
-                    <button id="mobile-language-toggle" class="action-button" data-tooltip="Language">
+                    <button id="mobile-language-toggle" class="action-button text-white" data-tooltip="Language">
                         <span class="text-sm font-medium">🇬🇧</span>
                     </button>
                     
                     <!-- Dark mode toggle -->
-                    <button id="mobile-theme-toggle" class="action-button" data-tooltip="Theme Toggle">
+                    <button id="mobile-theme-toggle" class="action-button text-white" data-tooltip="Theme Toggle">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
-                
+                    
                 <!-- Mobile menu button -->
-                    <button id="mobile-menu-button" class="action-button">
+                    <button id="mobile-menu-button" class="action-button text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -1144,13 +1144,33 @@
                 if (button) {
                     console.log('✅ Adding language toggle to:', button.id);
                     
+                    // Check if event listener already exists
+                    if (button.hasAttribute('data-language-toggle-initialized')) {
+                        console.log('⚠️ Language toggle already initialized for:', button.id);
+                        return;
+                    }
+                    
+                    // Mark as initialized
+                    button.setAttribute('data-language-toggle-initialized', 'true');
+                    
                     // Test click to ensure button is responsive
                     button.style.cursor = 'pointer';
                     button.style.userSelect = 'none';
                     
+                    // Prevent multiple rapid clicks
+                    let isProcessing = false;
+                    
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
+                        
+                        // Prevent multiple rapid clicks
+                        if (isProcessing) {
+                            console.log('🚫 Language toggle already processing, ignoring click');
+                            return;
+                        }
+                        
+                        isProcessing = true;
                         console.log('🌍 Language toggle clicked!');
                         
                         const currentPath = window.location.pathname;
@@ -1163,7 +1183,11 @@
                         }
                         
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
-                        window.location.href = newPath;
+                        
+                        // Add a small delay to prevent rapid switching
+                        setTimeout(() => {
+                            window.location.href = newPath;
+                        }, 100);
                     });
                     
                     // Add a test click handler to verify the button is working
