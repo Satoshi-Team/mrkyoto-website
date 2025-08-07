@@ -2360,45 +2360,31 @@ html:not(.dark) .action-button svg {
     </div>
 
     <!-- Scripts -->
-    <script src="js/real-estate-data.js"></script>
-    <script src="js/activities-data.js"></script>
-    <script src="js/events-data.js"></script>
-    <script src="js/news-data.js"></script>
-    <script src="js/culture-data.js"></script>
+    <script src="/js/weather-service.js"></script>
+    <script src="/js/live-kyoto-widget.js"></script>
+    <script src="/js/translation-manager.js"></script>
     <script src="/js/theme-language-manager.js"></script>
-            <script src="/js/translation-manager.js"></script>
-    <script src="js/main-simple.js"></script>
     
-    <!-- Initialize Theme and Language Manager -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎨 Initializing Theme and Language Manager...');
+            console.log('🏯 Japanese Homepage loaded');
+            
+            // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
-                if (!window.themeLanguageManager) {
-                    window.themeLanguageManager = new ThemeLanguageManager();
-                    console.log('✅ Theme and Language Manager initialized');
-                } else {
-                    console.log('✅ Theme and Language Manager already exists');
-                }
-            } else {
-                console.error('❌ ThemeLanguageManager class not found');
+                new ThemeLanguageManager();
             }
-        });
-    </script>
-    
-    <!-- Initialize Translation Manager -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🌍 Initializing Translation Manager...');
+            
             if (typeof TranslationManager !== 'undefined') {
-                if (!window.translationManager) {
-                    window.translationManager = new TranslationManager();
-                    console.log('✅ Translation Manager initialized');
-                } else {
-                    console.log('✅ Translation Manager already exists');
-                }
+                new TranslationManager();
+            }
+            
+            // Initialize live widget functionality
+            if (typeof LiveKyotoWidget !== 'undefined') {
+                console.log('🎥 Initializing Live Kyoto Widget...');
+                window.liveKyotoWidget = new LiveKyotoWidget();
+                console.log('✅ Live Kyoto Widget initialized successfully');
             } else {
-                console.error('❌ TranslationManager class not found');
+                console.error('❌ LiveKyotoWidget is NOT available');
             }
         });
     </script>

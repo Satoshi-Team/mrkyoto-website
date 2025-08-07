@@ -1713,14 +1713,10 @@ html:not(.dark) .action-button svg {
     </div>
 
     <!-- Scripts -->
-    <script src="js/real-estate-data.js"></script>
-    <script src="js/activities-data.js"></script>
-    <script src="js/events-data.js"></script>
-    <script src="js/news-data.js"></script>
-    <script src="js/culture-data.js"></script>
+    <script src="/js/weather-service.js"></script>
+    <script src="/js/live-kyoto-widget.js"></script>
     <script src="/js/translation-manager.js"></script>
     <script src="/js/theme-language-manager.js"></script>
-    <script src="js/main-simple.js"></script>
     
     <!-- Theme and Language Toggle Fix -->
     <script>
@@ -1782,20 +1778,9 @@ html:not(.dark) .action-button svg {
         });
     </script>
     
-    <!-- Initialize App -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Initializing MrKyoto App...');
-            
-            // Initialize theme immediately
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                console.log('🌙 Initialized dark mode');
-            } else {
-                document.documentElement.classList.remove('dark');
-                console.log('☀️ Initialized light mode');
-            }
+            console.log('🏯 English Homepage loaded');
             
             // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
@@ -1804,6 +1789,15 @@ html:not(.dark) .action-button svg {
             
             if (typeof TranslationManager !== 'undefined') {
                 new TranslationManager();
+            }
+            
+            // Initialize live widget functionality
+            if (typeof LiveKyotoWidget !== 'undefined') {
+                console.log('🎥 Initializing Live Kyoto Widget...');
+                window.liveKyotoWidget = new LiveKyotoWidget();
+                console.log('✅ Live Kyoto Widget initialized successfully');
+            } else {
+                console.error('❌ LiveKyotoWidget is NOT available');
             }
         });
     </script>
