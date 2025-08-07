@@ -537,6 +537,15 @@
         /* Mobile Menu */
         #mobile-menu {
             animation: slideDown 0.3s ease-out;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        /* Ensure mobile menu is visible when not hidden */
+        #mobile-menu:not(.hidden) {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         @keyframes slideDown {
@@ -1121,6 +1130,27 @@
                     
                     mobileMenu.classList.toggle('hidden');
                     console.log('📱 Mobile menu toggled, hidden:', mobileMenu.classList.contains('hidden'));
+                    
+                    // Force mobile menu visibility with inline styles
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.style.display = 'none';
+                        mobileMenu.style.visibility = 'hidden';
+                        mobileMenu.style.opacity = '0';
+                    } else {
+                        mobileMenu.style.display = 'block';
+                        mobileMenu.style.visibility = 'visible';
+                        mobileMenu.style.opacity = '1';
+                    }
+                    
+                    console.log('📱 Mobile menu computed styles after toggle:', {
+                        display: window.getComputedStyle(mobileMenu).display,
+                        visibility: window.getComputedStyle(mobileMenu).visibility,
+                        opacity: window.getComputedStyle(mobileMenu).opacity,
+                        position: window.getComputedStyle(mobileMenu).position,
+                        zIndex: window.getComputedStyle(mobileMenu).zIndex,
+                        height: window.getComputedStyle(mobileMenu).height,
+                        width: window.getComputedStyle(mobileMenu).width
+                    });
                     
                     // Animate the hamburger icon
                     const icon = mobileMenuButton.querySelector('svg');
