@@ -1448,6 +1448,7 @@ html:not(.dark) .action-button svg {
     <script src="js/events-data.js"></script>
     <script src="js/news-data.js"></script>
     <script src="js/culture-data.js"></script>
+    <script src="/js/translation-manager.js"></script>
     <script src="/js/theme-language-manager.js"></script>
     <script src="js/main-simple.js"></script>
     
@@ -1522,6 +1523,15 @@ html:not(.dark) .action-button svg {
             } else {
                 document.documentElement.classList.remove('dark');
                 console.log('☀️ Initialized light mode');
+            }
+            
+            // Initialize theme and language managers
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                new ThemeLanguageManager();
+            }
+            
+            if (typeof TranslationManager !== 'undefined') {
+                new TranslationManager();
             }
         });
     </script>

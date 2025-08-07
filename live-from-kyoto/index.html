@@ -1024,6 +1024,14 @@
             } else {
                 console.warn('⚠️ ThemeLanguageManager not available on live-from-kyoto page');
             }
+            
+            // Initialize translation manager
+            if (typeof TranslationManager !== 'undefined') {
+                new TranslationManager();
+                console.log('✅ TranslationManager initialized on live-from-kyoto page');
+            } else {
+                console.warn('⚠️ TranslationManager not available on live-from-kyoto page');
+            }
         });
     </script>
 

@@ -1932,6 +1932,28 @@
             }, 1000);
         });
     </script>
+    
+    <!-- Initialize Theme and Language Managers -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Initializing theme and language managers on Japanese activities page...');
+            
+            // Initialize theme and language managers
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                new ThemeLanguageManager();
+                console.log('✅ ThemeLanguageManager initialized on Japanese activities page');
+            } else {
+                console.warn('⚠️ ThemeLanguageManager not available on Japanese activities page');
+            }
+            
+            if (typeof TranslationManager !== 'undefined') {
+                new TranslationManager();
+                console.log('✅ TranslationManager initialized on Japanese activities page');
+            } else {
+                console.warn('⚠️ TranslationManager not available on Japanese activities page');
+            }
+        });
+    </script>
 
     <!-- Mobile Menu Functionality -->
     <script>

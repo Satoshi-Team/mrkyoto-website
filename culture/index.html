@@ -1111,7 +1111,8 @@ darkMode: 'class',
     <!-- Scripts -->
     <script src="/js/culture-data.js"></script>
     <script src="/js/culture-manager.js"></script>
-
+    <script src="/js/theme-language-manager.js"></script>
+    <script src="/js/translation-manager.js"></script>
     <script src="/js/shared-navigation.js"></script>
     
     <!-- Mobile Menu Functionality -->
@@ -1229,6 +1230,28 @@ darkMode: 'class',
                         submitButton.disabled = false;
                     });
                 });
+            }
+        });
+    </script>
+    
+    <!-- Initialize Theme and Language Managers -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Initializing theme and language managers on culture page...');
+            
+            // Initialize theme and language managers
+            if (typeof ThemeLanguageManager !== 'undefined') {
+                new ThemeLanguageManager();
+                console.log('✅ ThemeLanguageManager initialized on culture page');
+            } else {
+                console.warn('⚠️ ThemeLanguageManager not available on culture page');
+            }
+            
+            if (typeof TranslationManager !== 'undefined') {
+                new TranslationManager();
+                console.log('✅ TranslationManager initialized on culture page');
+            } else {
+                console.warn('⚠️ TranslationManager not available on culture page');
             }
         });
     </script>
