@@ -1156,13 +1156,33 @@
                 if (button) {
                     console.log('✅ Adding language toggle to:', button.id);
                     
+                    // Check if event listener already exists
+                    if (button.hasAttribute('data-language-toggle-initialized')) {
+                        console.log('⚠️ Language toggle already initialized for:', button.id);
+                        return;
+                    }
+                    
+                    // Mark as initialized
+                    button.setAttribute('data-language-toggle-initialized', 'true');
+                    
                     // Test click to ensure button is responsive
                     button.style.cursor = 'pointer';
                     button.style.userSelect = 'none';
                     
+                    // Prevent multiple rapid clicks
+                    let isProcessing = false;
+                    
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
+                        
+                        // Prevent multiple rapid clicks
+                        if (isProcessing) {
+                            console.log('🚫 Language toggle already processing, ignoring click');
+                            return;
+                        }
+                        
+                        isProcessing = true;
                         console.log('🌍 Language toggle clicked!');
                         
                         const currentPath = window.location.pathname;
@@ -1175,7 +1195,11 @@
                         }
                         
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
-                        window.location.href = newPath;
+                        
+                        // Add a small delay to prevent rapid switching
+                        setTimeout(() => {
+                            window.location.href = newPath;
+                        }, 100);
                     });
                     
                     // Add a test click handler to verify the button is working

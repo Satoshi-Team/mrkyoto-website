@@ -989,31 +989,7 @@
                 });
             }
             
-            // Language toggle functionality
-            const languageToggle = document.getElementById('language-toggle');
-            if (languageToggle) {
-                console.log('✅ Language toggle found, adding event listener');
-                languageToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🌍 Language toggle clicked!');
-                    
-                    // Use the same language switching logic as the desktop version
-                    const currentPath = window.location.pathname;
-                    let newPath;
-                    
-                    if (currentPath.startsWith('/ja/')) {
-                        // Currently on Japanese page, switch to English
-                        newPath = currentPath.replace('/ja/', '/');
-                    } else {
-                        // Currently on English page, switch to Japanese
-                        newPath = currentPath.replace(/^\//, '/ja/');
-                    }
-                    
-                    console.log('🔄 Switching from', currentPath, 'to', newPath);
-                    window.location.href = newPath;
-                });
-            }
+
         });
     </script>
     
