@@ -406,6 +406,109 @@
             transform: translateX(6px);
             color: #FCD34D !important;
         }
+        
+        /* Mobile Navigation Text Visibility Fixes */
+        /* Light mode dropdown text - ensure white text */
+        html:not(.dark) .mobile-nav-link-golden {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-arrow {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-arrow {
+            color: #FFFFFF !important;
+        }
+
+        .mobile-nav-link-golden:hover {
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(180, 83, 9, 0.1));
+            color: #F59E0B !important;
+            transform: translateX(4px);
+            border-color: rgba(180, 83, 9, 0.4);
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.2);
+        }
+
+        .mobile-nav-link-golden .mobile-nav-text {
+            flex: 1;
+            font-weight: 600;
+            color: #FEFEFE !important;
+        }
+
+        /* Override for light mode to ensure white text */
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        /* Additional specificity for light mode text */
+        html:not(.dark) .mobile-nav-link-golden span {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden span {
+            color: #FFFFFF !important;
+        }
+
+        /* Force white text for all mobile navigation elements in light mode */
+        html:not(.dark) .mobile-nav-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        /* Override any conflicting text colors */
+        html:not(.dark) .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        /* ULTIMATE OVERRIDE - Force white text in light mode */
+        html:not(.dark) .mobile-nav-link-golden .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        /* Override hover states in light mode */
+        html:not(.dark) .mobile-nav-link-golden:hover .mobile-nav-text {
+            color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .contact-link-golden:hover .contact-text {
+            color: #FFFFFF !important;
+        }
+
+        /* Override all text elements in light mode */
+        html:not(.dark) #mobile-menu .mobile-nav-link-golden,
+        html:not(.dark) #mobile-menu .mobile-nav-link-golden *,
+        html:not(.dark) #mobile-menu .contact-link-golden,
+        html:not(.dark) #mobile-menu .contact-link-golden * {
+            color: #FFFFFF !important;
+        }
+
+        /* Force white text for mobile action buttons in light mode */
+        html:not(.dark) .action-button {
+            color: #FFFFFF !important;
+        }
 
         /* Dark mode overrides to ensure visibility */
         html.dark .mobile-nav-link-golden {
@@ -530,13 +633,13 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
-                    
-                    <!-- Mobile menu button -->
+                
+                <!-- Mobile menu button -->
                     <button id="mobile-menu-button" class="action-button text-white">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
                 </div>
             </div>
             
