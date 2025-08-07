@@ -923,7 +923,7 @@
     <script src="/js/shared-navigation.js"></script>
     <script src="/js/shared-footer.js"></script>
     
-    <!-- Consolidated Initialization -->
+    <!-- Consolidated Initialization - Fixed multiple initialization conflicts -->
     <script>
         // Comprehensive button initialization function
         function initializeAllButtons() {
@@ -1043,6 +1043,11 @@
                         
                         isProcessing = true;
                         console.log('🌍 Language toggle clicked!');
+                        console.log('🌍 Event target:', e.target);
+                        console.log('🌍 Event currentTarget:', e.currentTarget);
+                        console.log('🌍 Button ID:', button.id);
+                        console.log('🌍 Current URL:', window.location.href);
+                        console.log('🌍 Current pathname:', window.location.pathname);
                         
                         const currentPath = window.location.pathname;
                         let newPath;
@@ -1054,9 +1059,12 @@
                         }
                         
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
+                        console.log('🔄 Full new URL will be:', window.location.origin + newPath);
                         
                         // Add a small delay to prevent rapid switching
                         setTimeout(() => {
+                            console.log('🔄 About to navigate to:', newPath);
+                            console.log('🔄 Current time:', new Date().toISOString());
                             window.location.href = newPath;
                         }, 100);
                     });
@@ -1177,9 +1185,18 @@
             }, 1000);
         }
         
+        // Global navigation tracking
+        window.addEventListener('beforeunload', function() {
+            console.log('🚪 Page unloading, URL:', window.location.href);
+        });
+        
         // Consolidated DOMContentLoaded listener
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🎥 Live from Kyoto page loaded');
+            console.log('🎥 Page URL:', window.location.href);
+            console.log('🎥 Page pathname:', window.location.pathname);
+            console.log('🎥 Page referrer:', document.referrer);
+            console.log('🎥 Load time:', new Date().toISOString());
             
             // Initialize all button functionality immediately
             initializeAllButtons();

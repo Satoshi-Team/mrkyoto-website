@@ -550,20 +550,6 @@ class ThemeLanguageManager {
     }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎨 DOMContentLoaded - Creating ThemeLanguageManager...');
-    console.log('🎨 Current URL:', window.location.href);
-    console.log('🎨 Current path:', window.location.pathname);
-    try {
-        window.themeLanguageManager = new ThemeLanguageManager();
-        console.log('✅ ThemeLanguageManager created and assigned to window');
-        console.log('✅ Current language detected:', window.themeLanguageManager.getCurrentLanguage());
-    } catch (error) {
-        console.error('❌ Error creating ThemeLanguageManager:', error);
-    }
-});
-
 // Export for module use
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = ThemeLanguageManager;

@@ -537,6 +537,3 @@ class NewsManager {
         // Display fallback content when news fails to load
     }
 }
-
-// Initialize global news manager instance
-    window.newsManager = new NewsManager();

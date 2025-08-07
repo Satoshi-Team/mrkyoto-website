@@ -1202,6 +1202,9 @@
         // DOM Content Loaded Event Listener
         document.addEventListener('DOMContentLoaded', function() {
             console.log('📰 Japanese News page loaded');
+            console.log('📰 Page URL:', window.location.href);
+            console.log('📰 Page pathname:', window.location.pathname);
+            console.log('📰 Load time:', new Date().toISOString());
             
             // Initialize all button functionality immediately
             initializeAllButtons();

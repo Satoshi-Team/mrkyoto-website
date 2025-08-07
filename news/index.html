@@ -1065,6 +1065,7 @@
     
 
 
+    <!-- Consolidated Initialization - Fixed multiple initialization conflicts -->
     <script>
         // Comprehensive button initialization function
         function initializeAllButtons() {
@@ -1125,6 +1126,9 @@
                         e.preventDefault();
                         e.stopPropagation();
                         console.log('🌙 Theme toggle clicked!');
+                        console.log('🌙 Event target:', e.target);
+                        console.log('🌙 Event currentTarget:', e.currentTarget);
+                        console.log('🌙 Button ID:', button.id);
                         
                         const html = document.documentElement;
                         const isDark = html.classList.contains('dark');
@@ -1184,6 +1188,11 @@
                         
                         isProcessing = true;
                         console.log('🌍 Language toggle clicked!');
+                        console.log('🌍 Event target:', e.target);
+                        console.log('🌍 Event currentTarget:', e.currentTarget);
+                        console.log('🌍 Button ID:', button.id);
+                        console.log('🌍 Current URL:', window.location.href);
+                        console.log('🌍 Current pathname:', window.location.pathname);
                         
                         const currentPath = window.location.pathname;
                         let newPath;
@@ -1195,9 +1204,12 @@
                         }
                         
                         console.log('🔄 Switching from', currentPath, 'to', newPath);
+                        console.log('🔄 Full new URL will be:', window.location.origin + newPath);
                         
                         // Add a small delay to prevent rapid switching
                         setTimeout(() => {
+                            console.log('🔄 About to navigate to:', newPath);
+                            console.log('🔄 Current time:', new Date().toISOString());
                             window.location.href = newPath;
                         }, 100);
                     });
@@ -1225,6 +1237,11 @@
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('📱 Mobile menu button clicked!');
+                    console.log('📱 Event target:', e.target);
+                    console.log('📱 Event currentTarget:', e.currentTarget);
+                    console.log('📱 Button ID:', mobileMenuButton.id);
+                    console.log('📱 Mobile menu element:', mobileMenu);
+                    console.log('📱 Mobile menu hidden before toggle:', mobileMenu.classList.contains('hidden'));
                     
                     mobileMenu.classList.toggle('hidden');
                     console.log('📱 Mobile menu toggled, hidden:', mobileMenu.classList.contains('hidden'));
@@ -1268,6 +1285,15 @@
                 [mobileThemeToggle, mobileLanguageToggle, mobileMenuButton].forEach(btn => {
                     if (btn) {
                         console.log(`🧪 Testing button: ${btn.id}`);
+                        console.log(`🧪 Button element:`, btn);
+                        console.log(`🧪 Button computed styles:`, {
+                            display: window.getComputedStyle(btn).display,
+                            visibility: window.getComputedStyle(btn).visibility,
+                            opacity: window.getComputedStyle(btn).opacity,
+                            pointerEvents: window.getComputedStyle(btn).pointerEvents,
+                            position: window.getComputedStyle(btn).position,
+                            zIndex: window.getComputedStyle(btn).zIndex
+                        });
                         
                         // Create and dispatch a test click event
                         const testClick = new MouseEvent('click', {
@@ -1292,6 +1318,9 @@
         // DOM Content Loaded Event Listener
         document.addEventListener('DOMContentLoaded', function() {
             console.log('📰 English News page loaded');
+            console.log('📰 Page URL:', window.location.href);
+            console.log('📰 Page pathname:', window.location.pathname);
+            console.log('📰 Load time:', new Date().toISOString());
             
             // Initialize all button functionality immediately
             initializeAllButtons();

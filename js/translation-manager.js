@@ -2785,17 +2785,6 @@ class TranslationManager {
     }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🌍 DOMContentLoaded - Creating TranslationManager...');
-    try {
-        window.translationManager = new TranslationManager();
-        console.log('✅ TranslationManager created and assigned to window');
-    } catch (error) {
-        console.error('❌ Error creating TranslationManager:', error);
-    }
-});
-
 // Export for module use
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = TranslationManager;
