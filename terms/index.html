@@ -493,18 +493,12 @@
                     </a>
                 </nav>
                 
-                <!-- Right side actions -->
-                <div class="hidden md:flex items-center space-x-2">
-                    <!-- Language dropdown -->
-                    <div class="relative">
-                        <button id="language-toggle" class="action-button" data-tooltip="Language">
-                            <span class="text-sm font-medium">🇬🇧</span>
-                        </button>
-                        <div id="language-dropdown" class="language-dropdown hidden absolute right-0 mt-2 w-48 bg-white dark:bg-sumi border border-zen dark:border-aiiro rounded-lg shadow-lg z-50">
-                            <a href="/" class="block px-4 py-2 text-sm text-sumi dark:text-gofun hover:bg-zen dark:hover:bg-aiiro">🇬🇧 English</a>
-                            <a href="/ja/" class="block px-4 py-2 text-sm text-sumi dark:text-gofun hover:bg-zen dark:hover:bg-aiiro">🇯🇵 日本語</a>
-                        </div>
-                    </div>
+                <!-- Right side actions (Desktop only) -->
+                <div class="hidden lg:flex items-center space-x-2">
+                    <!-- Language toggle -->
+                    <button id="language-toggle" class="action-button" data-tooltip="Language">
+                        <span class="text-sm font-medium">🇬🇧</span>
+                    </button>
                     
                     <!-- Theme toggle -->
                     <button id="theme-toggle" class="action-button" data-tooltip="Theme">
@@ -815,7 +809,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('📋 Japanese Terms of Service page loaded');
+            console.log('📋 Terms of Service page loaded');
             
             // Initialize theme and language managers
             if (typeof ThemeLanguageManager !== 'undefined') {
@@ -824,6 +818,64 @@
             
             if (typeof TranslationManager !== 'undefined') {
                 new TranslationManager();
+            }
+        });
+    </script>
+    
+    <!-- Theme and Language Toggle Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Fixing theme and language toggles for terms page...');
+            
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                console.log('✅ Theme toggle found, adding event listener');
+                themeToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌙 Theme toggle clicked!');
+                    
+                    // Toggle dark mode
+                    const html = document.documentElement;
+                    const isDark = html.classList.contains('dark');
+                    
+                    if (isDark) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        console.log('☀️ Switched to light mode');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        console.log('🌙 Switched to dark mode');
+                    }
+                });
+            }
+            
+            // Language toggle functionality
+            const languageToggle = document.getElementById('language-toggle');
+            if (languageToggle) {
+                console.log('✅ Language toggle found, adding event listener');
+                languageToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌍 Language toggle clicked!');
+                    
+                    // Use the same language switching logic as the desktop version
+                    const currentPath = window.location.pathname;
+                    let newPath;
+                    
+                    if (currentPath.startsWith('/ja/')) {
+                        // Currently on Japanese page, switch to English
+                        newPath = currentPath.replace('/ja/', '/');
+                    } else {
+                        // Currently on English page, switch to Japanese
+                        newPath = currentPath.replace(/^\//, '/ja/');
+                    }
+                    
+                    console.log('🔄 Switching from', currentPath, 'to', newPath);
+                    window.location.href = newPath;
+                });
             }
         });
     </script>
