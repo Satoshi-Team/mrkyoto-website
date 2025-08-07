@@ -1451,29 +1451,21 @@ html:not(.dark) .action-button svg {
     <script src="/js/theme-language-manager.js"></script>
     <script src="js/main-simple.js"></script>
     
-    <!-- Initialize App -->
+    <!-- Theme and Language Toggle Fix -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Initializing MrKyoto App...');
+            console.log('🔧 Fixing theme and language toggles...');
             
-            // Initialize theme immediately
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                console.log('🌙 Initialized dark mode');
-            } else {
-                document.documentElement.classList.remove('dark');
-                console.log('☀️ Initialized light mode');
-            }
-            
-            // Setup theme toggle button
+            // Theme toggle functionality
             const themeToggle = document.getElementById('theme-toggle');
             if (themeToggle) {
-                console.log('✅ Theme toggle found');
+                console.log('✅ Theme toggle found, adding event listener');
                 themeToggle.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
                     console.log('🌙 Theme toggle clicked!');
                     
+                    // Toggle dark mode
                     const html = document.documentElement;
                     const isDark = html.classList.contains('dark');
                     
@@ -1487,6 +1479,49 @@ html:not(.dark) .action-button svg {
                         console.log('🌙 Switched to dark mode');
                     }
                 });
+            }
+            
+            // Language toggle functionality
+            const languageToggle = document.getElementById('language-toggle');
+            if (languageToggle) {
+                console.log('✅ Language toggle found, adding event listener');
+                languageToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🌍 Language toggle clicked!');
+                    
+                    // Use the same language switching logic as the desktop version
+                    const currentPath = window.location.pathname;
+                    let newPath;
+                    
+                    if (currentPath.startsWith('/ja/')) {
+                        // Currently on Japanese page, switch to English
+                        newPath = currentPath.replace('/ja/', '/');
+                    } else {
+                        // Currently on English page, switch to Japanese
+                        newPath = currentPath.replace(/^\//, '/ja/');
+                    }
+                    
+                    console.log('🔄 Switching from', currentPath, 'to', newPath);
+                    window.location.href = newPath;
+                });
+            }
+        });
+    </script>
+    
+    <!-- Initialize App -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing MrKyoto App...');
+            
+            // Initialize theme immediately
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                console.log('🌙 Initialized dark mode');
+            } else {
+                document.documentElement.classList.remove('dark');
+                console.log('☀️ Initialized light mode');
             }
         });
     </script>

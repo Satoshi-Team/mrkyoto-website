@@ -250,16 +250,16 @@ class NewsData {
         try {
             // Check if article is in English and relevant to Japan/Kyoto
             if (!this.isEnglishText(article.title + ' ' + (article.description || ''))) {
-                return null;
-            }
-            
+            return null;
+        }
+
             // Ensure content is not undefined
             const content = article.description || article.content || 'No content available';
             if (content === 'undefined' || !content) {
                 return null;
             }
             
-            return {
+        return {
                 id: `newsapi_${article.url?.replace(/[^a-zA-Z0-9]/g, '') || Date.now()}`,
                 title: article.title || 'No Title',
                 content: content,
@@ -272,7 +272,7 @@ class NewsData {
                 verified: true,
                 location: this.extractLocation(article.title, article.description),
                 hashtags: this.extractTags(article.title, article.description),
-                category: this.categorizeArticle(article.title, article.description),
+            category: this.categorizeArticle(article.title, article.description),
                 language: 'en'
             };
         } catch (error) {
@@ -776,7 +776,7 @@ class NewsData {
         return this.sources;
     }
 
-        getNewsStats() {
+    getNewsStats() {
         const categoryCounts = {};
         const sourceCounts = {};
         
@@ -784,7 +784,7 @@ class NewsData {
             categoryCounts[article.category] = (categoryCounts[article.category] || 0) + 1;
             sourceCounts[article.source] = (sourceCounts[article.source] || 0) + 1;
         });
-        
+
         return {
             totalArticles: this.newsArticles.length,
             totalSources: Object.keys(sourceCounts).length,

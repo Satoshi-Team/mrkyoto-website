@@ -84,10 +84,10 @@ class NewsManager {
         
         // Ensure we have data before displaying
         if (newsData.newsArticles.length > 0) {
-            this.displayNews();
-            this.displayNewsStats();
-            this.displayTrendingArticles();
-            this.displayFeaturedNews();
+        this.displayNews();
+        this.displayNewsStats();
+        this.displayTrendingArticles();
+        this.displayFeaturedNews();
         } else {
             console.log('📰 NewsManager: Still no articles available');
         }
@@ -162,7 +162,7 @@ class NewsManager {
         });
     }
 
-        displayNews() {
+    displayNews() {
         const newsGrid = document.getElementById('news-grid');
         const newsLoading = document.getElementById('news-loading');
         const newsEmpty = document.getElementById('news-empty');
@@ -182,13 +182,13 @@ class NewsManager {
             if (newsEmpty) newsEmpty.classList.remove('hidden');
             return;
         }
-        
+
         if (newsEmpty) newsEmpty.classList.add('hidden');
         
         // Generate news cards
         const newsCards = this.generateNewsCards(filteredNews);
         newsGrid.innerHTML = newsCards;
-        
+
         // Update counters
         this.updateNewsCounters(filteredNews.length);
         
@@ -380,14 +380,14 @@ class NewsManager {
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70 truncate">${article.title}</span>
                         <span class="text-xs text-sumi/50 dark:text-gofun/50">${newsData.getTimeAgo(article.date)}</span>
-                    </div>
+                </div>
                 `).join('');
             } else {
                 trendingTopics.innerHTML = `
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">No trending articles</span>
-                    </div>
-                `;
+            </div>
+        `;
             }
         }
         
@@ -400,14 +400,14 @@ class NewsManager {
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">${category}</span>
                         <span class="text-xs font-semibold text-shinku">${count}</span>
-                    </div>
+                        </div>
                 `).join('');
             } else {
                 newsCategories.innerHTML = `
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-sumi/70 dark:text-gofun/70">No categories</span>
-                    </div>
-                `;
+            </div>
+        `;
             }
         }
         
